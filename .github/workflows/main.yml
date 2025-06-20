@@ -55,7 +55,7 @@ jobs:
           # Update version
           npm version minor --force --no-git-tag-version
           package_version=$(cat package.json | grep 'version":' | sed 's/[",]//g' | awk '{print $2}')
-          cfn_release_rss_summary=$(python3 src/update-and-parse-feed.py)
+          cfn_release_rss_summary=$(python3 src/update-and-parse-feed.py --summary-only)
 
           # Install dependencies and prepare for publishing
           npm install

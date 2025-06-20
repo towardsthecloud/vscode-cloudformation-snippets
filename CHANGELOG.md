@@ -4,6 +4,13 @@ Changelog
 
 (unreleased)
 ------------
+- Refactor: enhance RSS feed parsing and add summary-only option. [Danny
+  Steenman]
+
+
+5.59.0 (2025-05-23)
+-------------------
+- Build: auto-update snippets to version: 5.59.0. [Github Actions]
 - Chore: update readme. [Danny Steenman]
 
 

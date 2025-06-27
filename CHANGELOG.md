@@ -2,8 +2,9 @@ Changelog
 =========
 
 
-(unreleased)
-------------
+5.60.0 (2025-06-20)
+-------------------
+- Build: auto-update snippets to version: 5.60.0. [Github Actions]
 - Refactor: enhance RSS feed parsing and add summary-only option. [Danny
   Steenman]
 

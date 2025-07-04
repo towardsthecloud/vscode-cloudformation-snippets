@@ -43,6 +43,21 @@
       "SourceAccount": "String"
     }
   },
+  "AWS::AIOps::InvestigationGroup": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aiops-investigationgroup.html",
+    "Properties": {
+      "ChatbotNotificationChannels": "ChatbotNotificationChannel",
+      "CrossAccountConfigurations": "CrossAccountConfiguration",
+      "EncryptionConfig": "EncryptionConfigMap",
+      "InvestigationGroupPolicy": "String",
+      "IsCloudTrailEventHistoryEnabled": "Boolean",
+      "Name": "String",
+      "RetentionInDays": "Integer",
+      "RoleArn": "String",
+      "TagKeyBoundaries": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::APS::RuleGroupsNamespace": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-rulegroupsnamespace.html",
     "Properties": {
@@ -1869,6 +1884,7 @@
       "BlockedOutputsMessaging": "String",
       "ContentPolicyConfig": "ContentPolicyConfig",
       "ContextualGroundingPolicyConfig": "ContextualGroundingPolicyConfig",
+      "CrossRegionConfig": "GuardrailCrossRegionConfig",
       "Description": "String",
       "KmsKeyArn": "String",
       "Name": "String",
@@ -2060,6 +2076,7 @@
     "Properties": {
       "AutoScalingSpecifications": "AutoScalingSpecification",
       "BillingMode": "BillingMode",
+      "CdcSpecification": "CdcSpecification",
       "ClientSideTimestampsEnabled": "Boolean",
       "ClusteringKeyColumns": "ClusteringKeyColumn",
       "DefaultTimeToLive": "Integer",
@@ -3414,6 +3431,7 @@
   "AWS::Connect::EvaluationForm": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-evaluationform.html",
     "Properties": {
+      "AutoEvaluationConfiguration": "AutoEvaluationConfiguration",
       "Description": "String",
       "InstanceArn": "String",
       "Items": "EvaluationFormBaseItem",
@@ -4014,6 +4032,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html",
     "Properties": {
       "DeletionProtectionEnabled": "Boolean",
+      "KmsEncryptionKey": "String",
       "MultiRegionProperties": "MultiRegionProperties",
       "Tags": "Tag"
     }
@@ -4423,6 +4442,7 @@
       "Description": "String",
       "DomainIdentifier": "String",
       "DomainUnitIdentifier": "String",
+      "EnvironmentConfigurations": "EnvironmentConfiguration",
       "Name": "String",
       "Status": "String"
     }
@@ -4725,8 +4745,10 @@
       "AttributeDefinitions": "AttributeDefinition",
       "BillingMode": "String",
       "GlobalSecondaryIndexes": "GlobalSecondaryIndex",
+      "GlobalTableWitnesses": "GlobalTableWitness",
       "KeySchema": "KeySchema",
       "LocalSecondaryIndexes": "LocalSecondaryIndex",
+      "MultiRegionConsistency": "String",
       "Replicas": "ReplicaSpecification",
       "SSESpecification": "SSESpecification",
       "StreamSpecification": "StreamSpecification",
@@ -6022,7 +6044,6 @@
       "EphemeralStorage": "EphemeralStorage",
       "ExecutionRoleArn": "String",
       "Family": "String",
-      "InferenceAccelerators": "InferenceAccelerator",
       "IpcMode": "String",
       "Memory": "String",
       "NetworkMode": "String",
@@ -6327,6 +6348,7 @@
       "Architecture": "String",
       "AutoStartConfiguration": "AutoStartConfiguration",
       "AutoStopConfiguration": "AutoStopConfiguration",
+      "IdentityCenterConfiguration": "IdentityCenterConfiguration",
       "ImageConfiguration": "ImageConfigurationInput",
       "InitialCapacity": "InitialCapacityConfigKeyValuePair",
       "InteractiveConfiguration": "InteractiveConfiguration",
@@ -7025,6 +7047,15 @@
       "SubnetIds": "String",
       "Tags": "Tag",
       "WindowsConfiguration": "WindowsConfiguration"
+    }
+  },
+  "AWS::FSx::S3AccessPointAttachment": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-s3accesspointattachment.html",
+    "Properties": {
+      "Name": "String",
+      "OpenZFSConfiguration": "S3AccessPointOpenZFSConfiguration",
+      "S3AccessPoint": "S3AccessPoint",
+      "Type": "String"
     }
   },
   "AWS::FSx::Snapshot": {
@@ -9307,7 +9338,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-streamconsumer.html",
     "Properties": {
       "ConsumerName": "String",
-      "StreamARN": "String"
+      "StreamARN": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::KinesisAnalytics::Application": {
@@ -10822,6 +10854,7 @@
       "ConfigurationAliases": "Map",
       "DashConfiguration": "DashConfiguration",
       "HlsConfiguration": "HlsConfiguration",
+      "InsertionMode": "String",
       "LivePreRollConfiguration": "LivePreRollConfiguration",
       "LogConfiguration": "LogConfiguration",
       "ManifestProcessingRules": "ManifestProcessingRules",
@@ -10988,7 +11021,6 @@
       "DBInstanceClass": "String",
       "DBInstanceIdentifier": "String",
       "DBParameterGroupName": "String",
-      "DBSnapshotIdentifier": "String",
       "DBSubnetGroupName": "String",
       "PreferredMaintenanceWindow": "String",
       "Tags": "Tag"
@@ -11314,6 +11346,80 @@
     "Properties": {
       "EmailAddress": "String",
       "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ODB::CloudAutonomousVmCluster": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-cloudautonomousvmcluster.html",
+    "Properties": {
+      "AutonomousDataStorageSizeInTBs": "Double",
+      "CloudExadataInfrastructureId": "String",
+      "CpuCoreCountPerNode": "Integer",
+      "DbServers": "String",
+      "Description": "String",
+      "DisplayName": "String",
+      "IsMtlsEnabledVmCluster": "Boolean",
+      "LicenseModel": "String",
+      "MaintenanceWindow": "MaintenanceWindow",
+      "MemoryPerOracleComputeUnitInGBs": "Integer",
+      "OdbNetworkId": "String",
+      "ScanListenerPortNonTls": "Integer",
+      "ScanListenerPortTls": "Integer",
+      "Tags": "Tag",
+      "TimeZone": "String",
+      "TotalContainerDatabases": "Integer"
+    }
+  },
+  "AWS::ODB::CloudExadataInfrastructure": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-cloudexadatainfrastructure.html",
+    "Properties": {
+      "AvailabilityZone": "String",
+      "AvailabilityZoneId": "String",
+      "ComputeCount": "Integer",
+      "CustomerContactsToSendToOCI": "CustomerContact",
+      "DatabaseServerType": "String",
+      "DisplayName": "String",
+      "Shape": "String",
+      "StorageCount": "Integer",
+      "StorageServerType": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ODB::CloudVmCluster": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-cloudvmcluster.html",
+    "Properties": {
+      "CloudExadataInfrastructureId": "String",
+      "ClusterName": "String",
+      "CpuCoreCount": "Integer",
+      "DataCollectionOptions": "DataCollectionOptions",
+      "DataStorageSizeInTBs": "Double",
+      "DbNodeStorageSizeInGBs": "Integer",
+      "DbServers": "String",
+      "DisplayName": "String",
+      "GiVersion": "String",
+      "Hostname": "String",
+      "IsLocalBackupEnabled": "Boolean",
+      "IsSparseDiskgroupEnabled": "Boolean",
+      "LicenseModel": "String",
+      "MemorySizeInGBs": "Integer",
+      "OdbNetworkId": "String",
+      "ScanListenerPortTcp": "Integer",
+      "SshPublicKeys": "String",
+      "SystemVersion": "String",
+      "Tags": "Tag",
+      "TimeZone": "String"
+    }
+  },
+  "AWS::ODB::OdbNetwork": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-odbnetwork.html",
+    "Properties": {
+      "AvailabilityZone": "String",
+      "AvailabilityZoneId": "String",
+      "BackupSubnetCidr": "String",
+      "ClientSubnetCidr": "String",
+      "DefaultDnsPrefix": "String",
+      "DeleteAssociatedResources": "Boolean",
+      "DisplayName": "String",
       "Tags": "Tag"
     }
   },
@@ -12240,6 +12346,7 @@
     "Properties": {
       "ActionConfigurations": "ActionConfiguration",
       "ApplicationId": "String",
+      "AuthenticationDetail": "DataAccessorAuthenticationDetail",
       "DisplayName": "String",
       "Principal": "String",
       "Tags": "Tag"
@@ -12278,6 +12385,7 @@
     "Properties": {
       "Actions": "String",
       "ApplicationId": "String",
+      "Conditions": "Condition",
       "Principal": "String",
       "StatementId": "String"
     }
@@ -12634,6 +12742,7 @@
       "AutomaticBackupReplicationRetentionPeriod": "Integer",
       "AvailabilityZone": "String",
       "BackupRetentionPeriod": "Integer",
+      "BackupTarget": "String",
       "CACertificateIdentifier": "String",
       "CertificateRotationRestart": "Boolean",
       "CharacterSetName": "String",
@@ -13031,6 +13140,15 @@
       "NamespaceResourcePolicy": "Json",
       "RedshiftIdcApplicationArn": "String",
       "SnapshotCopyConfigurations": "SnapshotCopyConfiguration",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::RedshiftServerless::Snapshot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshiftserverless-snapshot.html",
+    "Properties": {
+      "NamespaceName": "String",
+      "RetentionPeriod": "Integer",
+      "SnapshotName": "String",
       "Tags": "Tag"
     }
   },
@@ -13539,6 +13657,7 @@
   "AWS::Route53Resolver::ResolverRule": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html",
     "Properties": {
+      "DelegationRecord": "String",
       "DomainName": "String",
       "Name": "String",
       "ResolverEndpointId": "String",
@@ -13733,6 +13852,26 @@
       "OutpostId": "String",
       "SecurityGroupId": "String",
       "SubnetId": "String"
+    }
+  },
+  "AWS::S3Tables::Namespace": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-namespace.html",
+    "Properties": {
+      "Namespace": "String",
+      "TableBucketARN": "String"
+    }
+  },
+  "AWS::S3Tables::Table": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html",
+    "Properties": {
+      "Compaction": "Compaction",
+      "IcebergMetadata": "IcebergMetadata",
+      "Namespace": "String",
+      "OpenTableFormat": "String",
+      "SnapshotManagement": "SnapshotManagement",
+      "TableBucketARN": "String",
+      "TableName": "String",
+      "WithoutMetadata": "String"
     }
   },
   "AWS::S3Tables::TableBucket": {
@@ -16141,6 +16280,36 @@
       "Tags": "Tag",
       "ToolbarConfiguration": "ToolbarConfiguration",
       "UploadAllowed": "String"
+    }
+  },
+  "AWS::WorkspacesInstances::Volume": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspacesinstances-volume.html",
+    "Properties": {
+      "AvailabilityZone": "String",
+      "Encrypted": "Boolean",
+      "Iops": "Integer",
+      "KmsKeyId": "String",
+      "SizeInGB": "Integer",
+      "SnapshotId": "String",
+      "TagSpecifications": "TagSpecification",
+      "Throughput": "Integer",
+      "VolumeType": "String"
+    }
+  },
+  "AWS::WorkspacesInstances::VolumeAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspacesinstances-volumeassociation.html",
+    "Properties": {
+      "Device": "String",
+      "DisassociateMode": "String",
+      "VolumeId": "String",
+      "WorkspaceInstanceId": "String"
+    }
+  },
+  "AWS::WorkspacesInstances::WorkspaceInstance": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspacesinstances-workspaceinstance.html",
+    "Properties": {
+      "ManagedInstance": "ManagedInstance",
+      "Tags": "Tag"
     }
   },
   "AWS::XRay::Group": {

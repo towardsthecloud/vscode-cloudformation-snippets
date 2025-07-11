@@ -2108,6 +2108,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html",
     "Properties": {
       "CertificateAuthorityArn": "String",
+      "CertificateExport": "String",
       "CertificateTransparencyLoggingPreference": "String",
       "DomainName": "String",
       "DomainValidationOptions": "DomainValidationOption",

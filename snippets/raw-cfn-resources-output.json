@@ -1942,6 +1942,16 @@
       "Tags": "Map"
     }
   },
+  "AWS::Billing::BillingView": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billing-billingview.html",
+    "Properties": {
+      "DataFilterExpression": "DataFilterExpression",
+      "Description": "String",
+      "Name": "String",
+      "SourceViews": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::BillingConductor::BillingGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billingconductor-billinggroup.html",
     "Properties": {
@@ -4655,11 +4665,13 @@
       "DeletionProtection": "Boolean",
       "EnableCloudwatchLogsExports": "String",
       "EngineVersion": "String",
+      "GlobalClusterIdentifier": "String",
       "KmsKeyId": "String",
       "ManageMasterUserPassword": "Boolean",
       "MasterUserPassword": "String",
       "MasterUserSecretKmsKeyId": "String",
       "MasterUsername": "String",
+      "NetworkType": "String",
       "Port": "Integer",
       "PreferredBackupWindow": "String",
       "PreferredMaintenanceWindow": "String",
@@ -6868,6 +6880,7 @@
       "Description": "String",
       "EventSourceName": "String",
       "KmsKeyIdentifier": "String",
+      "LogConfig": "LogConfig",
       "Name": "String",
       "Policy": "Json",
       "Tags": "Tag"
@@ -7865,6 +7878,7 @@
     "Properties": {
       "Activate": "Boolean",
       "DetectorId": "String",
+      "ExpectedBucketOwner": "String",
       "Format": "String",
       "Location": "String",
       "Name": "String",
@@ -7913,6 +7927,7 @@
     "Properties": {
       "Activate": "Boolean",
       "DetectorId": "String",
+      "ExpectedBucketOwner": "String",
       "Format": "String",
       "Location": "String",
       "Name": "String",
@@ -12676,6 +12691,7 @@
       "DBSystemId": "String",
       "DatabaseInsightsMode": "String",
       "DatabaseName": "String",
+      "DeleteAutomatedBackups": "Boolean",
       "DeletionProtection": "Boolean",
       "Domain": "String",
       "DomainIAMRoleName": "String",
@@ -13726,6 +13742,7 @@
       "InventoryConfigurations": "InventoryConfiguration",
       "LifecycleConfiguration": "LifecycleConfiguration",
       "LoggingConfiguration": "LoggingConfiguration",
+      "MetadataConfiguration": "MetadataConfiguration",
       "MetadataTableConfiguration": "MetadataTableConfiguration",
       "MetricsConfigurations": "MetricsConfiguration",
       "NotificationConfiguration": "NotificationConfiguration",
@@ -13802,7 +13819,8 @@
       "BucketName": "String",
       "DataRedundancy": "String",
       "LifecycleConfiguration": "LifecycleConfiguration",
-      "LocationName": "String"
+      "LocationName": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::S3ObjectLambda::AccessPoint": {
@@ -13888,6 +13906,13 @@
     "Properties": {
       "ResourcePolicy": "Json",
       "TableBucketARN": "String"
+    }
+  },
+  "AWS::S3Tables::TablePolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-tablepolicy.html",
+    "Properties": {
+      "ResourcePolicy": "Json",
+      "TableARN": "String"
     }
   },
   "AWS::SDB::Domain": {
@@ -14795,7 +14820,8 @@
       "ProjectName": "String",
       "ServiceCatalogProvisionedProductDetails": "ServiceCatalogProvisionedProductDetails",
       "ServiceCatalogProvisioningDetails": "ServiceCatalogProvisioningDetails",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "TemplateProviderDetails": "TemplateProviderDetail"
     }
   },
   "AWS::SageMaker::Space": {
@@ -15593,6 +15619,7 @@
       "EndpointType": "String",
       "IdentityProviderDetails": "IdentityProviderDetails",
       "IdentityProviderType": "String",
+      "IpAddressType": "String",
       "LoggingRole": "String",
       "PostAuthenticationLoginBanner": "String",
       "PreAuthenticationLoginBanner": "String",
@@ -16132,6 +16159,22 @@
     "Properties": {
       "MessageTemplateArn": "String",
       "MessageTemplateContentSha256": "String"
+    }
+  },
+  "AWS::Wisdom::QuickResponse": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wisdom-quickresponse.html",
+    "Properties": {
+      "Channels": "String",
+      "Content": "QuickResponseContentProvider",
+      "ContentType": "String",
+      "Description": "String",
+      "GroupingConfiguration": "GroupingConfiguration",
+      "IsActive": "Boolean",
+      "KnowledgeBaseArn": "String",
+      "Language": "String",
+      "Name": "String",
+      "ShortcutKey": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::WorkSpaces::ConnectionAlias": {

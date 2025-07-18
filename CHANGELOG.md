@@ -2,8 +2,9 @@ Changelog
 =========
 
 
-(unreleased)
-------------
+5.63.0 (2025-07-11)
+-------------------
+- Build: auto-update snippets to version: 5.63.0. [Github Actions]
 - Update README.md. [Danny Steenman]
 - Update README.md. [Danny Steenman]
 

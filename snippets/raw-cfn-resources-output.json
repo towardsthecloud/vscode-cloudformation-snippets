@@ -3819,6 +3819,7 @@
       "ClusterName": "String",
       "Description": "String",
       "IAMRoleARN": "String",
+      "NetworkType": "String",
       "NodeType": "String",
       "NotificationTopicARN": "String",
       "ParameterGroupName": "String",
@@ -5535,6 +5536,7 @@
     "Properties": {
       "Description": "String",
       "NetworkInterfaceId": "String",
+      "OwnerId": "String",
       "PacketLength": "Integer",
       "SessionNumber": "Integer",
       "Tags": "Tag",
@@ -12616,6 +12618,7 @@
       "Description": "String",
       "FolderArns": "String",
       "Name": "String",
+      "Tags": "Tag",
       "TopicId": "String",
       "UserExperienceVersion": "String"
     }
@@ -13929,6 +13932,7 @@
       "ReputationOptions": "ReputationOptions",
       "SendingOptions": "SendingOptions",
       "SuppressionOptions": "SuppressionOptions",
+      "Tags": "Tag",
       "TrackingOptions": "TrackingOptions",
       "VdmOptions": "VdmOptions"
     }
@@ -13953,7 +13957,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-dedicatedippool.html",
     "Properties": {
       "PoolName": "String",
-      "ScalingMode": "String"
+      "ScalingMode": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::SES::EmailIdentity": {
@@ -13964,7 +13969,8 @@
       "DkimSigningAttributes": "DkimSigningAttributes",
       "EmailIdentity": "String",
       "FeedbackAttributes": "FeedbackAttributes",
-      "MailFromAttributes": "MailFromAttributes"
+      "MailFromAttributes": "MailFromAttributes",
+      "Tags": "Tag"
     }
   },
   "AWS::SES::MailManagerAddonInstance": {
@@ -14258,6 +14264,7 @@
       "ApprovedPatches": "String",
       "ApprovedPatchesComplianceLevel": "String",
       "ApprovedPatchesEnableNonSecurity": "Boolean",
+      "AvailableSecurityUpdatesComplianceStatus": "String",
       "DefaultBaseline": "Boolean",
       "Description": "String",
       "GlobalFilters": "PatchFilterGroup",
@@ -16150,6 +16157,7 @@
       "GroupingConfiguration": "GroupingConfiguration",
       "KnowledgeBaseArn": "String",
       "Language": "String",
+      "MessageTemplateAttachments": "MessageTemplateAttachment",
       "Name": "String",
       "Tags": "Tag"
     }

@@ -1764,6 +1764,16 @@
       "Tags": "Map"
     }
   },
+  "AWS::Batch::ServiceEnvironment": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-serviceenvironment.html",
+    "Properties": {
+      "CapacityLimits": "CapacityLimit",
+      "ServiceEnvironmentName": "String",
+      "ServiceEnvironmentType": "String",
+      "State": "String",
+      "Tags": "Map"
+    }
+  },
   "AWS::Bedrock::Agent": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-agent.html",
     "Properties": {
@@ -5964,6 +5974,7 @@
       "EncryptionConfiguration": "EncryptionConfiguration",
       "ImageScanningConfiguration": "ImageScanningConfiguration",
       "ImageTagMutability": "String",
+      "ImageTagMutabilityExclusionFilters": "ImageTagMutabilityExclusionFilter",
       "LifecyclePolicy": "LifecyclePolicy",
       "RepositoryName": "String",
       "RepositoryPolicyText": "Json",
@@ -5978,6 +5989,7 @@
       "Description": "String",
       "EncryptionConfiguration": "EncryptionConfiguration",
       "ImageTagMutability": "String",
+      "ImageTagMutabilityExclusionFilters": "ImageTagMutabilityExclusionFilter",
       "LifecyclePolicy": "String",
       "Prefix": "String",
       "RepositoryPolicy": "String",
@@ -8968,6 +8980,16 @@
       "Tags": "Tag"
     }
   },
+  "AWS::IoTSiteWise::ComputationModel": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsitewise-computationmodel.html",
+    "Properties": {
+      "ComputationModelConfiguration": "ComputationModelConfiguration",
+      "ComputationModelDataBinding": "Map",
+      "ComputationModelDescription": "String",
+      "ComputationModelName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::IoTSiteWise::Dashboard": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsitewise-dashboard.html",
     "Properties": {
@@ -9856,6 +9878,14 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Lightsail::Domain": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-domain.html",
+    "Properties": {
+      "DomainEntries": "DomainEntry",
+      "DomainName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Lightsail::Instance": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-instance.html",
     "Properties": {
@@ -10032,6 +10062,7 @@
       "DestinationName": "String",
       "DestinationPolicy": "String",
       "RoleArn": "String",
+      "Tags": "Tag",
       "TargetArn": "String"
     }
   },
@@ -10063,6 +10094,7 @@
       "KmsKeyId": "String",
       "LogGroupClass": "String",
       "LogGroupName": "String",
+      "ResourcePolicyDocument": "Json",
       "RetentionInDays": "Integer",
       "Tags": "Tag"
     }
@@ -10813,6 +10845,7 @@
   "AWS::MediaPackageV2::OriginEndpointPolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediapackagev2-originendpointpolicy.html",
     "Properties": {
+      "CdnAuthConfiguration": "CdnAuthConfiguration",
       "ChannelGroupName": "String",
       "ChannelName": "String",
       "OriginEndpointName": "String",
@@ -12614,6 +12647,7 @@
     "Properties": {
       "AwsAccountId": "String",
       "ConfigOptions": "TopicConfigOptions",
+      "CustomInstructions": "CustomInstructions",
       "DataSets": "DatasetMetadata",
       "Description": "String",
       "FolderArns": "String",
@@ -12823,6 +12857,7 @@
       "SourceDBInstanceIdentifier": "String",
       "SourceDbiResourceId": "String",
       "SourceRegion": "String",
+      "StatusInfos": "DBInstanceStatusInfo",
       "StorageEncrypted": "Boolean",
       "StorageThroughput": "Integer",
       "StorageType": "String",
@@ -13729,6 +13764,7 @@
       "Name": "String",
       "Policy": "Json",
       "PublicAccessBlockConfiguration": "PublicAccessBlockConfiguration",
+      "Tags": "Tag",
       "VpcConfiguration": "VpcConfiguration"
     }
   },
@@ -14462,6 +14498,7 @@
       "InstanceGroups": "ClusterInstanceGroup",
       "NodeRecovery": "String",
       "Orchestrator": "Orchestrator",
+      "RestrictedInstanceGroups": "ClusterRestrictedInstanceGroup",
       "Tags": "Tag",
       "VpcConfig": "VpcConfig"
     }
@@ -14817,6 +14854,22 @@
       "PipelineDisplayName": "String",
       "PipelineName": "String",
       "RoleArn": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::SageMaker::ProcessingJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-processingjob.html",
+    "Properties": {
+      "AppSpecification": "AppSpecification",
+      "Environment": "Map",
+      "ExperimentConfig": "ExperimentConfig",
+      "NetworkConfig": "NetworkConfig",
+      "ProcessingInputs": "ProcessingInputsObject",
+      "ProcessingJobName": "String",
+      "ProcessingOutputConfig": "ProcessingOutputConfig",
+      "ProcessingResources": "ProcessingResources",
+      "RoleArn": "String",
+      "StoppingCondition": "StoppingCondition",
       "Tags": "Tag"
     }
   },

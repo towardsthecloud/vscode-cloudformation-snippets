@@ -90,6 +90,22 @@
       "WorkspaceConfiguration": "WorkspaceConfiguration"
     }
   },
+  "AWS::ARCRegionSwitch::Plan": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arcregionswitch-plan.html",
+    "Properties": {
+      "AssociatedAlarms": "Map",
+      "Description": "String",
+      "ExecutionRole": "String",
+      "Name": "String",
+      "PrimaryRegion": "String",
+      "RecoveryApproach": "String",
+      "RecoveryTimeObjectiveMinutes": "Double",
+      "Regions": "String",
+      "Tags": "Map",
+      "Triggers": "Trigger",
+      "Workflows": "Workflow"
+    }
+  },
   "AWS::ARCZonalShift::AutoshiftObserverNotificationStatus": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-arczonalshift-autoshiftobservernotificationstatus.html",
     "Properties": {
@@ -1749,9 +1765,11 @@
     "Properties": {
       "ComputeEnvironmentOrder": "ComputeEnvironmentOrder",
       "JobQueueName": "String",
+      "JobQueueType": "String",
       "JobStateTimeLimitActions": "JobStateTimeLimitAction",
       "Priority": "Integer",
       "SchedulingPolicyArn": "String",
+      "ServiceEnvironmentOrder": "ServiceEnvironmentOrder",
       "State": "String",
       "Tags": "Map"
     }
@@ -5601,6 +5619,14 @@
       "TransportTransitGatewayAttachmentId": "String"
     }
   },
+  "AWS::EC2::TransitGatewayConnectPeer": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayconnectpeer.html",
+    "Properties": {
+      "ConnectPeerConfiguration": "TransitGatewayConnectPeerConfiguration",
+      "Tags": "Tag",
+      "TransitGatewayAttachmentId": "String"
+    }
+  },
   "AWS::EC2::TransitGatewayMulticastDomain": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastdomain.html",
     "Properties": {
@@ -6172,6 +6198,7 @@
       "AccessConfig": "AccessConfig",
       "BootstrapSelfManagedAddons": "Boolean",
       "ComputeConfig": "ComputeConfig",
+      "DeletionProtection": "Boolean",
       "EncryptionConfig": "EncryptionConfig",
       "Force": "Boolean",
       "KubernetesNetworkConfig": "KubernetesNetworkConfig",
@@ -8977,6 +9004,7 @@
       "AssetModelName": "String",
       "AssetModelProperties": "AssetModelProperty",
       "AssetModelType": "String",
+      "EnforcedAssetModelInterfaceRelationships": "EnforcedAssetModelInterfaceRelationship",
       "Tags": "Tag"
     }
   },
@@ -11130,6 +11158,8 @@
   "AWS::NetworkFirewall::Firewall": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html",
     "Properties": {
+      "AvailabilityZoneChangeProtection": "Boolean",
+      "AvailabilityZoneMappings": "AvailabilityZoneMapping",
       "DeleteProtection": "Boolean",
       "Description": "String",
       "EnabledAnalysisTypes": "String",
@@ -11139,6 +11169,7 @@
       "SubnetChangeProtection": "Boolean",
       "SubnetMappings": "SubnetMapping",
       "Tags": "Tag",
+      "TransitGatewayId": "String",
       "VpcId": "String"
     }
   },
@@ -11167,6 +11198,7 @@
       "Description": "String",
       "RuleGroup": "RuleGroup",
       "RuleGroupName": "String",
+      "SummaryConfiguration": "SummaryConfiguration",
       "Tags": "Tag",
       "Type": "String"
     }
@@ -12765,6 +12797,7 @@
       "ServerlessV2ScalingConfiguration": "ServerlessV2ScalingConfiguration",
       "SnapshotIdentifier": "String",
       "SourceDBClusterIdentifier": "String",
+      "SourceDbClusterResourceId": "String",
       "SourceRegion": "String",
       "StorageEncrypted": "Boolean",
       "StorageType": "String",
@@ -12857,7 +12890,6 @@
       "SourceDBInstanceIdentifier": "String",
       "SourceDbiResourceId": "String",
       "SourceRegion": "String",
-      "StatusInfos": "DBInstanceStatusInfo",
       "StorageEncrypted": "Boolean",
       "StorageThroughput": "Integer",
       "StorageType": "String",
@@ -13841,6 +13873,7 @@
       "Policy": "Json",
       "PublicAccessBlockConfiguration": "PublicAccessBlockConfiguration",
       "Scope": "Scope",
+      "Tags": "Tag",
       "VpcConfiguration": "VpcConfiguration"
     }
   },
@@ -16349,10 +16382,22 @@
       "IpAccessSettingsArn": "String",
       "MaxConcurrentSessions": "Double",
       "NetworkSettingsArn": "String",
+      "SessionLoggerArn": "String",
       "Tags": "Tag",
       "TrustStoreArn": "String",
       "UserAccessLoggingSettingsArn": "String",
       "UserSettingsArn": "String"
+    }
+  },
+  "AWS::WorkSpacesWeb::SessionLogger": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspacesweb-sessionlogger.html",
+    "Properties": {
+      "AdditionalEncryptionContext": "Map",
+      "CustomerManagedKey": "String",
+      "DisplayName": "String",
+      "EventFilter": "EventFilter",
+      "LogConfiguration": "LogConfiguration",
+      "Tags": "Tag"
     }
   },
   "AWS::WorkSpacesWeb::TrustStore": {

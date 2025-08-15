@@ -3,7 +3,7 @@
   "displayName": "AWS CloudFormation Snippets",
   "description": "Adds snippets for all the AWS CloudFormation resources in VS Code.",
   "author": "Danny Steenman",
-  "version": "5.67.0",
+  "version": "5.68.0",
   "publisher": "dannysteenman",
   "icon": "images/cfn-snippets-extension-icon.png",
   "homepage": "https://towardsthecloud.com",

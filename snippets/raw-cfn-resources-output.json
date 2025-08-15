@@ -835,8 +835,12 @@
   "AWS::AppIntegrations::Application": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appintegrations-application.html",
     "Properties": {
+      "ApplicationConfig": "ApplicationConfig",
       "ApplicationSourceConfig": "ApplicationSourceConfig",
       "Description": "String",
+      "IframeConfig": "IframeConfig",
+      "InitializationTimeout": "Integer",
+      "IsService": "Boolean",
       "Name": "String",
       "Namespace": "String",
       "Permissions": "String",
@@ -4565,7 +4569,8 @@
       "DisplayName": "String",
       "IdentityCenterInstanceArn": "String",
       "RoleArn": "String",
-      "Subdomain": "String"
+      "Subdomain": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Deadline::Queue": {
@@ -5166,6 +5171,13 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html",
     "Properties": {
       "Tags": "Tag"
+    }
+  },
+  "AWS::EC2::IpPoolRouteTableAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ippoolroutetableassociation.html",
+    "Properties": {
+      "PublicIpv4Pool": "String",
+      "RouteTableId": "String"
     }
   },
   "AWS::EC2::KeyPair": {
@@ -7094,6 +7106,7 @@
       "FileSystemTypeVersion": "String",
       "KmsKeyId": "String",
       "LustreConfiguration": "LustreConfiguration",
+      "NetworkType": "String",
       "OntapConfiguration": "OntapConfiguration",
       "OpenZFSConfiguration": "OpenZFSConfiguration",
       "SecurityGroupIds": "String",
@@ -8446,6 +8459,26 @@
       "SecurityLevel": "String",
       "Tags": "Map",
       "Targets": "CisTargets"
+    }
+  },
+  "AWS::InspectorV2::CodeSecurityIntegration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-inspectorv2-codesecurityintegration.html",
+    "Properties": {
+      "CreateIntegrationDetails": "CreateDetails",
+      "Name": "String",
+      "Tags": "Map",
+      "Type": "String",
+      "UpdateIntegrationDetails": "UpdateDetails"
+    }
+  },
+  "AWS::InspectorV2::CodeSecurityScanConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-inspectorv2-codesecurityscanconfiguration.html",
+    "Properties": {
+      "Configuration": "CodeSecurityScanConfiguration",
+      "Level": "String",
+      "Name": "String",
+      "ScopeSettings": "ScopeSettings",
+      "Tags": "Map"
     }
   },
   "AWS::InspectorV2::Filter": {
@@ -11538,6 +11571,22 @@
       "Tags": "Map"
     }
   },
+  "AWS::ObservabilityAdmin::OrganizationTelemetryRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-organizationtelemetryrule.html",
+    "Properties": {
+      "Rule": "TelemetryRule",
+      "RuleName": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ObservabilityAdmin::TelemetryRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetryrule.html",
+    "Properties": {
+      "Rule": "TelemetryRule",
+      "RuleName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Omics::AnnotationStore": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-annotationstore.html",
     "Properties": {
@@ -14529,6 +14578,7 @@
     "Properties": {
       "ClusterName": "String",
       "InstanceGroups": "ClusterInstanceGroup",
+      "NodeProvisioningMode": "String",
       "NodeRecovery": "String",
       "Orchestrator": "Orchestrator",
       "RestrictedInstanceGroups": "ClusterRestrictedInstanceGroup",

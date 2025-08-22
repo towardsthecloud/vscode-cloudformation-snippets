@@ -2,6 +2,11 @@ Changelog
 =========
 
 
+5.68.0 (2025-08-15)
+-------------------
+- Build: auto-update snippets to version: 5.68.0. [Github Actions]
+
+
 5.67.0 (2025-08-08)
 -------------------
 - Build: auto-update snippets to version: 5.67.0. [Github Actions]

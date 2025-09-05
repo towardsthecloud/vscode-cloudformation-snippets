@@ -1847,6 +1847,23 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Bedrock::AutomatedReasoningPolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-automatedreasoningpolicy.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "PolicyDefinition": "PolicyDefinition",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Bedrock::AutomatedReasoningPolicyVersion": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-automatedreasoningpolicyversion.html",
+    "Properties": {
+      "LastUpdatedDefinitionHash": "String",
+      "PolicyArn": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Bedrock::Blueprint": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-blueprint.html",
     "Properties": {
@@ -11514,6 +11531,13 @@
       "Region": "String"
     }
   },
+  "AWS::Notifications::OrganizationalUnitAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-notifications-organizationalunitassociation.html",
+    "Properties": {
+      "NotificationConfigurationArn": "String",
+      "OrganizationalUnitId": "String"
+    }
+  },
   "AWS::NotificationsContacts::EmailContact": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-notificationscontacts-emailcontact.html",
     "Properties": {
@@ -15671,6 +15695,7 @@
     "Properties": {
       "ArtifactConfig": "ArtifactConfig",
       "ArtifactS3Location": "String",
+      "BrowserConfigs": "BrowserConfig",
       "Code": "Code",
       "DryRunAndUpdate": "Boolean",
       "ExecutionRoleArn": "String",
@@ -15685,7 +15710,7 @@
       "SuccessRetentionPeriod": "Integer",
       "Tags": "Tag",
       "VPCConfig": "VPCConfig",
-      "VisualReference": "VisualReference"
+      "VisualReferences": "VisualReference"
     }
   },
   "AWS::Synthetics::Group": {

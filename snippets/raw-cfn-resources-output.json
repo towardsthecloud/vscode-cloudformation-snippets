@@ -6753,6 +6753,7 @@
   "AWS::ElasticLoadBalancingV2::LoadBalancer": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html",
     "Properties": {
+      "EnableCapacityReservationProvisionStabilize": "Boolean",
       "EnablePrefixForIpv6SourceNat": "String",
       "EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic": "String",
       "IpAddressType": "String",
@@ -9854,6 +9855,7 @@
       "BotTags": "Tag",
       "DataPrivacy": "DataPrivacy",
       "Description": "String",
+      "ErrorLogSettings": "ErrorLogSettings",
       "IdleSessionTTLInSeconds": "Integer",
       "Name": "String",
       "Replication": "Replication",
@@ -11749,17 +11751,22 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html",
     "Properties": {
       "Accelerators": "String",
+      "DefinitionRepository": "DefinitionRepository",
       "DefinitionUri": "String",
       "Description": "String",
       "Engine": "String",
       "Main": "String",
       "ParameterTemplate": "Map",
+      "ParameterTemplatePath": "String",
       "StorageCapacity": "Double",
       "StorageType": "String",
       "Tags": "Map",
       "VersionName": "String",
       "WorkflowBucketOwnerId": "String",
-      "WorkflowId": "String"
+      "WorkflowId": "String",
+      "readmeMarkdown": "String",
+      "readmePath": "String",
+      "readmeUri": "String"
     }
   },
   "AWS::OpenSearchServerless::AccessPolicy": {
@@ -14282,6 +14289,77 @@
       "GuardianAttributes": "GuardianAttributes"
     }
   },
+  "AWS::SMSVOICE::ConfigurationSet": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-configurationset.html",
+    "Properties": {
+      "ConfigurationSetName": "String",
+      "DefaultSenderId": "String",
+      "EventDestinations": "EventDestination",
+      "MessageFeedbackEnabled": "Boolean",
+      "ProtectConfigurationId": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::SMSVOICE::OptOutList": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-optoutlist.html",
+    "Properties": {
+      "OptOutListName": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::SMSVOICE::PhoneNumber": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-phonenumber.html",
+    "Properties": {
+      "DeletionProtectionEnabled": "Boolean",
+      "IsoCountryCode": "String",
+      "MandatoryKeywords": "MandatoryKeywords",
+      "NumberCapabilities": "String",
+      "NumberType": "String",
+      "OptOutListName": "String",
+      "OptionalKeywords": "OptionalKeyword",
+      "SelfManagedOptOutsEnabled": "Boolean",
+      "Tags": "Tag",
+      "TwoWay": "TwoWay"
+    }
+  },
+  "AWS::SMSVOICE::Pool": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-pool.html",
+    "Properties": {
+      "DeletionProtectionEnabled": "Boolean",
+      "MandatoryKeywords": "MandatoryKeywords",
+      "OptOutListName": "String",
+      "OptionalKeywords": "OptionalKeyword",
+      "OriginationIdentities": "String",
+      "SelfManagedOptOutsEnabled": "Boolean",
+      "SharedRoutesEnabled": "Boolean",
+      "Tags": "Tag",
+      "TwoWay": "TwoWay"
+    }
+  },
+  "AWS::SMSVOICE::ProtectConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-protectconfiguration.html",
+    "Properties": {
+      "CountryRuleSet": "CountryRuleSet",
+      "DeletionProtectionEnabled": "Boolean",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::SMSVOICE::ResourcePolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-resourcepolicy.html",
+    "Properties": {
+      "PolicyDocument": "Json",
+      "ResourceArn": "String"
+    }
+  },
+  "AWS::SMSVOICE::SenderId": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-smsvoice-senderid.html",
+    "Properties": {
+      "DeletionProtectionEnabled": "Boolean",
+      "IsoCountryCode": "String",
+      "SenderId": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::SNS::Subscription": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html",
     "Properties": {
@@ -14663,7 +14741,9 @@
   "AWS::SageMaker::Cluster": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-cluster.html",
     "Properties": {
+      "AutoScaling": "ClusterAutoScalingConfig",
       "ClusterName": "String",
+      "ClusterRole": "String",
       "InstanceGroups": "ClusterInstanceGroup",
       "NodeProvisioningMode": "String",
       "NodeRecovery": "String",

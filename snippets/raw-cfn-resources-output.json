@@ -81,6 +81,7 @@
       "Destination": "Destination",
       "RoleConfiguration": "RoleConfiguration",
       "ScrapeConfiguration": "ScrapeConfiguration",
+      "ScraperLoggingConfiguration": "ScraperLoggingConfiguration",
       "Source": "Source",
       "Tags": "Tag"
     }
@@ -1936,6 +1937,7 @@
   "AWS::Bedrock::Guardrail": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-guardrail.html",
     "Properties": {
+      "AutomatedReasoningPolicyConfig": "AutomatedReasoningPolicyConfig",
       "BlockedInputMessaging": "String",
       "BlockedOutputsMessaging": "String",
       "ContentPolicyConfig": "ContentPolicyConfig",
@@ -2231,6 +2233,7 @@
     "Properties": {
       "AnalysisParameters": "AnalysisParameter",
       "Description": "String",
+      "ErrorMessageConfiguration": "ErrorMessageConfiguration",
       "Format": "String",
       "MembershipIdentifier": "String",
       "Name": "String",
@@ -2244,6 +2247,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html",
     "Properties": {
       "AnalyticsEngine": "String",
+      "AutoApprovedChangeTypes": "String",
       "CreatorDisplayName": "String",
       "CreatorMLMemberAbilities": "MLMemberAbilities",
       "CreatorMemberAbilities": "String",
@@ -3614,6 +3618,7 @@
       "DefaultOutboundQueueArn": "String",
       "Description": "String",
       "InstanceArn": "String",
+      "ManualAssignmentQueueConfigs": "RoutingProfileManualAssignmentQueueConfig",
       "MediaConcurrencies": "MediaConcurrency",
       "Name": "String",
       "QueueConfigs": "RoutingProfileQueueConfig",
@@ -4829,6 +4834,8 @@
       "AttributeDefinitions": "AttributeDefinition",
       "BillingMode": "String",
       "GlobalSecondaryIndexes": "GlobalSecondaryIndex",
+      "GlobalTableSettingsReplicationMode": "String",
+      "GlobalTableSourceArn": "String",
       "GlobalTableWitnesses": "GlobalTableWitness",
       "KeySchema": "KeySchema",
       "LocalSecondaryIndexes": "LocalSecondaryIndex",
@@ -4851,6 +4858,7 @@
       "ContributorInsightsSpecification": "ContributorInsightsSpecification",
       "DeletionProtectionEnabled": "Boolean",
       "GlobalSecondaryIndexes": "GlobalSecondaryIndex",
+      "GlobalTableSettingsReplicationMode": "String",
       "ImportSourceSpecification": "ImportSourceSpecification",
       "KeySchema": "KeySchema",
       "KinesisStreamSpecification": "KinesisStreamSpecification",
@@ -11578,6 +11586,7 @@
       "CustomerContactsToSendToOCI": "CustomerContact",
       "DatabaseServerType": "String",
       "DisplayName": "String",
+      "MaintenanceWindow": "MaintenanceWindow",
       "Shape": "String",
       "StorageCount": "Integer",
       "StorageServerType": "String",
@@ -11593,6 +11602,7 @@
       "DataCollectionOptions": "DataCollectionOptions",
       "DataStorageSizeInTBs": "Double",
       "DbNodeStorageSizeInGBs": "Integer",
+      "DbNodes": "DbNode",
       "DbServers": "String",
       "DisplayName": "String",
       "GiVersion": "String",
@@ -11616,9 +11626,22 @@
       "AvailabilityZoneId": "String",
       "BackupSubnetCidr": "String",
       "ClientSubnetCidr": "String",
+      "CustomDomainName": "String",
       "DefaultDnsPrefix": "String",
       "DeleteAssociatedResources": "Boolean",
       "DisplayName": "String",
+      "S3Access": "String",
+      "S3PolicyDocument": "String",
+      "Tags": "Tag",
+      "ZeroEtlAccess": "String"
+    }
+  },
+  "AWS::ODB::OdbPeeringConnection": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-odbpeeringconnection.html",
+    "Properties": {
+      "DisplayName": "String",
+      "OdbNetworkId": "String",
+      "PeerNetworkId": "String",
       "Tags": "Tag"
     }
   },
@@ -11810,6 +11833,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-securityconfig.html",
     "Properties": {
       "Description": "String",
+      "IamFederationOptions": "IamFederationConfigOptions",
       "IamIdentityCenterOptions": "IamIdentityCenterConfigOptions",
       "Name": "String",
       "SamlOptions": "SamlConfigOptions",
@@ -16066,7 +16090,6 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-resourcegateway.html",
     "Properties": {
       "IpAddressType": "String",
-      "Ipv4AddressesPerEni": "Integer",
       "Name": "String",
       "SecurityGroupIds": "String",
       "SubnetIds": "String",

@@ -1383,6 +1383,12 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-discovery.html",
     "Properties": {}
   },
+  "AWS::ApplicationSignals::GroupingConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-groupingconfiguration.html",
+    "Properties": {
+      "GroupingAttributeDefinitions": "GroupingAttributeDefinition"
+    }
+  },
   "AWS::ApplicationSignals::ServiceLevelObjective": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationsignals-servicelevelobjective.html",
     "Properties": {
@@ -2000,6 +2006,76 @@
       "Tags": "Map"
     }
   },
+  "AWS::BedrockAgentCore::BrowserCustom": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html",
+    "Properties": {
+      "Description": "String",
+      "ExecutionRoleArn": "String",
+      "Name": "String",
+      "NetworkConfiguration": "BrowserNetworkConfiguration",
+      "RecordingConfig": "RecordingConfig",
+      "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::CodeInterpreterCustom": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html",
+    "Properties": {
+      "Description": "String",
+      "ExecutionRoleArn": "String",
+      "Name": "String",
+      "NetworkConfiguration": "CodeInterpreterNetworkConfiguration",
+      "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::Gateway": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-gateway.html",
+    "Properties": {
+      "AuthorizerConfiguration": "AuthorizerConfiguration",
+      "AuthorizerType": "String",
+      "Description": "String",
+      "ExceptionLevel": "String",
+      "KmsKeyArn": "String",
+      "Name": "String",
+      "ProtocolConfiguration": "GatewayProtocolConfiguration",
+      "ProtocolType": "String",
+      "RoleArn": "String",
+      "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::GatewayTarget": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-gatewaytarget.html",
+    "Properties": {
+      "CredentialProviderConfigurations": "CredentialProviderConfiguration",
+      "Description": "String",
+      "GatewayIdentifier": "String",
+      "Name": "String",
+      "TargetConfiguration": "TargetConfiguration"
+    }
+  },
+  "AWS::BedrockAgentCore::Runtime": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-runtime.html",
+    "Properties": {
+      "AgentRuntimeArtifact": "AgentRuntimeArtifact",
+      "AgentRuntimeName": "String",
+      "AuthorizerConfiguration": "AuthorizerConfiguration",
+      "Description": "String",
+      "EnvironmentVariables": "Map",
+      "NetworkConfiguration": "NetworkConfiguration",
+      "ProtocolConfiguration": "String",
+      "RoleArn": "String",
+      "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::RuntimeEndpoint": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-runtimeendpoint.html",
+    "Properties": {
+      "AgentRuntimeId": "String",
+      "AgentRuntimeVersion": "String",
+      "Description": "String",
+      "Name": "String",
+      "Tags": "Map"
+    }
+  },
   "AWS::Billing::BillingView": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-billing-billingview.html",
     "Properties": {
@@ -2127,6 +2203,7 @@
       "S3Bucket": "String",
       "S3Prefix": "String",
       "S3Region": "String",
+      "Tags": "Tag",
       "TimeUnit": "String"
     }
   },
@@ -4339,6 +4416,8 @@
     "Properties": {
       "AgentArns": "String",
       "AuthenticationType": "String",
+      "CmkSecretConfig": "CmkSecretConfig",
+      "CustomSecretConfig": "CustomSecretConfig",
       "DnsIpAddresses": "String",
       "Domain": "String",
       "KerberosKeytab": "String",
@@ -4470,6 +4549,17 @@
       "Name": "String",
       "ProjectIdentifier": "String",
       "UserParameters": "EnvironmentParameter"
+    }
+  },
+  "AWS::DataZone::FormType": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-formtype.html",
+    "Properties": {
+      "Description": "String",
+      "DomainIdentifier": "String",
+      "Model": "Model",
+      "Name": "String",
+      "OwningProjectIdentifier": "String",
+      "Status": "String"
     }
   },
   "AWS::DataZone::GroupProfile": {
@@ -5277,6 +5367,28 @@
       "Tags": "Tag"
     }
   },
+  "AWS::EC2::LocalGatewayVirtualInterface": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-localgatewayvirtualinterface.html",
+    "Properties": {
+      "LocalAddress": "String",
+      "LocalGatewayVirtualInterfaceGroupId": "String",
+      "OutpostLagId": "String",
+      "PeerAddress": "String",
+      "PeerBgpAsn": "Integer",
+      "PeerBgpAsnExtended": "Integer",
+      "Tags": "Tag",
+      "Vlan": "Integer"
+    }
+  },
+  "AWS::EC2::LocalGatewayVirtualInterfaceGroup": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-localgatewayvirtualinterfacegroup.html",
+    "Properties": {
+      "LocalBgpAsn": "Integer",
+      "LocalBgpAsnExtended": "Integer",
+      "LocalGatewayId": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::EC2::NatGateway": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html",
     "Properties": {
@@ -5377,6 +5489,7 @@
     "Properties": {
       "DeleteOnTermination": "Boolean",
       "DeviceIndex": "String",
+      "EnaQueueCount": "Integer",
       "EnaSrdSpecification": "EnaSrdSpecification",
       "InstanceId": "String",
       "NetworkInterfaceId": "String"
@@ -6084,6 +6197,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-capacityprovider.html",
     "Properties": {
       "AutoScalingGroupProvider": "AutoScalingGroupProvider",
+      "ClusterName": "String",
+      "ManagedInstancesProvider": "ManagedInstancesProvider",
       "Name": "String",
       "Tags": "Tag"
     }
@@ -8420,6 +8535,7 @@
       "ImageScanningConfiguration": "ImageScanningConfiguration",
       "ImageTestsConfiguration": "ImageTestsConfiguration",
       "InfrastructureConfigurationArn": "String",
+      "LoggingConfiguration": "ImageLoggingConfiguration",
       "Tags": "Map",
       "Workflows": "WorkflowConfiguration"
     }
@@ -8436,6 +8552,7 @@
       "ImageScanningConfiguration": "ImageScanningConfiguration",
       "ImageTestsConfiguration": "ImageTestsConfiguration",
       "InfrastructureConfigurationArn": "String",
+      "LoggingConfiguration": "PipelineLoggingConfiguration",
       "Name": "String",
       "Schedule": "Schedule",
       "Status": "String",
@@ -8447,6 +8564,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagerecipe.html",
     "Properties": {
       "AdditionalInstanceConfiguration": "AdditionalInstanceConfiguration",
+      "AmiTags": "Map",
       "BlockDeviceMappings": "InstanceBlockDeviceMapping",
       "Components": "ComponentConfiguration",
       "Description": "String",
@@ -9818,6 +9936,7 @@
       "EventSourceToken": "String",
       "FunctionName": "String",
       "FunctionUrlAuthType": "String",
+      "InvokedViaFunctionUrl": "Boolean",
       "Principal": "String",
       "PrincipalOrgID": "String",
       "SourceAccount": "String",
@@ -11753,6 +11872,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflow.html",
     "Properties": {
       "Accelerators": "String",
+      "ContainerRegistryMap": "ContainerRegistryMap",
+      "ContainerRegistryMapUri": "String",
       "DefinitionRepository": "DefinitionRepository",
       "DefinitionUri": "String",
       "Description": "String",
@@ -11774,6 +11895,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-workflowversion.html",
     "Properties": {
       "Accelerators": "String",
+      "ContainerRegistryMap": "ContainerRegistryMap",
+      "ContainerRegistryMapUri": "String",
       "DefinitionRepository": "DefinitionRepository",
       "DefinitionUri": "String",
       "Description": "String",
@@ -12014,32 +12137,6 @@
       "MountPoint": "String",
       "Name": "String",
       "StackId": "String"
-    }
-  },
-  "AWS::OpsWorksCM::Server": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opsworkscm-server.html",
-    "Properties": {
-      "AssociatePublicIpAddress": "Boolean",
-      "BackupId": "String",
-      "BackupRetentionCount": "Integer",
-      "CustomCertificate": "String",
-      "CustomDomain": "String",
-      "CustomPrivateKey": "String",
-      "DisableAutomatedBackup": "Boolean",
-      "Engine": "String",
-      "EngineAttributes": "EngineAttribute",
-      "EngineModel": "String",
-      "EngineVersion": "String",
-      "InstanceProfileArn": "String",
-      "InstanceType": "String",
-      "KeyPair": "String",
-      "PreferredBackupWindow": "String",
-      "PreferredMaintenanceWindow": "String",
-      "SecurityGroupIds": "String",
-      "ServerName": "String",
-      "ServiceRoleArn": "String",
-      "SubnetIds": "String",
-      "Tags": "Tag"
     }
   },
   "AWS::Organizations::Account": {
@@ -12944,6 +13041,7 @@
       "Iops": "Integer",
       "KmsKeyId": "String",
       "ManageMasterUserPassword": "Boolean",
+      "MasterUserAuthenticationType": "String",
       "MasterUserPassword": "String",
       "MasterUserSecret": "MasterUserSecret",
       "MasterUsername": "String",
@@ -13032,6 +13130,7 @@
       "KmsKeyId": "String",
       "LicenseModel": "String",
       "ManageMasterUserPassword": "Boolean",
+      "MasterUserAuthenticationType": "String",
       "MasterUserPassword": "String",
       "MasterUserSecret": "MasterUserSecret",
       "MasterUsername": "String",
@@ -13083,11 +13182,14 @@
       "Auth": "AuthFormat",
       "DBProxyName": "String",
       "DebugLogging": "Boolean",
+      "DefaultAuthScheme": "String",
+      "EndpointNetworkType": "String",
       "EngineFamily": "String",
       "IdleClientTimeout": "Integer",
       "RequireTLS": "Boolean",
       "RoleArn": "String",
       "Tags": "TagFormat",
+      "TargetConnectionNetworkType": "String",
       "VpcSecurityGroupIds": "String",
       "VpcSubnetIds": "String"
     }
@@ -13097,6 +13199,7 @@
     "Properties": {
       "DBProxyEndpointName": "String",
       "DBProxyName": "String",
+      "EndpointNetworkType": "String",
       "Tags": "TagFormat",
       "TargetRole": "String",
       "VpcSecurityGroupIds": "String",

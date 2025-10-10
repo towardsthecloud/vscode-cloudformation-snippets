@@ -1217,7 +1217,6 @@
       "ApiId": "String",
       "Description": "String",
       "DynamoDBConfig": "DynamoDBConfig",
-      "ElasticsearchConfig": "ElasticsearchConfig",
       "EventBridgeConfig": "EventBridgeConfig",
       "HttpConfig": "HttpConfig",
       "LambdaConfig": "LambdaConfig",
@@ -2050,6 +2049,18 @@
       "GatewayIdentifier": "String",
       "Name": "String",
       "TargetConfiguration": "TargetConfiguration"
+    }
+  },
+  "AWS::BedrockAgentCore::Memory": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-memory.html",
+    "Properties": {
+      "Description": "String",
+      "EncryptionKeyArn": "String",
+      "EventExpiryDuration": "Integer",
+      "MemoryExecutionRoleArn": "String",
+      "MemoryStrategies": "MemoryStrategy",
+      "Name": "String",
+      "Tags": "Map"
     }
   },
   "AWS::BedrockAgentCore::Runtime": {
@@ -10127,6 +10138,14 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Lightsail::DiskSnapshot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-disksnapshot.html",
+    "Properties": {
+      "DiskName": "String",
+      "DiskSnapshotName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Lightsail::Distribution": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-distribution.html",
     "Properties": {
@@ -10305,6 +10324,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverydestination.html",
     "Properties": {
       "DeliveryDestinationPolicy": "DestinationPolicy",
+      "DeliveryDestinationType": "String",
       "DestinationResourceArn": "String",
       "Name": "String",
       "OutputFormat": "String",
@@ -10374,6 +10394,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html",
     "Properties": {
       "ApplyOnTransformedLogs": "Boolean",
+      "EmitSystemFieldDimensions": "String",
+      "FieldSelectionCriteria": "String",
       "FilterName": "String",
       "FilterPattern": "String",
       "LogGroupName": "String",
@@ -10402,6 +10424,8 @@
       "ApplyOnTransformedLogs": "Boolean",
       "DestinationArn": "String",
       "Distribution": "String",
+      "EmitSystemFields": "String",
+      "FieldSelectionCriteria": "String",
       "FilterName": "String",
       "FilterPattern": "String",
       "LogGroupName": "String",
@@ -11367,7 +11391,9 @@
       "EventCategories": "String",
       "SnsTopicArn": "String",
       "SourceIds": "String",
-      "SourceType": "String"
+      "SourceType": "String",
+      "SubscriptionName": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::NeptuneGraph::Graph": {
@@ -11794,6 +11820,14 @@
       "Name": "String",
       "Policy": "Json",
       "Tags": "Map"
+    }
+  },
+  "AWS::ObservabilityAdmin::OrganizationCentralizationRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-organizationcentralizationrule.html",
+    "Properties": {
+      "Rule": "CentralizationRule",
+      "RuleName": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::ObservabilityAdmin::OrganizationTelemetryRule": {
@@ -12272,6 +12306,7 @@
       "ClusterId": "String",
       "ComputeNodeGroupConfigurations": "ComputeNodeGroupConfiguration",
       "Name": "String",
+      "SlurmConfiguration": "SlurmConfiguration",
       "Tags": "Map"
     }
   },

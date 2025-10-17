@@ -7311,17 +7311,6 @@
       "VolumeId": "String"
     }
   },
-  "AWS::FSx::StorageVirtualMachine": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
-    "Properties": {
-      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
-      "FileSystemId": "String",
-      "Name": "String",
-      "RootVolumeSecurityStyle": "String",
-      "SvmAdminPassword": "String",
-      "Tags": "Tag"
-    }
-  },
   "AWS::FSx::Volume": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html",
     "Properties": {
@@ -16228,6 +16217,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-resourcegateway.html",
     "Properties": {
       "IpAddressType": "String",
+      "Ipv4AddressesPerEni": "Integer",
       "Name": "String",
       "SecurityGroupIds": "String",
       "SubnetIds": "String",
@@ -16878,6 +16868,17 @@
       "AuthenticationConfiguration": "AuthenticationConfiguration",
       "SkillPackage": "SkillPackage",
       "VendorId": "String"
+    }
+  },
+  "Dev::FSx::StorageVirtualMachine": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
+    "Properties": {
+      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
+      "FileSystemId": "String",
+      "Name": "String",
+      "RootVolumeSecurityStyle": "String",
+      "SvmAdminPassword": "String",
+      "Tags": "Tag"
     }
   }
 }

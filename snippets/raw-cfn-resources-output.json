@@ -58,6 +58,18 @@
       "Tags": "Tag"
     }
   },
+  "AWS::APS::AnomalyDetector": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-anomalydetector.html",
+    "Properties": {
+      "Alias": "String",
+      "Configuration": "AnomalyDetectorConfiguration",
+      "EvaluationIntervalInSeconds": "Integer",
+      "Labels": "Label",
+      "MissingDataAction": "MissingDataAction",
+      "Tags": "Tag",
+      "Workspace": "String"
+    }
+  },
   "AWS::APS::ResourcePolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-aps-resourcepolicy.html",
     "Properties": {
@@ -2623,6 +2635,7 @@
   "AWS::CloudFront::AnycastIpList": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-anycastiplist.html",
     "Properties": {
+      "IpAddressType": "String",
       "IpCount": "Integer",
       "Name": "String",
       "Tags": "Tags"
@@ -4935,8 +4948,6 @@
       "AttributeDefinitions": "AttributeDefinition",
       "BillingMode": "String",
       "GlobalSecondaryIndexes": "GlobalSecondaryIndex",
-      "GlobalTableSettingsReplicationMode": "String",
-      "GlobalTableSourceArn": "String",
       "GlobalTableWitnesses": "GlobalTableWitness",
       "KeySchema": "KeySchema",
       "LocalSecondaryIndexes": "LocalSecondaryIndex",
@@ -4959,7 +4970,6 @@
       "ContributorInsightsSpecification": "ContributorInsightsSpecification",
       "DeletionProtectionEnabled": "Boolean",
       "GlobalSecondaryIndexes": "GlobalSecondaryIndex",
-      "GlobalTableSettingsReplicationMode": "String",
       "ImportSourceSpecification": "ImportSourceSpecification",
       "KeySchema": "KeySchema",
       "KinesisStreamSpecification": "KinesisStreamSpecification",
@@ -5411,7 +5421,8 @@
       "SecondaryPrivateIpAddressCount": "Integer",
       "SecondaryPrivateIpAddresses": "String",
       "SubnetId": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "VpcId": "String"
     }
   },
   "AWS::EC2::NetworkAcl": {
@@ -6881,7 +6892,8 @@
       "Actions": "Action",
       "Conditions": "RuleCondition",
       "ListenerArn": "String",
-      "Priority": "Integer"
+      "Priority": "Integer",
+      "Transforms": "Transform"
     }
   },
   "AWS::ElasticLoadBalancingV2::LoadBalancer": {
@@ -7118,10 +7130,7 @@
   "AWS::Events::EventBusPolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbuspolicy.html",
     "Properties": {
-      "Action": "String",
-      "Condition": "Condition",
       "EventBusName": "String",
-      "Principal": "String",
       "Statement": "Json",
       "StatementId": "String"
     }
@@ -7309,6 +7318,17 @@
       "Name": "String",
       "Tags": "Tag",
       "VolumeId": "String"
+    }
+  },
+  "AWS::FSx::StorageVirtualMachine": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
+    "Properties": {
+      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
+      "FileSystemId": "String",
+      "Name": "String",
+      "RootVolumeSecurityStyle": "String",
+      "SvmAdminPassword": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::FSx::Volume": {
@@ -8531,6 +8551,7 @@
       "DistributionConfigurationArn": "String",
       "EnhancedImageMetadataEnabled": "Boolean",
       "ExecutionRole": "String",
+      "ImagePipelineExecutionSettings": "ImagePipelineExecutionSettings",
       "ImageRecipeArn": "String",
       "ImageScanningConfiguration": "ImageScanningConfiguration",
       "ImageTestsConfiguration": "ImageTestsConfiguration",
@@ -11113,6 +11134,7 @@
       "ForceEndpointErrorConfiguration": "ForceEndpointErrorConfiguration",
       "HlsManifests": "HlsManifestConfiguration",
       "LowLatencyHlsManifests": "LowLatencyHlsManifestConfiguration",
+      "MssManifests": "MssManifestConfiguration",
       "OriginEndpointName": "String",
       "Segment": "Segment",
       "StartoverWindowSeconds": "Integer",
@@ -11351,6 +11373,7 @@
       "DBParameterGroupName": "String",
       "DBSubnetGroupName": "String",
       "PreferredMaintenanceWindow": "String",
+      "PubliclyAccessible": "Boolean",
       "Tags": "Tag"
     }
   },
@@ -11789,6 +11812,8 @@
       "MinUnits": "Integer",
       "PipelineConfigurationBody": "String",
       "PipelineName": "String",
+      "PipelineRoleArn": "String",
+      "ResourcePolicy": "ResourcePolicy",
       "Tags": "Tag",
       "VpcOptions": "VpcOptions"
     }
@@ -14807,6 +14832,15 @@
       "Tags": "Map"
     }
   },
+  "AWS::SSMQuickSetup::LifecycleAutomation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmquicksetup-lifecycleautomation.html",
+    "Properties": {
+      "AutomationDocument": "String",
+      "AutomationParameters": "Json",
+      "ResourceKey": "String",
+      "Tags": "Map"
+    }
+  },
   "AWS::SSO::Application": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sso-application.html",
     "Properties": {
@@ -14901,6 +14935,7 @@
       "Orchestrator": "Orchestrator",
       "RestrictedInstanceGroups": "ClusterRestrictedInstanceGroup",
       "Tags": "Tag",
+      "TieredStorageConfig": "TieredStorageConfig",
       "VpcConfig": "VpcConfig"
     }
   },
@@ -16868,17 +16903,6 @@
       "AuthenticationConfiguration": "AuthenticationConfiguration",
       "SkillPackage": "SkillPackage",
       "VendorId": "String"
-    }
-  },
-  "Dev::FSx::StorageVirtualMachine": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
-    "Properties": {
-      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
-      "FileSystemId": "String",
-      "Name": "String",
-      "RootVolumeSecurityStyle": "String",
-      "SvmAdminPassword": "String",
-      "Tags": "Tag"
     }
   }
 }

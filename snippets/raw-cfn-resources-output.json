@@ -1419,7 +1419,7 @@
       "CapacityAssignmentConfiguration": "CapacityAssignmentConfiguration",
       "Name": "String",
       "Tags": "Tag",
-      "TargetDpus": "Integer"
+      "TargetDpus": "Long"
     }
   },
   "AWS::Athena::DataCatalog": {
@@ -1767,7 +1767,7 @@
       "ConsumableResourceName": "String",
       "ResourceType": "String",
       "Tags": "Map",
-      "TotalQuantity": "Integer"
+      "TotalQuantity": "Long"
     }
   },
   "AWS::Batch::JobDefinition": {
@@ -1782,6 +1782,7 @@
       "Parameters": "Map",
       "PlatformCapabilities": "String",
       "PropagateTags": "Boolean",
+      "ResourceRetentionPolicy": "ResourceRetentionPolicy",
       "RetryStrategy": "RetryStrategy",
       "SchedulingPriority": "Integer",
       "Tags": "Map",
@@ -2126,9 +2127,11 @@
       "AccountId": "String",
       "BillingGroupArn": "String",
       "BillingPeriodRange": "BillingPeriodRange",
+      "ComputationRule": "String",
       "CustomLineItemChargeDetails": "CustomLineItemChargeDetails",
       "Description": "String",
       "Name": "String",
+      "PresentationDetails": "PresentationDetails",
       "Tags": "Tag"
     }
   },
@@ -3593,6 +3596,7 @@
   "AWS::Connect::EmailAddress": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-emailaddress.html",
     "Properties": {
+      "AliasConfigurations": "AliasConfiguration",
       "Description": "String",
       "DisplayName": "String",
       "EmailAddress": "String",
@@ -4385,14 +4389,14 @@
     "Properties": {
       "AgentArns": "String",
       "AuthenticationType": "String",
-      "BlockSize": "Integer",
+      "BlockSize": "Long",
       "KerberosKeytab": "String",
       "KerberosKrb5Conf": "String",
       "KerberosPrincipal": "String",
       "KmsKeyProviderUri": "String",
       "NameNodes": "NameNode",
       "QopConfiguration": "QopConfiguration",
-      "ReplicationFactor": "Integer",
+      "ReplicationFactor": "Long",
       "SimpleUser": "String",
       "Subdirectory": "String",
       "Tags": "Tag"
@@ -4478,8 +4482,10 @@
       "AwsLocation": "AwsLocation",
       "Description": "String",
       "DomainIdentifier": "String",
+      "EnableTrustedIdentityPropagation": "Boolean",
       "EnvironmentIdentifier": "String",
       "Name": "String",
+      "ProjectIdentifier": "String",
       "Props": "ConnectionPropertiesInput"
     }
   },
@@ -4987,6 +4993,16 @@
       "WarmThroughput": "WarmThroughput"
     }
   },
+  "AWS::EC2::CapacityManagerDataExport": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacitymanagerdataexport.html",
+    "Properties": {
+      "OutputFormat": "String",
+      "S3BucketName": "String",
+      "S3BucketPrefix": "String",
+      "Schedule": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::EC2::CapacityReservation": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-capacityreservation.html",
     "Properties": {
@@ -5396,7 +5412,7 @@
       "OutpostLagId": "String",
       "PeerAddress": "String",
       "PeerBgpAsn": "Integer",
-      "PeerBgpAsnExtended": "Integer",
+      "PeerBgpAsnExtended": "Long",
       "Tags": "Tag",
       "Vlan": "Integer"
     }
@@ -5405,7 +5421,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-localgatewayvirtualinterfacegroup.html",
     "Properties": {
       "LocalBgpAsn": "Integer",
-      "LocalBgpAsnExtended": "Integer",
+      "LocalBgpAsnExtended": "Long",
       "LocalGatewayId": "String",
       "Tags": "Tag"
     }
@@ -5576,9 +5592,9 @@
   "AWS::EC2::RouteServer": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routeserver.html",
     "Properties": {
-      "AmazonSideAsn": "Integer",
+      "AmazonSideAsn": "Long",
       "PersistRoutes": "String",
-      "PersistRoutesDuration": "Integer",
+      "PersistRoutesDuration": "Long",
       "SnsNotificationsEnabled": "Boolean",
       "Tags": "Tag"
     }
@@ -5778,7 +5794,7 @@
   "AWS::EC2::TransitGateway": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgateway.html",
     "Properties": {
-      "AmazonSideAsn": "Integer",
+      "AmazonSideAsn": "Long",
       "AssociationDefaultRouteTableId": "String",
       "AutoAcceptSharedAttachments": "String",
       "DefaultRouteTableAssociation": "String",
@@ -6050,7 +6066,7 @@
   "AWS::EC2::VPNGateway": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpngateway.html",
     "Properties": {
-      "AmazonSideAsn": "Integer",
+      "AmazonSideAsn": "Long",
       "Tags": "Tag",
       "Type": "String"
     }
@@ -8548,6 +8564,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html",
     "Properties": {
       "ContainerRecipeArn": "String",
+      "DeletionSettings": "DeletionSettings",
       "DistributionConfigurationArn": "String",
       "EnhancedImageMetadataEnabled": "Boolean",
       "ExecutionRole": "String",
@@ -13354,6 +13371,43 @@
       "Tags": "Tag"
     }
   },
+  "AWS::RTBFabric::Link": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-link.html",
+    "Properties": {
+      "GatewayId": "String",
+      "HttpResponderAllowed": "Boolean",
+      "LinkAttributes": "LinkAttributes",
+      "LinkLogSettings": "LinkLogSettings",
+      "ModuleConfigurationList": "ModuleConfiguration",
+      "PeerGatewayId": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::RTBFabric::RequesterGateway": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-requestergateway.html",
+    "Properties": {
+      "Description": "String",
+      "SecurityGroupIds": "String",
+      "SubnetIds": "String",
+      "Tags": "Tag",
+      "VpcId": "String"
+    }
+  },
+  "AWS::RTBFabric::ResponderGateway": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-respondergateway.html",
+    "Properties": {
+      "Description": "String",
+      "DomainName": "String",
+      "ManagedEndpointConfiguration": "ManagedEndpointConfiguration",
+      "Port": "Integer",
+      "Protocol": "String",
+      "SecurityGroupIds": "String",
+      "SubnetIds": "String",
+      "Tags": "Tag",
+      "TrustStoreConfiguration": "TrustStoreConfiguration",
+      "VpcId": "String"
+    }
+  },
   "AWS::RUM::AppMonitor": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rum-appmonitor.html",
     "Properties": {
@@ -16091,6 +16145,8 @@
     "Properties": {
       "AccessRole": "String",
       "As2Config": "As2Config",
+      "EgressConfig": "ConnectorEgressConfig",
+      "EgressType": "String",
       "LoggingRole": "String",
       "SecurityPolicyName": "String",
       "SftpConfig": "SftpConfig",

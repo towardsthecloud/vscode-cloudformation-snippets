@@ -1870,6 +1870,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-automatedreasoningpolicy.html",
     "Properties": {
       "Description": "String",
+      "ForceDelete": "Boolean",
+      "KmsKeyId": "String",
       "Name": "String",
       "PolicyDefinition": "PolicyDefinition",
       "Tags": "Tag"
@@ -2098,6 +2100,14 @@
       "Description": "String",
       "Name": "String",
       "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::WorkloadIdentity": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-workloadidentity.html",
+    "Properties": {
+      "AllowedResourceOauth2ReturnUrls": "String",
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Billing::BillingView": {
@@ -2349,6 +2359,7 @@
   "AWS::CleanRooms::Collaboration": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-collaboration.html",
     "Properties": {
+      "AllowedResultRegions": "String",
       "AnalyticsEngine": "String",
       "AutoApprovedChangeTypes": "String",
       "CreatorDisplayName": "String",
@@ -4486,7 +4497,8 @@
       "EnvironmentIdentifier": "String",
       "Name": "String",
       "ProjectIdentifier": "String",
-      "Props": "ConnectionPropertiesInput"
+      "Props": "ConnectionPropertiesInput",
+      "Scope": "String"
     }
   },
   "AWS::DataZone::DataSource": {
@@ -7753,6 +7765,15 @@
       "SubnetId": "String",
       "Tags": "Json",
       "WorkerType": "String"
+    }
+  },
+  "AWS::Glue::IntegrationResourceProperty": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integrationresourceproperty.html",
+    "Properties": {
+      "ResourceArn": "String",
+      "SourceProcessingProperties": "SourceProcessingProperties",
+      "Tags": "Tag",
+      "TargetProcessingProperties": "TargetProcessingProperties"
     }
   },
   "AWS::Glue::Job": {
@@ -12919,6 +12940,7 @@
       "AwsAccountId": "String",
       "ColumnGroups": "ColumnGroup",
       "ColumnLevelPermissionRules": "ColumnLevelPermissionRule",
+      "DataPrepConfiguration": "DataPrepConfiguration",
       "DataSetId": "String",
       "DataSetRefreshProperties": "DataSetRefreshProperties",
       "DataSetUsageConfiguration": "DataSetUsageConfiguration",
@@ -12927,13 +12949,11 @@
       "FolderArns": "String",
       "ImportMode": "String",
       "IngestionWaitPolicy": "IngestionWaitPolicy",
-      "LogicalTableMap": "Map",
       "Name": "String",
       "PerformanceConfiguration": "PerformanceConfiguration",
       "Permissions": "ResourcePermission",
       "PhysicalTableMap": "Map",
-      "RowLevelPermissionDataSet": "RowLevelPermissionDataSet",
-      "RowLevelPermissionTagConfiguration": "RowLevelPermissionTagConfiguration",
+      "SemanticModelConfiguration": "SemanticModelConfiguration",
       "Tags": "Tag",
       "UseAs": "String"
     }
@@ -14360,6 +14380,33 @@
       "TableARN": "String"
     }
   },
+  "AWS::S3Vectors::Index": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-index.html",
+    "Properties": {
+      "DataType": "String",
+      "Dimension": "Integer",
+      "DistanceMetric": "String",
+      "IndexName": "String",
+      "MetadataConfiguration": "MetadataConfiguration",
+      "VectorBucketArn": "String",
+      "VectorBucketName": "String"
+    }
+  },
+  "AWS::S3Vectors::VectorBucket": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-vectorbucket.html",
+    "Properties": {
+      "EncryptionConfiguration": "EncryptionConfiguration",
+      "VectorBucketName": "String"
+    }
+  },
+  "AWS::S3Vectors::VectorBucketPolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3vectors-vectorbucketpolicy.html",
+    "Properties": {
+      "Policy": "Json",
+      "VectorBucketArn": "String",
+      "VectorBucketName": "String"
+    }
+  },
   "AWS::SDB::Domain": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-simpledb.html",
     "Properties": {
@@ -14484,6 +14531,14 @@
       "PolicyStatements": "PolicyStatement",
       "Tags": "Tag",
       "TrafficPolicyName": "String"
+    }
+  },
+  "AWS::SES::MultiRegionEndpoint": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-multiregionendpoint.html",
+    "Properties": {
+      "Details": "Details",
+      "EndpointName": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::SES::ReceiptFilter": {
@@ -16574,6 +16629,7 @@
   "AWS::WAFv2::WebACL": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html",
     "Properties": {
+      "ApplicationConfig": "ApplicationConfig",
       "AssociationConfig": "AssociationConfig",
       "CaptchaConfig": "CaptchaConfig",
       "ChallengeConfig": "ChallengeConfig",

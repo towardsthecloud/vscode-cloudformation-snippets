@@ -1696,6 +1696,7 @@
       "BackupVaultTags": "Map",
       "MaxRetentionDays": "Integer",
       "MinRetentionDays": "Integer",
+      "MpaApprovalTeamArn": "String",
       "Notifications": "NotificationObjectType"
     }
   },
@@ -2023,6 +2024,7 @@
   "AWS::BedrockAgentCore::BrowserCustom": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html",
     "Properties": {
+      "BrowserSigning": "BrowserSigning",
       "Description": "String",
       "ExecutionRoleArn": "String",
       "Name": "String",
@@ -2086,8 +2088,10 @@
       "AuthorizerConfiguration": "AuthorizerConfiguration",
       "Description": "String",
       "EnvironmentVariables": "Map",
+      "LifecycleConfiguration": "LifecycleConfiguration",
       "NetworkConfiguration": "NetworkConfiguration",
       "ProtocolConfiguration": "String",
+      "RequestHeaderConfiguration": "RequestHeaderConfiguration",
       "RoleArn": "String",
       "Tags": "Map"
     }
@@ -3767,6 +3771,7 @@
       "AllowedAccessControlTags": "Tag",
       "Applications": "Application",
       "Description": "String",
+      "GranularAccessControlConfiguration": "GranularAccessControlConfiguration",
       "HierarchyRestrictedResources": "String",
       "InstanceArn": "String",
       "Permissions": "String",
@@ -3898,6 +3903,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-controltower-landingzone.html",
     "Properties": {
       "Manifest": "Json",
+      "RemediationTypes": "String",
       "Tags": "Tag",
       "Version": "String"
     }
@@ -4225,6 +4231,7 @@
       "DeletionProtectionEnabled": "Boolean",
       "KmsEncryptionKey": "String",
       "MultiRegionProperties": "MultiRegionProperties",
+      "PolicyDocument": "String",
       "Tags": "Tag"
     }
   },
@@ -5291,6 +5298,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamscope.html",
     "Properties": {
       "Description": "String",
+      "ExternalAuthorityConfiguration": "IpamScopeExternalAuthorityConfiguration",
       "IpamId": "String",
       "Tags": "Tag"
     }
@@ -5813,6 +5821,7 @@
       "DefaultRouteTablePropagation": "String",
       "Description": "String",
       "DnsSupport": "String",
+      "EncryptionSupport": "String",
       "MulticastSupport": "String",
       "PropagationDefaultRouteTableId": "String",
       "SecurityGroupReferencingSupport": "String",
@@ -6154,6 +6163,7 @@
     "Properties": {
       "AutoEnableIO": "Boolean",
       "AvailabilityZone": "String",
+      "AvailabilityZoneId": "String",
       "Encrypted": "Boolean",
       "Iops": "Integer",
       "KmsKeyId": "String",
@@ -6161,6 +6171,7 @@
       "OutpostArn": "String",
       "Size": "Integer",
       "SnapshotId": "String",
+      "SourceVolumeId": "String",
       "Tags": "Tag",
       "Throughput": "Integer",
       "VolumeInitializationRate": "Integer",
@@ -7346,17 +7357,6 @@
       "Name": "String",
       "Tags": "Tag",
       "VolumeId": "String"
-    }
-  },
-  "AWS::FSx::StorageVirtualMachine": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
-    "Properties": {
-      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
-      "FileSystemId": "String",
-      "Name": "String",
-      "RootVolumeSecurityStyle": "String",
-      "SvmAdminPassword": "String",
-      "Tags": "Tag"
     }
   },
   "AWS::FSx::Volume": {
@@ -9687,12 +9687,14 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesis-stream.html",
     "Properties": {
       "DesiredShardLevelMetrics": "String",
+      "MaxRecordSizeInKiB": "Integer",
       "Name": "String",
       "RetentionPeriodHours": "Integer",
       "ShardCount": "Integer",
       "StreamEncryption": "StreamEncryption",
       "StreamModeDetails": "StreamModeDetails",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "WarmThroughputMiBps": "Integer"
     }
   },
   "AWS::Kinesis::StreamConsumer": {
@@ -13391,6 +13393,15 @@
       "Tags": "Tag"
     }
   },
+  "AWS::RTBFabric::InboundExternalLink": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-inboundexternallink.html",
+    "Properties": {
+      "GatewayId": "String",
+      "LinkAttributes": "LinkAttributes",
+      "LinkLogSettings": "LinkLogSettings",
+      "Tags": "Tag"
+    }
+  },
   "AWS::RTBFabric::Link": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-link.html",
     "Properties": {
@@ -13711,7 +13722,8 @@
   "AWS::Rekognition::Project": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rekognition-project.html",
     "Properties": {
-      "ProjectName": "String"
+      "ProjectName": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Rekognition::StreamProcessor": {
@@ -14355,6 +14367,7 @@
       "SnapshotManagement": "SnapshotManagement",
       "TableBucketARN": "String",
       "TableName": "String",
+      "Tags": "Tag",
       "WithoutMetadata": "String"
     }
   },
@@ -14363,6 +14376,7 @@
     "Properties": {
       "EncryptionConfiguration": "EncryptionConfiguration",
       "TableBucketName": "String",
+      "Tags": "Tag",
       "UnreferencedFileRemoval": "UnreferencedFileRemoval"
     }
   },
@@ -17015,6 +17029,17 @@
       "AuthenticationConfiguration": "AuthenticationConfiguration",
       "SkillPackage": "SkillPackage",
       "VendorId": "String"
+    }
+  },
+  "Dev::FSx::StorageVirtualMachine": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
+    "Properties": {
+      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
+      "FileSystemId": "String",
+      "Name": "String",
+      "RootVolumeSecurityStyle": "String",
+      "SvmAdminPassword": "String",
+      "Tags": "Tag"
     }
   }
 }

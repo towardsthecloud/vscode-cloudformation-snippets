@@ -388,6 +388,7 @@
     "Properties": {
       "CertificateArn": "String",
       "DomainName": "String",
+      "EndpointAccessMode": "String",
       "EndpointConfiguration": "EndpointConfiguration",
       "MutualTlsAuthentication": "MutualTlsAuthentication",
       "OwnershipVerificationCertificateArn": "String",
@@ -411,6 +412,7 @@
     "Properties": {
       "CertificateArn": "String",
       "DomainName": "String",
+      "EndpointAccessMode": "String",
       "EndpointConfiguration": "EndpointConfiguration",
       "Policy": "Json",
       "RoutingMode": "String",
@@ -483,6 +485,7 @@
       "CloneFrom": "String",
       "Description": "String",
       "DisableExecuteApiEndpoint": "Boolean",
+      "EndpointAccessMode": "String",
       "EndpointConfiguration": "EndpointConfiguration",
       "FailOnWarnings": "Boolean",
       "MinimumCompressionSize": "Integer",
@@ -490,6 +493,7 @@
       "Name": "String",
       "Parameters": "Map",
       "Policy": "Json",
+      "SecurityPolicy": "String",
       "Tags": "Tag"
     }
   },
@@ -1694,6 +1698,7 @@
       "AccessPolicy": "Json",
       "BackupVaultName": "String",
       "BackupVaultTags": "Map",
+      "EncryptionKeyArn": "String",
       "MaxRetentionDays": "Integer",
       "MinRetentionDays": "Integer",
       "MpaApprovalTeamArn": "String",
@@ -2671,6 +2676,16 @@
       "CloudFrontOriginAccessIdentityConfig": "CloudFrontOriginAccessIdentityConfig"
     }
   },
+  "AWS::CloudFront::ConnectionFunction": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-connectionfunction.html",
+    "Properties": {
+      "AutoPublish": "Boolean",
+      "ConnectionFunctionCode": "String",
+      "ConnectionFunctionConfig": "ConnectionFunctionConfig",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::CloudFront::ConnectionGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-connectiongroup.html",
     "Properties": {
@@ -2837,6 +2852,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html",
     "Properties": {
       "AdvancedEventSelectors": "AdvancedEventSelector",
+      "AggregationConfigurations": "AggregationConfiguration",
       "CloudWatchLogsLogGroupArn": "String",
       "CloudWatchLogsRoleArn": "String",
       "EnableLogFileValidation": "Boolean",
@@ -3277,6 +3293,17 @@
       "ReturnMergedResources": "Boolean",
       "Settings": "Json",
       "UseCognitoProvidedValues": "Boolean",
+      "UserPoolId": "String"
+    }
+  },
+  "AWS::Cognito::Terms": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-terms.html",
+    "Properties": {
+      "ClientId": "String",
+      "Enforcement": "String",
+      "Links": "Map",
+      "TermsName": "String",
+      "TermsSource": "String",
       "UserPoolId": "String"
     }
   },
@@ -3925,6 +3952,7 @@
   "AWS::CustomerProfiles::Domain": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domain.html",
     "Properties": {
+      "DataStore": "DataStore",
       "DeadLetterQueueUrl": "String",
       "DefaultEncryptionKey": "String",
       "DefaultExpirationDays": "Integer",
@@ -5450,6 +5478,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html",
     "Properties": {
       "AllocationId": "String",
+      "AvailabilityMode": "String",
+      "AvailabilityZoneAddresses": "AvailabilityZoneAddress",
       "ConnectivityType": "String",
       "MaxDrainDurationSeconds": "Integer",
       "PrivateIpAddress": "String",
@@ -6056,6 +6086,14 @@
       "VpcId": "String"
     }
   },
+  "AWS::EC2::VPNConcentrator": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpnconcentrator.html",
+    "Properties": {
+      "Tags": "Tag",
+      "TransitGatewayId": "String",
+      "Type": "String"
+    }
+  },
   "AWS::EC2::VPNConnection": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpnconnection.html",
     "Properties": {
@@ -6071,8 +6109,10 @@
       "Tags": "Tag",
       "TransitGatewayId": "String",
       "TransportTransitGatewayAttachmentId": "String",
+      "TunnelBandwidth": "String",
       "TunnelInsideIpVersion": "String",
       "Type": "String",
+      "VpnConcentratorId": "String",
       "VpnGatewayId": "String",
       "VpnTunnelOptionsSpecifications": "VpnTunnelOptionsSpecification"
     }
@@ -6971,6 +7011,7 @@
       "Protocol": "String",
       "ProtocolVersion": "String",
       "Tags": "Tag",
+      "TargetControlPort": "Integer",
       "TargetGroupAttributes": "TargetGroupAttribute",
       "TargetType": "String",
       "Targets": "TargetDescription",
@@ -7357,6 +7398,17 @@
       "Name": "String",
       "Tags": "Tag",
       "VolumeId": "String"
+    }
+  },
+  "AWS::FSx::StorageVirtualMachine": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
+    "Properties": {
+      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
+      "FileSystemId": "String",
+      "Name": "String",
+      "RootVolumeSecurityStyle": "String",
+      "SvmAdminPassword": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::FSx::Volume": {
@@ -7765,6 +7817,20 @@
       "SubnetId": "String",
       "Tags": "Json",
       "WorkerType": "String"
+    }
+  },
+  "AWS::Glue::Integration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-integration.html",
+    "Properties": {
+      "AdditionalEncryptionContext": "Map",
+      "DataFilter": "String",
+      "Description": "String",
+      "IntegrationConfig": "IntegrationConfig",
+      "IntegrationName": "String",
+      "KmsKeyId": "String",
+      "SourceArn": "String",
+      "Tags": "Tag",
+      "TargetArn": "String"
     }
   },
   "AWS::Glue::IntegrationResourceProperty": {
@@ -9830,6 +9896,7 @@
       "ExternalDataFilteringAllowList": "ExternalDataFilteringAllowList",
       "MutationType": "String",
       "Parameters": "Json",
+      "ReadOnlyAdmins": "ReadOnlyAdmins",
       "TrustedResourceOwners": "String"
     }
   },
@@ -9921,6 +9988,7 @@
       "FunctionName": "String",
       "FunctionResponseTypes": "String",
       "KmsKeyArn": "String",
+      "LoggingConfig": "LoggingConfig",
       "MaximumBatchingWindowInSeconds": "Integer",
       "MaximumRecordAgeInSeconds": "Integer",
       "MaximumRetryAttempts": "Integer",
@@ -9965,6 +10033,7 @@
       "RuntimeManagementConfig": "RuntimeManagementConfig",
       "SnapStart": "SnapStart",
       "Tags": "Tag",
+      "TenancyConfig": "TenancyConfig",
       "Timeout": "Integer",
       "TracingConfig": "TracingConfig",
       "VpcConfig": "VpcConfig"
@@ -10600,13 +10669,13 @@
       "ClientAuthentication": "ClientAuthentication",
       "ClusterName": "String",
       "ConfigurationInfo": "ConfigurationInfo",
-      "CurrentVersion": "String",
       "EncryptionInfo": "EncryptionInfo",
       "EnhancedMonitoring": "String",
       "KafkaVersion": "String",
       "LoggingInfo": "LoggingInfo",
       "NumberOfBrokerNodes": "Integer",
       "OpenMonitoring": "OpenMonitoring",
+      "Rebalancing": "Rebalancing",
       "StorageMode": "String",
       "Tags": "Map"
     }
@@ -10828,6 +10897,8 @@
       "Port": "Integer",
       "Protocol": "String",
       "RemoteId": "String",
+      "RouterIntegrationState": "String",
+      "RouterIntegrationTransitEncryption": "FlowTransitEncryption",
       "SmoothingLatency": "Integer",
       "StreamId": "String",
       "VpcInterfaceAttachment": "VpcInterfaceAttachment"
@@ -10872,6 +10943,44 @@
       "EgressCidrBlocks": "String",
       "Name": "String",
       "Networks": "GatewayNetwork"
+    }
+  },
+  "AWS::MediaConnect::RouterInput": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routerinput.html",
+    "Properties": {
+      "AvailabilityZone": "String",
+      "Configuration": "RouterInputConfiguration",
+      "MaintenanceConfiguration": "MaintenanceConfiguration",
+      "MaximumBitrate": "Integer",
+      "Name": "String",
+      "RegionName": "String",
+      "RoutingScope": "String",
+      "Tags": "Tag",
+      "Tier": "String",
+      "TransitEncryption": "RouterInputTransitEncryption"
+    }
+  },
+  "AWS::MediaConnect::RouterNetworkInterface": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routernetworkinterface.html",
+    "Properties": {
+      "Configuration": "RouterNetworkInterfaceConfiguration",
+      "Name": "String",
+      "RegionName": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::MediaConnect::RouterOutput": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-routeroutput.html",
+    "Properties": {
+      "AvailabilityZone": "String",
+      "Configuration": "RouterOutputConfiguration",
+      "MaintenanceConfiguration": "MaintenanceConfiguration",
+      "MaximumBitrate": "Integer",
+      "Name": "String",
+      "RegionName": "String",
+      "RoutingScope": "String",
+      "Tags": "Tag",
+      "Tier": "String"
     }
   },
   "AWS::MediaConvert::JobTemplate": {
@@ -12015,7 +12124,9 @@
   "AWS::OpenSearchServerless::Collection": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html",
     "Properties": {
+      "CollectionGroupName": "String",
       "Description": "String",
+      "EncryptionConfig": "EncryptionConfig",
       "Name": "String",
       "StandbyReplicas": "String",
       "Tags": "Tag",
@@ -12083,6 +12194,7 @@
   "AWS::OpenSearchService::Domain": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchservice-domain.html",
     "Properties": {
+      "AIMLOptions": "AIMLOptions",
       "AccessPolicies": "Json",
       "AdvancedOptions": "Map",
       "AdvancedSecurityOptions": "AdvancedSecurityOptionsInput",
@@ -13449,6 +13561,7 @@
       "Domain": "String",
       "DomainList": "String",
       "Name": "String",
+      "Platform": "String",
       "ResourcePolicy": "ResourcePolicy",
       "Tags": "Tag"
     }
@@ -14375,6 +14488,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-tablebucket.html",
     "Properties": {
       "EncryptionConfiguration": "EncryptionConfiguration",
+      "MetricsConfiguration": "MetricsConfiguration",
       "TableBucketName": "String",
       "Tags": "Tag",
       "UnreferencedFileRemoval": "UnreferencedFileRemoval"
@@ -15392,8 +15506,10 @@
   "AWS::SageMaker::PartnerApp": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html",
     "Properties": {
+      "AppVersion": "String",
       "ApplicationConfig": "PartnerAppConfig",
       "AuthType": "String",
+      "EnableAutoMinorVersionUpgrade": "Boolean",
       "EnableIamSessionBasedIdentity": "Boolean",
       "ExecutionRoleArn": "String",
       "KmsKeyId": "String",
@@ -16347,6 +16463,13 @@
       "ResourceIdentifier": "String"
     }
   },
+  "AWS::VpcLattice::DomainVerification": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-domainverification.html",
+    "Properties": {
+      "DomainName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::VpcLattice::Listener": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-listener.html",
     "Properties": {
@@ -16362,6 +16485,9 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-resourceconfiguration.html",
     "Properties": {
       "AllowAssociationToSharableServiceNetwork": "Boolean",
+      "CustomDomainName": "String",
+      "DomainVerificationId": "String",
+      "GroupDomain": "String",
       "Name": "String",
       "PortRanges": "String",
       "ProtocolType": "String",
@@ -16427,6 +16553,7 @@
   "AWS::VpcLattice::ServiceNetworkResourceAssociation": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-servicenetworkresourceassociation.html",
     "Properties": {
+      "PrivateDnsEnabled": "Boolean",
       "ResourceConfigurationId": "String",
       "ServiceNetworkId": "String",
       "Tags": "Tag"
@@ -16444,6 +16571,8 @@
   "AWS::VpcLattice::ServiceNetworkVpcAssociation": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-vpclattice-servicenetworkvpcassociation.html",
     "Properties": {
+      "DnsOptions": "DnsOptions",
+      "PrivateDnsEnabled": "Boolean",
       "SecurityGroupIds": "String",
       "ServiceNetworkIdentifier": "String",
       "Tags": "Tag",
@@ -16856,7 +16985,8 @@
       "AdditionalEncryptionContext": "Map",
       "BrowserPolicy": "String",
       "CustomerManagedKey": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "WebContentFilteringPolicy": "WebContentFilteringPolicy"
     }
   },
   "AWS::WorkSpacesWeb::DataProtectionSettings": {
@@ -17029,17 +17159,6 @@
       "AuthenticationConfiguration": "AuthenticationConfiguration",
       "SkillPackage": "SkillPackage",
       "VendorId": "String"
-    }
-  },
-  "Dev::FSx::StorageVirtualMachine": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-storagevirtualmachine.html",
-    "Properties": {
-      "ActiveDirectoryConfiguration": "ActiveDirectoryConfiguration",
-      "FileSystemId": "String",
-      "Name": "String",
-      "RootVolumeSecurityStyle": "String",
-      "SvmAdminPassword": "String",
-      "Tags": "Tag"
     }
   }
 }

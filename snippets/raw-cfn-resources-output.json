@@ -2277,7 +2277,8 @@
       "RegularColumns": "Column",
       "ReplicaSpecifications": "ReplicaSpecification",
       "TableName": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "WarmThroughput": "WarmThroughput"
     }
   },
   "AWS::Cassandra::Type": {
@@ -2791,6 +2792,14 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html",
     "Properties": {
       "StreamingDistributionConfig": "StreamingDistributionConfig",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::CloudFront::TrustStore": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-truststore.html",
+    "Properties": {
+      "CaCertificatesBundleSource": "CaCertificatesBundleSource",
+      "Name": "String",
       "Tags": "Tag"
     }
   },
@@ -3635,6 +3644,30 @@
       "Description": "String"
     }
   },
+  "AWS::Connect::DataTable": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-datatable.html",
+    "Properties": {
+      "Description": "String",
+      "InstanceArn": "String",
+      "Name": "String",
+      "Status": "String",
+      "Tags": "Tag",
+      "TimeZone": "String",
+      "ValueLockLevel": "String"
+    }
+  },
+  "AWS::Connect::DataTableAttribute": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-datatableattribute.html",
+    "Properties": {
+      "DataTableArn": "String",
+      "Description": "String",
+      "InstanceArn": "String",
+      "Name": "String",
+      "Primary": "Boolean",
+      "Validation": "Validation",
+      "ValueType": "String"
+    }
+  },
   "AWS::Connect::EmailAddress": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-emailaddress.html",
     "Properties": {
@@ -3653,9 +3686,11 @@
       "Description": "String",
       "InstanceArn": "String",
       "Items": "EvaluationFormBaseItem",
+      "LanguageConfiguration": "EvaluationFormLanguageConfiguration",
       "ScoringStrategy": "ScoringStrategy",
       "Status": "String",
       "Tags": "Tag",
+      "TargetConfiguration": "EvaluationFormTargetConfiguration",
       "Title": "String"
     }
   },
@@ -4021,6 +4056,7 @@
       "DomainName": "String",
       "SegmentDefinitionName": "String",
       "SegmentGroups": "SegmentGroup",
+      "SegmentSqlQuery": "String",
       "Tags": "Tag"
     }
   },
@@ -4853,6 +4889,21 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-detective-organizationadmin.html",
     "Properties": {
       "AccountId": "String"
+    }
+  },
+  "AWS::DevOpsAgent::AgentSpace": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-agentspace.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String"
+    }
+  },
+  "AWS::DevOpsAgent::Association": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-association.html",
+    "Properties": {
+      "AgentSpaceId": "String",
+      "Configuration": "ServiceConfiguration",
+      "ServiceId": "String"
     }
   },
   "AWS::DevOpsGuru::LogAnomalyDetectionIntegration": {
@@ -5886,6 +5937,31 @@
       "TransitGatewayAttachmentId": "String"
     }
   },
+  "AWS::EC2::TransitGatewayMeteringPolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymeteringpolicy.html",
+    "Properties": {
+      "MiddleboxAttachmentIds": "String",
+      "Tags": "Tag",
+      "TransitGatewayId": "String"
+    }
+  },
+  "AWS::EC2::TransitGatewayMeteringPolicyEntry": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymeteringpolicyentry.html",
+    "Properties": {
+      "DestinationCidrBlock": "String",
+      "DestinationPortRange": "String",
+      "DestinationTransitGatewayAttachmentId": "String",
+      "DestinationTransitGatewayAttachmentType": "String",
+      "MeteredAccount": "String",
+      "PolicyRuleNumber": "Integer",
+      "Protocol": "String",
+      "SourceCidrBlock": "String",
+      "SourcePortRange": "String",
+      "SourceTransitGatewayAttachmentId": "String",
+      "SourceTransitGatewayAttachmentType": "String",
+      "TransitGatewayMeteringPolicyId": "String"
+    }
+  },
   "AWS::EC2::TransitGatewayMulticastDomain": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaymulticastdomain.html",
     "Properties": {
@@ -6017,6 +6093,22 @@
     "Properties": {
       "DhcpOptionsId": "String",
       "VpcId": "String"
+    }
+  },
+  "AWS::EC2::VPCEncryptionControl": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcencryptioncontrol.html",
+    "Properties": {
+      "EgressOnlyInternetGatewayExclusionInput": "String",
+      "ElasticFileSystemExclusionInput": "String",
+      "InternetGatewayExclusionInput": "String",
+      "LambdaExclusionInput": "String",
+      "Mode": "String",
+      "NatGatewayExclusionInput": "String",
+      "Tags": "Tag",
+      "VirtualPrivateGatewayExclusionInput": "String",
+      "VpcId": "String",
+      "VpcLatticeExclusionInput": "String",
+      "VpcPeeringExclusionInput": "String"
     }
   },
   "AWS::EC2::VPCEndpoint": {
@@ -6246,6 +6338,12 @@
       "UpstreamRepositoryPrefix": "String"
     }
   },
+  "AWS::ECR::PullTimeUpdateExclusion": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-pulltimeupdateexclusion.html",
+    "Properties": {
+      "PrincipalArn": "String"
+    }
+  },
   "AWS::ECR::RegistryPolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-registrypolicy.html",
     "Properties": {
@@ -6294,6 +6392,12 @@
       "ResourceTags": "Tag"
     }
   },
+  "AWS::ECR::SigningConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-signingconfiguration.html",
+    "Properties": {
+      "Rules": "Rule"
+    }
+  },
   "AWS::ECS::CapacityProvider": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-capacityprovider.html",
     "Properties": {
@@ -6322,6 +6426,23 @@
       "CapacityProviders": "String",
       "Cluster": "String",
       "DefaultCapacityProviderStrategy": "CapacityProviderStrategy"
+    }
+  },
+  "AWS::ECS::ExpressGatewayService": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html",
+    "Properties": {
+      "Cluster": "String",
+      "Cpu": "String",
+      "ExecutionRoleArn": "String",
+      "HealthCheckPath": "String",
+      "InfrastructureRoleArn": "String",
+      "Memory": "String",
+      "NetworkConfiguration": "ExpressGatewayServiceNetworkConfiguration",
+      "PrimaryContainer": "ExpressGatewayContainer",
+      "ScalingTarget": "ExpressGatewayScalingTarget",
+      "ServiceName": "String",
+      "Tags": "Tag",
+      "TaskRoleArn": "String"
     }
   },
   "AWS::ECS::PrimaryTaskSet": {
@@ -6468,12 +6589,25 @@
       "Tags": "Tag"
     }
   },
+  "AWS::EKS::Capability": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-capability.html",
+    "Properties": {
+      "CapabilityName": "String",
+      "ClusterName": "String",
+      "Configuration": "CapabilityConfiguration",
+      "DeletePropagationPolicy": "String",
+      "RoleArn": "String",
+      "Tags": "Tag",
+      "Type": "String"
+    }
+  },
   "AWS::EKS::Cluster": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-cluster.html",
     "Properties": {
       "AccessConfig": "AccessConfig",
       "BootstrapSelfManagedAddons": "Boolean",
       "ComputeConfig": "ComputeConfig",
+      "ControlPlaneScalingConfig": "ControlPlaneScalingConfig",
       "DeletionProtection": "Boolean",
       "EncryptionConfig": "EncryptionConfig",
       "Force": "Boolean",
@@ -9869,6 +10003,7 @@
       "KmsKeyId": "String",
       "MediaType": "String",
       "Name": "String",
+      "StreamStorageConfiguration": "StreamStorageConfiguration",
       "Tags": "Tag"
     }
   },
@@ -9955,6 +10090,18 @@
       "RoutingConfig": "AliasRoutingConfiguration"
     }
   },
+  "AWS::Lambda::CapacityProvider": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-capacityprovider.html",
+    "Properties": {
+      "CapacityProviderName": "String",
+      "CapacityProviderScalingConfig": "CapacityProviderScalingConfig",
+      "InstanceRequirements": "InstanceRequirements",
+      "KmsKeyArn": "String",
+      "PermissionsConfig": "CapacityProviderPermissionsConfig",
+      "Tags": "Tag",
+      "VpcConfig": "CapacityProviderVpcConfig"
+    }
+  },
   "AWS::Lambda::CodeSigningConfig": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-codesigningconfig.html",
     "Properties": {
@@ -10011,14 +10158,17 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html",
     "Properties": {
       "Architectures": "String",
+      "CapacityProviderConfig": "CapacityProviderConfig",
       "Code": "Code",
       "CodeSigningConfigArn": "String",
       "DeadLetterConfig": "DeadLetterConfig",
       "Description": "String",
+      "DurableConfig": "DurableConfig",
       "Environment": "Environment",
       "EphemeralStorage": "EphemeralStorage",
       "FileSystemConfigs": "FileSystemConfig",
       "FunctionName": "String",
+      "FunctionScalingConfig": "FunctionScalingConfig",
       "Handler": "String",
       "ImageConfig": "ImageConfig",
       "KmsKeyArn": "String",
@@ -10026,6 +10176,7 @@
       "LoggingConfig": "LoggingConfig",
       "MemorySize": "Integer",
       "PackageType": "String",
+      "PublishToLatestPublished": "Boolean",
       "RecursiveLoop": "String",
       "ReservedConcurrentExecutions": "Integer",
       "Role": "String",
@@ -10089,6 +10240,7 @@
       "CodeSha256": "String",
       "Description": "String",
       "FunctionName": "String",
+      "FunctionScalingConfig": "FunctionScalingConfig",
       "ProvisionedConcurrencyConfig": "ProvisionedConcurrencyConfiguration",
       "RuntimePolicy": "RuntimePolicy"
     }
@@ -11114,6 +11266,7 @@
       "MulticastSettings": "MulticastSettingsCreateRequest",
       "Name": "String",
       "RoleArn": "String",
+      "RouterSettings": "RouterSettings",
       "SdiSources": "String",
       "Smpte2110ReceiverGroupSettings": "Smpte2110ReceiverGroupSettings",
       "Sources": "InputSourceRequest",
@@ -12001,6 +12154,23 @@
       "Tags": "Tag"
     }
   },
+  "AWS::ObservabilityAdmin::S3TableIntegration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-s3tableintegration.html",
+    "Properties": {
+      "Encryption": "EncryptionConfig",
+      "LogSources": "LogSource",
+      "RoleArn": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ObservabilityAdmin::TelemetryPipelines": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html",
+    "Properties": {
+      "Configuration": "TelemetryPipelineConfiguration",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::ObservabilityAdmin::TelemetryRule": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetryrule.html",
     "Properties": {
@@ -12124,9 +12294,7 @@
   "AWS::OpenSearchServerless::Collection": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html",
     "Properties": {
-      "CollectionGroupName": "String",
       "Description": "String",
-      "EncryptionConfig": "EncryptionConfig",
       "Name": "String",
       "StandbyReplicas": "String",
       "Tags": "Tag",
@@ -13526,6 +13694,16 @@
       "Tags": "Tag"
     }
   },
+  "AWS::RTBFabric::OutboundExternalLink": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-outboundexternallink.html",
+    "Properties": {
+      "GatewayId": "String",
+      "LinkAttributes": "LinkAttributes",
+      "LinkLogSettings": "LinkLogSettings",
+      "PublicEndpoint": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::RTBFabric::RequesterGateway": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-requestergateway.html",
     "Properties": {
@@ -14321,6 +14499,7 @@
   "AWS::S3::Bucket": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html",
     "Properties": {
+      "AbacStatus": "String",
       "AccelerateConfiguration": "AccelerateConfiguration",
       "AccessControl": "String",
       "AnalyticsConfigurations": "AnalyticsConfiguration",
@@ -15636,6 +15815,8 @@
   "AWS::SecretsManager::RotationSchedule": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-rotationschedule.html",
     "Properties": {
+      "ExternalSecretRotationMetadata": "ExternalSecretRotationMetadataItem",
+      "ExternalSecretRotationRoleArn": "String",
       "HostedRotationLambda": "HostedRotationLambda",
       "RotateImmediatelyOnUpdate": "Boolean",
       "RotationLambdaARN": "String",
@@ -15652,7 +15833,8 @@
       "Name": "String",
       "ReplicaRegions": "ReplicaRegion",
       "SecretString": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "Type": "String"
     }
   },
   "AWS::SecretsManager::SecretTargetAttachment": {
@@ -15702,6 +15884,16 @@
       "ConfigurationPolicy": "Policy",
       "Description": "String",
       "Name": "String",
+      "Tags": "Map"
+    }
+  },
+  "AWS::SecurityHub::ConnectorV2": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-connectorv2.html",
+    "Properties": {
+      "Description": "String",
+      "KmsKeyArn": "String",
+      "Name": "String",
+      "Provider": "Provider",
       "Tags": "Map"
     }
   },

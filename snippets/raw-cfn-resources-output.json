@@ -1911,6 +1911,7 @@
       "OverrideConfiguration": "OverrideConfiguration",
       "ProjectDescription": "String",
       "ProjectName": "String",
+      "ProjectType": "String",
       "StandardOutputConfiguration": "StandardOutputConfiguration",
       "Tags": "Tag"
     }
@@ -2363,6 +2364,7 @@
       "Schema": "AnalysisSchema",
       "Source": "AnalysisSource",
       "SourceMetadata": "AnalysisSourceMetadata",
+      "SyntheticDataParameters": "SyntheticDataParameters",
       "Tags": "Tag"
     }
   },
@@ -2661,6 +2663,7 @@
     "Properties": {
       "IpAddressType": "String",
       "IpCount": "Integer",
+      "IpamCidrConfigs": "IpamCidrConfig",
       "Name": "String",
       "Tags": "Tags"
     }
@@ -3668,6 +3671,14 @@
       "ValueType": "String"
     }
   },
+  "AWS::Connect::DataTableRecord": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-datatablerecord.html",
+    "Properties": {
+      "DataTableArn": "String",
+      "DataTableRecord": "DataTableRecord",
+      "InstanceArn": "String"
+    }
+  },
   "AWS::Connect::EmailAddress": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-emailaddress.html",
     "Properties": {
@@ -3918,6 +3929,21 @@
       "ViewContentSha256": "String"
     }
   },
+  "AWS::Connect::Workspace": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-workspace.html",
+    "Properties": {
+      "Associations": "String",
+      "Description": "String",
+      "InstanceArn": "String",
+      "Media": "MediaItem",
+      "Name": "String",
+      "Pages": "WorkspacePage",
+      "Tags": "Tag",
+      "Theme": "WorkspaceTheme",
+      "Title": "String",
+      "Visibility": "String"
+    }
+  },
   "AWS::ConnectCampaigns::Campaign": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connectcampaigns-campaign.html",
     "Properties": {
@@ -3939,7 +3965,8 @@
       "Name": "String",
       "Schedule": "Schedule",
       "Source": "Source",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "Type": "String"
     }
   },
   "AWS::ControlTower::EnabledBaseline": {
@@ -4903,6 +4930,7 @@
     "Properties": {
       "AgentSpaceId": "String",
       "Configuration": "ServiceConfiguration",
+      "LinkedAssociationIds": "String",
       "ServiceId": "String"
     }
   },
@@ -5617,6 +5645,7 @@
       "Ipv6Prefixes": "Ipv6PrefixSpecification",
       "PrivateIpAddress": "String",
       "PrivateIpAddresses": "PrivateIpAddressSpecification",
+      "PublicIpDnsHostnameTypeSpecification": "String",
       "SecondaryPrivateIpAddressCount": "Integer",
       "SourceDestCheck": "Boolean",
       "SubnetId": "String",
@@ -5796,7 +5825,8 @@
   "AWS::EC2::SpotFleet": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-spotfleet.html",
     "Properties": {
-      "SpotFleetRequestConfigData": "SpotFleetRequestConfigData"
+      "SpotFleetRequestConfigData": "SpotFleetRequestConfigData",
+      "Tags": "Tag"
     }
   },
   "AWS::EC2::Subnet": {
@@ -7521,6 +7551,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-s3accesspointattachment.html",
     "Properties": {
       "Name": "String",
+      "OntapConfiguration": "S3AccessPointOntapConfiguration",
       "OpenZFSConfiguration": "S3AccessPointOpenZFSConfiguration",
       "S3AccessPoint": "S3AccessPoint",
       "Type": "String"
@@ -7951,6 +7982,14 @@
       "SubnetId": "String",
       "Tags": "Json",
       "WorkerType": "String"
+    }
+  },
+  "AWS::Glue::IdentityCenterConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-identitycenterconfiguration.html",
+    "Properties": {
+      "InstanceArn": "String",
+      "Scopes": "String",
+      "UserBackgroundSessionsEnabled": "Boolean"
     }
   },
   "AWS::Glue::Integration": {
@@ -9367,15 +9406,6 @@
       "Tags": "Tag"
     }
   },
-  "AWS::IoTFleetHub::Application": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleethub-application.html",
-    "Properties": {
-      "ApplicationDescription": "String",
-      "ApplicationName": "String",
-      "RoleArn": "String",
-      "Tags": "Tag"
-    }
-  },
   "AWS::IoTFleetWise::Campaign": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotfleetwise-campaign.html",
     "Properties": {
@@ -10724,26 +10754,6 @@
       "Tags": "Tag"
     }
   },
-  "AWS::LookoutMetrics::Alert": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lookoutmetrics-alert.html",
-    "Properties": {
-      "Action": "Action",
-      "AlertDescription": "String",
-      "AlertName": "String",
-      "AlertSensitivityThreshold": "Integer",
-      "AnomalyDetectorArn": "String"
-    }
-  },
-  "AWS::LookoutMetrics::AnomalyDetector": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lookoutmetrics-anomalydetector.html",
-    "Properties": {
-      "AnomalyDetectorConfig": "AnomalyDetectorConfig",
-      "AnomalyDetectorDescription": "String",
-      "AnomalyDetectorName": "String",
-      "KmsKeyArn": "String",
-      "MetricSetList": "MetricSet"
-    }
-  },
   "AWS::LookoutVision::Project": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lookoutvision-project.html",
     "Properties": {
@@ -11807,6 +11817,7 @@
       "Options": "ConnectAttachmentOptions",
       "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
       "ProposedSegmentChange": "ProposedSegmentChange",
+      "RoutingPolicyLabel": "String",
       "Tags": "Tag",
       "TransportAttachmentId": "String"
     }
@@ -11830,6 +11841,14 @@
       "GlobalNetworkId": "String",
       "PolicyDocument": "Json",
       "Tags": "Tag"
+    }
+  },
+  "AWS::NetworkManager::CoreNetworkPrefixListAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-corenetworkprefixlistassociation.html",
+    "Properties": {
+      "CoreNetworkId": "String",
+      "PrefixListAlias": "String",
+      "PrefixListArn": "String"
     }
   },
   "AWS::NetworkManager::CustomerGatewayAssociation": {
@@ -11864,6 +11883,7 @@
       "EdgeLocations": "String",
       "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
       "ProposedSegmentChange": "ProposedSegmentChange",
+      "RoutingPolicyLabel": "String",
       "Tags": "Tag"
     }
   },
@@ -11912,6 +11932,7 @@
       "NetworkFunctionGroupName": "String",
       "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
       "ProposedSegmentChange": "ProposedSegmentChange",
+      "RoutingPolicyLabel": "String",
       "Tags": "Tag",
       "VpnConnectionArn": "String"
     }
@@ -11938,6 +11959,7 @@
       "PeeringId": "String",
       "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
       "ProposedSegmentChange": "ProposedSegmentChange",
+      "RoutingPolicyLabel": "String",
       "Tags": "Tag",
       "TransitGatewayRouteTableArn": "String"
     }
@@ -11949,6 +11971,7 @@
       "Options": "VpcOptions",
       "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
       "ProposedSegmentChange": "ProposedSegmentChange",
+      "RoutingPolicyLabel": "String",
       "SubnetArns": "String",
       "Tags": "Tag",
       "VpcArn": "String"
@@ -12691,6 +12714,7 @@
       "Exportable": "Boolean",
       "KeyAttributes": "KeyAttributes",
       "KeyCheckValueAlgorithm": "String",
+      "ReplicationRegions": "String",
       "Tags": "Tag"
     }
   },
@@ -14107,7 +14131,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-robomaker-fleet.html",
     "Properties": {
       "Name": "String",
-      "Tags": "Map"
+      "Tags": "Json"
     }
   },
   "AWS::RoboMaker::Robot": {
@@ -14117,18 +14141,17 @@
       "Fleet": "String",
       "GreengrassGroupId": "String",
       "Name": "String",
-      "Tags": "Map"
+      "Tags": "Json"
     }
   },
   "AWS::RoboMaker::RobotApplication": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-robomaker-robotapplication.html",
     "Properties": {
       "CurrentRevisionId": "String",
-      "Environment": "String",
       "Name": "String",
       "RobotSoftwareSuite": "RobotSoftwareSuite",
       "Sources": "SourceConfig",
-      "Tags": "Map"
+      "Tags": "Json"
     }
   },
   "AWS::RoboMaker::RobotApplicationVersion": {
@@ -14142,13 +14165,12 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-robomaker-simulationapplication.html",
     "Properties": {
       "CurrentRevisionId": "String",
-      "Environment": "String",
       "Name": "String",
       "RenderingEngine": "RenderingEngine",
       "RobotSoftwareSuite": "RobotSoftwareSuite",
       "SimulationSoftwareSuite": "SimulationSoftwareSuite",
       "Sources": "SourceConfig",
-      "Tags": "Map"
+      "Tags": "Json"
     }
   },
   "AWS::RoboMaker::SimulationApplicationVersion": {
@@ -14217,6 +14239,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-hostedzone.html",
     "Properties": {
       "HostedZoneConfig": "HostedZoneConfig",
+      "HostedZoneFeatures": "HostedZoneFeatures",
       "HostedZoneTags": "HostedZoneTag",
       "Name": "String",
       "QueryLoggingConfig": "QueryLoggingConfig",
@@ -14657,6 +14680,7 @@
       "Namespace": "String",
       "OpenTableFormat": "String",
       "SnapshotManagement": "SnapshotManagement",
+      "StorageClassConfiguration": "StorageClassConfiguration",
       "TableBucketARN": "String",
       "TableName": "String",
       "Tags": "Tag",
@@ -14668,6 +14692,7 @@
     "Properties": {
       "EncryptionConfiguration": "EncryptionConfiguration",
       "MetricsConfiguration": "MetricsConfiguration",
+      "StorageClassConfiguration": "StorageClassConfiguration",
       "TableBucketName": "String",
       "Tags": "Tag",
       "UnreferencedFileRemoval": "UnreferencedFileRemoval"
@@ -14693,6 +14718,7 @@
       "DataType": "String",
       "Dimension": "Integer",
       "DistanceMetric": "String",
+      "EncryptionConfiguration": "EncryptionConfiguration",
       "IndexName": "String",
       "MetadataConfiguration": "MetadataConfiguration",
       "VectorBucketArn": "String",

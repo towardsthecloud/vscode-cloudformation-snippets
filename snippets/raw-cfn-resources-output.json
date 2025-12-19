@@ -2056,6 +2056,7 @@
       "AuthorizerType": "String",
       "Description": "String",
       "ExceptionLevel": "String",
+      "InterceptorConfigurations": "GatewayInterceptorConfiguration",
       "KmsKeyArn": "String",
       "Name": "String",
       "ProtocolConfiguration": "GatewayProtocolConfiguration",
@@ -2251,6 +2252,55 @@
       "S3Region": "String",
       "Tags": "Tag",
       "TimeUnit": "String"
+    }
+  },
+  "AWS::Cases::CaseRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-caserule.html",
+    "Properties": {
+      "Description": "String",
+      "DomainId": "String",
+      "Name": "String",
+      "Rule": "CaseRuleDetails",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Cases::Domain": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-domain.html",
+    "Properties": {
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Cases::Field": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-field.html",
+    "Properties": {
+      "Description": "String",
+      "DomainId": "String",
+      "Name": "String",
+      "Tags": "Tag",
+      "Type": "String"
+    }
+  },
+  "AWS::Cases::Layout": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-layout.html",
+    "Properties": {
+      "Content": "LayoutContent",
+      "DomainId": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Cases::Template": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-template.html",
+    "Properties": {
+      "Description": "String",
+      "DomainId": "String",
+      "LayoutConfiguration": "LayoutConfiguration",
+      "Name": "String",
+      "RequiredFields": "RequiredField",
+      "Rules": "TemplateRule",
+      "Status": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Cassandra::Keyspace": {
@@ -3634,8 +3684,10 @@
     "Properties": {
       "Content": "String",
       "Description": "String",
+      "ExternalInvocationConfiguration": "ExternalInvocationConfiguration",
       "InstanceArn": "String",
       "Name": "String",
+      "Settings": "String",
       "State": "String",
       "Tags": "Tag"
     }
@@ -5192,12 +5244,14 @@
       "Description": "String",
       "DisconnectOnSessionTimeout": "Boolean",
       "DnsServers": "String",
+      "EndpointIpAddressType": "String",
       "SecurityGroupIds": "String",
       "SelfServicePortal": "String",
       "ServerCertificateArn": "String",
       "SessionTimeoutHours": "Integer",
       "SplitTunnel": "Boolean",
       "TagSpecifications": "TagSpecification",
+      "TrafficIpAddressType": "String",
       "TransportProtocol": "String",
       "VpcId": "String",
       "VpnPort": "Integer"
@@ -6784,8 +6838,10 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-step.html",
     "Properties": {
       "ActionOnFailure": "String",
+      "EncryptionKeyArn": "String",
       "HadoopJarStep": "HadoopJarStepConfig",
       "JobFlowId": "String",
+      "LogUri": "String",
       "Name": "String"
     }
   },
@@ -8353,6 +8409,15 @@
       "Tags": "Tag"
     }
   },
+  "AWS::GroundStation::DataflowEndpointGroupV2": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-groundstation-dataflowendpointgroupv2.html",
+    "Properties": {
+      "ContactPostPassDurationSeconds": "Integer",
+      "ContactPrePassDurationSeconds": "Integer",
+      "Endpoints": "CreateEndpointDetails",
+      "Tags": "Tag"
+    }
+  },
   "AWS::GroundStation::MissionProfile": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-groundstation-missionprofile.html",
     "Properties": {
@@ -9829,6 +9894,7 @@
       "KafkaClusterEncryptionInTransit": "KafkaClusterEncryptionInTransit",
       "KafkaConnectVersion": "String",
       "LogDelivery": "LogDelivery",
+      "NetworkType": "String",
       "Plugins": "Plugin",
       "ServiceExecutionRoleArn": "String",
       "Tags": "Tag",
@@ -14441,8 +14507,10 @@
       "PreferredInstanceType": "String",
       "Protocols": "String",
       "ResolverEndpointType": "String",
+      "RniEnhancedMetricsEnabled": "Boolean",
       "SecurityGroupIds": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "TargetNameServerMetricsEnabled": "Boolean"
     }
   },
   "AWS::Route53Resolver::ResolverQueryLoggingConfig": {
@@ -14898,6 +14966,14 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-template.html",
     "Properties": {
       "Template": "Template"
+    }
+  },
+  "AWS::SES::Tenant": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-tenant.html",
+    "Properties": {
+      "ResourceAssociations": "ResourceAssociation",
+      "Tags": "Tag",
+      "TenantName": "String"
     }
   },
   "AWS::SES::VdmAttributes": {
@@ -17297,6 +17373,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspacesweb-usersettings.html",
     "Properties": {
       "AdditionalEncryptionContext": "Map",
+      "BrandingConfiguration": "BrandingConfiguration",
       "CookieSynchronizationConfiguration": "CookieSynchronizationConfiguration",
       "CopyAllowed": "String",
       "CustomerManagedKey": "String",
@@ -17308,7 +17385,8 @@
       "PrintAllowed": "String",
       "Tags": "Tag",
       "ToolbarConfiguration": "ToolbarConfiguration",
-      "UploadAllowed": "String"
+      "UploadAllowed": "String",
+      "WebAuthnAllowed": "String"
     }
   },
   "AWS::WorkspacesInstances::Volume": {

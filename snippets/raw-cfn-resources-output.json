@@ -121,6 +121,7 @@
       "RecoveryApproach": "String",
       "RecoveryTimeObjectiveMinutes": "Double",
       "Regions": "String",
+      "ReportConfiguration": "ReportConfiguration",
       "Tags": "Map",
       "Triggers": "Trigger",
       "Workflows": "Workflow"
@@ -1501,6 +1502,7 @@
       "HealthCheckGracePeriod": "Integer",
       "HealthCheckType": "String",
       "InstanceId": "String",
+      "InstanceLifecyclePolicy": "InstanceLifecyclePolicy",
       "InstanceMaintenancePolicy": "InstanceMaintenancePolicy",
       "LaunchConfigurationName": "String",
       "LaunchTemplate": "LaunchTemplateSpecification",
@@ -3760,11 +3762,13 @@
   "AWS::Connect::HoursOfOperation": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-hoursofoperation.html",
     "Properties": {
+      "ChildHoursOfOperations": "HoursOfOperationsIdentifier",
       "Config": "HoursOfOperationConfig",
       "Description": "String",
       "HoursOfOperationOverrides": "HoursOfOperationOverride",
       "InstanceArn": "String",
       "Name": "String",
+      "ParentHoursOfOperations": "HoursOfOperationsIdentifier",
       "Tags": "Tag",
       "TimeZone": "String"
     }
@@ -10741,6 +10745,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html",
     "Properties": {
       "DataProtectionPolicy": "Json",
+      "DeletionProtectionEnabled": "Boolean",
       "FieldIndexPolicies": "Json",
       "KmsKeyId": "String",
       "LogGroupClass": "String",
@@ -11575,6 +11580,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediatailor-playbackconfiguration.html",
     "Properties": {
       "AdConditioningConfiguration": "AdConditioningConfiguration",
+      "AdDecisionServerConfiguration": "AdDecisionServerConfiguration",
       "AdDecisionServerUrl": "String",
       "AvailSuppression": "AvailSuppression",
       "Bumper": "Bumper",
@@ -12187,6 +12193,7 @@
   "AWS::ODB::OdbPeeringConnection": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-odbpeeringconnection.html",
     "Properties": {
+      "AdditionalPeerNetworkCidrs": "String",
       "DisplayName": "String",
       "OdbNetworkId": "String",
       "PeerNetworkId": "String",

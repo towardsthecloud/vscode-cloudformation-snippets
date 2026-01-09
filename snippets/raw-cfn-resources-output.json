@@ -2073,6 +2073,7 @@
       "CredentialProviderConfigurations": "CredentialProviderConfiguration",
       "Description": "String",
       "GatewayIdentifier": "String",
+      "MetadataConfiguration": "MetadataConfiguration",
       "Name": "String",
       "TargetConfiguration": "TargetConfiguration"
     }
@@ -4728,6 +4729,7 @@
       "EnabledRegions": "String",
       "EnvironmentBlueprintIdentifier": "String",
       "EnvironmentRolePermissionBoundary": "String",
+      "GlobalParameters": "Map",
       "ManageAccessRoleArn": "String",
       "ProvisioningConfigurations": "ProvisioningConfiguration",
       "ProvisioningRoleArn": "String",
@@ -4816,7 +4818,8 @@
       "DomainUnitIdentifier": "String",
       "EnvironmentConfigurations": "EnvironmentConfiguration",
       "Name": "String",
-      "Status": "String"
+      "Status": "String",
+      "UseDefaultConfigurations": "Boolean"
     }
   },
   "AWS::DataZone::SubscriptionTarget": {
@@ -5109,6 +5112,18 @@
       "SourceIds": "String",
       "SourceType": "String",
       "SubscriptionName": "String"
+    }
+  },
+  "AWS::DocDB::GlobalCluster": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-docdb-globalcluster.html",
+    "Properties": {
+      "DeletionProtection": "Boolean",
+      "Engine": "String",
+      "EngineVersion": "String",
+      "GlobalClusterIdentifier": "String",
+      "SourceDBClusterIdentifier": "String",
+      "StorageEncrypted": "Boolean",
+      "Tags": "Tag"
     }
   },
   "AWS::DocDBElastic::Cluster": {
@@ -13549,6 +13564,7 @@
   "AWS::RDS::DBInstance": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html",
     "Properties": {
+      "AdditionalStorageVolumes": "AdditionalStorageVolume",
       "AllocatedStorage": "String",
       "AllowMajorVersionUpgrade": "Boolean",
       "ApplyImmediately": "Boolean",

@@ -2,6 +2,11 @@ Changelog
 =========
 
 
+5.89.0 (2026-01-09)
+-------------------
+- Build: auto-update snippets to version: 5.89.0. [Github Actions]
+
+
 5.88.0 (2026-01-02)
 -------------------
 - Build: auto-update snippets to version: 5.88.0. [Github Actions]

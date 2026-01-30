@@ -4710,10 +4710,13 @@
   "AWS::DataZone::Environment": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-environment.html",
     "Properties": {
+      "DeploymentOrder": "Integer",
       "Description": "String",
       "DomainIdentifier": "String",
       "EnvironmentAccountIdentifier": "String",
       "EnvironmentAccountRegion": "String",
+      "EnvironmentBlueprintIdentifier": "String",
+      "EnvironmentConfigurationId": "String",
       "EnvironmentProfileIdentifier": "String",
       "EnvironmentRoleArn": "String",
       "GlossaryTerms": "String",
@@ -6911,6 +6914,27 @@
     "Properties": {
       "Tags": "Tag",
       "WALWorkspaceName": "String"
+    }
+  },
+  "AWS::EMRContainers::Endpoint": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emrcontainers-endpoint.html",
+    "Properties": {
+      "ConfigurationOverrides": "ConfigurationOverrides",
+      "ExecutionRoleArn": "String",
+      "Name": "String",
+      "ReleaseLabel": "String",
+      "Tags": "Tag",
+      "Type": "String",
+      "VirtualClusterId": "String"
+    }
+  },
+  "AWS::EMRContainers::SecurityConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emrcontainers-securityconfiguration.html",
+    "Properties": {
+      "ContainerProvider": "ContainerProvider",
+      "Name": "String",
+      "SecurityConfigurationData": "SecurityConfigurationData",
+      "Tags": "Tag"
     }
   },
   "AWS::EMRContainers::VirtualCluster": {
@@ -9180,7 +9204,9 @@
       "MandatoryParameters": "CommandParameter",
       "Namespace": "String",
       "Payload": "CommandPayload",
+      "PayloadTemplate": "String",
       "PendingDeletion": "Boolean",
+      "Preprocessor": "CommandPreprocessor",
       "RoleArn": "String",
       "Tags": "Tag"
     }
@@ -10523,6 +10549,14 @@
       "RelationalDatabaseName": "String",
       "RelationalDatabaseParameters": "RelationalDatabaseParameter",
       "RotateMasterUserPassword": "Boolean",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Lightsail::DatabaseSnapshot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-databasesnapshot.html",
+    "Properties": {
+      "RelationalDatabaseName": "String",
+      "RelationalDatabaseSnapshotName": "String",
       "Tags": "Tag"
     }
   },
@@ -14884,6 +14918,7 @@
   "AWS::SES::ConfigurationSet": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-configurationset.html",
     "Properties": {
+      "ArchivingOptions": "ArchivingOptions",
       "DeliveryOptions": "DeliveryOptions",
       "Name": "String",
       "ReputationOptions": "ReputationOptions",

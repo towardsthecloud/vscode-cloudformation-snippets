@@ -2,6 +2,11 @@ Changelog
 =========
 
 
+5.92.0 (2026-01-30)
+-------------------
+- Build: auto-update snippets to version: 5.92.0. [Github Actions]
+
+
 5.91.0 (2026-01-23)
 -------------------
 - Build: auto-update snippets to version: 5.91.0. [Github Actions]

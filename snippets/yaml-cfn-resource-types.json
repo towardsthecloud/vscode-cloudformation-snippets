@@ -16808,10 +16808,13 @@
             "    Password: \"${6:String}\"",
             "    ShortName: \"${7:String}\"",
             "    Size: \"${8:String}\" # Required",
+            "    Tags: ",
+            "      - Key: \"${9:String}\"",
+            "        Value: \"${10:String}\"",
             "    VpcSettings:",
             "      SubnetIds:",
-            "        - \"${9:String}\"",
-            "      VpcId: \"${10:String}\""
+            "        - \"${11:String}\"",
+            "      VpcId: \"${12:String}\""
         ],
         "description": [
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-simplead.html",
@@ -21605,12 +21608,13 @@
             "    ClusterName: \"${2:String}\" # Required",
             "    DisableSessionTags: ${3|false,true|}",
             "    Namespace: \"${4:String}\" # Required",
-            "    RoleArn: \"${5:String}\" # Required",
-            "    ServiceAccount: \"${6:String}\" # Required",
+            "    Policy: \"${5:String}\"",
+            "    RoleArn: \"${6:String}\" # Required",
+            "    ServiceAccount: \"${7:String}\" # Required",
             "    Tags: ",
-            "      - Key: \"${7:String}\"",
-            "        Value: \"${8:String}\"",
-            "    TargetRoleArn: \"${9:String}\""
+            "      - Key: \"${8:String}\"",
+            "        Value: \"${9:String}\"",
+            "    TargetRoleArn: \"${10:String}\""
         ],
         "description": [
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-podidentityassociation.html",
@@ -26818,15 +26822,21 @@
             "        BucketArn: \"${22:String}\"",
             "        Prefix: \"${23:String}\"",
             "        RoleArn: \"${24:String}\"",
+            "      TelemetrySinkConfig:",
+            "        TelemetrySinkData:",
+            "          KinesisDataStreamData:",
+            "            KinesisDataStreamArn: \"${25:String}\"",
+            "            KinesisRoleArn: \"${26:String}\"",
+            "        TelemetrySinkType: \"${27:String}\"",
             "      TrackingConfig:",
-            "        Autotrack: \"${25:String}\"",
+            "        Autotrack: \"${28:String}\"",
             "      UplinkEchoConfig:",
-            "        AntennaUplinkConfigArn: \"${26:String}\"",
-            "        Enabled: ${27|false,true|}",
-            "    Name: \"${28:String}\" # Required",
+            "        AntennaUplinkConfigArn: \"${29:String}\"",
+            "        Enabled: ${30|false,true|}",
+            "    Name: \"${31:String}\" # Required",
             "    Tags: ",
-            "      - Key: \"${29:String}\"",
-            "        Value: \"${30:String}\""
+            "      - Key: \"${32:String}\"",
+            "        Value: \"${33:String}\""
         ],
         "description": [
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-groundstation-config.html",
@@ -26953,7 +26963,8 @@
             "    Tags: ",
             "      - Key: \"${12:String}\"",
             "        Value: \"${13:String}\"",
-            "    TrackingConfigArn: \"${14:String}\" # Required"
+            "    TelemetrySinkConfigArn: \"${14:String}\"",
+            "    TrackingConfigArn: \"${15:String}\" # Required"
         ],
         "description": [
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-groundstation-missionprofile.html",
@@ -35258,6 +35269,24 @@
             "Attributes:\n  Arn"
         ],
         "prefix": "msk-serverlesscluster",
+        "scope": "yaml"
+    },
+    "AWS::MSK::Topic": {
+        "body": [
+            "${1:LogicalID}:",
+            "  Type: AWS::MSK::Topic",
+            "  Properties:",
+            "    ClusterArn: \"${2:String}\" # Required",
+            "    Configs: \"${3:String}\"",
+            "    PartitionCount: \"${4:Number}\" # Required",
+            "    ReplicationFactor: \"${5:Number}\" # Required",
+            "    TopicName: \"${6:String}\" # Required"
+        ],
+        "description": [
+            "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-topic.html",
+            "Attributes:\n  TopicArn"
+        ],
+        "prefix": "msk-topic",
         "scope": "yaml"
     },
     "AWS::MSK::VpcConnection": {
@@ -48737,25 +48766,42 @@
             "      Status: \"${2:String}\"",
             "      TargetFileSizeMB: \"${3:Number}\"",
             "    IcebergMetadata:",
+            "      IcebergPartitionSpec:",
+            "        Fields:",
+            "          - FieldId: \"${4:Number}\"",
+            "            Name: \"${5:String}\"",
+            "            SourceId: \"${6:Number}\"",
+            "            Transform: \"${7:String}\"",
+            "        SpecId: \"${8:Number}\"",
             "      IcebergSchema:",
             "        SchemaFieldList:",
-            "          - Name: \"${4:String}\"",
-            "            Required: ${5|false,true|}",
-            "            Type: \"${6:String}\"",
-            "    Namespace: \"${7:String}\" # Required",
-            "    OpenTableFormat: \"${8:String}\" # Required",
+            "          - Id: \"${9:Number}\"",
+            "            Name: \"${10:String}\"",
+            "            Required: ${11|false,true|}",
+            "            Type: \"${12:String}\"",
+            "      IcebergSortOrder:",
+            "        Fields:",
+            "          - Direction: \"${13:String}\"",
+            "            NullOrder: \"${14:String}\"",
+            "            SourceId: \"${15:Number}\"",
+            "            Transform: \"${16:String}\"",
+            "        OrderId: \"${17:Number}\"",
+            "      TableProperties:",
+            "         \"${18:JSON}\"",
+            "    Namespace: \"${19:String}\" # Required",
+            "    OpenTableFormat: \"${20:String}\" # Required",
             "    SnapshotManagement:",
-            "      MaxSnapshotAgeHours: \"${9:Number}\"",
-            "      MinSnapshotsToKeep: \"${10:Number}\"",
-            "      Status: \"${11:String}\"",
+            "      MaxSnapshotAgeHours: \"${21:Number}\"",
+            "      MinSnapshotsToKeep: \"${22:Number}\"",
+            "      Status: \"${23:String}\"",
             "    StorageClassConfiguration:",
-            "      StorageClass: \"${12:String}\"",
-            "    TableBucketARN: \"${13:String}\" # Required",
-            "    TableName: \"${14:String}\" # Required",
+            "      StorageClass: \"${24:String}\"",
+            "    TableBucketARN: \"${25:String}\" # Required",
+            "    TableName: \"${26:String}\" # Required",
             "    Tags: ",
-            "      - Key: \"${15:String}\"",
-            "        Value: \"${16:String}\"",
-            "    WithoutMetadata: \"${17:String}\""
+            "      - Key: \"${27:String}\"",
+            "        Value: \"${28:String}\"",
+            "    WithoutMetadata: \"${29:String}\""
         ],
         "description": [
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-table.html",
@@ -48990,6 +49036,27 @@
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-contactlist.html"
         ],
         "prefix": "ses-contactlist",
+        "scope": "yaml"
+    },
+    "AWS::SES::CustomVerificationEmailTemplate": {
+        "body": [
+            "${1:LogicalID}:",
+            "  Type: AWS::SES::CustomVerificationEmailTemplate",
+            "  Properties:",
+            "    FailureRedirectionURL: \"${2:String}\" # Required",
+            "    FromEmailAddress: \"${3:String}\" # Required",
+            "    SuccessRedirectionURL: \"${4:String}\" # Required",
+            "    Tags: ",
+            "      - Key: \"${5:String}\"",
+            "        Value: \"${6:String}\"",
+            "    TemplateContent: \"${7:String}\" # Required",
+            "    TemplateName: \"${8:String}\" # Required",
+            "    TemplateSubject: \"${9:String}\" # Required"
+        ],
+        "description": [
+            "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-customverificationemailtemplate.html"
+        ],
+        "prefix": "ses-customverificationemailtemplate",
         "scope": "yaml"
     },
     "AWS::SES::DedicatedIpPool": {
@@ -57489,13 +57556,14 @@
             "    IpAccessSettingsArn: \"${8:String}\"",
             "    MaxConcurrentSessions: \"${9:Number}\"",
             "    NetworkSettingsArn: \"${10:String}\"",
-            "    SessionLoggerArn: \"${11:String}\"",
+            "    PortalCustomDomain: \"${11:String}\"",
+            "    SessionLoggerArn: \"${12:String}\"",
             "    Tags: ",
-            "      - Key: \"${12:String}\"",
-            "        Value: \"${13:String}\"",
-            "    TrustStoreArn: \"${14:String}\"",
-            "    UserAccessLoggingSettingsArn: \"${15:String}\"",
-            "    UserSettingsArn: \"${16:String}\""
+            "      - Key: \"${13:String}\"",
+            "        Value: \"${14:String}\"",
+            "    TrustStoreArn: \"${15:String}\"",
+            "    UserAccessLoggingSettingsArn: \"${16:String}\"",
+            "    UserSettingsArn: \"${17:String}\""
         ],
         "description": [
             "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspacesweb-portal.html",

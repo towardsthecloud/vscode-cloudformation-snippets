@@ -5053,6 +5053,7 @@
       "Password": "String",
       "ShortName": "String",
       "Size": "String",
+      "Tags": "Tag",
       "VpcSettings": "VpcSettings"
     }
   },
@@ -6805,6 +6806,7 @@
       "ClusterName": "String",
       "DisableSessionTags": "Boolean",
       "Namespace": "String",
+      "Policy": "String",
       "RoleArn": "String",
       "ServiceAccount": "String",
       "Tags": "Tag",
@@ -8496,6 +8498,7 @@
       "StreamsKmsKey": "StreamsKmsKey",
       "StreamsKmsRole": "String",
       "Tags": "Tag",
+      "TelemetrySinkConfigArn": "String",
       "TrackingConfigArn": "String"
     }
   },
@@ -11043,6 +11046,16 @@
       "ClusterName": "String",
       "Tags": "Map",
       "VpcConfigs": "VpcConfig"
+    }
+  },
+  "AWS::MSK::Topic": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-topic.html",
+    "Properties": {
+      "ClusterArn": "String",
+      "Configs": "String",
+      "PartitionCount": "Integer",
+      "ReplicationFactor": "Integer",
+      "TopicName": "String"
     }
   },
   "AWS::MSK::VpcConnection": {
@@ -14980,6 +14993,18 @@
       "Topics": "Topic"
     }
   },
+  "AWS::SES::CustomVerificationEmailTemplate": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-customverificationemailtemplate.html",
+    "Properties": {
+      "FailureRedirectionURL": "String",
+      "FromEmailAddress": "String",
+      "SuccessRedirectionURL": "String",
+      "Tags": "Tag",
+      "TemplateContent": "String",
+      "TemplateName": "String",
+      "TemplateSubject": "String"
+    }
+  },
   "AWS::SES::DedicatedIpPool": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ses-dedicatedippool.html",
     "Properties": {
@@ -17476,6 +17501,7 @@
       "IpAccessSettingsArn": "String",
       "MaxConcurrentSessions": "Double",
       "NetworkSettingsArn": "String",
+      "PortalCustomDomain": "String",
       "SessionLoggerArn": "String",
       "Tags": "Tag",
       "TrustStoreArn": "String",

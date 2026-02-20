@@ -2975,6 +2975,18 @@
       "Unit": "String"
     }
   },
+  "AWS::CloudWatch::AlarmMuteRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alarmmuterule.html",
+    "Properties": {
+      "Description": "String",
+      "ExpireDate": "String",
+      "MuteTargets": "MuteTargets",
+      "Name": "String",
+      "Rule": "Rule",
+      "StartDate": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::CloudWatch::AnomalyDetector": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-anomalydetector.html",
     "Properties": {
@@ -3816,6 +3828,17 @@
       "InstanceId": "String",
       "IntegrationArn": "String",
       "IntegrationType": "String"
+    }
+  },
+  "AWS::Connect::Notification": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-notification.html",
+    "Properties": {
+      "Content": "NotificationContent",
+      "ExpiresAt": "String",
+      "InstanceArn": "String",
+      "Priority": "String",
+      "Recipients": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Connect::PhoneNumber": {
@@ -5003,7 +5026,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-agentspace.html",
     "Properties": {
       "Description": "String",
-      "Name": "String"
+      "Name": "String",
+      "OperatorApp": "OperatorApp"
     }
   },
   "AWS::DevOpsAgent::Association": {
@@ -5013,6 +5037,13 @@
       "Configuration": "ServiceConfiguration",
       "LinkedAssociationIds": "String",
       "ServiceId": "String"
+    }
+  },
+  "AWS::DevOpsAgent::Service": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html",
+    "Properties": {
+      "ServiceDetails": "ServiceDetails",
+      "ServiceType": "String"
     }
   },
   "AWS::DevOpsGuru::LogAnomalyDetectionIntegration": {
@@ -5481,6 +5512,16 @@
       "Cidr": "String",
       "IpamPoolId": "String",
       "NetmaskLength": "Integer"
+    }
+  },
+  "AWS::EC2::IPAMPrefixListResolver": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolver.html",
+    "Properties": {
+      "AddressFamily": "String",
+      "Description": "String",
+      "IpamId": "String",
+      "Rules": "IpamPrefixListResolverRule",
+      "Tags": "Tag"
     }
   },
   "AWS::EC2::IPAMResourceDiscovery": {
@@ -6299,6 +6340,7 @@
   "AWS::EC2::VPCPeeringConnection": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html",
     "Properties": {
+      "AssumeRoleRegion": "String",
       "PeerOwnerId": "String",
       "PeerRegion": "String",
       "PeerRoleArn": "String",
@@ -11381,6 +11423,7 @@
       "CdiInputSpecification": "CdiInputSpecification",
       "ChannelClass": "String",
       "ChannelEngineVersion": "ChannelEngineVersionRequest",
+      "ChannelSecurityGroups": "String",
       "Destinations": "OutputDestination",
       "DryRun": "Boolean",
       "EncoderSettings": "EncoderSettings",
@@ -15861,7 +15904,6 @@
       "Domain": "String",
       "DriftCheckBaselines": "DriftCheckBaselines",
       "InferenceSpecification": "InferenceSpecification",
-      "LastModifiedTime": "String",
       "MetadataProperties": "MetadataProperties",
       "ModelApprovalStatus": "String",
       "ModelCard": "ModelCard",
@@ -16705,6 +16747,29 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Timestream::InfluxDBCluster": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbcluster.html",
+    "Properties": {
+      "AllocatedStorage": "Integer",
+      "Bucket": "String",
+      "DbInstanceType": "String",
+      "DbParameterGroupIdentifier": "String",
+      "DbStorageType": "String",
+      "DeploymentType": "String",
+      "FailoverMode": "String",
+      "LogDeliveryConfiguration": "LogDeliveryConfiguration",
+      "Name": "String",
+      "NetworkType": "String",
+      "Organization": "String",
+      "Password": "String",
+      "Port": "Integer",
+      "PubliclyAccessible": "Boolean",
+      "Tags": "Tag",
+      "Username": "String",
+      "VpcSecurityGroupIds": "String",
+      "VpcSubnetIds": "String"
+    }
+  },
   "AWS::Timestream::InfluxDBInstance": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbinstance.html",
     "Properties": {
@@ -16883,6 +16948,7 @@
     "Properties": {
       "DeletionProtection": "DeletionProtection",
       "Description": "String",
+      "EncryptionSettings": "EncryptionSettings",
       "Schema": "SchemaDefinition",
       "Tags": "Tag",
       "ValidationSettings": "ValidationSettings"

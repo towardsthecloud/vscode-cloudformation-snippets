@@ -2287,6 +2287,7 @@
   "AWS::Cases::Field": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-field.html",
     "Properties": {
+      "Attributes": "FieldAttributes",
       "Description": "String",
       "DomainId": "String",
       "Name": "String",
@@ -3567,6 +3568,21 @@
       "TaskConfig": "TaskConfig"
     }
   },
+  "AWS::ComputeOptimizer::AutomationRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-computeoptimizer-automationrule.html",
+    "Properties": {
+      "Criteria": "Criteria",
+      "Description": "String",
+      "Name": "String",
+      "OrganizationConfiguration": "OrganizationConfiguration",
+      "Priority": "String",
+      "RecommendedActionTypes": "String",
+      "RuleType": "String",
+      "Schedule": "Schedule",
+      "Status": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Config::AggregationAuthorization": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-aggregationauthorization.html",
     "Properties": {
@@ -4153,6 +4169,7 @@
       "FlowDefinition": "FlowDefinition",
       "ObjectTypeName": "String",
       "ObjectTypeNames": "ObjectTypeMapping",
+      "Scope": "String",
       "Tags": "Tag",
       "Uri": "String"
     }
@@ -4170,6 +4187,7 @@
       "MaxProfileObjectCount": "Integer",
       "ObjectTypeName": "String",
       "SourceLastUpdatedTimestampFormat": "String",
+      "SourcePriority": "Integer",
       "Tags": "Tag",
       "TemplateId": "String"
     }
@@ -12565,6 +12583,16 @@
       "Type": "String"
     }
   },
+  "AWS::OpenSearchServerless::CollectionGroup": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collectiongroup.html",
+    "Properties": {
+      "CapacityLimits": "CapacityLimits",
+      "Description": "String",
+      "Name": "String",
+      "StandbyReplicas": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::OpenSearchServerless::Index": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-index.html",
     "Properties": {
@@ -12619,6 +12647,7 @@
       "DataSources": "DataSource",
       "Endpoint": "String",
       "IamIdentityCenterOptions": "IamIdentityCenterOptions",
+      "KmsKeyArn": "String",
       "Name": "String",
       "Tags": "Tag"
     }
@@ -12867,7 +12896,8 @@
     "Properties": {
       "CertificateAuthorityArn": "String",
       "MobileDeviceManagement": "MobileDeviceManagement",
-      "Tags": "Map"
+      "Tags": "Map",
+      "VpcEndpointId": "String"
     }
   },
   "AWS::PCS::Cluster": {

@@ -2051,6 +2051,14 @@
       "Tags": "Map"
     }
   },
+  "AWS::BedrockAgentCore::BrowserProfile": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browserprofile.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "Tags": "Map"
+    }
+  },
   "AWS::BedrockAgentCore::CodeInterpreterCustom": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html",
     "Properties": {
@@ -2059,6 +2067,16 @@
       "Name": "String",
       "NetworkConfiguration": "CodeInterpreterNetworkConfiguration",
       "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::Evaluator": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-evaluator.html",
+    "Properties": {
+      "Description": "String",
+      "EvaluatorConfig": "EvaluatorConfig",
+      "EvaluatorName": "String",
+      "Level": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::BedrockAgentCore::Gateway": {
@@ -2100,6 +2118,37 @@
       "Tags": "Map"
     }
   },
+  "AWS::BedrockAgentCore::OnlineEvaluationConfig": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-onlineevaluationconfig.html",
+    "Properties": {
+      "DataSourceConfig": "DataSourceConfig",
+      "Description": "String",
+      "EvaluationExecutionRoleArn": "String",
+      "Evaluators": "EvaluatorReference",
+      "OnlineEvaluationConfigName": "String",
+      "Rule": "Rule",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::BedrockAgentCore::Policy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-policy.html",
+    "Properties": {
+      "Definition": "PolicyDefinition",
+      "Description": "String",
+      "Name": "String",
+      "PolicyEngineId": "String",
+      "ValidationMode": "String"
+    }
+  },
+  "AWS::BedrockAgentCore::PolicyEngine": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-policyengine.html",
+    "Properties": {
+      "Description": "String",
+      "EncryptionKeyArn": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::BedrockAgentCore::Runtime": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-runtime.html",
     "Properties": {
@@ -2130,6 +2179,13 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-workloadidentity.html",
     "Properties": {
       "AllowedResourceOauth2ReturnUrls": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::BedrockMantle::Project": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockmantle-project.html",
+    "Properties": {
       "Name": "String",
       "Tags": "Tag"
     }
@@ -3736,6 +3792,22 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Connect::ContactFlowModuleAlias": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-contactflowmodulealias.html",
+    "Properties": {
+      "ContactFlowModuleId": "String",
+      "ContactFlowModuleVersion": "Integer",
+      "Description": "String",
+      "Name": "String"
+    }
+  },
+  "AWS::Connect::ContactFlowModuleVersion": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-contactflowmoduleversion.html",
+    "Properties": {
+      "ContactFlowModuleId": "String",
+      "Description": "String"
+    }
+  },
   "AWS::Connect::ContactFlowVersion": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-contactflowversion.html",
     "Properties": {
@@ -3952,6 +4024,7 @@
     "Properties": {
       "AllowedAccessControlHierarchyGroupId": "String",
       "AllowedAccessControlTags": "Tag",
+      "AllowedFlowModules": "FlowModule",
       "Applications": "Application",
       "Description": "String",
       "GranularAccessControlConfiguration": "GranularAccessControlConfiguration",
@@ -4601,6 +4674,8 @@
   "AWS::DataSync::LocationFSxWindows": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-locationfsxwindows.html",
     "Properties": {
+      "CmkSecretConfig": "CmkSecretConfig",
+      "CustomSecretConfig": "CustomSecretConfig",
       "Domain": "String",
       "FsxFilesystemArn": "String",
       "Password": "String",
@@ -4616,6 +4691,8 @@
       "AgentArns": "String",
       "AuthenticationType": "String",
       "BlockSize": "Long",
+      "CmkSecretConfig": "CmkSecretConfig",
+      "CustomSecretConfig": "CustomSecretConfig",
       "KerberosKeytab": "String",
       "KerberosKrb5Conf": "String",
       "KerberosPrincipal": "String",
@@ -5078,6 +5155,88 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsguru-resourcecollection.html",
     "Properties": {
       "ResourceCollectionFilter": "ResourceCollectionFilter"
+    }
+  },
+  "AWS::DirectConnect::Connection": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-connection.html",
+    "Properties": {
+      "Bandwidth": "String",
+      "ConnectionName": "String",
+      "LagId": "String",
+      "Location": "String",
+      "ProviderName": "String",
+      "RequestMACSec": "Boolean",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::DirectConnect::DirectConnectGateway": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-directconnectgateway.html",
+    "Properties": {
+      "AmazonSideAsn": "String",
+      "DirectConnectGatewayName": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::DirectConnect::DirectConnectGatewayAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-directconnectgatewayassociation.html",
+    "Properties": {
+      "AcceptDirectConnectGatewayAssociationProposalRoleArn": "String",
+      "AllowedPrefixesToDirectConnectGateway": "String",
+      "AssociatedGatewayId": "String",
+      "DirectConnectGatewayId": "String"
+    }
+  },
+  "AWS::DirectConnect::Lag": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-lag.html",
+    "Properties": {
+      "ConnectionsBandwidth": "String",
+      "LagName": "String",
+      "Location": "String",
+      "MinimumLinks": "Integer",
+      "ProviderName": "String",
+      "RequestMACSec": "Boolean",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::DirectConnect::PrivateVirtualInterface": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-privatevirtualinterface.html",
+    "Properties": {
+      "AllocatePrivateVirtualInterfaceRoleArn": "String",
+      "BgpPeers": "BgpPeer",
+      "ConnectionId": "String",
+      "DirectConnectGatewayId": "String",
+      "EnableSiteLink": "Boolean",
+      "Mtu": "Integer",
+      "Tags": "Tag",
+      "VirtualGatewayId": "String",
+      "VirtualInterfaceName": "String",
+      "Vlan": "Integer"
+    }
+  },
+  "AWS::DirectConnect::PublicVirtualInterface": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-publicvirtualinterface.html",
+    "Properties": {
+      "AllocatePublicVirtualInterfaceRoleArn": "String",
+      "BgpPeers": "BgpPeer",
+      "ConnectionId": "String",
+      "RouteFilterPrefixes": "String",
+      "Tags": "Tag",
+      "VirtualInterfaceName": "String",
+      "Vlan": "Integer"
+    }
+  },
+  "AWS::DirectConnect::TransitVirtualInterface": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-transitvirtualinterface.html",
+    "Properties": {
+      "AllocateTransitVirtualInterfaceRoleArn": "String",
+      "BgpPeers": "BgpPeer",
+      "ConnectionId": "String",
+      "DirectConnectGatewayId": "String",
+      "EnableSiteLink": "Boolean",
+      "Mtu": "Integer",
+      "Tags": "Tag",
+      "VirtualInterfaceName": "String",
+      "Vlan": "Integer"
     }
   },
   "AWS::DirectoryService::MicrosoftAD": {
@@ -7912,6 +8071,7 @@
       "MetricGroups": "String",
       "NewGameSessionProtectionPolicy": "String",
       "PerInstanceContainerGroupDefinitionName": "String",
+      "PlayerGatewayMode": "String",
       "ScalingPolicies": "ScalingPolicy",
       "Tags": "Tag"
     }
@@ -7951,6 +8111,8 @@
       "NewGameSessionProtectionPolicy": "String",
       "PeerVpcAwsAccountId": "String",
       "PeerVpcId": "String",
+      "PlayerGatewayConfiguration": "PlayerGatewayConfiguration",
+      "PlayerGatewayMode": "String",
       "ResourceCreationLimitPolicy": "ResourceCreationLimitPolicy",
       "RuntimeConfiguration": "RuntimeConfiguration",
       "ScalingPolicies": "ScalingPolicy",
@@ -12303,6 +12465,7 @@
       "DbServers": "String",
       "Description": "String",
       "DisplayName": "String",
+      "IamRoles": "IamRole",
       "IsMtlsEnabledVmCluster": "Boolean",
       "LicenseModel": "String",
       "MaintenanceWindow": "MaintenanceWindow",
@@ -12345,6 +12508,7 @@
       "DisplayName": "String",
       "GiVersion": "String",
       "Hostname": "String",
+      "IamRoles": "IamRole",
       "IsLocalBackupEnabled": "Boolean",
       "IsSparseDiskgroupEnabled": "Boolean",
       "LicenseModel": "String",
@@ -12364,12 +12528,17 @@
       "AvailabilityZoneId": "String",
       "BackupSubnetCidr": "String",
       "ClientSubnetCidr": "String",
+      "CrossRegionS3RestoreSources": "String",
       "CustomDomainName": "String",
       "DefaultDnsPrefix": "String",
       "DeleteAssociatedResources": "Boolean",
       "DisplayName": "String",
+      "KmsAccess": "String",
+      "KmsPolicyDocument": "String",
       "S3Access": "String",
       "S3PolicyDocument": "String",
+      "StsAccess": "String",
+      "StsPolicyDocument": "String",
       "Tags": "Tag",
       "ZeroEtlAccess": "String"
     }
@@ -12381,6 +12550,7 @@
       "DisplayName": "String",
       "OdbNetworkId": "String",
       "PeerNetworkId": "String",
+      "PeerNetworkRouteTableIds": "String",
       "Tags": "Tag"
     }
   },

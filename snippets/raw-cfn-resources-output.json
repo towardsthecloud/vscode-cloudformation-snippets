@@ -2115,6 +2115,7 @@
       "MemoryExecutionRoleArn": "String",
       "MemoryStrategies": "MemoryStrategy",
       "Name": "String",
+      "StreamDeliveryResources": "StreamDeliveryResources",
       "Tags": "Map"
     }
   },
@@ -2575,6 +2576,29 @@
       "MembershipIdentifier": "String",
       "Parameters": "Parameters",
       "PrivacyBudgetType": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::CleanRoomsML::ConfiguredModelAlgorithm": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanroomsml-configuredmodelalgorithm.html",
+    "Properties": {
+      "Description": "String",
+      "InferenceContainerConfig": "InferenceContainerConfig",
+      "KmsKeyArn": "String",
+      "Name": "String",
+      "RoleArn": "String",
+      "Tags": "Tag",
+      "TrainingContainerConfig": "ContainerConfig"
+    }
+  },
+  "AWS::CleanRoomsML::ConfiguredModelAlgorithmAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanroomsml-configuredmodelalgorithmassociation.html",
+    "Properties": {
+      "ConfiguredModelAlgorithmArn": "String",
+      "Description": "String",
+      "MembershipIdentifier": "String",
+      "Name": "String",
+      "PrivacyConfiguration": "PrivacyConfiguration",
       "Tags": "Tag"
     }
   },
@@ -3964,6 +3988,7 @@
   "AWS::Connect::Queue": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-queue.html",
     "Properties": {
+      "AdditionalEmailAddresses": "EmailAddress",
       "Description": "String",
       "HoursOfOperationArn": "String",
       "InstanceArn": "String",
@@ -7283,7 +7308,6 @@
       "AutomaticFailoverEnabled": "Boolean",
       "CacheNodeType": "String",
       "CacheParameterGroupName": "String",
-      "CacheSecurityGroupNames": "String",
       "CacheSubnetGroupName": "String",
       "ClusterMode": "String",
       "DataTieringEnabled": "Boolean",
@@ -12613,6 +12637,12 @@
       "Tags": "Tag"
     }
   },
+  "AWS::ObservabilityAdmin::TelemetryEnrichment": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetryenrichment.html",
+    "Properties": {
+      "Scope": "String"
+    }
+  },
   "AWS::ObservabilityAdmin::TelemetryPipelines": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-observabilityadmin-telemetrypipelines.html",
     "Properties": {
@@ -12831,6 +12861,7 @@
       "AdvancedSecurityOptions": "AdvancedSecurityOptionsInput",
       "ClusterConfig": "ClusterConfig",
       "CognitoOptions": "CognitoOptions",
+      "DeploymentStrategyOptions": "DeploymentStrategyOptions",
       "DomainEndpointOptions": "DomainEndpointOptions",
       "DomainName": "String",
       "EBSOptions": "EBSOptions",
@@ -14740,6 +14771,92 @@
       "HostedZoneId": "String",
       "HostedZoneName": "String",
       "RecordSets": "RecordSet"
+    }
+  },
+  "AWS::Route53GlobalResolver::AccessSource": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-accesssource.html",
+    "Properties": {
+      "Cidr": "String",
+      "ClientToken": "String",
+      "DnsViewId": "String",
+      "IpAddressType": "String",
+      "Name": "String",
+      "Protocol": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Route53GlobalResolver::AccessToken": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-accesstoken.html",
+    "Properties": {
+      "ClientToken": "String",
+      "DnsViewId": "String",
+      "ExpiresAt": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Route53GlobalResolver::DnsView": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-dnsview.html",
+    "Properties": {
+      "ClientToken": "String",
+      "Description": "String",
+      "DnssecValidation": "String",
+      "EdnsClientSubnet": "String",
+      "FirewallRulesFailOpen": "String",
+      "GlobalResolverId": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Route53GlobalResolver::FirewallDomainList": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-firewalldomainlist.html",
+    "Properties": {
+      "ClientToken": "String",
+      "Description": "String",
+      "DomainFileUrl": "String",
+      "Domains": "String",
+      "GlobalResolverId": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Route53GlobalResolver::FirewallRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-firewallrule.html",
+    "Properties": {
+      "Action": "String",
+      "BlockOverrideDnsType": "String",
+      "BlockOverrideDomain": "String",
+      "BlockOverrideTtl": "Integer",
+      "BlockResponse": "String",
+      "ClientToken": "String",
+      "ConfidenceThreshold": "String",
+      "Description": "String",
+      "DnsAdvancedProtection": "String",
+      "DnsViewId": "String",
+      "FirewallDomainListId": "String",
+      "Name": "String",
+      "Priority": "Integer",
+      "QType": "String"
+    }
+  },
+  "AWS::Route53GlobalResolver::GlobalResolver": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-globalresolver.html",
+    "Properties": {
+      "ClientToken": "String",
+      "Description": "String",
+      "IpAddressType": "String",
+      "Name": "String",
+      "ObservabilityRegion": "String",
+      "Regions": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Route53GlobalResolver::HostedZoneAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53globalresolver-hostedzoneassociation.html",
+    "Properties": {
+      "HostedZoneId": "String",
+      "Name": "String",
+      "ResourceArn": "String"
     }
   },
   "AWS::Route53Profiles::Profile": {

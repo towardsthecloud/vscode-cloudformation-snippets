@@ -1822,11 +1822,24 @@
       "Tags": "Map"
     }
   },
+  "AWS::Batch::QuotaShare": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-quotashare.html",
+    "Properties": {
+      "CapacityLimits": "QuotaShareCapacityLimit",
+      "JobQueue": "String",
+      "PreemptionConfiguration": "QuotaSharePreemptionConfiguration",
+      "QuotaShareName": "String",
+      "ResourceSharingConfiguration": "QuotaShareResourceSharingConfiguration",
+      "State": "String",
+      "Tags": "Map"
+    }
+  },
   "AWS::Batch::SchedulingPolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-schedulingpolicy.html",
     "Properties": {
       "FairsharePolicy": "FairsharePolicy",
       "Name": "String",
+      "QuotaSharePolicy": "QuotaSharePolicy",
       "Tags": "Map"
     }
   },
@@ -5013,6 +5026,7 @@
   "AWS::Deadline::Farm": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-deadline-farm.html",
     "Properties": {
+      "CostScaleFactor": "Double",
       "Description": "String",
       "DisplayName": "String",
       "KmsKeyArn": "String",
@@ -5724,6 +5738,17 @@
       "IpamId": "String",
       "Rules": "IpamPrefixListResolverRule",
       "Tags": "Tag"
+    }
+  },
+  "AWS::EC2::IPAMPrefixListResolverTarget": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamprefixlistresolvertarget.html",
+    "Properties": {
+      "DesiredVersion": "Long",
+      "IpamPrefixListResolverId": "String",
+      "PrefixListId": "String",
+      "PrefixListRegion": "String",
+      "Tags": "Tag",
+      "TrackLatestVersion": "Boolean"
     }
   },
   "AWS::EC2::IPAMResourceDiscovery": {
@@ -7587,6 +7612,14 @@
       "VPCOptions": "VPCOptions"
     }
   },
+  "AWS::ElementalInference::Feed": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elementalinference-feed.html",
+    "Properties": {
+      "Name": "String",
+      "Outputs": "GetOutput",
+      "Tags": "Map"
+    }
+  },
   "AWS::EntityResolution::IdMappingWorkflow": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-entityresolution-idmappingworkflow.html",
     "Properties": {
@@ -8263,6 +8296,22 @@
       "ClientAffinity": "String",
       "PortRanges": "PortRange",
       "Protocol": "String"
+    }
+  },
+  "AWS::Glue::Catalog": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-catalog.html",
+    "Properties": {
+      "AllowFullTableExternalDataAccess": "String",
+      "CatalogProperties": "CatalogProperties",
+      "CreateDatabaseDefaultPermissions": "PrincipalPermissions",
+      "CreateTableDefaultPermissions": "PrincipalPermissions",
+      "Description": "String",
+      "FederatedCatalog": "FederatedCatalog",
+      "Name": "String",
+      "OverwriteChildResourcePermissionsWithDefault": "String",
+      "Parameters": "Map",
+      "Tags": "Tag",
+      "TargetRedshiftCatalog": "TargetRedshiftCatalog"
     }
   },
   "AWS::Glue::Classifier": {
@@ -11457,6 +11506,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flow.html",
     "Properties": {
       "AvailabilityZone": "String",
+      "EncodingConfig": "EncodingConfig",
       "FlowSize": "String",
       "Maintenance": "Maintenance",
       "MediaStreams": "MediaStream",
@@ -11465,6 +11515,7 @@
       "Source": "Source",
       "SourceFailoverConfig": "FailoverConfig",
       "SourceMonitoringConfig": "SourceMonitoringConfig",
+      "Tags": "Tag",
       "VpcInterfaces": "VpcInterface"
     }
   },
@@ -11477,7 +11528,8 @@
       "EntitlementStatus": "String",
       "FlowArn": "String",
       "Name": "String",
-      "Subscribers": "String"
+      "Subscribers": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::MediaConnect::FlowOutput": {
@@ -11502,6 +11554,7 @@
       "RouterIntegrationTransitEncryption": "FlowTransitEncryption",
       "SmoothingLatency": "Integer",
       "StreamId": "String",
+      "Tags": "Tag",
       "VpcInterfaceAttachment": "VpcInterfaceAttachment"
     }
   },
@@ -11510,7 +11563,6 @@
     "Properties": {
       "Decryption": "Encryption",
       "Description": "String",
-      "EntitlementArn": "String",
       "FlowArn": "String",
       "GatewayBridgeSource": "GatewayBridgeSource",
       "IngestPort": "Integer",
@@ -11519,11 +11571,10 @@
       "MinLatency": "Integer",
       "Name": "String",
       "Protocol": "String",
-      "SenderControlPort": "Integer",
-      "SenderIpAddress": "String",
       "SourceListenerAddress": "String",
       "SourceListenerPort": "Integer",
       "StreamId": "String",
+      "Tags": "Tag",
       "VpcInterfaceName": "String",
       "WhitelistCidr": "String"
     }
@@ -11631,6 +11682,7 @@
       "Destinations": "OutputDestination",
       "DryRun": "Boolean",
       "EncoderSettings": "EncoderSettings",
+      "InferenceSettings": "InferenceSettings",
       "InputAttachments": "InputAttachment",
       "InputSpecification": "InputSpecification",
       "LinkedChannelSettings": "LinkedChannelSettings",
@@ -15103,6 +15155,8 @@
       "AnalyticsConfigurations": "AnalyticsConfiguration",
       "BucketEncryption": "BucketEncryption",
       "BucketName": "String",
+      "BucketNamePrefix": "String",
+      "BucketNamespace": "String",
       "CorsConfiguration": "CorsConfiguration",
       "IntelligentTieringConfigurations": "IntelligentTieringConfiguration",
       "InventoryConfigurations": "InventoryConfiguration",

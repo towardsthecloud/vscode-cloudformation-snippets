@@ -1136,6 +1136,9 @@
       "ImageName": "String",
       "InstanceType": "String",
       "Name": "String",
+      "RootVolumeConfig": "VolumeConfig",
+      "SoftwaresToInstall": "String",
+      "SoftwaresToUninstall": "String",
       "Tags": "Tag",
       "VpcConfig": "VpcConfig"
     }
@@ -1490,6 +1493,7 @@
     "Properties": {
       "AutoScalingGroupName": "String",
       "AvailabilityZoneDistribution": "AvailabilityZoneDistribution",
+      "AvailabilityZoneIds": "String",
       "AvailabilityZoneImpairmentPolicy": "AvailabilityZoneImpairmentPolicy",
       "AvailabilityZones": "String",
       "CapacityRebalance": "Boolean",
@@ -2102,6 +2106,7 @@
       "InterceptorConfigurations": "GatewayInterceptorConfiguration",
       "KmsKeyArn": "String",
       "Name": "String",
+      "PolicyEngineConfiguration": "GatewayPolicyEngineConfiguration",
       "ProtocolConfiguration": "GatewayProtocolConfiguration",
       "ProtocolType": "String",
       "RoleArn": "String",
@@ -2139,6 +2144,7 @@
       "Description": "String",
       "EvaluationExecutionRoleArn": "String",
       "Evaluators": "EvaluatorReference",
+      "ExecutionStatus": "String",
       "OnlineEvaluationConfigName": "String",
       "Rule": "Rule",
       "Tags": "Tag"
@@ -4303,6 +4309,17 @@
       "TemplateId": "String"
     }
   },
+  "AWS::CustomerProfiles::Recommender": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-recommender.html",
+    "Properties": {
+      "Description": "String",
+      "DomainName": "String",
+      "RecommenderConfig": "RecommenderConfig",
+      "RecommenderName": "String",
+      "RecommenderRecipeName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::CustomerProfiles::SegmentDefinition": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-segmentdefinition.html",
     "Properties": {
@@ -5597,6 +5614,7 @@
       "LaunchTemplateConfigs": "FleetLaunchTemplateConfigRequest",
       "OnDemandOptions": "OnDemandOptionsRequest",
       "ReplaceUnhealthyInstances": "Boolean",
+      "ReservedCapacityOptions": "ReservedCapacityOptionsRequest",
       "SpotOptions": "SpotOptionsRequest",
       "TagSpecifications": "TagSpecification",
       "TargetCapacitySpecification": "TargetCapacitySpecificationRequest",
@@ -6194,6 +6212,13 @@
     "Properties": {
       "SpotFleetRequestConfigData": "SpotFleetRequestConfigData",
       "Tags": "Tag"
+    }
+  },
+  "AWS::EC2::SqlHaStandbyDetectedInstance": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-sqlhastandbydetectedinstance.html",
+    "Properties": {
+      "InstanceId": "String",
+      "SqlServerCredentials": "String"
     }
   },
   "AWS::EC2::Subnet": {
@@ -7083,14 +7108,14 @@
     }
   },
   "AWS::EMR::Cluster": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html",
     "Properties": {
       "AdditionalInfo": "Json",
       "Applications": "Application",
       "AutoScalingRole": "String",
       "AutoTerminationPolicy": "AutoTerminationPolicy",
       "BootstrapActions": "BootstrapActionConfig",
-      "Configurations": "Configuration",
+      "Configurations": "EMRConfiguration",
       "CustomAmiId": "String",
       "EbsRootVolumeIops": "Integer",
       "EbsRootVolumeSize": "Integer",
@@ -7101,6 +7126,7 @@
       "LogEncryptionKmsKeyId": "String",
       "LogUri": "String",
       "ManagedScalingPolicy": "ManagedScalingPolicy",
+      "MonitoringConfiguration": "MonitoringConfiguration",
       "Name": "String",
       "OSReleaseLabel": "String",
       "PlacementGroupConfigs": "PlacementGroupConfig",
@@ -7110,8 +7136,7 @@
       "ServiceRole": "String",
       "StepConcurrencyLevel": "Integer",
       "Steps": "StepConfig",
-      "Tags": "Tag",
-      "VisibleToAllUsers": "Boolean"
+      "Tags": "Tag"
     }
   },
   "AWS::EMR::InstanceFleetConfig": {
@@ -9412,6 +9437,18 @@
       "Tags": "Map"
     }
   },
+  "AWS::Interconnect::Connection": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-interconnect-connection.html",
+    "Properties": {
+      "ActivationKey": "String",
+      "AttachPoint": "AttachPoint",
+      "Bandwidth": "String",
+      "Description": "String",
+      "EnvironmentId": "String",
+      "RemoteOwnerAccount": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::InternetMonitor::Monitor": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-internetmonitor-monitor.html",
     "Properties": {
@@ -11118,6 +11155,7 @@
   "AWS::Logs::LogGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html",
     "Properties": {
+      "BearerTokenAuthenticationEnabled": "Boolean",
       "DataProtectionPolicy": "Json",
       "DeletionProtectionEnabled": "Boolean",
       "FieldIndexPolicies": "Json",
@@ -12832,7 +12870,8 @@
       "Name": "String",
       "StandbyReplicas": "String",
       "Tags": "Tag",
-      "Type": "String"
+      "Type": "String",
+      "VectorOptions": "VectorOptions"
     }
   },
   "AWS::OpenSearchServerless::CollectionGroup": {
@@ -17297,6 +17336,14 @@
       "OnExceptionSteps": "WorkflowStep",
       "Steps": "WorkflowStep",
       "Tags": "Tag"
+    }
+  },
+  "AWS::UXC::AccountCustomization": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-uxc-accountcustomization.html",
+    "Properties": {
+      "AccountColor": "String",
+      "VisibleRegions": "String",
+      "VisibleServices": "String"
     }
   },
   "AWS::VerifiedPermissions::IdentitySource": {

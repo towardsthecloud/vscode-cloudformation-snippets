@@ -2,6 +2,11 @@ Changelog
 =========
 
 
+5.99.0 (2026-03-20)
+-------------------
+- Build: auto-update snippets to version: 5.99.0. [Github Actions]
+
+
 5.98.0 (2026-03-13)
 -------------------
 - Build: auto-update snippets to version: 5.98.0. [Github Actions]

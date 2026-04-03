@@ -706,7 +706,6 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-stage.html",
     "Properties": {
       "AccessLogSettings": "AccessLogSettings",
-      "AccessPolicyId": "String",
       "ApiId": "String",
       "AutoDeploy": "Boolean",
       "ClientCertificateId": "String",
@@ -1100,6 +1099,7 @@
     "Properties": {
       "ComputeCapacity": "ComputeCapacity",
       "Description": "String",
+      "DisableIMDSV1": "Boolean",
       "DisconnectTimeoutInSeconds": "Integer",
       "DisplayName": "String",
       "DomainJoinInfo": "DomainJoinInfo",
@@ -1115,6 +1115,7 @@
       "MaxUserDurationInSeconds": "Integer",
       "Name": "String",
       "Platform": "String",
+      "RootVolumeConfig": "VolumeConfig",
       "SessionScriptS3Location": "S3Location",
       "StreamView": "String",
       "Tags": "Tag",
@@ -2054,6 +2055,14 @@
       "Description": "String",
       "PromptArn": "String",
       "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::ApiKeyCredentialProvider": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-apikeycredentialprovider.html",
+    "Properties": {
+      "ApiKey": "String",
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::BedrockAgentCore::BrowserCustom": {
@@ -4328,6 +4337,7 @@
       "DomainName": "String",
       "SegmentDefinitionName": "String",
       "SegmentGroups": "SegmentGroup",
+      "SegmentSort": "SegmentSort",
       "SegmentSqlQuery": "String",
       "Tags": "Tag"
     }
@@ -4993,6 +5003,7 @@
       "Name": "String",
       "ProjectProfileId": "String",
       "ProjectProfileVersion": "String",
+      "ResourceTags": "ResourceTag",
       "UserParameters": "EnvironmentConfigurationUserParameter"
     }
   },
@@ -5008,11 +5019,14 @@
   "AWS::DataZone::ProjectProfile": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-projectprofile.html",
     "Properties": {
+      "AllowCustomProjectResourceTags": "Boolean",
       "Description": "String",
       "DomainIdentifier": "String",
       "DomainUnitIdentifier": "String",
       "EnvironmentConfigurations": "EnvironmentConfiguration",
       "Name": "String",
+      "ProjectResourceTags": "ResourceTagParameter",
+      "ProjectResourceTagsDescription": "String",
       "Status": "String",
       "UseDefaultConfigurations": "Boolean"
     }
@@ -5177,8 +5191,10 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-agentspace.html",
     "Properties": {
       "Description": "String",
+      "KmsKeyArn": "String",
       "Name": "String",
-      "OperatorApp": "OperatorApp"
+      "OperatorApp": "OperatorApp",
+      "Tags": "Tag"
     }
   },
   "AWS::DevOpsAgent::Association": {
@@ -5193,8 +5209,10 @@
   "AWS::DevOpsAgent::Service": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html",
     "Properties": {
+      "KmsKeyArn": "String",
       "ServiceDetails": "ServiceDetails",
-      "ServiceType": "String"
+      "ServiceType": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::DevOpsGuru::LogAnomalyDetectionIntegration": {
@@ -6852,6 +6870,33 @@
       "DefaultCapacityProviderStrategy": "CapacityProviderStrategy"
     }
   },
+  "AWS::ECS::Daemon": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-daemon.html",
+    "Properties": {
+      "CapacityProviderArns": "String",
+      "ClusterArn": "String",
+      "DaemonName": "String",
+      "DaemonTaskDefinitionArn": "String",
+      "DeploymentConfiguration": "DaemonDeploymentConfiguration",
+      "EnableECSManagedTags": "Boolean",
+      "EnableExecuteCommand": "Boolean",
+      "PropagateTags": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ECS::DaemonTaskDefinition": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-daemontaskdefinition.html",
+    "Properties": {
+      "ContainerDefinitions": "DaemonContainerDefinition",
+      "Cpu": "String",
+      "ExecutionRoleArn": "String",
+      "Family": "String",
+      "Memory": "String",
+      "Tags": "Tag",
+      "TaskRoleArn": "String",
+      "Volumes": "Volume"
+    }
+  },
   "AWS::ECS::ExpressGatewayService": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-expressgatewayservice.html",
     "Properties": {
@@ -7091,7 +7136,8 @@
       "Tags": "Map",
       "Taints": "Taint",
       "UpdateConfig": "UpdateConfig",
-      "Version": "String"
+      "Version": "String",
+      "WarmPoolConfig": "WarmPoolConfig"
     }
   },
   "AWS::EKS::PodIdentityAssociation": {
@@ -7108,14 +7154,14 @@
     }
   },
   "AWS::EMR::Cluster": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html",
     "Properties": {
       "AdditionalInfo": "Json",
       "Applications": "Application",
       "AutoScalingRole": "String",
       "AutoTerminationPolicy": "AutoTerminationPolicy",
       "BootstrapActions": "BootstrapActionConfig",
-      "Configurations": "EMRConfiguration",
+      "Configurations": "Configuration",
       "CustomAmiId": "String",
       "EbsRootVolumeIops": "Integer",
       "EbsRootVolumeSize": "Integer",
@@ -7126,7 +7172,6 @@
       "LogEncryptionKmsKeyId": "String",
       "LogUri": "String",
       "ManagedScalingPolicy": "ManagedScalingPolicy",
-      "MonitoringConfiguration": "MonitoringConfiguration",
       "Name": "String",
       "OSReleaseLabel": "String",
       "PlacementGroupConfigs": "PlacementGroupConfig",
@@ -7136,7 +7181,8 @@
       "ServiceRole": "String",
       "StepConcurrencyLevel": "Integer",
       "Steps": "StepConfig",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "VisibleToAllUsers": "Boolean"
     }
   },
   "AWS::EMR::InstanceFleetConfig": {
@@ -7505,7 +7551,7 @@
     }
   },
   "AWS::ElasticLoadBalancing::LoadBalancer": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancing-loadbalancer.html",
     "Properties": {
       "AccessLoggingPolicy": "AccessLoggingPolicy",
       "AppCookieStickinessPolicy": "AppCookieStickinessPolicy",
@@ -12570,6 +12616,14 @@
       "Tags": "Tag"
     }
   },
+  "AWS::NovaAct::WorkflowDefinition": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-novaact-workflowdefinition.html",
+    "Properties": {
+      "Description": "String",
+      "ExportConfig": "WorkflowExportConfig",
+      "Name": "String"
+    }
+  },
   "AWS::ODB::CloudAutonomousVmCluster": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-odb-cloudautonomousvmcluster.html",
     "Properties": {
@@ -12758,6 +12812,15 @@
       "SseConfig": "SseConfig",
       "StoreFormat": "String",
       "StoreOptions": "StoreOptions",
+      "Tags": "Map"
+    }
+  },
+  "AWS::Omics::Configuration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-configuration.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "RunConfigurations": "RunConfigurations",
       "Tags": "Map"
     }
   },
@@ -16560,6 +16623,50 @@
       "SecretId": "String",
       "TargetId": "String",
       "TargetType": "String"
+    }
+  },
+  "AWS::SecurityAgent::AgentSpace": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-agentspace.html",
+    "Properties": {
+      "AwsResources": "AWSResources",
+      "CodeReviewSettings": "CodeReviewSettings",
+      "Description": "String",
+      "IntegratedResources": "IntegratedResource",
+      "KmsKeyId": "String",
+      "Name": "String",
+      "Tags": "Tag",
+      "TargetDomainIds": "String"
+    }
+  },
+  "AWS::SecurityAgent::Application": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-application.html",
+    "Properties": {
+      "DefaultKmsKeyId": "String",
+      "IdCConfiguration": "IdCConfiguration",
+      "RoleArn": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::SecurityAgent::Pentest": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-pentest.html",
+    "Properties": {
+      "AgentSpaceId": "String",
+      "Assets": "Assets",
+      "CodeRemediationStrategy": "String",
+      "ExcludeRiskTypes": "String",
+      "LogConfig": "CloudWatchLog",
+      "NetworkTrafficConfig": "NetworkTrafficConfig",
+      "ServiceRole": "String",
+      "Title": "String",
+      "VpcConfig": "VpcConfig"
+    }
+  },
+  "AWS::SecurityAgent::TargetDomain": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-targetdomain.html",
+    "Properties": {
+      "Tags": "Tag",
+      "TargetDomainName": "String",
+      "VerificationMethod": "String"
     }
   },
   "AWS::SecurityHub::AggregatorV2": {

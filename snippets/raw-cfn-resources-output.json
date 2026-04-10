@@ -861,6 +861,7 @@
     "Properties": {
       "ApplicationConfig": "ApplicationConfig",
       "ApplicationSourceConfig": "ApplicationSourceConfig",
+      "ApplicationType": "String",
       "Description": "String",
       "IframeConfig": "IframeConfig",
       "InitializationTimeout": "Integer",
@@ -1858,6 +1859,16 @@
       "Tags": "Map"
     }
   },
+  "AWS::BcmPricingCalculator::BillScenario": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bcmpricingcalculator-billscenario.html",
+    "Properties": {
+      "CostCategoryGroupSharingPreferenceArn": "String",
+      "ExpiresAt": "String",
+      "GroupSharingPreference": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Bedrock::Agent": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-agent.html",
     "Properties": {
@@ -1932,6 +1943,15 @@
       "Type": "String"
     }
   },
+  "AWS::Bedrock::DataAutomationLibrary": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibrary.html",
+    "Properties": {
+      "EncryptionConfiguration": "EncryptionConfiguration",
+      "LibraryDescription": "String",
+      "LibraryName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Bedrock::DataAutomationProject": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationproject.html",
     "Properties": {
@@ -1956,6 +1976,15 @@
       "Name": "String",
       "ServerSideEncryptionConfiguration": "ServerSideEncryptionConfiguration",
       "VectorIngestionConfiguration": "VectorIngestionConfiguration"
+    }
+  },
+  "AWS::Bedrock::EnforcedGuardrailConfiguration": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-enforcedguardrailconfiguration.html",
+    "Properties": {
+      "GuardrailIdentifier": "String",
+      "GuardrailVersion": "String",
+      "ModelEnforcement": "ModelEnforcement",
+      "SelectiveContentGuarding": "SelectiveContentGuarding"
     }
   },
   "AWS::Bedrock::Flow": {
@@ -2057,6 +2086,13 @@
       "Tags": "Map"
     }
   },
+  "AWS::Bedrock::ResourcePolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-resourcepolicy.html",
+    "Properties": {
+      "PolicyDocument": "Json",
+      "ResourceArn": "String"
+    }
+  },
   "AWS::BedrockAgentCore::ApiKeyCredentialProvider": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-apikeycredentialprovider.html",
     "Properties": {
@@ -2146,6 +2182,15 @@
       "Tags": "Map"
     }
   },
+  "AWS::BedrockAgentCore::OAuth2CredentialProvider": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-oauth2credentialprovider.html",
+    "Properties": {
+      "CredentialProviderVendor": "String",
+      "Name": "String",
+      "Oauth2ProviderConfigInput": "Oauth2ProviderConfigInput",
+      "Tags": "Tag"
+    }
+  },
   "AWS::BedrockAgentCore::OnlineEvaluationConfig": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-onlineevaluationconfig.html",
     "Properties": {
@@ -2186,6 +2231,7 @@
       "AuthorizerConfiguration": "AuthorizerConfiguration",
       "Description": "String",
       "EnvironmentVariables": "Map",
+      "FilesystemConfigurations": "FilesystemConfiguration",
       "LifecycleConfiguration": "LifecycleConfiguration",
       "NetworkConfiguration": "NetworkConfiguration",
       "ProtocolConfiguration": "String",
@@ -2277,6 +2323,15 @@
       "Tiering": "Tiering",
       "Type": "String",
       "UsageType": "String"
+    }
+  },
+  "AWS::Braket::SpendingLimit": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-braket-spendinglimit.html",
+    "Properties": {
+      "DeviceArn": "String",
+      "SpendingLimit": "String",
+      "Tags": "Tag",
+      "TimePeriod": "TimePeriod"
     }
   },
   "AWS::Budgets::Budget": {
@@ -4203,6 +4258,7 @@
       "CommunicationTimeConfig": "CommunicationTimeConfig",
       "ConnectCampaignFlowArn": "String",
       "ConnectInstanceId": "String",
+      "EntryLimitsConfig": "EntryLimitsConfig",
       "Name": "String",
       "Schedule": "Schedule",
       "Source": "Source",
@@ -7551,7 +7607,7 @@
     }
   },
   "AWS::ElasticLoadBalancing::LoadBalancer": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancing-loadbalancer.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html",
     "Properties": {
       "AccessLoggingPolicy": "AccessLoggingPolicy",
       "AppCookieStickinessPolicy": "AppCookieStickinessPolicy",
@@ -11237,6 +11293,7 @@
     "Properties": {
       "LogGroupNames": "String",
       "Name": "String",
+      "Parameters": "QueryParameter",
       "QueryLanguage": "String",
       "QueryString": "String"
     }
@@ -15343,7 +15400,49 @@
       "DataRedundancy": "String",
       "LifecycleConfiguration": "LifecycleConfiguration",
       "LocationName": "String",
+      "MetricsConfigurations": "MetricsConfiguration",
       "Tags": "Tag"
+    }
+  },
+  "AWS::S3Files::AccessPoint": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3files-accesspoint.html",
+    "Properties": {
+      "ClientToken": "String",
+      "FileSystemId": "String",
+      "PosixUser": "PosixUser",
+      "RootDirectory": "RootDirectory",
+      "Tags": "AccessPointTag"
+    }
+  },
+  "AWS::S3Files::FileSystem": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3files-filesystem.html",
+    "Properties": {
+      "AcceptBucketWarning": "Boolean",
+      "Bucket": "String",
+      "ClientToken": "String",
+      "KmsKeyId": "String",
+      "Prefix": "String",
+      "RoleArn": "String",
+      "SynchronizationConfiguration": "SynchronizationConfiguration",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::S3Files::FileSystemPolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3files-filesystempolicy.html",
+    "Properties": {
+      "FileSystemId": "String",
+      "Policy": "Json"
+    }
+  },
+  "AWS::S3Files::MountTarget": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3files-mounttarget.html",
+    "Properties": {
+      "FileSystemId": "String",
+      "IpAddressType": "String",
+      "Ipv4Address": "String",
+      "Ipv6Address": "String",
+      "SecurityGroups": "String",
+      "SubnetId": "String"
     }
   },
   "AWS::S3ObjectLambda::AccessPoint": {
@@ -15423,6 +15522,7 @@
     "Properties": {
       "EncryptionConfiguration": "EncryptionConfiguration",
       "MetricsConfiguration": "MetricsConfiguration",
+      "ReplicationConfiguration": "ReplicationConfiguration",
       "StorageClassConfiguration": "StorageClassConfiguration",
       "TableBucketName": "String",
       "Tags": "Tag",
@@ -17174,7 +17274,8 @@
       "DeploymentPreference": "DeploymentPreference",
       "Description": "String",
       "Name": "String",
-      "RoutingConfiguration": "RoutingConfigurationVersion"
+      "RoutingConfiguration": "RoutingConfigurationVersion",
+      "StateMachineArn": "String"
     }
   },
   "AWS::StepFunctions::StateMachineVersion": {

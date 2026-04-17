@@ -3123,6 +3123,8 @@
       "DatapointsToAlarm": "Integer",
       "Dimensions": "Dimension",
       "EvaluateLowSampleCountPercentile": "String",
+      "EvaluationCriteria": "EvaluationCriteria",
+      "EvaluationInterval": "Integer",
       "EvaluationPeriods": "Integer",
       "ExtendedStatistic": "String",
       "InsufficientDataActions": "String",
@@ -5165,6 +5167,7 @@
     "Properties": {
       "DisplayName": "String",
       "IdentityCenterInstanceArn": "String",
+      "IdentityCenterRegion": "String",
       "RoleArn": "String",
       "Subdomain": "String",
       "Tags": "Tag"
@@ -5182,6 +5185,7 @@
       "JobRunAsUser": "JobRunAsUser",
       "RequiredFileSystemLocationNames": "String",
       "RoleArn": "String",
+      "SchedulingConfiguration": "SchedulingConfiguration",
       "Tags": "Tag"
     }
   },
@@ -12367,6 +12371,14 @@
       "VectorSearchConfiguration": "VectorSearchConfiguration"
     }
   },
+  "AWS::NeptuneGraph::GraphSnapshot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graphsnapshot.html",
+    "Properties": {
+      "GraphIdentifier": "String",
+      "SnapshotName": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::NeptuneGraph::PrivateGraphEndpoint": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-privategraphendpoint.html",
     "Properties": {
@@ -14829,7 +14841,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-robomaker-fleet.html",
     "Properties": {
       "Name": "String",
-      "Tags": "Json"
+      "Tags": "Map"
     }
   },
   "AWS::RoboMaker::Robot": {
@@ -14839,17 +14851,18 @@
       "Fleet": "String",
       "GreengrassGroupId": "String",
       "Name": "String",
-      "Tags": "Json"
+      "Tags": "Map"
     }
   },
   "AWS::RoboMaker::RobotApplication": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-robomaker-robotapplication.html",
     "Properties": {
       "CurrentRevisionId": "String",
+      "Environment": "String",
       "Name": "String",
       "RobotSoftwareSuite": "RobotSoftwareSuite",
       "Sources": "SourceConfig",
-      "Tags": "Json"
+      "Tags": "Map"
     }
   },
   "AWS::RoboMaker::RobotApplicationVersion": {
@@ -14863,12 +14876,13 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-robomaker-simulationapplication.html",
     "Properties": {
       "CurrentRevisionId": "String",
+      "Environment": "String",
       "Name": "String",
       "RenderingEngine": "RenderingEngine",
       "RobotSoftwareSuite": "RobotSoftwareSuite",
       "SimulationSoftwareSuite": "SimulationSoftwareSuite",
       "Sources": "SourceConfig",
-      "Tags": "Json"
+      "Tags": "Map"
     }
   },
   "AWS::RoboMaker::SimulationApplicationVersion": {
@@ -17472,6 +17486,7 @@
       "As2Config": "As2Config",
       "EgressConfig": "ConnectorEgressConfig",
       "EgressType": "String",
+      "IpAddressType": "String",
       "LoggingRole": "String",
       "SecurityPolicyName": "String",
       "SftpConfig": "SftpConfig",

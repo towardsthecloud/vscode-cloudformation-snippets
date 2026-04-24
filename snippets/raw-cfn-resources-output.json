@@ -5639,6 +5639,7 @@
       "SplitTunnel": "Boolean",
       "TagSpecifications": "TagSpecification",
       "TrafficIpAddressType": "String",
+      "TransitGatewayConfiguration": "TransitGatewayConfiguration",
       "TransportProtocol": "String",
       "VpcId": "String",
       "VpnPort": "Integer"
@@ -5656,6 +5657,8 @@
   "AWS::EC2::ClientVpnTargetNetworkAssociation": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpntargetnetworkassociation.html",
     "Properties": {
+      "AvailabilityZone": "String",
+      "AvailabilityZoneId": "String",
       "ClientVpnEndpointId": "String",
       "SubnetId": "String"
     }
@@ -8669,6 +8672,7 @@
     "Properties": {
       "CatalogId": "String",
       "DatabaseName": "String",
+      "Name": "String",
       "OpenTableFormatInput": "OpenTableFormatInput",
       "TableInput": "TableInput"
     }
@@ -9887,7 +9891,6 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicrule.html",
     "Properties": {
       "RuleName": "String",
-      "Tags": "Tag",
       "TopicRulePayload": "TopicRulePayload"
     }
   },
@@ -11305,7 +11308,7 @@
   "AWS::Logs::ResourcePolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-resourcepolicy.html",
     "Properties": {
-      "PolicyDocument": "String",
+      "PolicyDocument": "Json",
       "PolicyName": "String"
     }
   },
@@ -11473,6 +11476,7 @@
     "Properties": {
       "Description": "String",
       "KafkaClusters": "KafkaCluster",
+      "LogDelivery": "LogDelivery",
       "ReplicationInfoList": "ReplicationInfo",
       "ReplicatorName": "String",
       "ServiceExecutionRoleArn": "String",
@@ -12364,6 +12368,7 @@
     "Properties": {
       "DeletionProtection": "Boolean",
       "GraphName": "String",
+      "KmsKeyIdentifier": "String",
       "ProvisionedMemory": "Integer",
       "PublicConnectivity": "Boolean",
       "ReplicaCount": "Integer",
@@ -15412,6 +15417,7 @@
       "BucketEncryption": "BucketEncryption",
       "BucketName": "String",
       "DataRedundancy": "String",
+      "InventoryConfigurations": "InventoryConfiguration",
       "LifecycleConfiguration": "LifecycleConfiguration",
       "LocationName": "String",
       "MetricsConfigurations": "MetricsConfiguration",
@@ -15694,6 +15700,7 @@
       "RuleSetId": "String",
       "StatusToUpdate": "String",
       "Tags": "Tag",
+      "TlsPolicy": "String",
       "TrafficPolicyId": "String",
       "Type": "String"
     }

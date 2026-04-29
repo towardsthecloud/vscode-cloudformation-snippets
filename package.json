@@ -29,23 +29,6 @@
     "iac",
     "yaml"
   ],
-  "badges": [
-    {
-      "url": "https://img.shields.io/visual-studio-marketplace/v/dannysteenman.cloudformation-yaml-snippets",
-      "href": "https://marketplace.visualstudio.com/items?itemName=dannysteenman.cloudformation-yaml-snippets",
-      "description": "Version"
-    },
-    {
-      "url": "https://img.shields.io/visual-studio-marketplace/i/dannysteenman.cloudformation-yaml-snippets",
-      "href": "https://marketplace.visualstudio.com/items?itemName=dannysteenman.cloudformation-yaml-snippets",
-      "description": "Installs"
-    },
-    {
-      "url": "https://img.shields.io/visual-studio-marketplace/stars/dannysteenman.cloudformation-yaml-snippets",
-      "href": "https://marketplace.visualstudio.com/items?itemName=dannysteenman.cloudformation-yaml-snippets",
-      "description": "Rating"
-    }
-  ],
   "activationEvents": [
     "onLanguage:yaml",
     "onLanguage:json"

@@ -2,6 +2,17 @@ Changelog
 =========
 
 
+(unreleased)
+------------
+- Build: remove unnecessary badges from README and package.json. [Danny
+  Steenman]
+
+
+5.104.0 (2026-04-24)
+--------------------
+- Build: auto-update snippets to version: 5.104.0. [Github Actions]
+
+
 5.103.0 (2026-04-17)
 --------------------
 - Build: auto-update snippets to version: 5.103.0. [Github Actions]

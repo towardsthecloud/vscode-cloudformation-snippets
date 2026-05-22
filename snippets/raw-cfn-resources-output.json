@@ -2105,7 +2105,9 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html",
     "Properties": {
       "BrowserSigning": "BrowserSigning",
+      "Certificates": "Certificate",
       "Description": "String",
+      "EnterprisePolicies": "BrowserEnterprisePolicy",
       "ExecutionRoleArn": "String",
       "Name": "String",
       "NetworkConfiguration": "BrowserNetworkConfiguration",
@@ -2124,6 +2126,7 @@
   "AWS::BedrockAgentCore::CodeInterpreterCustom": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html",
     "Properties": {
+      "Certificates": "Certificate",
       "Description": "String",
       "ExecutionRoleArn": "String",
       "Name": "String",
@@ -2137,6 +2140,7 @@
       "Description": "String",
       "EvaluatorConfig": "EvaluatorConfig",
       "EvaluatorName": "String",
+      "KmsKeyArn": "String",
       "Level": "String",
       "Tags": "Tag"
     }
@@ -2175,6 +2179,7 @@
       "Description": "String",
       "EncryptionKeyArn": "String",
       "EventExpiryDuration": "Integer",
+      "IndexedKeys": "IndexedKey",
       "MemoryExecutionRoleArn": "String",
       "MemoryStrategies": "MemoryStrategy",
       "Name": "String",
@@ -2554,6 +2559,24 @@
       "SnsTopicArns": "String",
       "Tags": "Tag",
       "UserRoleRequired": "Boolean"
+    }
+  },
+  "AWS::Chime::AppInstance": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-chime-appinstance.html",
+    "Properties": {
+      "Metadata": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Chime::AppInstanceBot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-chime-appinstancebot.html",
+    "Properties": {
+      "AppInstanceArn": "String",
+      "Configuration": "Configuration",
+      "Metadata": "String",
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::CleanRooms::AnalysisTemplate": {
@@ -2963,7 +2986,8 @@
       "FunctionCode": "String",
       "FunctionConfig": "FunctionConfig",
       "FunctionMetadata": "FunctionMetadata",
-      "Name": "String"
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::CloudFront::KeyGroup": {
@@ -3033,7 +3057,8 @@
     "Properties": {
       "CaCertificatesBundleSource": "CaCertificatesBundleSource",
       "Name": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "UseClientCertificateOCSPEndpoint": "Boolean"
     }
   },
   "AWS::CloudFront::VpcOrigin": {
@@ -3186,7 +3211,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-dashboard.html",
     "Properties": {
       "DashboardBody": "String",
-      "DashboardName": "String"
+      "DashboardName": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::CloudWatch::InsightRule": {
@@ -3212,6 +3238,10 @@
       "StatisticsConfigurations": "MetricStreamStatisticsConfiguration",
       "Tags": "Tag"
     }
+  },
+  "AWS::CloudWatch::OTelEnrichment": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-otelenrichment.html",
+    "Properties": {}
   },
   "AWS::CodeArtifact::Domain": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codeartifact-domain.html",
@@ -3593,6 +3623,7 @@
       "UsernameAttributes": "String",
       "UsernameConfiguration": "UsernameConfiguration",
       "VerificationMessageTemplate": "VerificationMessageTemplate",
+      "WebAuthnFactorConfiguration": "String",
       "WebAuthnRelyingPartyID": "String",
       "WebAuthnUserVerification": "String"
     }
@@ -4906,6 +4937,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-connection.html",
     "Properties": {
       "AwsLocation": "AwsLocation",
+      "Configurations": "ConnectionConfiguration",
       "Description": "String",
       "DomainIdentifier": "String",
       "EnableTrustedIdentityPropagation": "Boolean",
@@ -5028,6 +5060,8 @@
     "Properties": {
       "DomainIdentifier": "String",
       "GroupIdentifier": "String",
+      "GroupType": "String",
+      "RolePrincipalArn": "String",
       "Status": "String"
     }
   },
@@ -5058,7 +5092,10 @@
       "DomainIdentifier": "String",
       "DomainUnitId": "String",
       "GlossaryTerms": "String",
+      "MembershipAssignments": "ProjectMembershipAssignment",
       "Name": "String",
+      "ProjectCategory": "String",
+      "ProjectExecutionRole": "String",
       "ProjectProfileId": "String",
       "ProjectProfileVersion": "String",
       "ResourceTags": "ResourceTag",
@@ -5107,6 +5144,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-userprofile.html",
     "Properties": {
       "DomainIdentifier": "String",
+      "SessionName": "String",
       "Status": "String",
       "UserIdentifier": "String",
       "UserType": "String"
@@ -5252,6 +5290,7 @@
     "Properties": {
       "Description": "String",
       "KmsKeyArn": "String",
+      "Locale": "String",
       "Name": "String",
       "OperatorApp": "OperatorApp",
       "Tags": "Tag"
@@ -5264,6 +5303,15 @@
       "Configuration": "ServiceConfiguration",
       "LinkedAssociationIds": "String",
       "ServiceId": "String"
+    }
+  },
+  "AWS::DevOpsAgent::PrivateConnection": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-privateconnection.html",
+    "Properties": {
+      "Certificate": "String",
+      "ConnectionConfiguration": "ConnectionConfiguration",
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::DevOpsAgent::Service": {
@@ -7405,13 +7453,12 @@
     }
   },
   "AWS::ElastiCache::CacheCluster": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticache-cache-cluster.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-cachecluster.html",
     "Properties": {
       "AZMode": "String",
       "AutoMinorVersionUpgrade": "Boolean",
       "CacheNodeType": "String",
       "CacheParameterGroupName": "String",
-      "CacheSecurityGroupNames": "String",
       "CacheSubnetGroupName": "String",
       "ClusterName": "String",
       "Engine": "String",
@@ -9555,6 +9602,7 @@
       "Bandwidth": "String",
       "Description": "String",
       "EnvironmentId": "String",
+      "RemoteAccount": "RemoteAccount",
       "RemoteOwnerAccount": "String",
       "Tags": "Tag"
     }
@@ -11451,7 +11499,8 @@
       "OpenMonitoring": "OpenMonitoring",
       "Rebalancing": "Rebalancing",
       "StorageMode": "String",
-      "Tags": "Map"
+      "Tags": "Map",
+      "ZookeeperAccess": "ZookeeperAccess"
     }
   },
   "AWS::MSK::ClusterPolicy": {
@@ -11735,7 +11784,8 @@
       "Name": "String",
       "RoleArn": "String",
       "SecurityGroupIds": "String",
-      "SubnetId": "String"
+      "SubnetId": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::MediaConnect::Gateway": {
@@ -11814,6 +11864,7 @@
     "Properties": {
       "ConcurrentJobs": "Integer",
       "Description": "String",
+      "MaximumConcurrentFeeds": "Integer",
       "Name": "String",
       "PricingPlan": "String",
       "Status": "String",
@@ -14097,6 +14148,7 @@
   "AWS::RDS::CustomDBEngineVersion": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-customdbengineversion.html",
     "Properties": {
+      "DatabaseInstallationFiles": "String",
       "DatabaseInstallationFilesS3BucketName": "String",
       "DatabaseInstallationFilesS3Prefix": "String",
       "Description": "String",
@@ -15238,7 +15290,9 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverendpoint.html",
     "Properties": {
       "Direction": "String",
+      "Dns64Enabled": "Boolean",
       "IpAddresses": "IpAddressRequest",
+      "Ipv6InternetAccessEnabled": "Boolean",
       "Name": "String",
       "OutpostArn": "String",
       "PreferredInstanceType": "String",
@@ -17677,6 +17731,7 @@
       "IpAddressType": "String",
       "Ipv4AddressesPerEni": "Integer",
       "Name": "String",
+      "ResourceConfigDnsResolution": "String",
       "SecurityGroupIds": "String",
       "SubnetIds": "String",
       "Tags": "Tag",

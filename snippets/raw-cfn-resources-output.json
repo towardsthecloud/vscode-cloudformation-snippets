@@ -2101,6 +2101,10 @@
       "Tags": "Tag"
     }
   },
+  "AWS::BedrockAgentCore::Browser": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browser.html",
+    "Properties": {}
+  },
   "AWS::BedrockAgentCore::BrowserCustom": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-browsercustom.html",
     "Properties": {
@@ -2132,6 +2136,17 @@
       "Name": "String",
       "NetworkConfiguration": "CodeInterpreterNetworkConfiguration",
       "Tags": "Map"
+    }
+  },
+  "AWS::BedrockAgentCore::Dataset": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-dataset.html",
+    "Properties": {
+      "DatasetName": "String",
+      "Description": "String",
+      "KmsKeyArn": "String",
+      "SchemaType": "String",
+      "Source": "DataSourceType",
+      "Tags": "Tag"
     }
   },
   "AWS::BedrockAgentCore::Evaluator": {
@@ -2173,6 +2188,28 @@
       "TargetConfiguration": "TargetConfiguration"
     }
   },
+  "AWS::BedrockAgentCore::Harness": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harness.html",
+    "Properties": {
+      "AllowedTools": "String",
+      "AuthorizerConfiguration": "AuthorizerConfiguration",
+      "Environment": "HarnessEnvironmentProvider",
+      "EnvironmentArtifact": "HarnessEnvironmentArtifact",
+      "EnvironmentVariables": "Map",
+      "ExecutionRoleArn": "String",
+      "HarnessName": "String",
+      "MaxIterations": "Integer",
+      "MaxTokens": "Integer",
+      "Memory": "HarnessMemoryConfiguration",
+      "Model": "HarnessModelConfiguration",
+      "Skills": "HarnessSkill",
+      "SystemPrompt": "HarnessSystemContentBlock",
+      "Tags": "Tag",
+      "TimeoutSeconds": "Integer",
+      "Tools": "HarnessTool",
+      "Truncation": "HarnessTruncationConfiguration"
+    }
+  },
   "AWS::BedrockAgentCore::Memory": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-memory.html",
     "Properties": {
@@ -2206,6 +2243,15 @@
       "ExecutionStatus": "String",
       "OnlineEvaluationConfigName": "String",
       "Rule": "Rule",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::BedrockAgentCore::PaymentCredentialProvider": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-paymentcredentialprovider.html",
+    "Properties": {
+      "CredentialProviderVendor": "String",
+      "Name": "String",
+      "ProviderConfigurationInput": "PaymentProviderConfigurationInput",
       "Tags": "Tag"
     }
   },
@@ -12143,7 +12189,8 @@
       "OriginEndpointName": "String",
       "Segment": "Segment",
       "StartoverWindowSeconds": "Integer",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "UriSeparator": "String"
     }
   },
   "AWS::MediaPackageV2::OriginEndpointPolicy": {
@@ -13138,6 +13185,7 @@
       "AccessPolicies": "Json",
       "AdvancedOptions": "Map",
       "AdvancedSecurityOptions": "AdvancedSecurityOptionsInput",
+      "AutomatedSnapshotPauseOptions": "AutomatedSnapshotPauseOptions",
       "ClusterConfig": "ClusterConfig",
       "CognitoOptions": "CognitoOptions",
       "DeploymentStrategyOptions": "DeploymentStrategyOptions",
@@ -17473,6 +17521,7 @@
       "DbStorageType": "String",
       "DeploymentType": "String",
       "LogDeliveryConfiguration": "LogDeliveryConfiguration",
+      "MaintenanceSchedule": "MaintenanceSchedule",
       "Name": "String",
       "NetworkType": "String",
       "Organization": "String",

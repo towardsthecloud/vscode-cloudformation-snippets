@@ -2097,6 +2097,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-apikeycredentialprovider.html",
     "Properties": {
       "ApiKey": "String",
+      "ApiKeySecretConfig": "SecretReference",
+      "ApiKeySecretSource": "String",
       "Name": "String",
       "Tags": "Tag"
     }
@@ -2172,7 +2174,7 @@
       "Name": "String",
       "PolicyEngineConfiguration": "GatewayPolicyEngineConfiguration",
       "ProtocolConfiguration": "GatewayProtocolConfiguration",
-      "ProtocolType": "String",
+      "ProtocolType": "Json",
       "RoleArn": "String",
       "Tags": "Map"
     }
@@ -2185,6 +2187,7 @@
       "GatewayIdentifier": "String",
       "MetadataConfiguration": "MetadataConfiguration",
       "Name": "String",
+      "PrivateEndpoint": "PrivateEndpoint",
       "TargetConfiguration": "TargetConfiguration"
     }
   },
@@ -2246,6 +2249,16 @@
       "Tags": "Tag"
     }
   },
+  "AWS::BedrockAgentCore::PaymentConnector": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-paymentconnector.html",
+    "Properties": {
+      "ConnectorName": "String",
+      "ConnectorType": "String",
+      "CredentialProviderConfigurations": "CredentialsProviderConfiguration",
+      "Description": "String",
+      "PaymentManagerId": "String"
+    }
+  },
   "AWS::BedrockAgentCore::PaymentCredentialProvider": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-paymentcredentialprovider.html",
     "Properties": {
@@ -2272,6 +2285,13 @@
       "EncryptionKeyArn": "String",
       "Name": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::BedrockAgentCore::ResourcePolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-resourcepolicy.html",
+    "Properties": {
+      "Policy": "String",
+      "ResourceArn": "String"
     }
   },
   "AWS::BedrockAgentCore::Runtime": {
@@ -6273,6 +6293,7 @@
       "LocalGatewayId": "String",
       "NatGatewayId": "String",
       "NetworkInterfaceId": "String",
+      "OdbNetworkArn": "String",
       "RouteTableId": "String",
       "TransitGatewayId": "String",
       "VpcEndpointId": "String",
@@ -7048,7 +7069,9 @@
       "Cpu": "String",
       "ExecutionRoleArn": "String",
       "Family": "String",
+      "IpcMode": "String",
       "Memory": "String",
+      "PidMode": "String",
       "Tags": "Tag",
       "TaskRoleArn": "String",
       "Volumes": "Volume"
@@ -7563,6 +7586,7 @@
       "CacheSubnetGroupName": "String",
       "ClusterMode": "String",
       "DataTieringEnabled": "Boolean",
+      "Durability": "String",
       "Engine": "String",
       "EngineVersion": "String",
       "GlobalReplicationGroupId": "String",
@@ -10802,6 +10826,7 @@
       "InstanceRequirements": "InstanceRequirements",
       "KmsKeyArn": "String",
       "PermissionsConfig": "CapacityProviderPermissionsConfig",
+      "PropagateTags": "PropagateTagsConfig",
       "Tags": "Tag",
       "VpcConfig": "CapacityProviderVpcConfig"
     }
@@ -13100,6 +13125,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collection.html",
     "Properties": {
       "CollectionGroupName": "String",
+      "DeletionProtection": "String",
       "Description": "String",
       "EncryptionConfig": "EncryptionConfig",
       "Name": "String",
@@ -13117,6 +13143,14 @@
       "Name": "String",
       "StandbyReplicas": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::OpenSearchServerless::CollectionIndex": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchserverless-collectionindex.html",
+    "Properties": {
+      "Id": "String",
+      "IndexName": "String",
+      "IndexSchema": "String"
     }
   },
   "AWS::OpenSearchServerless::Index": {
@@ -13513,6 +13547,7 @@
       "Exportable": "Boolean",
       "KeyAttributes": "KeyAttributes",
       "KeyCheckValueAlgorithm": "String",
+      "Policy": "String",
       "ReplicationRegions": "String",
       "Tags": "Tag"
     }
@@ -14533,6 +14568,16 @@
       "Tags": "Tag"
     }
   },
+  "AWS::RTBFabric::LinkRoutingRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-linkroutingrule.html",
+    "Properties": {
+      "Conditions": "RuleCondition",
+      "GatewayId": "String",
+      "LinkId": "String",
+      "Priority": "Integer",
+      "Tags": "Tag"
+    }
+  },
   "AWS::RTBFabric::OutboundExternalLink": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-outboundexternallink.html",
     "Properties": {
@@ -14556,8 +14601,11 @@
   "AWS::RTBFabric::ResponderGateway": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rtbfabric-respondergateway.html",
     "Properties": {
+      "AcmCertificateArn": "String",
       "Description": "String",
       "DomainName": "String",
+      "GatewayType": "String",
+      "ListenerConfig": "ListenerConfig",
       "ManagedEndpointConfiguration": "ManagedEndpointConfiguration",
       "Port": "Integer",
       "Protocol": "String",
@@ -14897,6 +14945,45 @@
       "PolicyName": "String",
       "Tags": "Map",
       "Tier": "String"
+    }
+  },
+  "AWS::ResilienceHubV2::Policy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehubv2-policy.html",
+    "Properties": {
+      "AvailabilitySlo": "AvailabilitySlo",
+      "DataRecovery": "DataRecoveryTargets",
+      "Description": "String",
+      "KmsKeyId": "String",
+      "MultiAz": "MultiAzTargets",
+      "MultiRegion": "MultiRegionTargets",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ResilienceHubV2::Service": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehubv2-service.html",
+    "Properties": {
+      "Assertions": "AssertionDefinition",
+      "AssociatedSystems": "AssociatedSystem",
+      "DependencyDiscovery": "String",
+      "Description": "String",
+      "InputSources": "InputSourceDefinition",
+      "KmsKeyId": "String",
+      "Name": "String",
+      "PermissionModel": "PermissionModel",
+      "PolicyArn": "String",
+      "Regions": "String",
+      "ReportConfiguration": "ServiceReportConfiguration",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::ResilienceHubV2::System": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehubv2-system.html",
+    "Properties": {
+      "Description": "String",
+      "KmsKeyId": "String",
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::ResourceExplorer2::DefaultViewAssociation": {
@@ -16411,6 +16498,7 @@
       "DefaultUserSettings": "UserSettings",
       "DomainName": "String",
       "DomainSettings": "DomainSettings",
+      "HomeEfsFileSystemCreation": "String",
       "KmsKeyId": "String",
       "SubnetIds": "String",
       "TagPropagation": "String",
@@ -17703,6 +17791,13 @@
       "Schema": "SchemaDefinition",
       "Tags": "Tag",
       "ValidationSettings": "ValidationSettings"
+    }
+  },
+  "AWS::VerifiedPermissions::PolicyStoreAlias": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policystorealias.html",
+    "Properties": {
+      "AliasName": "String",
+      "PolicyStoreId": "String"
     }
   },
   "AWS::VerifiedPermissions::PolicyTemplate": {

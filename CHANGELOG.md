@@ -2,6 +2,11 @@ Changelog
 =========
 
 
+5.111.0 (2026-06-12)
+--------------------
+- Build: auto-update snippets to version: 5.111.0. [Github Actions]
+
+
 5.110.0 (2026-06-05)
 --------------------
 - Build: auto-update snippets to version: 5.110.0. [Github Actions]

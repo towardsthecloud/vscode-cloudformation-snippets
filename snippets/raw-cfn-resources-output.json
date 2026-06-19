@@ -141,6 +141,14 @@
       "ZonalAutoshiftStatus": "String"
     }
   },
+  "AWS::AWSExternalAnthropic::Workspace": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-awsexternalanthropic-workspace.html",
+    "Properties": {
+      "DataResidency": "DataResidency",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::AccessAnalyzer::Analyzer": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html",
     "Properties": {
@@ -1151,6 +1159,7 @@
       "AccessEndpoints": "AccessEndpoint",
       "ApplicationSettings": "ApplicationSettings",
       "AttributesToDelete": "String",
+      "ContentRedirection": "ContentRedirection",
       "DeleteStorageConnectors": "Boolean",
       "Description": "String",
       "DisplayName": "String",
@@ -1658,6 +1667,15 @@
       "SampleDocuments": "SampleDocuments",
       "Status": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::BCM::Dashboard": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bcm-dashboard.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "Tags": "Tag",
+      "Widgets": "Widget"
     }
   },
   "AWS::BCMDataExports::Export": {
@@ -2265,6 +2283,17 @@
       "CredentialProviderVendor": "String",
       "Name": "String",
       "ProviderConfigurationInput": "PaymentProviderConfigurationInput",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::BedrockAgentCore::PaymentManager": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-paymentmanager.html",
+    "Properties": {
+      "AuthorizerConfiguration": "AuthorizerConfiguration",
+      "AuthorizerType": "String",
+      "Description": "String",
+      "Name": "String",
+      "RoleArn": "String",
       "Tags": "Tag"
     }
   },
@@ -4121,7 +4150,8 @@
     "Properties": {
       "InstanceId": "String",
       "IntegrationArn": "String",
-      "IntegrationType": "String"
+      "IntegrationType": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Connect::Notification": {
@@ -11344,6 +11374,7 @@
   "AWS::Logs::DeliverySource": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-deliverysource.html",
     "Properties": {
+      "DeliverySourceConfiguration": "Map",
       "LogType": "String",
       "Name": "String",
       "ResourceArn": "String",
@@ -11813,6 +11844,7 @@
       "MediaStreamOutputConfigurations": "MediaStreamOutputConfiguration",
       "MinLatency": "Integer",
       "Name": "String",
+      "NdiOutputTimecodeSource": "String",
       "NdiProgramName": "String",
       "NdiSpeedHqQuality": "Integer",
       "OutputStatus": "String",
@@ -12414,8 +12446,10 @@
       "DeletionProtection": "Boolean",
       "EnableCloudwatchLogsExports": "String",
       "EngineVersion": "String",
+      "GlobalClusterIdentifier": "String",
       "IamAuthEnabled": "Boolean",
       "KmsKeyId": "String",
+      "NetworkType": "String",
       "PreferredBackupWindow": "String",
       "PreferredMaintenanceWindow": "String",
       "RestoreToTime": "String",
@@ -13140,6 +13174,7 @@
     "Properties": {
       "CapacityLimits": "CapacityLimits",
       "Description": "String",
+      "Generation": "String",
       "Name": "String",
       "StandbyReplicas": "String",
       "Tags": "Tag"
@@ -14977,6 +15012,15 @@
       "Tags": "Tag"
     }
   },
+  "AWS::ResilienceHubV2::ServiceFunction": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehubv2-servicefunction.html",
+    "Properties": {
+      "Criticality": "String",
+      "Description": "String",
+      "Name": "String",
+      "ServiceArn": "String"
+    }
+  },
   "AWS::ResilienceHubV2::System": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehubv2-system.html",
     "Properties": {
@@ -14984,6 +15028,15 @@
       "KmsKeyId": "String",
       "Name": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::ResilienceHubV2::UserJourney": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehubv2-userjourney.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "PolicyArn": "String",
+      "SystemIdentifier": "String"
     }
   },
   "AWS::ResourceExplorer2::DefaultViewAssociation": {
@@ -16606,6 +16659,17 @@
       "Type": "String"
     }
   },
+  "AWS::SageMaker::MlflowApp": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-mlflowapp.html",
+    "Properties": {
+      "ArtifactStoreUri": "String",
+      "ModelRegistrationMode": "String",
+      "Name": "String",
+      "RoleArn": "String",
+      "Tags": "Tag",
+      "WeeklyMaintenanceWindowStart": "String"
+    }
+  },
   "AWS::SageMaker::MlflowTrackingServer": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-mlflowtrackingserver.html",
     "Properties": {
@@ -17779,6 +17843,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policy.html",
     "Properties": {
       "Definition": "PolicyDefinition",
+      "Name": "String",
       "PolicyStoreId": "String"
     }
   },
@@ -17804,6 +17869,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-verifiedpermissions-policytemplate.html",
     "Properties": {
       "Description": "String",
+      "Name": "String",
       "PolicyStoreId": "String",
       "Statement": "String"
     }

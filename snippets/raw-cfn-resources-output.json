@@ -1158,6 +1158,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-stack.html",
     "Properties": {
       "AccessEndpoints": "AccessEndpoint",
+      "AgentAccessConfig": "AgentAccessConfig",
       "ApplicationSettings": "ApplicationSettings",
       "AttributesToDelete": "String",
       "ContentRedirection": "ContentRedirection",
@@ -2617,6 +2618,34 @@
       "ExpiryEventsConfiguration": "ExpiryEventsConfiguration"
     }
   },
+  "AWS::CertificateManager::AcmeDomainValidation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-acmedomainvalidation.html",
+    "Properties": {
+      "AcmeEndpointArn": "String",
+      "DomainName": "String",
+      "PrevalidationOptions": "PrevalidationOptions",
+      "Tags": "TagsItems"
+    }
+  },
+  "AWS::CertificateManager::AcmeEndpoint": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-acmeendpoint.html",
+    "Properties": {
+      "AuthorizationBehavior": "String",
+      "CertificateAuthority": "CertificateAuthority",
+      "CertificateTags": "Tag",
+      "Contact": "String",
+      "Tags": "TagsItems"
+    }
+  },
+  "AWS::CertificateManager::AcmeExternalAccountBinding": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-acmeexternalaccountbinding.html",
+    "Properties": {
+      "AcmeEndpointArn": "String",
+      "Expiration": "Expiration",
+      "RoleArn": "String",
+      "Tags": "TagsItems"
+    }
+  },
   "AWS::CertificateManager::Certificate": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html",
     "Properties": {
@@ -3355,7 +3384,7 @@
       "RuleBody": "String",
       "RuleName": "String",
       "RuleState": "String",
-      "Tags": "Tags"
+      "Tags": "Tag"
     }
   },
   "AWS::CloudWatch::LogAlarm": {
@@ -3428,12 +3457,6 @@
       "RepositoryName": "String",
       "Tags": "Tag",
       "Upstreams": "String"
-    }
-  },
-  "AWS::CodeBuild::Build": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-build.html",
-    "Properties": {
-      "ProjectName": "String"
     }
   },
   "AWS::CodeBuild::Fleet": {
@@ -3768,6 +3791,8 @@
       "EmailVerificationMessage": "String",
       "EmailVerificationSubject": "String",
       "EnabledMfas": "String",
+      "IssuerConfiguration": "IssuerConfiguration",
+      "KeyConfiguration": "KeyConfiguration",
       "LambdaConfig": "LambdaConfig",
       "MfaConfiguration": "String",
       "Policies": "Policies",
@@ -3845,6 +3870,25 @@
       "ProviderName": "String",
       "ProviderType": "String",
       "UserPoolId": "String"
+    }
+  },
+  "AWS::Cognito::UserPoolRegionalConfigurationAttachment": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolregionalconfigurationattachment.html",
+    "Properties": {
+      "EmailConfiguration": "EmailConfiguration",
+      "LambdaConfig": "LambdaConfig",
+      "SmsConfiguration": "SmsConfiguration",
+      "Status": "String",
+      "UserPoolId": "String",
+      "UserPoolTags": "Map"
+    }
+  },
+  "AWS::Cognito::UserPoolReplica": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolreplica.html",
+    "Properties": {
+      "RegionName": "String",
+      "UserPoolId": "String",
+      "UserPoolTagsAtCreate": "Map"
     }
   },
   "AWS::Cognito::UserPoolResourceServer": {
@@ -4355,6 +4399,19 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Connect::TestCase": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-testcase.html",
+    "Properties": {
+      "Content": "String",
+      "Description": "String",
+      "EntryPoint": "EntryPoint",
+      "InitializationData": "String",
+      "InstanceArn": "String",
+      "Name": "String",
+      "Status": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Connect::TrafficDistributionGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-trafficdistributiongroup.html",
     "Properties": {
@@ -4460,10 +4517,6 @@
       "Tags": "Tag",
       "Type": "String"
     }
-  },
-  "AWS::ControlCatalog::CommonControl": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-controlcatalog-commoncontrol.html",
-    "Properties": {}
   },
   "AWS::ControlTower::EnabledBaseline": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-controltower-enabledbaseline.html",
@@ -5745,13 +5798,6 @@
       "WarmThroughput": "WarmThroughput",
       "WriteOnDemandThroughputSettings": "WriteOnDemandThroughputSettings",
       "WriteProvisionedThroughputSettings": "WriteProvisionedThroughputSettings"
-    }
-  },
-  "AWS::DynamoDB::Stream": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-stream.html",
-    "Properties": {
-      "StreamViewType": "String",
-      "TableName": "String"
     }
   },
   "AWS::DynamoDB::Table": {
@@ -7199,6 +7245,7 @@
       "ScalingTarget": "ExpressGatewayScalingTarget",
       "ServiceName": "String",
       "Tags": "Tag",
+      "TaskDefinitionArn": "String",
       "TaskRoleArn": "String"
     }
   },
@@ -7376,6 +7423,7 @@
       "RemoteNetworkConfig": "RemoteNetworkConfig",
       "ResourcesVpcConfig": "ResourcesVpcConfig",
       "RoleArn": "String",
+      "RollbackConfig": "RollbackConfig",
       "StorageConfig": "StorageConfig",
       "Tags": "Tag",
       "UpgradePolicy": "UpgradePolicy",
@@ -13739,15 +13787,6 @@
       "Tags": "Tag"
     }
   },
-  "AWS::Personalize::DataDeletionJob": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-datadeletionjob.html",
-    "Properties": {
-      "DataSource": "DataSource",
-      "DatasetGroupArn": "String",
-      "JobName": "String",
-      "RoleArn": "String"
-    }
-  },
   "AWS::Personalize::Dataset": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-dataset.html",
     "Properties": {
@@ -14326,6 +14365,16 @@
       "VpcConnectionProperties": "VpcConnectionProperties"
     }
   },
+  "AWS::QuickSight::Flow": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-flow.html",
+    "Properties": {
+      "AwsAccountId": "String",
+      "Description": "String",
+      "FlowDefinition": "Json",
+      "Name": "String",
+      "Permissions": "Permission"
+    }
+  },
   "AWS::QuickSight::Folder": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-folder.html",
     "Properties": {
@@ -14336,6 +14385,22 @@
       "ParentFolderArn": "String",
       "Permissions": "ResourcePermission",
       "SharingModel": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::QuickSight::OAuthClientApplication": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-oauthclientapplication.html",
+    "Properties": {
+      "ClientId": "String",
+      "ClientSecret": "String",
+      "DataSourceType": "String",
+      "IdentityProviderVpcConnectionProperties": "IdentityProviderVpcConnectionProperties",
+      "Name": "String",
+      "OAuthAuthorizationEndpointUrl": "String",
+      "OAuthClientApplicationId": "String",
+      "OAuthClientAuthenticationType": "String",
+      "OAuthScopes": "String",
+      "OAuthTokenEndpointUrl": "String",
       "Tags": "Tag"
     }
   },
@@ -15189,6 +15254,7 @@
       "Description": "String",
       "KmsKeyId": "String",
       "Name": "String",
+      "SharingEnabled": "Boolean",
       "Tags": "Tag"
     }
   },
@@ -16740,7 +16806,6 @@
     "Properties": {
       "DeploymentConfig": "DeploymentConfig",
       "EndpointConfigName": "String",
-      "EndpointName": "String",
       "ExcludeRetainedVariantProperties": "VariantProperty",
       "RetainAllVariantProperties": "Boolean",
       "RetainDeploymentConfig": "Boolean",
@@ -17223,13 +17288,26 @@
     "Properties": {
       "AgentSpaceId": "String",
       "Assets": "Assets",
+      "CleanUpStrategy": "String",
       "CodeRemediationStrategy": "String",
+      "DisableManagedSkills": "String",
       "ExcludeRiskTypes": "String",
       "LogConfig": "CloudWatchLog",
       "NetworkTrafficConfig": "NetworkTrafficConfig",
       "ServiceRole": "String",
       "Title": "String",
       "VpcConfig": "VpcConfig"
+    }
+  },
+  "AWS::SecurityAgent::SecurityRequirementPack": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-securityrequirementpack.html",
+    "Properties": {
+      "Description": "String",
+      "KmsKeyId": "String",
+      "Name": "String",
+      "SecurityRequirements": "SecurityRequirement",
+      "Status": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::SecurityAgent::TargetDomain": {

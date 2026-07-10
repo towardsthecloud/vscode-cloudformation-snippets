@@ -3006,21 +3006,11 @@
     }
   },
   "AWS::CloudFormation::Stack": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stack.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html",
     "Properties": {
-      "Capabilities": "String",
-      "Description": "String",
-      "DisableRollback": "Boolean",
-      "EnableTerminationProtection": "Boolean",
       "NotificationARNs": "String",
       "Parameters": "Map",
-      "RoleARN": "String",
-      "StackName": "String",
-      "StackPolicyBody": "Json",
-      "StackPolicyURL": "String",
-      "StackStatusReason": "String",
       "Tags": "Tag",
-      "TemplateBody": "Json",
       "TemplateURL": "String",
       "TimeoutInMinutes": "Integer"
     }
@@ -4035,6 +4025,13 @@
       "TemplateSSMDocumentDetails": "TemplateSSMDocumentDetails"
     }
   },
+  "AWS::Config::Connector": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-connector.html",
+    "Properties": {
+      "ConnectorConfiguration": "ConnectorConfiguration",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Config::DeliveryChannel": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-deliverychannel.html",
     "Properties": {
@@ -4570,6 +4567,17 @@
       "DomainName": "String",
       "Matching": "Matching",
       "RuleBasedMatching": "RuleBasedMatching",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::CustomerProfiles::DomainObjectType": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-domainobjecttype.html",
+    "Properties": {
+      "Description": "String",
+      "DomainName": "String",
+      "EncryptionKey": "String",
+      "Fields": "Map",
+      "ObjectTypeName": "String",
       "Tags": "Tag"
     }
   },
@@ -7614,6 +7622,7 @@
       "ExecutionRoleArn": "String",
       "Name": "String",
       "ReleaseLabel": "String",
+      "SessionIdleTimeoutInMinutes": "Integer",
       "Tags": "Tag",
       "Type": "String",
       "VirtualClusterId": "String"
@@ -7634,6 +7643,7 @@
       "ContainerProvider": "ContainerProvider",
       "Name": "String",
       "SecurityConfigurationId": "String",
+      "SessionEnabled": "Boolean",
       "Tags": "Tag"
     }
   },
@@ -9696,6 +9706,7 @@
       "ExecutionRole": "String",
       "ImageRecipeArn": "String",
       "ImageScanningConfiguration": "ImageScanningConfiguration",
+      "ImageTags": "Map",
       "ImageTestsConfiguration": "ImageTestsConfiguration",
       "InfrastructureConfigurationArn": "String",
       "LoggingConfiguration": "PipelineLoggingConfiguration",
@@ -9711,6 +9722,7 @@
     "Properties": {
       "AdditionalInstanceConfiguration": "AdditionalInstanceConfiguration",
       "AmiTags": "Map",
+      "AmiWatermarks": "String",
       "BlockDeviceMappings": "InstanceBlockDeviceMapping",
       "Components": "ComponentConfiguration",
       "Description": "String",
@@ -12068,6 +12080,7 @@
     "Properties": {
       "AvailabilityZone": "String",
       "Configuration": "RouterInputConfiguration",
+      "ContentQualityAnalysisConfiguration": "RouterContentQualityAnalysisConfiguration",
       "MaintenanceConfiguration": "MaintenanceConfiguration",
       "MaximumBitrate": "Integer",
       "Name": "String",
@@ -17360,6 +17373,15 @@
       "Tags": "Map"
     }
   },
+  "AWS::SecurityHub::Connector": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-connector.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "Provider": "Provider",
+      "Tags": "Map"
+    }
+  },
   "AWS::SecurityHub::ConnectorV2": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-connectorv2.html",
     "Properties": {
@@ -18248,6 +18270,7 @@
       "CertificateArn": "String",
       "CustomDomainName": "String",
       "DnsEntry": "DnsEntry",
+      "IdleTimeoutSeconds": "Integer",
       "Name": "String",
       "Tags": "Tag"
     }

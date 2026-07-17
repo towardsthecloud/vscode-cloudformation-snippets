@@ -179,6 +179,7 @@
       "PubliclyAccessible": "Boolean",
       "ResourceShareArns": "String",
       "SecurityGroups": "String",
+      "StorageSize": "Integer",
       "StorageType": "String",
       "SubnetIds": "String",
       "Tags": "TagsEntry",
@@ -1501,6 +1502,16 @@
       "Tags": "Tag"
     }
   },
+  "AWS::AuditManager::AssessmentFramework": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-auditmanager-assessmentframework.html",
+    "Properties": {
+      "ComplianceType": "String",
+      "ControlSets": "ControlSet",
+      "Description": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::AutoScaling::AutoScalingGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html",
     "Properties": {
@@ -2087,6 +2098,10 @@
       "Tags": "Map"
     }
   },
+  "AWS::Bedrock::ModelInvocationJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-modelinvocationjob.html",
+    "Properties": {}
+  },
   "AWS::Bedrock::Prompt": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-prompt.html",
     "Properties": {
@@ -2148,6 +2163,10 @@
       "Name": "String",
       "Tags": "Map"
     }
+  },
+  "AWS::BedrockAgentCore::CodeInterpreter": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpreter.html",
+    "Properties": {}
   },
   "AWS::BedrockAgentCore::CodeInterpreterCustom": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-codeinterpretercustom.html",
@@ -2367,6 +2386,10 @@
       "Name": "String",
       "Tags": "Map"
     }
+  },
+  "AWS::BedrockAgentCore::TokenVault": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-tokenvault.html",
+    "Properties": {}
   },
   "AWS::BedrockAgentCore::WorkloadIdentity": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-workloadidentity.html",
@@ -2811,6 +2834,18 @@
       "InputReferenceConfig": "IdNamespaceAssociationInputReferenceConfig",
       "MembershipIdentifier": "String",
       "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::CleanRooms::IntermediateTable": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-intermediatetable.html",
+    "Properties": {
+      "AnalysisRules": "IntermediateTableAnalysisRule",
+      "Description": "String",
+      "KmsKeyArn": "String",
+      "MembershipIdentifier": "String",
+      "Name": "String",
+      "PopulationAnalysisConfiguration": "PopulationAnalysisConfiguration",
       "Tags": "Tag"
     }
   },
@@ -4020,6 +4055,7 @@
       "ConformancePackName": "String",
       "DeliveryS3Bucket": "String",
       "DeliveryS3KeyPrefix": "String",
+      "Tags": "Tag",
       "TemplateBody": "String",
       "TemplateS3Uri": "String",
       "TemplateSSMDocumentDetails": "TemplateSSMDocumentDetails"
@@ -4155,6 +4191,14 @@
     "Properties": {
       "ContactFlowId": "String",
       "Description": "String"
+    }
+  },
+  "AWS::Connect::DataLakeAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-datalakeassociation.html",
+    "Properties": {
+      "DataSetId": "String",
+      "InstanceId": "String",
+      "TargetAccountId": "String"
     }
   },
   "AWS::Connect::DataTable": {
@@ -6784,6 +6828,20 @@
       "TransitGatewayId": "String"
     }
   },
+  "AWS::EC2::TransitGatewayPolicyTable": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaypolicytable.html",
+    "Properties": {
+      "Tags": "Tag",
+      "TransitGatewayId": "String"
+    }
+  },
+  "AWS::EC2::TransitGatewayPolicyTableAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewaypolicytableassociation.html",
+    "Properties": {
+      "TransitGatewayAttachmentId": "String",
+      "TransitGatewayPolicyTableId": "String"
+    }
+  },
   "AWS::EC2::TransitGatewayRoute": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayroute.html",
     "Properties": {
@@ -6835,7 +6893,8 @@
       "InstanceTenancy": "String",
       "Ipv4IpamPoolId": "String",
       "Ipv4NetmaskLength": "Integer",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "VpcEncryptionControl": "VpcEncryptionControl"
     }
   },
   "AWS::EC2::VPCBlockPublicAccessExclusion": {
@@ -7929,7 +7988,8 @@
       "MutualAuthentication": "MutualAuthentication",
       "Port": "Integer",
       "Protocol": "String",
-      "SslPolicy": "String"
+      "SslPolicy": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::ElasticLoadBalancingV2::ListenerCertificate": {
@@ -7946,6 +8006,7 @@
       "Conditions": "RuleCondition",
       "ListenerArn": "String",
       "Priority": "Integer",
+      "Tags": "Tag",
       "Transforms": "Transform"
     }
   },
@@ -8686,6 +8747,9 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-globalaccelerator-accelerator.html",
     "Properties": {
       "Enabled": "Boolean",
+      "FlowLogsEnabled": "Boolean",
+      "FlowLogsS3Bucket": "String",
+      "FlowLogsS3Prefix": "String",
       "IpAddressType": "String",
       "IpAddresses": "String",
       "Name": "String",
@@ -16841,6 +16905,27 @@
       "VpcConfig": "VpcConfig"
     }
   },
+  "AWS::SageMaker::Experiment": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-experiment.html",
+    "Properties": {
+      "Description": "String",
+      "DisplayName": "String",
+      "ExperimentName": "String",
+      "Tags": "TagsItems"
+    }
+  },
+  "AWS::SageMaker::ExperimentTrialComponent": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-experimenttrialcomponent.html",
+    "Properties": {
+      "DisplayName": "String",
+      "EndTime": "String",
+      "MetadataProperties": "MetadataProperties",
+      "StartTime": "String",
+      "Status": "Status",
+      "Tags": "TagsItems",
+      "TrialComponentName": "String"
+    }
+  },
   "AWS::SageMaker::FeatureGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-featuregroup.html",
     "Properties": {
@@ -17082,6 +17167,15 @@
       "Tags": "Tag"
     }
   },
+  "AWS::SageMaker::MonitoringScheduleAlert": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-monitoringschedulealert.html",
+    "Properties": {
+      "DatapointsToAlert": "Integer",
+      "EvaluationPeriod": "Integer",
+      "MonitoringAlertName": "String",
+      "MonitoringScheduleName": "String"
+    }
+  },
   "AWS::SageMaker::NotebookInstance": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-notebookinstance.html",
     "Properties": {
@@ -17186,6 +17280,19 @@
       "StudioLifecycleConfigContent": "String",
       "StudioLifecycleConfigName": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::SageMaker::TrialComponent": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-trialcomponent.html",
+    "Properties": {
+      "DisplayName": "String",
+      "InputArtifacts": "Map",
+      "MetadataProperties": "MetadataProperties",
+      "OutputArtifacts": "Map",
+      "Parameters": "Map",
+      "Status": "TrialComponentStatus",
+      "Tags": "TagsItems",
+      "TrialComponentName": "String"
     }
   },
   "AWS::SageMaker::UserProfile": {

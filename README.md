@@ -4,9 +4,9 @@ This CloudFormation Snippets extension equips Visual Studio Code with JSON and Y
 
 <!-- TIP-LIST:START -->
 > [!TIP]
-> **Stop AWS bill surprises from happening.**
+> **Stop AWS bill surprises before they ship.**
 >
-> Most infrastructure changes look harmless until you see next month's AWS bill. [CloudBurn](https://cloudburn.io) prevents this by analyzing the cost impact of your AWS CDK changes directly in GitHub pull requests, catching expensive mistakes during code review when fixes are quick, not weeks later when they're costly and risky.
+> Most infrastructure changes look harmless until next month's AWS bill lands. [CloudBurn](https://cloudburn.io) analyzes the cost impact of your AWS CDK changes right in the GitHub pull request, so expensive mistakes get caught during code review, while a fix is still a one-line change.
 >
 > <a href="https://github.com/marketplace/cloudburn-io"><img alt="Install CloudBurn from GitHub Marketplace" src="https://img.shields.io/badge/Install%20CloudBurn-GitHub%20Marketplace-brightgreen.svg?style=for-the-badge&logo=github"/></a>
 >
@@ -14,19 +14,17 @@ This CloudFormation Snippets extension equips Visual Studio Code with JSON and Y
 > <summary>💰 <strong>Set it up once, then never be surprised by AWS costs again</strong></summary>
 > <br/>
 >
-> 1. **First install the free [CDK Diff PR Commenter GitHub Action](https://github.com/marketplace/actions/aws-cdk-diff-pr-commenter)** in your repository where you build your AWS CDK infrastructure
+> 1. **Install the free [CDK Diff PR Commenter GitHub Action](https://github.com/marketplace/actions/aws-cdk-diff-pr-commenter)** in the repository where you build your AWS CDK infrastructure
 > 2. **Then install the [CloudBurn GitHub App](https://github.com/marketplace/cloudburn-io)** on the same repository
 >
-> **What happens now:**
+> From then on, every PR with infrastructure changes gets a comment with your CDK diff analysis, and CloudBurn adds a cost report next to it:
+> - **Monthly cost impact**: whether this change raises or lowers your AWS bill, and by how much
+> - **Per-resource breakdown**: which resources drive the change, old versus new monthly cost
+> - **Region-aware pricing**: rates match the region your infrastructure actually deploys to
 >
-> Whenever you open a PR with infrastructure changes, the GitHub Action comments with your CDK diff analysis. CloudBurn reads that diff and automatically adds a separate comment with a detailed cost report showing:
-> - **Monthly cost impact** – Will this change increase or decrease your AWS bill? By how much?
-> - **Per-resource breakdown** – See exactly which resources are driving costs (old vs. new monthly costs)
-> - **Region-aware pricing** – We pick the right AWS pricing based on the region where your infrastructure is deployed
+> Cost review happens inside code review, so you optimize as you code, while the context is still fresh.
 >
-> Your team can now validate cost impact alongside infrastructure changes during code review. Essentially, this shifts FinOps left where you optimize costs as you code, not weeks later when context is lost and production adjustments require more time and carry added risk.
->
-> CloudBurn will be free during beta. After launch, a free Community plan (1 repository with unlimited users) will always be available.
+> CloudBurn is free during beta. After launch, a free Community plan (1 repository, unlimited users) stays available.
 >
 > </details>
 <!-- TIP-LIST:END -->

@@ -2235,6 +2235,16 @@
       "Tags": "Map"
     }
   },
+  "AWS::BedrockAgentCore::GatewayRule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-gatewayrule.html",
+    "Properties": {
+      "Actions": "Action",
+      "Conditions": "Condition",
+      "Description": "String",
+      "GatewayIdentifier": "String",
+      "Priority": "Double"
+    }
+  },
   "AWS::BedrockAgentCore::GatewayTarget": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-gatewaytarget.html",
     "Properties": {
@@ -2267,6 +2277,16 @@
       "TimeoutSeconds": "Integer",
       "Tools": "HarnessTool",
       "Truncation": "HarnessTruncationConfiguration"
+    }
+  },
+  "AWS::BedrockAgentCore::HarnessEndpoint": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrockagentcore-harnessendpoint.html",
+    "Properties": {
+      "Description": "String",
+      "EndpointName": "String",
+      "HarnessId": "String",
+      "Tags": "Tag",
+      "TargetVersion": "String"
     }
   },
   "AWS::BedrockAgentCore::Memory": {
@@ -5599,10 +5619,13 @@
   "AWS::DevOpsAgent::Service": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-service.html",
     "Properties": {
+      "ExchangeUrlPrivateConnectionName": "String",
       "KmsKeyArn": "String",
+      "PrivateConnectionName": "String",
       "ServiceDetails": "ServiceDetails",
       "ServiceType": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "TargetUrlPrivateConnectionName": "String"
     }
   },
   "AWS::DevOpsGuru::LogAnomalyDetectionIntegration": {
@@ -5683,6 +5706,7 @@
       "AllocatePublicVirtualInterfaceRoleArn": "String",
       "BgpPeers": "BgpPeer",
       "ConnectionId": "String",
+      "RateLimit": "String",
       "RouteFilterPrefixes": "String",
       "Tags": "Tag",
       "VirtualInterfaceName": "String",
@@ -11314,7 +11338,9 @@
       "AutoBuildBotLocales": "Boolean",
       "BotFileS3Location": "S3Location",
       "BotLocales": "BotLocale",
+      "BotMembers": "BotMember",
       "BotTags": "Tag",
+      "BotType": "String",
       "DataPrivacy": "DataPrivacy",
       "Description": "String",
       "ErrorLogSettings": "ErrorLogSettings",
@@ -11381,6 +11407,15 @@
       "Status": "String",
       "Tags": "Tag",
       "Validity": "ValidityDateFormat"
+    }
+  },
+  "AWS::LicenseManager::LicenseAssetRuleSet": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-licensemanager-licenseassetruleset.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "Rules": "LicenseAssetRule",
+      "Tags": "Tag"
     }
   },
   "AWS::Lightsail::Alarm": {
@@ -12531,6 +12566,7 @@
       "InputSwitchConfiguration": "InputSwitchConfiguration",
       "InputType": "String",
       "OutputHeaderConfiguration": "OutputHeaderConfiguration",
+      "OutputLockingMode": "String",
       "Tags": "Tag"
     }
   },
@@ -12627,6 +12663,8 @@
       "AdConditioningConfiguration": "AdConditioningConfiguration",
       "AdDecisionServerConfiguration": "AdDecisionServerConfiguration",
       "AdDecisionServerUrl": "String",
+      "AdsPersonalizationConcurrency": "AdsPersonalizationConcurrency",
+      "AdsPersonalizationTimeouts": "AdsPersonalizationTimeouts",
       "AvailSuppression": "AvailSuppression",
       "Bumper": "Bumper",
       "CdnConfiguration": "CdnConfiguration",
@@ -14657,6 +14695,21 @@
       "UserExperienceVersion": "String"
     }
   },
+  "AWS::QuickSight::TopicV2": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-topicv2.html",
+    "Properties": {
+      "AwsAccountId": "String",
+      "CustomInstructions": "CustomInstructions",
+      "DataSetRelations": "DataSetRelation",
+      "DataSets": "DataSetReference",
+      "Description": "String",
+      "FolderArns": "String",
+      "Name": "String",
+      "Permissions": "ResourcePermission",
+      "Tags": "Tag",
+      "TopicId": "String"
+    }
+  },
   "AWS::QuickSight::VPCConnection": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-vpcconnection.html",
     "Properties": {
@@ -15254,6 +15307,15 @@
       "ScheduledActionName": "String",
       "StartTime": "String",
       "TargetAction": "ScheduledActionType"
+    }
+  },
+  "AWS::Redshift::SnapshotSchedule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-snapshotschedule.html",
+    "Properties": {
+      "ScheduleDefinitions": "String",
+      "ScheduleDescription": "String",
+      "ScheduleIdentifier": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::RedshiftServerless::Namespace": {
@@ -16790,6 +16852,13 @@
       "ResourceArn": "String"
     }
   },
+  "AWS::SSM::ServiceSetting": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-servicesetting.html",
+    "Properties": {
+      "SettingId": "String",
+      "SettingValue": "String"
+    }
+  },
   "AWS::SSMContacts::Contact": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssmcontacts-contact.html",
     "Properties": {
@@ -16977,6 +17046,17 @@
       "CodeEditorAppImageConfig": "CodeEditorAppImageConfig",
       "JupyterLabAppImageConfig": "JupyterLabAppImageConfig",
       "KernelGatewayImageConfig": "KernelGatewayImageConfig",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::SageMaker::Artifact": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-artifact.html",
+    "Properties": {
+      "ArtifactName": "String",
+      "ArtifactType": "String",
+      "MetadataProperties": "MetadataProperties",
+      "Properties": "Map",
+      "Source": "ArtifactSource",
       "Tags": "Tag"
     }
   },
@@ -18182,8 +18262,10 @@
       "DryRunAndUpdate": "Boolean",
       "ExecutionRoleArn": "String",
       "FailureRetentionPeriod": "Integer",
+      "KmsKeyArn": "String",
       "Name": "String",
       "ProvisionedResourceCleanup": "String",
+      "Replicas": "Replica",
       "ResourcesToReplicateTags": "String",
       "RunConfig": "RunConfig",
       "RuntimeVersion": "String",

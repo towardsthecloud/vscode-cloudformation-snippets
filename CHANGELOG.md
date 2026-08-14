@@ -2,8 +2,9 @@ Changelog
 =========
 
 
-(unreleased)
-------------
+5.119.0 (2026-08-07)
+--------------------
+- Build: auto-update snippets to version: 5.119.0. [Github Actions]
 - Docs: update readme tip. [Danny Steenman]
 
 

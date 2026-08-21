@@ -18405,6 +18405,21 @@
       "OnStart": "NotebookInstanceLifecycleHook"
     }
   },
+  "AWS::SageMaker::OptimizationJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-optimizationjob.html",
+    "Properties": {
+      "DeploymentInstanceType": "String",
+      "ModelSource": "OptimizationJobModelSource",
+      "OptimizationConfigs": "OptimizationConfig",
+      "OptimizationEnvironment": "Map",
+      "OptimizationJobName": "String",
+      "OutputConfig": "OptimizationJobOutputConfig",
+      "RoleArn": "String",
+      "StoppingCondition": "StoppingCondition",
+      "Tags": "Tag",
+      "VpcConfig": "OptimizationVpcConfig"
+    }
+  },
   "AWS::SageMaker::PartnerApp": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-partnerapp.html",
     "Properties": {

@@ -181,6 +181,30 @@
       "Entitlement": "Entitlement"
     }
   },
+  "AWS::AgentRegistry::Registry": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-agentregistry-registry.html",
+    "Properties": {
+      "ApprovalConfiguration": "ApprovalConfiguration",
+      "AuthorizerType": "String",
+      "Description": "String",
+      "DiscoveryConfiguration": "DiscoveryConfiguration",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::AgentRegistry::RegistryRecord": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-agentregistry-registryrecord.html",
+    "Properties": {
+      "Description": "String",
+      "Descriptors": "Descriptors",
+      "DisplayName": "String",
+      "Name": "String",
+      "RecordType": "String",
+      "RecordVersion": "String",
+      "RegistryId": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::AmazonMQ::Broker": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amazonmq-broker.html",
     "Properties": {
@@ -288,6 +312,15 @@
     "Properties": {
       "AppId": "String",
       "BranchName": "String"
+    }
+  },
+  "AWS::Amplify::Webhook": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-webhook.html",
+    "Properties": {
+      "AppId": "String",
+      "BranchName": "String",
+      "Description": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::AmplifyUIBuilder::CodegenJob": {
@@ -544,7 +577,8 @@
       "Parameters": "Map",
       "Policy": "Json",
       "SecurityPolicy": "String",
-      "Tags": "Tag"
+      "Tags": "Tag",
+      "Version": "String"
     }
   },
   "AWS::ApiGateway::Stage": {
@@ -1423,6 +1457,14 @@
       "SourceApiIdentifier": "String"
     }
   },
+  "AWS::AppSync::Type": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-type.html",
+    "Properties": {
+      "ApiId": "String",
+      "Definition": "String",
+      "Format": "String"
+    }
+  },
   "AWS::AppTest::TestCase": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apptest-testcase.html",
     "Properties": {
@@ -1899,12 +1941,20 @@
       "Tags": "TagsItems"
     }
   },
+  "AWS::BackupSearch::SearchResultExportJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backupsearch-searchresultexportjob.html",
+    "Properties": {
+      "ExportSpecification": "ExportSpecification",
+      "Tags": "TagsItems"
+    }
+  },
   "AWS::Batch::ComputeEnvironment": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html",
     "Properties": {
       "ComputeEnvironmentName": "String",
       "ComputeResources": "ComputeResources",
       "Context": "String",
+      "EcsSettings": "EcsSettings",
       "EksConfiguration": "EksConfiguration",
       "ReplaceComputeEnvironment": "Boolean",
       "ServiceRole": "String",
@@ -2153,6 +2203,14 @@
       "Tags": "Map"
     }
   },
+  "AWS::Bedrock::FlowExecution": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowexecution.html",
+    "Properties": {
+      "FlowAliasIdentifier": "String",
+      "FlowExecutionName": "String",
+      "FlowIdentifier": "String"
+    }
+  },
   "AWS::Bedrock::FlowVersion": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flowversion.html",
     "Properties": {
@@ -2187,6 +2245,14 @@
     "Properties": {
       "Description": "String",
       "GuardrailIdentifier": "String"
+    }
+  },
+  "AWS::Bedrock::ImportedModel": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-importedmodel.html",
+    "Properties": {
+      "JobName": "String",
+      "ModelDataSource": "ModelDataSource",
+      "ModelName": "String"
     }
   },
   "AWS::Bedrock::IntelligentPromptRouter": {
@@ -2385,7 +2451,8 @@
       "ProtocolConfiguration": "GatewayProtocolConfiguration",
       "ProtocolType": "Json",
       "RoleArn": "String",
-      "Tags": "Map"
+      "Tags": "Map",
+      "WafConfiguration": "WafConfiguration"
     }
   },
   "AWS::BedrockAgentCore::GatewayRateLimit": {
@@ -2503,7 +2570,8 @@
       "ConnectorType": "String",
       "CredentialProviderConfigurations": "CredentialsProviderConfiguration",
       "Description": "String",
-      "PaymentManagerId": "String"
+      "PaymentManagerId": "String",
+      "ProvisionMode": "String"
     }
   },
   "AWS::BedrockAgentCore::PaymentCredentialProvider": {
@@ -2567,6 +2635,7 @@
       "AgentRuntimeArtifact": "AgentRuntimeArtifact",
       "AgentRuntimeName": "String",
       "AuthorizerConfiguration": "AuthorizerConfiguration",
+      "CapacityProviderConfiguration": "CapacityProviderConfiguration",
       "Description": "String",
       "EnvironmentVariables": "Map",
       "FilesystemConfigurations": "FilesystemConfiguration",
@@ -2763,6 +2832,16 @@
       "S3Region": "String",
       "Tags": "Tag",
       "TimeUnit": "String"
+    }
+  },
+  "AWS::Cases::Case": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cases-case.html",
+    "Properties": {
+      "CustomerId": "String",
+      "DomainId": "String",
+      "Tags": "Tag",
+      "TemplateId": "String",
+      "Title": "String"
     }
   },
   "AWS::Cases::CaseRule": {
@@ -2979,6 +3058,15 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Chime::ChannelFlow": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-chime-channelflow.html",
+    "Properties": {
+      "AppInstanceArn": "String",
+      "Name": "String",
+      "Processors": "Processor",
+      "Tags": "Tag"
+    }
+  },
   "AWS::CleanRooms::AnalysisTemplate": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cleanrooms-analysistemplate.html",
     "Properties": {
@@ -3143,6 +3231,26 @@
       "Repositories": "Repository",
       "SubnetId": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::CloudFormation::ChangeSet": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-changeset.html",
+    "Properties": {
+      "Capabilities": "String",
+      "ChangeSetName": "String",
+      "ChangeSetType": "String",
+      "DeploymentMode": "String",
+      "Description": "String",
+      "ImportExistingResources": "Boolean",
+      "IncludeNestedStacks": "Boolean",
+      "NotificationARNs": "String",
+      "OnStackFailure": "String",
+      "RoleARN": "String",
+      "StackName": "String",
+      "Tags": "TagsItems",
+      "TemplateBody": "String",
+      "TemplateURL": "String",
+      "UsePreviousTemplate": "Boolean"
     }
   },
   "AWS::CloudFormation::CustomResource": {
@@ -3602,7 +3710,8 @@
       "Threshold": "Double",
       "ThresholdMetricId": "String",
       "TreatMissingData": "String",
-      "Unit": "String"
+      "Unit": "String",
+      "WarmUpConfiguration": "WarmUpConfiguration"
     }
   },
   "AWS::CloudWatch::AlarmMuteRule": {
@@ -3681,7 +3790,8 @@
       "ScheduledQueryConfiguration": "ScheduledQueryConfiguration",
       "Tags": "Tag",
       "Threshold": "Double",
-      "TreatMissingData": "String"
+      "TreatMissingData": "String",
+      "WarmUpConfiguration": "WarmUpConfiguration"
     }
   },
   "AWS::CloudWatch::MetricStream": {
@@ -3848,6 +3958,16 @@
       "HostArn": "String",
       "ProviderType": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::CodeConnections::Host": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codeconnections-host.html",
+    "Properties": {
+      "Name": "String",
+      "ProviderEndpoint": "String",
+      "ProviderType": "String",
+      "Tags": "Tag",
+      "VpcConfiguration": "VpcConfiguration"
     }
   },
   "AWS::CodeDeploy::Application": {
@@ -4279,6 +4399,16 @@
       "VpcConfig": "VpcConfig"
     }
   },
+  "AWS::Comprehend::DominantLanguageDetectionJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-comprehend-dominantlanguagedetectionjob.html",
+    "Properties": {
+      "DataAccessRoleArn": "String",
+      "InputDataConfig": "InputDataConfig",
+      "JobName": "String",
+      "Tags": "Tag",
+      "VolumeKmsKeyId": "String"
+    }
+  },
   "AWS::Comprehend::EntitiesDetectionJob": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-comprehend-entitiesdetectionjob.html",
     "Properties": {
@@ -4320,6 +4450,17 @@
       "JobName": "String",
       "LanguageCode": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::Comprehend::TargetedSentimentDetectionJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-comprehend-targetedsentimentdetectionjob.html",
+    "Properties": {
+      "DataAccessRoleArn": "String",
+      "InputDataConfig": "InputDataConfig",
+      "JobName": "String",
+      "LanguageCode": "String",
+      "Tags": "TagsItems",
+      "VolumeKmsKeyId": "String"
     }
   },
   "AWS::ComputeOptimizer::AutomationRule": {
@@ -4632,6 +4773,19 @@
       "IntegrationArn": "String",
       "IntegrationType": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::Connect::Metric": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-connect-metric.html",
+    "Properties": {
+      "Description": "String",
+      "InstanceArn": "String",
+      "MetricCalculation": "MetricCalculation",
+      "Name": "String",
+      "PositiveTrendIndicator": "String",
+      "Status": "String",
+      "Tags": "Tag",
+      "Unit": "String"
     }
   },
   "AWS::Connect::Notification": {
@@ -5276,6 +5430,15 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-drs-recoveryinstance.html",
     "Properties": {}
   },
+  "AWS::DRS::SourceNetwork": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-drs-sourcenetwork.html",
+    "Properties": {
+      "OriginAccountID": "String",
+      "OriginRegion": "String",
+      "Tags": "Tag",
+      "VpcID": "String"
+    }
+  },
   "AWS::DSQL::Cluster": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dsql-cluster.html",
     "Properties": {
@@ -5385,6 +5548,14 @@
       "AssetType": "String",
       "Description": "String",
       "Name": "String"
+    }
+  },
+  "AWS::DataExchange::EventAction": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dataexchange-eventaction.html",
+    "Properties": {
+      "Action": "Action",
+      "Event": "Event",
+      "Tags": "Tag"
     }
   },
   "AWS::DataExchange::Job": {
@@ -5576,6 +5747,13 @@
       "Tags": "Tag",
       "TaskMode": "String",
       "TaskReportConfig": "TaskReportConfig"
+    }
+  },
+  "AWS::DataSync::TaskExecution": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datasync-taskexecution.html",
+    "Properties": {
+      "Tags": "Tag",
+      "TaskArn": "String"
     }
   },
   "AWS::DataZone::Connection": {
@@ -5795,6 +5973,19 @@
       "UserType": "String"
     }
   },
+  "AWS::Deadline::Budget": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-deadline-budget.html",
+    "Properties": {
+      "Actions": "BudgetActionToAdd",
+      "ApproximateDollarLimit": "Double",
+      "Description": "String",
+      "DisplayName": "String",
+      "FarmId": "String",
+      "Schedule": "BudgetSchedule",
+      "Tags": "Tag",
+      "UsageTrackingResource": "UsageTrackingResource"
+    }
+  },
   "AWS::Deadline::Farm": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-deadline-farm.html",
     "Properties": {
@@ -5816,6 +6007,18 @@
       "MaxWorkerCount": "Integer",
       "MinWorkerCount": "Integer",
       "RoleArn": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Deadline::Job": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-deadline-job.html",
+    "Properties": {
+      "FarmId": "String",
+      "MaxFailedTasksCount": "Integer",
+      "MaxRetriesPerTask": "Integer",
+      "MaxWorkerCount": "Integer",
+      "Priority": "Integer",
+      "QueueId": "String",
       "Tags": "Tag"
     }
   },
@@ -5905,6 +6108,15 @@
       "FarmId": "String",
       "FileSystemLocations": "FileSystemLocation",
       "OsFamily": "String"
+    }
+  },
+  "AWS::Deadline::Worker": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-deadline-worker.html",
+    "Properties": {
+      "FarmId": "String",
+      "FleetId": "String",
+      "HostProperties": "HostPropertiesRequest",
+      "Tags": "TagsItems"
     }
   },
   "AWS::Detective::Graph": {
@@ -6229,6 +6441,13 @@
       "VpcSecurityGroupIds": "String"
     }
   },
+  "AWS::DynamoDB::Backup": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-backup.html",
+    "Properties": {
+      "BackupName": "String",
+      "TableName": "String"
+    }
+  },
   "AWS::DynamoDB::Export": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-export.html",
     "Properties": {
@@ -6507,6 +6726,16 @@
       "TrafficType": "String"
     }
   },
+  "AWS::EC2::FpgaImage": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-fpgaimage.html",
+    "Properties": {
+      "Description": "String",
+      "InputStorageLocation": "StorageLocation",
+      "LogsStorageLocation": "StorageLocation",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::EC2::GatewayRouteTableAssociation": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-gatewayroutetableassociation.html",
     "Properties": {
@@ -6692,6 +6921,13 @@
     "Properties": {
       "PublicIpv4Pool": "String",
       "RouteTableId": "String"
+    }
+  },
+  "AWS::EC2::IpamExternalResourceVerificationToken": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-ipamexternalresourceverificationtoken.html",
+    "Properties": {
+      "IpamId": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::EC2::KeyPair": {
@@ -6912,6 +7148,14 @@
       "Entries": "Entry",
       "MaxEntries": "Integer",
       "PrefixListName": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::EC2::ReplaceRootVolumeTask": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-replacerootvolumetask.html",
+    "Properties": {
+      "DeleteReplacedRootVolume": "Boolean",
+      "InstanceId": "String",
       "Tags": "Tag"
     }
   },
@@ -7425,6 +7669,8 @@
       "GatewayLoadBalancerArns": "String",
       "NetworkLoadBalancerArns": "String",
       "PayerResponsibility": "String",
+      "PrivateDnsName": "String",
+      "PrivateDnsNameConfiguration": "PrivateDnsNameConfiguration",
       "SupportedIpAddressTypes": "String",
       "SupportedRegions": "String",
       "Tags": "Tag"
@@ -7597,6 +7843,10 @@
       "InstanceId": "String",
       "VolumeId": "String"
     }
+  },
+  "AWS::EC2::VpnConnectionDeviceType": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpnconnectiondevicetype.html",
+    "Properties": {}
   },
   "AWS::ECR::PublicRepository": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html",
@@ -7924,11 +8174,19 @@
       "Type": "String"
     }
   },
+  "AWS::EKS::CertificateAuthority": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-certificateauthority.html",
+    "Properties": {
+      "ClusterName": "String"
+    }
+  },
   "AWS::EKS::Cluster": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-cluster.html",
     "Properties": {
       "AccessConfig": "AccessConfig",
+      "ActiveCertificateAuthorityId": "String",
       "BootstrapSelfManagedAddons": "Boolean",
+      "CertificateAuthority": "CertificateAuthority",
       "ComputeConfig": "ComputeConfig",
       "ControlPlaneScalingConfig": "ControlPlaneScalingConfig",
       "DeletionProtection": "Boolean",
@@ -8154,6 +8412,19 @@
       "VirtualClusterId": "String"
     }
   },
+  "AWS::EMRContainers::JobRun": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emrcontainers-jobrun.html",
+    "Properties": {
+      "ConfigurationOverrides": "ConfigurationOverrides",
+      "ExecutionRoleArn": "String",
+      "JobDriver": "JobDriver",
+      "Name": "String",
+      "ReleaseLabel": "String",
+      "RetryPolicyConfiguration": "RetryPolicyConfiguration",
+      "Tags": "Tag",
+      "VirtualClusterId": "String"
+    }
+  },
   "AWS::EMRContainers::SecurityConfiguration": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emrcontainers-securityconfiguration.html",
     "Properties": {
@@ -8193,6 +8464,19 @@
       "Tags": "Tag",
       "Type": "String",
       "WorkerTypeSpecifications": "Map"
+    }
+  },
+  "AWS::EMRServerless::JobRun": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emrserverless-jobrun.html",
+    "Properties": {
+      "ApplicationId": "String",
+      "ConfigurationOverrides": "ConfigurationOverrides",
+      "ExecutionRoleArn": "String",
+      "ExecutionTimeoutMinutes": "Integer",
+      "JobDriver": "JobDriver",
+      "Mode": "String",
+      "Name": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::EVS::Environment": {
@@ -8583,6 +8867,7 @@
   "AWS::ElementalInference::Feed": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elementalinference-feed.html",
     "Properties": {
+      "AccessRoleArn": "String",
       "Name": "String",
       "Outputs": "GetOutput",
       "Tags": "Map"
@@ -9330,7 +9615,8 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-connection.html",
     "Properties": {
       "CatalogId": "String",
-      "ConnectionInput": "ConnectionInput"
+      "ConnectionInput": "ConnectionInput",
+      "Tags": "Json"
     }
   },
   "AWS::Glue::Crawler": {
@@ -9477,7 +9763,7 @@
       "Name": "String",
       "NumberOfWorkers": "Integer",
       "Role": "String",
-      "Tags": "Json",
+      "Tags": "Map",
       "Timeout": "Integer",
       "TransformEncryption": "TransformEncryption",
       "TransformParameters": "TransformParameters",
@@ -9534,6 +9820,26 @@
     "Properties": {
       "EncryptionConfiguration": "EncryptionConfiguration",
       "Name": "String"
+    }
+  },
+  "AWS::Glue::Session": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-session.html",
+    "Properties": {
+      "Command": "SessionCommand",
+      "Connections": "ConnectionsList",
+      "DefaultArguments": "Map",
+      "Description": "String",
+      "GlueVersion": "String",
+      "Id": "String",
+      "IdleTimeout": "Integer",
+      "MaxCapacity": "Double",
+      "NumberOfWorkers": "Integer",
+      "RequestOrigin": "String",
+      "Role": "String",
+      "SecurityConfiguration": "String",
+      "Tags": "Tag",
+      "Timeout": "Integer",
+      "WorkerType": "String"
     }
   },
   "AWS::Glue::Table": {
@@ -9832,6 +10138,14 @@
       "Tags": "Tag",
       "TelemetrySinkConfigArn": "String",
       "TrackingConfigArn": "String"
+    }
+  },
+  "AWS::GuardDuty::CustomDetectionRuleAssociation": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-customdetectionruleassociation.html",
+    "Properties": {
+      "Mode": "String",
+      "RuleId": "String",
+      "Tags": "TagItem"
     }
   },
   "AWS::GuardDuty::Detector": {
@@ -10271,6 +10585,29 @@
       "MemberId": "MemberId"
     }
   },
+  "AWS::IdentityStore::User": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-identitystore-user.html",
+    "Properties": {
+      "Addresses": "AddressesItems",
+      "Birthdate": "String",
+      "DisplayName": "String",
+      "Emails": "EmailsItems",
+      "IdentityStoreId": "String",
+      "Locale": "String",
+      "Name": "Name",
+      "NickName": "String",
+      "PhoneNumbers": "PhoneNumbersItems",
+      "Photos": "PhotosItems",
+      "PreferredLanguage": "String",
+      "ProfileUrl": "String",
+      "Roles": "RolesItems",
+      "Timezone": "String",
+      "Title": "String",
+      "UserName": "String",
+      "UserType": "String",
+      "Website": "String"
+    }
+  },
   "AWS::ImageBuilder::AllImageBuildVersions": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-allimagebuildversions.html",
     "Properties": {}
@@ -10555,6 +10892,25 @@
       "ResourceTags": "ResourceTag",
       "Rule": "Rule",
       "TaxInheritanceDisabled": "Boolean"
+    }
+  },
+  "AWS::Invoicing::ProcurementPortalPreference": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-invoicing-procurementportalpreference.html",
+    "Properties": {
+      "BuyerDomain": "String",
+      "BuyerIdentifier": "String",
+      "Contacts": "Contact",
+      "EinvoiceDeliveryEnabled": "Boolean",
+      "EinvoiceDeliveryPreference": "EinvoiceDeliveryPreference",
+      "ProcurementPortalInstanceEndpoint": "String",
+      "ProcurementPortalName": "String",
+      "ProcurementPortalSharedSecret": "String",
+      "PurchaseOrderRetrievalEnabled": "Boolean",
+      "Selector": "ProcurementPortalPreferenceSelector",
+      "SupplierDomain": "String",
+      "SupplierIdentifier": "String",
+      "Tags": "Tag",
+      "TestEnvPreference": "TestEnvPreference"
     }
   },
   "AWS::IoT::AccountAuditConfiguration": {
@@ -10850,6 +11206,16 @@
       "VersionName": "String"
     }
   },
+  "AWS::IoT::Stream": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-stream.html",
+    "Properties": {
+      "Description": "String",
+      "Files": "StreamFile",
+      "RoleArn": "String",
+      "StreamId": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::IoT::Thing": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html",
     "Properties": {
@@ -11080,6 +11446,15 @@
       "Name": "String",
       "StateTemplates": "StateTemplateAssociation",
       "Tags": "Tag"
+    }
+  },
+  "AWS::IoTSecureTunneling::Tunnel": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsecuretunneling-tunnel.html",
+    "Properties": {
+      "Description": "String",
+      "DestinationConfig": "DestinationConfig",
+      "Tags": "Tag",
+      "TimeoutConfig": "TimeoutConfig"
     }
   },
   "AWS::IoTSiteWise::AccessPolicy": {
@@ -11496,6 +11871,28 @@
       "UserTokenConfigurations": "UserTokenConfiguration"
     }
   },
+  "AWS::Kendra::QuerySuggestionsBlockList": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kendra-querysuggestionsblocklist.html",
+    "Properties": {
+      "Description": "String",
+      "IndexId": "String",
+      "Name": "String",
+      "RoleArn": "String",
+      "SourceS3Path": "S3Path",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Kendra::Thesaurus": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kendra-thesaurus.html",
+    "Properties": {
+      "Description": "String",
+      "IndexId": "String",
+      "Name": "String",
+      "RoleArn": "String",
+      "SourceS3Path": "S3Path",
+      "Tags": "Tag"
+    }
+  },
   "AWS::KendraRanking::ExecutionPlan": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kendraranking-executionplan.html",
     "Properties": {
@@ -11742,6 +12139,12 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Lambda::DurableExecution": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-durableexecution.html",
+    "Properties": {
+      "FunctionName": "String"
+    }
+  },
   "AWS::Lambda::EventInvokeConfig": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html",
     "Properties": {
@@ -11881,6 +12284,13 @@
       "PrincipalOrgID": "String",
       "SourceAccount": "String",
       "SourceArn": "String"
+    }
+  },
+  "AWS::Lambda::ResourcePolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-resourcepolicy.html",
+    "Properties": {
+      "PolicyDocument": "Json",
+      "ResourceArn": "String"
     }
   },
   "AWS::Lambda::Url": {
@@ -12035,6 +12445,13 @@
       "DomainName": "String",
       "SubjectAlternativeNames": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::Lightsail::ContactMethod": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-contactmethod.html",
+    "Properties": {
+      "ContactEndpoint": "String",
+      "Protocol": "String"
     }
   },
   "AWS::Lightsail::Container": {
@@ -12408,6 +12825,12 @@
       "Timezone": "String"
     }
   },
+  "AWS::Logs::StorageTierPolicy": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-storagetierpolicy.html",
+    "Properties": {
+      "StorageTier": "String"
+    }
+  },
   "AWS::Logs::SubscriptionFilter": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-subscriptionfilter.html",
     "Properties": {
@@ -12486,6 +12909,19 @@
       "StorageConfigurations": "StorageConfiguration",
       "SubnetIds": "String",
       "Tags": "Map"
+    }
+  },
+  "AWS::MGN::NetworkMigrationDefinition": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mgn-networkmigrationdefinition.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "ScopeTags": "Map",
+      "SourceConfigurations": "SourceConfiguration",
+      "Tags": "Tag",
+      "TargetDeployment": "String",
+      "TargetNetwork": "TargetNetwork",
+      "TargetS3Configuration": "TargetS3Configuration"
     }
   },
   "AWS::MPA::ApprovalTeam": {
@@ -12638,6 +13074,7 @@
   "AWS::MWAAServerless::Workflow": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mwaaserverless-workflow.html",
     "Properties": {
+      "Code": "Code",
       "DefinitionS3Location": "S3Location",
       "Description": "String",
       "EncryptionConfiguration": "EncryptionConfiguration",
@@ -13342,6 +13779,19 @@
       "Tags": "Tag",
       "TranscodeProfileName": "String",
       "VideoContentSourceUrl": "String"
+    }
+  },
+  "AWS::MediaTailor::PrefetchSchedule": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediatailor-prefetchschedule.html",
+    "Properties": {
+      "Consumption": "PrefetchConsumption",
+      "Name": "String",
+      "PlaybackConfigurationName": "String",
+      "RecurringPrefetchConfiguration": "RecurringPrefetchConfiguration",
+      "Retrieval": "PrefetchRetrieval",
+      "ScheduleType": "String",
+      "StreamId": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::MediaTailor::SourceLocation": {
@@ -14187,6 +14637,17 @@
       "WorkflowType": "String"
     }
   },
+  "AWS::Omics::RunCache": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-runcache.html",
+    "Properties": {
+      "CacheBehavior": "String",
+      "CacheBucketOwnerId": "String",
+      "CacheS3Location": "String",
+      "Description": "String",
+      "Name": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Omics::RunGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-omics-rungroup.html",
     "Properties": {
@@ -14579,6 +15040,10 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Organizations::Root": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-organizations-root.html",
+    "Properties": {}
+  },
   "AWS::Outposts::Site": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-outposts-site.html",
     "Properties": {
@@ -14753,6 +15218,19 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Personalize::BatchInferenceJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-batchinferencejob.html",
+    "Properties": {
+      "BatchInferenceJobMode": "String",
+      "JobInput": "BatchInferenceJobInput",
+      "JobName": "String",
+      "JobOutput": "BatchInferenceJobOutput",
+      "NumResults": "Integer",
+      "RoleArn": "String",
+      "SolutionVersionArn": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Personalize::BatchSegmentJob": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-batchsegmentjob.html",
     "Properties": {
@@ -14781,7 +15259,8 @@
       "DatasetImportJob": "DatasetImportJob",
       "DatasetType": "String",
       "Name": "String",
-      "SchemaArn": "String"
+      "SchemaArn": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Personalize::DatasetGroup": {
@@ -14790,7 +15269,8 @@
       "Domain": "String",
       "KmsKeyArn": "String",
       "Name": "String",
-      "RoleArn": "String"
+      "RoleArn": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Personalize::EventTracker": {
@@ -14799,6 +15279,15 @@
       "DatasetGroupArn": "String",
       "Name": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::Personalize::MetricAttribution": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-metricattribution.html",
+    "Properties": {
+      "DatasetGroupArn": "String",
+      "Metrics": "MetricAttribute",
+      "MetricsOutputConfig": "MetricsOutputConfig",
+      "Name": "String"
     }
   },
   "AWS::Personalize::Recipe": {
@@ -14812,7 +15301,8 @@
     "Properties": {
       "Domain": "String",
       "Name": "String",
-      "Schema": "String"
+      "Schema": "String",
+      "Tags": "Tag"
     }
   },
   "AWS::Personalize::Solution": {
@@ -14824,7 +15314,8 @@
       "PerformAutoML": "Boolean",
       "PerformHPO": "Boolean",
       "RecipeArn": "String",
-      "SolutionConfig": "SolutionConfig"
+      "SolutionConfig": "SolutionConfig",
+      "Tags": "Tag"
     }
   },
   "AWS::Pinpoint::ADMChannel": {
@@ -15472,6 +15963,15 @@
       "Tags": "Tag"
     }
   },
+  "AWS::QuickSight::LimitsProfile": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-limitsprofile.html",
+    "Properties": {
+      "AccountId": "String",
+      "Description": "String",
+      "ProfileName": "String",
+      "ResourceLimits": "Map"
+    }
+  },
   "AWS::QuickSight::OAuthClientApplication": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-quicksight-oauthclientapplication.html",
     "Properties": {
@@ -15598,6 +16098,14 @@
       "ResourceArns": "String",
       "ResourceShareConfiguration": "ResourceShareConfiguration",
       "Sources": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::RDS::ClusterSnapshot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-clustersnapshot.html",
+    "Properties": {
+      "DBClusterIdentifier": "String",
+      "DBClusterSnapshotIdentifier": "String",
       "Tags": "Tag"
     }
   },
@@ -15859,6 +16367,14 @@
       "MaxACU": "Double",
       "MinACU": "Double",
       "PubliclyAccessible": "Boolean",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::RDS::DBSnapshot": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbsnapshot.html",
+    "Properties": {
+      "DBInstanceIdentifier": "String",
+      "DBSnapshotIdentifier": "String",
       "Tags": "Tag"
     }
   },
@@ -16342,6 +16858,16 @@
       "Tags": "Map"
     }
   },
+  "AWS::ResilienceHub::RecommendationTemplate": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehub-recommendationtemplate.html",
+    "Properties": {
+      "AssessmentArn": "String",
+      "Format": "String",
+      "Name": "String",
+      "RecommendationTypes": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::ResilienceHub::ResiliencyPolicy": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-resiliencehub-resiliencypolicy.html",
     "Properties": {
@@ -16585,14 +17111,13 @@
     }
   },
   "AWS::Route53::RecordSet": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-recordset.html",
     "Properties": {
       "AliasTarget": "AliasTarget",
       "CidrRoutingConfig": "CidrRoutingConfig",
       "Comment": "String",
       "Failover": "String",
       "GeoLocation": "GeoLocation",
-      "GeoProximityLocation": "GeoProximityLocation",
       "HealthCheckId": "String",
       "HostedZoneId": "String",
       "HostedZoneName": "String",
@@ -17236,7 +17761,7 @@
     }
   },
   "AWS::SDB::Domain": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-simpledb.html",
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sdb-domain.html",
     "Properties": {
       "Description": "String"
     }
@@ -18103,6 +18628,7 @@
       "ExecutionRoleArn": "String",
       "ExplainerConfig": "ExplainerConfig",
       "KmsKeyId": "String",
+      "MetricsConfig": "MetricsConfig",
       "ProductionVariants": "ProductionVariant",
       "ShadowProductionVariants": "ProductionVariant",
       "Tags": "Tag",
@@ -18144,12 +18670,32 @@
       "Tags": "Tag"
     }
   },
+  "AWS::SageMaker::HubContentVersion": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-hubcontentversion.html",
+    "Properties": {
+      "HubContentName": "String",
+      "HubContentType": "String",
+      "HubName": "String"
+    }
+  },
   "AWS::SageMaker::HumanTaskUi": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-humantaskui.html",
     "Properties": {
       "HumanTaskUiName": "String",
       "Tags": "Tag",
       "UiTemplate": "UiTemplate"
+    }
+  },
+  "AWS::SageMaker::HyperParameterTuningJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-hyperparametertuningjob.html",
+    "Properties": {
+      "Autotune": "Autotune",
+      "HyperParameterTuningJobConfig": "HyperParameterTuningJobConfig",
+      "HyperParameterTuningJobName": "String",
+      "Tags": "Tag",
+      "TrainingJobDefinition": "TrainingJobDefinition",
+      "TrainingJobDefinitions": "TrainingJobDefinition",
+      "WarmStartConfig": "HyperParameterTuningJobWarmStartConfig"
     }
   },
   "AWS::SageMaker::Image": {
@@ -19172,6 +19718,13 @@
       "Type": "String"
     }
   },
+  "AWS::ServiceQuotas::Quota": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicequotas-quota.html",
+    "Properties": {
+      "QuotaCode": "String",
+      "ServiceCode": "String"
+    }
+  },
   "AWS::Shield::DRTAccess": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-shield-drtaccess.html",
     "Properties": {
@@ -19333,6 +19886,17 @@
       "VersionId": "String"
     }
   },
+  "AWS::SupportAuthZ::SupportPermit": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-supportauthz-supportpermit.html",
+    "Properties": {
+      "Description": "String",
+      "Name": "String",
+      "Permit": "Permit",
+      "SigningKeyInfo": "SigningKeyInfo",
+      "SupportCaseDisplayId": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Synthetics::Canary": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html",
     "Properties": {
@@ -19377,6 +19941,16 @@
       "Instances": "String",
       "SapInstanceNumber": "String",
       "Sid": "String",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Textract::Adapter": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-textract-adapter.html",
+    "Properties": {
+      "AdapterName": "String",
+      "AutoUpdate": "String",
+      "Description": "String",
+      "FeatureTypes": "String",
       "Tags": "Tag"
     }
   },
@@ -19467,6 +20041,16 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Transcribe::CallAnalyticsJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transcribe-callanalyticsjob.html",
+    "Properties": {
+      "CallAnalyticsJobName": "String",
+      "ChannelDefinitions": "ChannelDefinition",
+      "DataAccessRoleArn": "String",
+      "Media": "Media",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Transcribe::MedicalScribeJob": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transcribe-medicalscribejob.html",
     "Properties": {
@@ -19490,6 +20074,21 @@
       "Specialty": "String",
       "Tags": "Tag",
       "Type": "String"
+    }
+  },
+  "AWS::Transcribe::TranscriptionJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transcribe-transcriptionjob.html",
+    "Properties": {
+      "ContentRedaction": "ContentRedaction",
+      "LanguageCode": "String",
+      "Media": "Media",
+      "MediaFormat": "String",
+      "MediaSampleRateHertz": "Integer",
+      "Settings": "Settings",
+      "Subtitles": "Subtitles",
+      "Tags": "Tag",
+      "ToxicityDetection": "ToxicityDetectionSettings",
+      "TranscriptionJobName": "String"
     }
   },
   "AWS::Transcribe::VocabularyFilter": {
@@ -19621,6 +20220,16 @@
       "OnExceptionSteps": "WorkflowStep",
       "Steps": "WorkflowStep",
       "Tags": "Tag"
+    }
+  },
+  "AWS::Translate::ParallelData": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-translate-paralleldata.html",
+    "Properties": {
+      "Description": "String",
+      "EncryptionKey": "EncryptionKey",
+      "Name": "String",
+      "ParallelDataConfig": "ParallelDataConfig",
+      "Tags": "TagsItems"
     }
   },
   "AWS::UXC::AccountCustomization": {
@@ -20074,6 +20683,25 @@
       "TemplateName": "String"
     }
   },
+  "AWS::WellArchitected::Workload": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-workload.html",
+    "Properties": {
+      "AccountIds": "String",
+      "ArchitecturalDesign": "String",
+      "AwsRegions": "String",
+      "Description": "String",
+      "DiscoveryConfig": "DiscoveryConfig",
+      "Environment": "String",
+      "Industry": "String",
+      "IndustryType": "String",
+      "Lenses": "String",
+      "NonAwsRegions": "String",
+      "Notes": "String",
+      "ReviewOwner": "String",
+      "Tags": "TagsItems",
+      "WorkloadName": "String"
+    }
+  },
   "AWS::Wickr::Network": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wickr-network.html",
     "Properties": {
@@ -20216,12 +20844,25 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Wisdom::Session": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wisdom-session.html",
+    "Properties": {
+      "AssistantId": "String",
+      "Description": "String",
+      "Name": "String",
+      "Tags": "TagsItems"
+    }
+  },
   "AWS::WorkSpaces::ConnectionAlias": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-connectionalias.html",
     "Properties": {
       "ConnectionString": "String",
       "Tags": "Tag"
     }
+  },
+  "AWS::WorkSpaces::WorkSpaceApplication": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspaceapplication.html",
+    "Properties": {}
   },
   "AWS::WorkSpaces::Workspace": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspace.html",

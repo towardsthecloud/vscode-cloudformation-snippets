@@ -896,6 +896,17 @@
       "Treatments": "Treatment"
     }
   },
+  "AWS::AppConfig::ExperimentRun": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-experimentrun.html",
+    "Properties": {
+      "ApplicationIdentifier": "String",
+      "Description": "String",
+      "ExperimentDefinitionIdentifier": "String",
+      "ExposurePercentage": "Double",
+      "Tags": "Tag",
+      "TreatmentOverrides": "TreatmentOverrides"
+    }
+  },
   "AWS::AppConfig::Extension": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-extension.html",
     "Properties": {
@@ -2177,6 +2188,10 @@
       "SelectiveContentGuarding": "SelectiveContentGuarding"
     }
   },
+  "AWS::Bedrock::EvaluationJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-evaluationjob.html",
+    "Properties": {}
+  },
   "AWS::Bedrock::Flow": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-flow.html",
     "Properties": {
@@ -3064,6 +3079,24 @@
       "AppInstanceArn": "String",
       "Name": "String",
       "Processors": "Processor",
+      "Tags": "Tag"
+    }
+  },
+  "AWS::Chime::MediaPipelineKinesisVideoStreamPool": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-chime-mediapipelinekinesisvideostreampool.html",
+    "Properties": {
+      "PoolName": "String",
+      "StreamConfiguration": "StreamConfiguration",
+      "Tags": "TagsItems"
+    }
+  },
+  "AWS::Chime::VoiceConnector": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-chime-voiceconnector.html",
+    "Properties": {
+      "AwsRegion": "String",
+      "Name": "String",
+      "NetworkType": "String",
+      "RequireEncryption": "Boolean",
       "Tags": "Tag"
     }
   },
@@ -5238,7 +5271,7 @@
     "Properties": {
       "CopyTags": "Boolean",
       "CreateInterval": "Integer",
-      "CrossRegionCopyTargets": "CrossRegionCopyTargets",
+      "CrossRegionCopyTargets": "CrossRegionCopyTarget",
       "DefaultPolicy": "String",
       "Description": "String",
       "Exclusions": "Exclusions",
@@ -6441,13 +6474,6 @@
       "VpcSecurityGroupIds": "String"
     }
   },
-  "AWS::DynamoDB::Backup": {
-    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-backup.html",
-    "Properties": {
-      "BackupName": "String",
-      "TableName": "String"
-    }
-  },
   "AWS::DynamoDB::Export": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-export.html",
     "Properties": {
@@ -6513,6 +6539,26 @@
       "Tags": "Tag",
       "TimeToLiveSpecification": "TimeToLiveSpecification",
       "WarmThroughput": "WarmThroughput"
+    }
+  },
+  "AWS::EC2::ApplicationStatusCheck": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-applicationstatuscheck.html",
+    "Properties": {
+      "Aggregation": "String",
+      "DeviceIndex": "Integer",
+      "FailureThreshold": "Integer",
+      "HealthCheckPaths": "HealthCheckPath",
+      "InitializationGracePeriodSeconds": "Integer",
+      "Interval": "Integer",
+      "IpScope": "String",
+      "IpVersion": "String",
+      "Path": "String",
+      "Port": "Integer",
+      "Protocol": "String",
+      "StatusCodeMatcher": "String",
+      "SuccessThreshold": "Integer",
+      "Tags": "Tag",
+      "Timeout": "Integer"
     }
   },
   "AWS::EC2::CapacityManagerDataExport": {
@@ -11261,6 +11307,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html",
     "Properties": {
       "HttpUrlProperties": "HttpUrlDestinationSummary",
+      "InfluxDBProperties": "InfluxDBDestinationProperties",
       "Status": "String",
       "VpcProperties": "VpcDestinationProperties"
     }
@@ -11530,6 +11577,17 @@
       "Tags": "Tag"
     }
   },
+  "AWS::IoTSiteWise::Pipeline": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsitewise-pipeline.html",
+    "Properties": {
+      "Computations": "ComputeNode",
+      "Description": "String",
+      "EnvironmentVariables": "Map",
+      "PipelineName": "String",
+      "Tags": "Tag",
+      "WorkspaceName": "String"
+    }
+  },
   "AWS::IoTSiteWise::Portal": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsitewise-portal.html",
     "Properties": {
@@ -11553,6 +11611,26 @@
       "ProjectDescription": "String",
       "ProjectName": "String",
       "Tags": "Tag"
+    }
+  },
+  "AWS::IoTSiteWise::Task": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsitewise-task.html",
+    "Properties": {
+      "Description": "String",
+      "Tags": "Tag",
+      "TaskConfiguration": "TaskConfiguration",
+      "TaskName": "String",
+      "WorkspaceName": "String"
+    }
+  },
+  "AWS::IoTSiteWise::Workspace": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iotsitewise-workspace.html",
+    "Properties": {
+      "EncryptionConfiguration": "EncryptionConfiguration",
+      "KmsKeyId": "String",
+      "Tags": "Tag",
+      "WorkspaceDescription": "String",
+      "WorkspaceName": "String"
     }
   },
   "AWS::IoTThingsGraph::FlowTemplate": {
@@ -13328,6 +13406,7 @@
     "Properties": {
       "AvailabilityZone": "String",
       "Configuration": "RouterOutputConfiguration",
+      "FabricConfiguration": "FabricConfiguration",
       "MaintenanceConfiguration": "MaintenanceConfiguration",
       "MaximumBitrate": "Integer",
       "Name": "String",
@@ -13686,6 +13765,7 @@
       "OriginEndpointName": "String",
       "Segment": "Segment",
       "StartoverWindowSeconds": "Integer",
+      "StreamNameOutputMode": "String",
       "Tags": "Tag",
       "UriSeparator": "String"
     }
@@ -14141,8 +14221,6 @@
       "EdgeLocation": "String",
       "NetworkFunctionGroupName": "String",
       "Options": "ConnectAttachmentOptions",
-      "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
-      "ProposedSegmentChange": "ProposedSegmentChange",
       "RoutingPolicyLabel": "String",
       "Tags": "Tag",
       "TransportAttachmentId": "String"
@@ -14207,8 +14285,6 @@
       "CoreNetworkId": "String",
       "DirectConnectGatewayArn": "String",
       "EdgeLocations": "String",
-      "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
-      "ProposedSegmentChange": "ProposedSegmentChange",
       "RoutingPolicyLabel": "String",
       "Tags": "Tag"
     }
@@ -14256,8 +14332,6 @@
     "Properties": {
       "CoreNetworkId": "String",
       "NetworkFunctionGroupName": "String",
-      "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
-      "ProposedSegmentChange": "ProposedSegmentChange",
       "RoutingPolicyLabel": "String",
       "Tags": "Tag",
       "VpnConnectionArn": "String"
@@ -14283,8 +14357,6 @@
     "Properties": {
       "NetworkFunctionGroupName": "String",
       "PeeringId": "String",
-      "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
-      "ProposedSegmentChange": "ProposedSegmentChange",
       "RoutingPolicyLabel": "String",
       "Tags": "Tag",
       "TransitGatewayRouteTableArn": "String"
@@ -14295,8 +14367,6 @@
     "Properties": {
       "CoreNetworkId": "String",
       "Options": "VpcOptions",
-      "ProposedNetworkFunctionGroupChange": "ProposedNetworkFunctionGroupChange",
-      "ProposedSegmentChange": "ProposedSegmentChange",
       "RoutingPolicyLabel": "String",
       "SubnetArns": "String",
       "Tags": "Tag",
@@ -14324,6 +14394,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-notifications-managednotificationaccountcontactassociation.html",
     "Properties": {
       "ContactIdentifier": "String",
+      "IsSensitiveEventsSubscribed": "Boolean",
       "ManagedNotificationConfigurationArn": "String"
     }
   },
@@ -14331,6 +14402,7 @@
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-notifications-managednotificationadditionalchannelassociation.html",
     "Properties": {
       "ChannelArn": "String",
+      "IsSensitiveEventsSubscribed": "Boolean",
       "ManagedNotificationConfigurationArn": "String"
     }
   },
@@ -15263,6 +15335,17 @@
       "Tags": "Tag"
     }
   },
+  "AWS::Personalize::DatasetExportJob": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-datasetexportjob.html",
+    "Properties": {
+      "DatasetArn": "String",
+      "IngestionMode": "String",
+      "JobName": "String",
+      "JobOutput": "DatasetExportJobOutput",
+      "RoleArn": "String",
+      "Tags": "Tag"
+    }
+  },
   "AWS::Personalize::DatasetGroup": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-personalize-datasetgroup.html",
     "Properties": {
@@ -15587,6 +15670,15 @@
       "Tags": "Map",
       "Target": "String",
       "TargetParameters": "PipeTargetParameters"
+    }
+  },
+  "AWS::PricingPlanManager::Subscription": {
+    "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pricingplanmanager-subscription.html",
+    "Properties": {
+      "PlanFamily": "String",
+      "PlanTier": "String",
+      "ResourceArns": "String",
+      "UsageLevel": "String"
     }
   },
   "AWS::Proton::EnvironmentAccountConnection": {
@@ -18612,6 +18704,7 @@
     "Properties": {
       "DeploymentConfig": "DeploymentConfig",
       "EndpointConfigName": "String",
+      "EndpointName": "String",
       "ExcludeRetainedVariantProperties": "VariantProperty",
       "RetainAllVariantProperties": "Boolean",
       "RetainDeploymentConfig": "Boolean",
@@ -18733,6 +18826,7 @@
       "InferenceComponentName": "String",
       "RuntimeConfig": "InferenceComponentRuntimeConfig",
       "Specification": "InferenceComponentSpecification",
+      "Specifications": "InferenceComponentSpecificationForInstanceType",
       "Tags": "Tag",
       "VariantName": "String"
     }
@@ -18925,7 +19019,6 @@
   "AWS::SageMaker::NotebookInstance": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-notebookinstance.html",
     "Properties": {
-      "AcceleratorTypes": "String",
       "AdditionalCodeRepositories": "String",
       "DefaultCodeRepository": "String",
       "DirectInternetAccess": "String",
@@ -19367,6 +19460,7 @@
   "AWS::SecurityHub::HubV2": {
     "Docs": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityhub-hubv2.html",
     "Properties": {
+      "NetworkScanning": "NetworkScanning",
       "Tags": "Map"
     }
   },

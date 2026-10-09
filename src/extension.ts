@@ -30,8 +30,10 @@ interface Documentation {
 interface HoverLink {
   start: number;
   end: number;
-  url: string;
+  targets: { label: string; url: string }[];
 }
+
+type Bindings = Record<string, string>;
 
 function fromJson(node: JsonNode | undefined): SyntaxNode | undefined {
   if (!node) return undefined;
@@ -72,10 +74,35 @@ function property(node: SyntaxNode | undefined, name: string) {
   return node?.properties?.find((entry) => entry.key.value === name);
 }
 
-function resourceEntries(node: SyntaxNode | undefined): NonNullable<SyntaxNode['properties']> {
-  return (node?.properties ?? []).flatMap((entry) =>
-    String(entry.key.value).startsWith('Fn::ForEach::') ? resourceEntries(entry.value?.items?.[2]) : [entry],
-  );
+function resolveName(value: unknown, bindings: Bindings): string {
+  return String(value).replace(/\$\{([^}]+)\}|&\{([^}]+)\}/g, (match, dollar, ampersand) => {
+    const name = dollar ?? ampersand;
+    return Object.hasOwn(bindings, name) ? bindings[name] : match;
+  });
+}
+
+function* expandedEntries(
+  node: SyntaxNode | undefined,
+  bindings: Bindings = {},
+): Generator<{ key: SyntaxNode; value?: SyntaxNode; bindings: Bindings }> {
+  for (const entry of node?.properties ?? []) {
+    if (!String(entry.key.value).startsWith('Fn::ForEach::')) {
+      yield { ...entry, bindings };
+      continue;
+    }
+    const [identifier, collection, fragment] = entry.value?.items ?? [];
+    if (typeof identifier?.value !== 'string' || !fragment) continue;
+    if (!collection?.items) {
+      // Preserve literal property names when a collection needs deployment-time evaluation.
+      yield* expandedEntries(fragment, bindings);
+      continue;
+    }
+    for (const item of collection.items) {
+      if (typeof item.value === 'string') {
+        yield* expandedEntries(fragment, { ...bindings, [identifier.value]: resolveName(item.value, bindings) });
+      }
+    }
+  }
 }
 
 function indexLinks(content: string, language: string, data: Documentation): HoverLink[] {
@@ -83,45 +110,57 @@ function indexLinks(content: string, language: string, data: Documentation): Hov
     language === 'yaml'
       ? fromYaml(parseDocument(content, { strict: false }).contents)
       : fromJson(parseTree(content, [], { allowTrailingComma: true }));
-  const links: HoverLink[] = [];
-  const add = (node: SyntaxNode | undefined, url: string | undefined) => {
+  const links = new Map<number, HoverLink>();
+  const add = (node: SyntaxNode | undefined, url: string | undefined, label: string) => {
     if (node && url?.startsWith('https://docs.aws.amazon.com/')) {
-      links.push({ start: node.start, end: node.end, url });
+      let link = links.get(node.start);
+      if (!link) {
+        link = { start: node.start, end: node.end, targets: [] };
+        links.set(node.start, link);
+      }
+      if (!link.targets.some((target) => target.url === url)) link.targets.push({ label, url });
     }
   };
-  const walk = (node: SyntaxNode | undefined, metadata: ResourceData | undefined, container?: 'List' | 'Map') => {
+  const walk = (
+    node: SyntaxNode | undefined,
+    metadata: ResourceData | undefined,
+    container?: 'List' | 'Map',
+    bindings: Bindings = {},
+  ) => {
     if (!node || !metadata) return;
     const conditional = property(node, 'Fn::If')?.value?.items ?? (node.tag === '!If' ? node.items : undefined);
     if (conditional) {
-      for (const branch of conditional.slice(1, 3)) walk(branch, metadata, container);
+      for (const branch of conditional.slice(1, 3)) walk(branch, metadata, container, bindings);
       return;
     }
     if (container === 'Map') {
-      for (const item of node.properties ?? []) walk(item.value, metadata);
+      for (const item of expandedEntries(node, bindings)) walk(item.value, metadata, undefined, item.bindings);
       return;
     }
     if (node.items) {
-      for (const item of node.items) walk(item, metadata);
+      for (const item of node.items) walk(item, metadata, undefined, bindings);
       return;
     }
-    for (const entry of node.properties ?? []) {
-      const info = metadata.Properties[String(entry.key.value)];
+    for (const entry of expandedEntries(node, bindings)) {
+      const name = resolveName(entry.key.value, entry.bindings);
+      const info = metadata.Properties[name];
       if (!info?.Docs) continue;
-      add(entry.key, info.Docs);
+      add(entry.key, info.Docs, name);
       if (!info.Type) continue;
       const nested = data.PropertyTypes[info.Type];
-      walk(entry.value, nested, info.Container);
+      walk(entry.value, nested, info.Container, entry.bindings);
     }
   };
-  for (const resource of resourceEntries(property(root, 'Resources')?.value)) {
+  for (const resource of expandedEntries(property(root, 'Resources')?.value)) {
     const type = property(resource.value, 'Type');
-    const metadata = data.Resources[String(type?.value?.value)];
+    const name = resolveName(type?.value?.value, resource.bindings);
+    const metadata = data.Resources[name];
     if (!metadata?.Docs) continue;
-    add(type?.key, metadata.Docs);
-    add(type?.value, metadata.Docs);
-    walk(property(resource.value, 'Properties')?.value, metadata);
+    add(type?.key, metadata.Docs, name);
+    add(type?.value, metadata.Docs, name);
+    walk(property(resource.value, 'Properties')?.value, metadata, undefined, resource.bindings);
   }
-  return links.sort((left, right) => left.start - right.start);
+  return [...links.values()].sort((left, right) => left.start - right.start);
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -181,7 +220,9 @@ export function activate(context: vscode.ExtensionContext) {
         const link = entry.links[low - 1];
         if (!link || offset >= link.end || token.isCancellationRequested) return null;
         return new vscode.Hover(
-          new vscode.MarkdownString(`Find documentation: [AWS documentation](${link.url})`),
+          new vscode.MarkdownString(
+            `Find documentation: ${link.targets.map((target) => `[${target.label}](${target.url})`).join('\n\n')}`,
+          ),
           new vscode.Range(document.positionAt(link.start), document.positionAt(link.end)),
         );
       },

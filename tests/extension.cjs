@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vscode = require('vscode');
-const { parse } = require('yaml');
+const { parse, stringify } = require('yaml');
 
 const repo = path.resolve(__dirname, '..');
 
@@ -77,6 +77,56 @@ exports.run = async () => {
         assert.match(await hover('yaml', yaml, 'AWS::Lambda'), /aws-resource-lambda-function\.html/);
         assert.match(await hover('yaml', yaml, 'MemorySize'), /#cfn-lambda-function-memorysize/);
         assert.match(await hover('yaml', yaml, 'Variables'), /#cfn-lambda-function-environment-variables/);
+      },
+    ],
+    [
+      'ForEach property fragments resolve literal names and nested documentation',
+      async () => {
+        const scalarKey = `\${PropertyName}`;
+        const configKey = `\${ConfigName}`;
+        const template = {
+          Transform: 'AWS::LanguageExtensions',
+          Resources: {
+            Function: {
+              Type: 'AWS::Lambda::Function',
+              Properties: {
+                'Fn::ForEach::Scalars': [
+                  'PropertyName',
+                  ['MemorySize', 'Timeout'],
+                  {
+                    [scalarKey]: 128,
+                  },
+                ],
+                'Fn::ForEach::Config': [
+                  'ConfigName',
+                  ['Environment'],
+                  {
+                    [configKey]: {
+                      'Fn::If': [
+                        'Enabled',
+                        {
+                          'Fn::ForEach::Nested': ['NestedName', ['Variables'], { '&{NestedName}': { NAME: 'value' } }],
+                        },
+                        { Ref: 'AWS::NoValue' },
+                      ],
+                    },
+                  },
+                ],
+                'Fn::ForEach::Unknown': ['UnknownName', { Ref: 'PropertyNames' }, { '&{UnknownName}': 0 }],
+              },
+            },
+          },
+        };
+        for (const language of ['json', 'yaml']) {
+          const content = language === 'json' ? JSON.stringify(template) : stringify(template);
+          const scalarDocs = await hover(language, content, scalarKey);
+          assert.match(scalarDocs, /#cfn-lambda-function-memorysize/);
+          assert.match(scalarDocs, /#cfn-lambda-function-timeout/);
+          assert.match(await hover(language, content, configKey), /#cfn-lambda-function-environment/);
+          assert.match(await hover(language, content, '&{NestedName}'), /#cfn-lambda-function-environment-variables/);
+          assert.doesNotMatch(await hover(language, content, '&{UnknownName}'), /Find documentation/);
+          assert.doesNotMatch(await hover(language, content, 'MemorySize'), /Find documentation/);
+        }
       },
     ],
     [

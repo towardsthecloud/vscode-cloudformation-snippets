@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2017",
+    "target": "es2022",
     "outDir": "out",
-    "lib": ["es2017"],
+    "lib": ["es2022"],
+    "types": ["node"],
     "sourceMap": true,
     "rootDir": "src",
     "strict": true,

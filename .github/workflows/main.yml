@@ -1,84 +1,184 @@
-name: Fetch CloudFormation resource specification and update this VSCode extension.
+name: Update and release CloudFormation snippets
+
 on:
   workflow_dispatch:
+    inputs:
+      force:
+        description: Release fixes even when the AWS specification is unchanged
+        type: boolean
+        default: false
   schedule:
-    - cron: "10 11 * * 5" # At 11:10 on Friday.
+    - cron: "10 11 * * 5"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudformation-snippets-release
+  cancel-in-progress: false
+
 jobs:
-  build:
+  specification:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      updated: ${{ steps.check.outputs.spec_updated }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14.8"
+          cache: pip
+          cache-dependency-path: src/requirements.txt
+      - run: python -m pip install -r src/requirements.txt
+      - name: Download and check one specification snapshot
+        id: check
+        run: python src/check-cfn-resource-spec-hash.py
+      - uses: actions/upload-artifact@v4
+        if: steps.check.outputs.spec_updated == 'true' || inputs.force == true
+        with:
+          name: specification
+          overwrite: true
+          path: .vscode-test/resource-specification.json
+          retention-days: 1
+          include-hidden-files: true
+          if-no-files-found: error
+
+  prepare:
+    needs: specification
+    if: needs.specification.outputs.updated == 'true' || inputs.force == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      spec_hash: ${{ steps.version.outputs.spec_hash }}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
-      - name: Setup Python
-        uses: actions/setup-python@v5
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/download-artifact@v4
         with:
-          node-version: "20"
-      - name: Install Python
+          name: specification
+          path: .vscode-test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14.8"
+          cache: pip
+          cache-dependency-path: src/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: python -m pip install -r src/requirements.txt
+      - run: npm ci
+      - name: Generate and validate all artifacts
+        run: python src/generate-snippets.py --spec .vscode-test/resource-specification.json
+      - run: python -m unittest discover -s tests -v
+      - name: Prepare release metadata after generation checks
+        id: version
         run: |
-          set -x -e
-          sudo apt install python3-setuptools
-          python3 -m pip install --upgrade pip && pip3 install -r src/requirements.txt
-      - name: Check if AWS updated the CloudFormation resource specification
-        id: check_spec
+          npm version minor --no-git-tag-version
+          echo "version=$(node -p 'require("./package.json").version')" >> "$GITHUB_OUTPUT"
+          python - <<'PY'
+          import gzip
+          import hashlib
+          from pathlib import Path
+          content = Path('.vscode-test/resource-specification.json').read_bytes()
+          Path('specification/resource-specification.json.gz').write_bytes(gzip.compress(content, mtime=0))
+          import os
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('spec_hash=' + hashlib.sha256(content).hexdigest() + '\n')
+          PY
+          gitchangelog > CHANGELOG.md
+      - run: npm run package
+      - run: python tests/check-package.py .vscode-test/cloudformation-snippets.vsix
+      - name: Test the packaged extension in the minimum supported VS Code
+        env:
+          VSCODE_VERSION: "1.140.0"
+        run: xvfb-run -a python tests/run-package-tests.py .vscode-test/cloudformation-snippets.vsix
+      - name: Test the same package in current VS Code
+        env:
+          VSCODE_VERSION: stable
+        run: xvfb-run -a python tests/run-package-tests.py .vscode-test/cloudformation-snippets.vsix
+      - name: Retain the validated release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ steps.version.outputs.version }}
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: error
+          path: |
+            .vscode-test/cloudformation-snippets.vsix
+            .vscode-test/extension-test-results-*.json
+            .vscode-test/package-report.json
+      - name: Commit the validated update and tag atomically
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
-          echo "Check if the cfn resource spec has been updated"
-          python3 src/check-cfn-resource-spec-hash.py || echo "::set-output name=spec_updated::false"
-        continue-on-error: true
+          git config user.name 'Github Actions'
+          git config user.email 'danny@towardsthecloud.com'
+          git add snippets package.json package-lock.json specification CHANGELOG.md
+          git commit -m "build: update CloudFormation snippets to $VERSION"
+          git tag "$VERSION"
+          git push --atomic origin HEAD:main "refs/tags/$VERSION"
 
-      - name: Stop if no changes
-        if: steps.check_spec.outputs.spec_updated == 'false'
-        run: |
-          echo "No updates to the CloudFormation resource spec. Exiting workflow."
-          exit 0
-      - name: Update the yaml cfn resource type snippets
-        run: |
-          echo "Update the yaml cfn resource type snippets"
-          python3 src/update-cfn-resource-snippets.py --format yaml
-      - name: Update the json cfn resource type snippets
-        run: |
-          echo "Update the json cfn resource type snippets"
-          python3 src/update-cfn-resource-snippets.py --format json
-      - name: Update the json cfn resource type snippets
-        run: |
-          echo "Generate raw cfn resources output for link feature"
-          python3 src/create-raw-cfn-resources-output.py
-      - name: Commit changes to Github
-        run: |
-          set -x -e
-          # Configure git
-          git config --global user.name 'Github Actions'
-          git config --global user.email 'danny@towardsthecloud.com'
-
-          # Update version
-          npm version minor --force --no-git-tag-version
-          package_version=$(cat package.json | grep 'version":' | sed 's/[",]//g' | awk '{print $2}')
-          cfn_release_rss_summary=$(python3 src/update-and-parse-feed.py --summary-only)
-
-          # Install dependencies and prepare for publishing
-          npm install
-          npm run vscode:prepublish
-
-          # Generate changelog
-          gitchangelog | tee "CHANGELOG.md"
-
-          # Commit and push changes
-          git commit -am "build: auto-update snippets to version: $package_version"
-          git push
-
-          # Create and push tag
-          git tag $package_version
-          git push origin --tags
-      - name: Publish to Visual Studio Marketplace
+  publish:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-${{ needs.prepare.outputs.version }}
+          path: .vscode-test
+      - name: Publish the validated VSIX to Visual Studio Marketplace
         uses: HaaLeo/publish-vscode-extension@v1
-        id: publishToVSCE
         with:
           pat: ${{ secrets.VSCE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
-      - name: Publish to Open VSX Registry
+          extensionFile: .vscode-test/cloudformation-snippets.vsix
+          skipDuplicate: true
+      - name: Publish the same VSIX to Open VSX
         uses: HaaLeo/publish-vscode-extension@v1
         with:
           pat: ${{ secrets.OPEN_VSX_TOKEN }}
-          extensionFile: ${{ steps.publishToVSCE.outputs.vsixPath }}
+          extensionFile: .vscode-test/cloudformation-snippets.vsix
+          skipDuplicate: true
+
+  checkpoint:
+    needs: [prepare, publish]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Advance the specification checkpoint after both registries succeed
+        env:
+          VERSION: ${{ needs.prepare.outputs.version }}
+          SPEC_HASH: ${{ needs.prepare.outputs.spec_hash }}
+        run: |
+          python - <<'PY'
+          import gzip
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          content = gzip.decompress(Path('specification/resource-specification.json.gz').read_bytes())
+          digest = hashlib.sha256(content).hexdigest()
+          if json.loads(Path('package.json').read_text())['version'] != os.environ['VERSION'] or digest != os.environ['SPEC_HASH']:
+              raise SystemExit('Main has moved beyond the published artifact; refusing to change its checkpoint')
+          Path('src/current-cfn-spec-hash').write_text(digest + '\n')
+          PY
+          if git diff --quiet -- src/current-cfn-spec-hash; then exit 0; fi
+          git config user.name 'Github Actions'
+          git config user.email 'danny@towardsthecloud.com'
+          git add src/current-cfn-spec-hash
+          git commit -m "build: record published CloudFormation specification for $VERSION"
+          git push origin HEAD:main

@@ -1,6 +1,16 @@
 Changelog
 =========
 
+Unreleased
+----------
+- Fix JSON lists, numeric defaults, maps and recursive object placeholders; refresh to 2,052 CloudFormation resources.
+- Resolve resource and nested property documentation in YAML, JSON and JSON with comments, including conditional branches and nested Fn::ForEach resource fragments.
+- Cache hover indexes by document version, dispose resources and avoid logging template content.
+- Validate and test the VSIX before release; retain artifacts for retry and record the specification hash after both registries publish.
+- Bundle the runtime and exclude demonstration GIFs and development files from the extension package.
+- Require VS Code 1.140.0 or newer and add packaged extension tests across Linux, macOS and Windows.
+- Upgrade development dependencies and Node to current releases; use Python 3.14.8 in CI without requiring a local Python upgrade.
+
 
 5.127.0 (2026-10-02)
 --------------------

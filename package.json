@@ -13,7 +13,7 @@
     "url": "https://github.com/towardsthecloud/vscode-cloudformation-snippets.git"
   },
   "engines": {
-    "vscode": "^1.31.0"
+    "vscode": "^1.140.0"
   },
   "galleryBanner": {
     "color": "#2B2C33",
@@ -31,18 +31,26 @@
   ],
   "activationEvents": [
     "onLanguage:yaml",
-    "onLanguage:json"
+    "onLanguage:json",
+    "onLanguage:jsonc"
   ],
   "main": "./out/extension.js",
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "compile": "tsc -p ./ --noEmit && node scripts/build.cjs",
+    "watch": "node scripts/build.cjs --watch",
+    "test": "npm run compile && node tests/run-extension-tests.cjs",
+    "package": "vsce package --out .vscode-test/cloudformation-snippets.vsix"
   },
   "devDependencies": {
-    "@types/node": "^14.x",
-    "@types/vscode": "^1.31.0",
-    "typescript": "^5.x"
+    "@types/node": "26.6.4",
+    "@types/vscode": "1.140.0",
+    "@vscode/test-electron": "3.1.0",
+    "@vscode/vsce": "4.0.0",
+    "esbuild": "0.28.2",
+    "jsonc-parser": "3.3.1",
+    "typescript": "7.0.2",
+    "yaml": "2.9.1"
   },
   "contributes": {
     "languages": [
@@ -61,12 +69,11 @@
         "id": "yaml",
         "aliases": [
           "YAML",
-          "json"
+          "yaml"
         ],
         "extensions": [
           ".yaml",
-          ".yml",
-          ".template"
+          ".yml"
         ]
       }
     ],
@@ -105,7 +112,7 @@
       }
     ]
   },
-  "extensionDependencies": [
+  "extensionPack": [
     "redhat.vscode-yaml"
   ]
 }

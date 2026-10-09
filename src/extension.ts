@@ -1,134 +1,190 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import { type Node as JsonNode, parseTree } from 'jsonc-parser';
 import * as vscode from 'vscode';
-import { type Disposable, Hover, languages } from 'vscode';
+import { isMap, isNode, isScalar, isSeq, parseDocument } from 'yaml';
 
-let outputChannel: vscode.OutputChannel;
-
-interface ResourceData {
-  Docs: string;
-  Properties: { [key: string]: string };
+interface SyntaxNode {
+  start: number;
+  end: number;
+  value?: unknown;
+  tag?: string;
+  properties?: { key: SyntaxNode; value?: SyntaxNode }[];
+  items?: SyntaxNode[];
 }
 
-class LinkMappings {
-  private resourceMap: Map<string, ResourceData> = new Map();
+interface PropertyData {
+  Docs: string;
+  Type?: string;
+  Container?: 'List' | 'Map';
+}
 
-  constructor() {
-    this.loadResourceMap();
+interface ResourceData {
+  Docs?: string;
+  Properties: Record<string, PropertyData>;
+}
+
+interface Documentation {
+  Resources: Record<string, ResourceData>;
+  PropertyTypes: Record<string, ResourceData>;
+}
+
+interface HoverLink {
+  start: number;
+  end: number;
+  url: string;
+}
+
+function fromJson(node: JsonNode | undefined): SyntaxNode | undefined {
+  if (!node) return undefined;
+  const result: SyntaxNode = { start: node.offset, end: node.offset + node.length, value: node.value };
+  if (node.type === 'object') {
+    result.properties = (node.children ?? []).flatMap((property) => {
+      const key = fromJson(property.children?.[0]);
+      return key ? [{ key, value: fromJson(property.children?.[1]) }] : [];
+    });
+  } else if (node.type === 'array') {
+    result.items = (node.children ?? []).flatMap((item) => {
+      const value = fromJson(item);
+      return value ? [value] : [];
+    });
   }
+  return result;
+}
 
-  private loadResourceMap() {
-    const filePath = path.join(__dirname, '..', 'snippets', 'raw-cfn-resources-output.json');
-    const rawData = fs.readFileSync(filePath, 'utf8');
-    const resources: { [key: string]: ResourceData } = JSON.parse(rawData);
+function fromYaml(node: unknown): SyntaxNode | undefined {
+  if (!isNode(node) || !node.range) return undefined;
+  const result: SyntaxNode = { start: node.range[0], end: node.range[1], tag: node.tag };
+  if (isScalar(node)) result.value = node.value;
+  else if (isMap(node)) {
+    result.properties = node.items.flatMap((pair) => {
+      const key = fromYaml(pair.key);
+      return key ? [{ key, value: fromYaml(pair.value) }] : [];
+    });
+  } else if (isSeq(node)) {
+    result.items = node.items.flatMap((item) => {
+      const value = fromYaml(item);
+      return value ? [value] : [];
+    });
+  }
+  return result;
+}
 
-    for (const [resourceName, resourceData] of Object.entries(resources)) {
-      this.resourceMap.set(resourceName, resourceData);
+function property(node: SyntaxNode | undefined, name: string) {
+  return node?.properties?.find((entry) => entry.key.value === name);
+}
+
+function resourceEntries(node: SyntaxNode | undefined): NonNullable<SyntaxNode['properties']> {
+  return (node?.properties ?? []).flatMap((entry) =>
+    String(entry.key.value).startsWith('Fn::ForEach::') ? resourceEntries(entry.value?.items?.[2]) : [entry],
+  );
+}
+
+function indexLinks(content: string, language: string, data: Documentation): HoverLink[] {
+  const root =
+    language === 'yaml'
+      ? fromYaml(parseDocument(content, { strict: false }).contents)
+      : fromJson(parseTree(content, [], { allowTrailingComma: true }));
+  const links: HoverLink[] = [];
+  const add = (node: SyntaxNode | undefined, url: string | undefined) => {
+    if (node && url?.startsWith('https://docs.aws.amazon.com/')) {
+      links.push({ start: node.start, end: node.end, url });
     }
-    outputChannel.appendLine(`Loaded ${this.resourceMap.size} resources`);
-  }
-
-  public getLink(document: vscode.TextDocument, position: vscode.Position): string | null {
-    const lineText = document.lineAt(position.line).text;
-    outputChannel.appendLine(`Processing line: ${lineText}`);
-
-    const resourceType = this.extractResourceType(lineText);
-    if (resourceType) {
-      const resourceData = this.resourceMap.get(resourceType);
-      if (resourceData) {
-        outputChannel.appendLine(`Found resource type: ${resourceType}`);
-        return `Find documentation for this resource at: ${resourceData.Docs}`;
-      }
+  };
+  const walk = (node: SyntaxNode | undefined, metadata: ResourceData | undefined, container?: 'List' | 'Map') => {
+    if (!node || !metadata) return;
+    const conditional = property(node, 'Fn::If')?.value?.items ?? (node.tag === '!If' ? node.items : undefined);
+    if (conditional) {
+      for (const branch of conditional.slice(1, 3)) walk(branch, metadata, container);
+      return;
     }
-
-    const propertyName = this.extractPropertyName(lineText);
-    if (propertyName) {
-      outputChannel.appendLine(`Found property: ${propertyName}`);
-      const resourceType = this.findNearestResourceType(document, position);
-      if (resourceType) {
-        outputChannel.appendLine(`Found nearest resource type: ${resourceType}`);
-        const resourceData = this.resourceMap.get(resourceType);
-        if (resourceData && propertyName in resourceData.Properties) {
-          const propertyType = resourceData.Properties[propertyName];
-          let url: string;
-          // Check if the property type is not a primitive type
-          if (!['String', 'Number', 'Boolean'].includes(propertyType)) {
-            // Use the "aws-properties-" URL structure with the property type
-            const baseUrl = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-';
-            const urlSuffix = `${resourceType.split('::')[1].toLowerCase()}-${resourceType.split('::')[2].toLowerCase()}-${propertyType.toLowerCase()}.html`;
-            url = baseUrl + urlSuffix;
-          } else {
-            // For primitive types, use the "#cfn-" URL structure with the property name
-            url = `${resourceData.Docs}#cfn-${resourceType.split('::')[1].toLowerCase()}-${resourceType.split('::')[2].toLowerCase()}-${propertyName.toLowerCase()}`;
-          }
-          return `Find documentation for this property at: ${url}`;
-        }
-      }
+    if (container === 'Map') {
+      for (const item of node.properties ?? []) walk(item.value, metadata);
+      return;
     }
-
-    outputChannel.appendLine('No link found');
-    return null;
-  }
-
-  private extractResourceType(text: string): string | null {
-    const regex = /(?:Type:\s*)(['"]?)(AWS::[^'"]+)\1/;
-    const match = text.match(regex);
-    return match ? match[2] : null;
-  }
-
-  private extractPropertyName(text: string): string | null {
-    const regex = /^\s*(\w+):/;
-    const match = text.match(regex);
-    return match ? match[1] : null;
-  }
-
-  private findNearestResourceType(document: vscode.TextDocument, position: vscode.Position): string | null {
-    for (let i = position.line; i >= 0; i--) {
-      const lineText = document.lineAt(i).text;
-      const resourceType = this.extractResourceType(lineText);
-      if (resourceType) {
-        return resourceType;
-      }
+    if (node.items) {
+      for (const item of node.items) walk(item, metadata);
+      return;
     }
-    return null;
+    for (const entry of node.properties ?? []) {
+      const info = metadata.Properties[String(entry.key.value)];
+      if (!info?.Docs) continue;
+      add(entry.key, info.Docs);
+      if (!info.Type) continue;
+      const nested = data.PropertyTypes[info.Type];
+      walk(entry.value, nested, info.Container);
+    }
+  };
+  for (const resource of resourceEntries(property(root, 'Resources')?.value)) {
+    const type = property(resource.value, 'Type');
+    const metadata = data.Resources[String(type?.value?.value)];
+    if (!metadata?.Docs) continue;
+    add(type?.key, metadata.Docs);
+    add(type?.value, metadata.Docs);
+    walk(property(resource.value, 'Properties')?.value, metadata);
   }
+  return links.sort((left, right) => left.start - right.start);
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  outputChannel = vscode.window.createOutputChannel('CloudFormation Snippets');
-  // outputChannel.show();
-  outputChannel.appendLine('CloudFormation Snippets extension activated');
-
-  const linkmappings = new LinkMappings();
-  const disposable: Disposable[] = [];
-
-  disposable.push(
-    languages.registerHoverProvider(['yaml', 'yml', 'json'], {
-      provideHover(document, position, token) {
-        outputChannel.appendLine(`Hover triggered at position: ${position.line}:${position.character}`);
-        return getLink(document, position, linkmappings);
+  const output = vscode.window.createOutputChannel('CloudFormation Snippets');
+  context.subscriptions.push(output);
+  let loading: Promise<Documentation | null> | undefined;
+  const loadDocumentation = () => {
+    loading ??= (async () => {
+      try {
+        const bytes = await vscode.workspace.fs.readFile(
+          vscode.Uri.joinPath(context.extensionUri, 'snippets', 'raw-cfn-resources-output.json'),
+        );
+        const data: Documentation = JSON.parse(new TextDecoder().decode(bytes));
+        if (!data.Resources || !data.PropertyTypes) throw new Error('Invalid documentation index');
+        output.appendLine(`Loaded documentation for ${Object.keys(data.Resources).length} resources`);
+        return data;
+      } catch {
+        output.appendLine('Unable to load documentation. Snippets remain available.');
+        return null;
+      }
+    })();
+    return loading;
+  };
+  const cache = new Map<string, { version: number; links: HoverLink[] }>();
+  context.subscriptions.push(
+    vscode.workspace.onDidCloseTextDocument((document) => cache.delete(document.uri.toString())),
+    new vscode.Disposable(() => cache.clear()),
+    vscode.languages.registerHoverProvider(['yaml', 'json', 'jsonc'], {
+      async provideHover(document, position, token) {
+        if (token.isCancellationRequested) return null;
+        const key = document.uri.toString();
+        let entry = cache.get(key);
+        if (entry?.version !== document.version) {
+          const version = document.version;
+          const content = document.getText();
+          if (!content.includes('AWS::') || !content.includes('Resources')) {
+            cache.set(key, { version, links: [] });
+            return null;
+          }
+          const data = await loadDocumentation();
+          if (!data || token.isCancellationRequested || document.version !== version || document.isClosed) return null;
+          try {
+            entry = { version, links: indexLinks(content, document.languageId, data) };
+          } catch {
+            entry = { version: document.version, links: [] };
+          }
+          cache.set(key, entry);
+        }
+        const offset = document.offsetAt(position);
+        let low = 0;
+        let high = entry.links.length;
+        while (low < high) {
+          const middle = Math.floor((low + high) / 2);
+          if (entry.links[middle].start <= offset) low = middle + 1;
+          else high = middle;
+        }
+        const link = entry.links[low - 1];
+        if (!link || offset >= link.end || token.isCancellationRequested) return null;
+        return new vscode.Hover(
+          new vscode.MarkdownString(`Find documentation: [AWS documentation](${link.url})`),
+          new vscode.Range(document.positionAt(link.start), document.positionAt(link.end)),
+        );
       },
     }),
   );
-
-  // biome-ignore lint/complexity/noForEach: <explanation>
-  disposable.forEach((provider) => {
-    context.subscriptions.push(provider);
-  });
-}
-
-export function deactivate() {
-  outputChannel.appendLine('CloudFormation Snippets extension deactivated');
-}
-
-function getLink(document: vscode.TextDocument, position: vscode.Position, linkmappings: LinkMappings): Hover | null {
-  const link = linkmappings.getLink(document, position);
-
-  if (!link) {
-    outputChannel.appendLine('No link returned');
-    return null;
-  }
-
-  outputChannel.appendLine(`Returning hover with link: ${link}`);
-  return new Hover(new vscode.MarkdownString(link, true));
 }

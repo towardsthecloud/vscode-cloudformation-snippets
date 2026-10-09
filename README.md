@@ -1,6 +1,6 @@
 # AWS CloudFormation Snippets for VS Code
 
-This CloudFormation Snippets extension equips Visual Studio Code with JSON and YAML snippets for **all** AWS CloudFormation and SAM resources - over 1250+ in total. It's your complete toolset for efficient CloudFormation template development.
+This CloudFormation Snippets extension provides JSON and YAML snippets for over 2,000 AWS CloudFormation resources, plus AWS SAM snippets. Requires VS Code 1.140.0 or newer.
 
 <!-- TIP-LIST:START -->
 > [!TIP]
@@ -18,6 +18,7 @@ This CloudFormation Snippets extension equips Visual Studio Code with JSON and Y
 > 2. **Then install the [CloudBurn GitHub App](https://github.com/marketplace/cloudburn-io)** on the same repository
 >
 > From then on, every PR with infrastructure changes gets a comment with your CDK diff analysis, and CloudBurn adds a cost report next to it:
+>
 > - **Monthly cost impact**: whether this change raises or lowers your AWS bill, and by how much
 > - **Per-resource breakdown**: which resources drive the change, old versus new monthly cost
 > - **Region-aware pricing**: rates match the region your infrastructure actually deploys to
@@ -33,9 +34,9 @@ This CloudFormation Snippets extension equips Visual Studio Code with JSON and Y
 
 ## Features
 
-1. **Comprehensive Coverage**: Offers snippets for **all** AWS CloudFormation and AWS SAM resources available - that's over 1250+ resources snippets at your fingertips!
-2. **Complete Property Support**: Includes all nested properties for each resource, ensuring you have access to every configurable aspect of your AWS resources.
-3. **Documentation Hover Links**: Quickly access AWS CloudFormation resource and property documentation by hovering over resource types and property names in your templates.
+1. **Resource Coverage**: Generates snippets for every resource in the bundled AWS CloudFormation specification, alongside the included AWS SAM resource snippets.
+2. **Nested Property Support**: Expands nested properties with typed placeholders. Recursive objects and large resources use editable empty objects to keep each snippet within 400 lines.
+3. **Documentation Hover Links**: Access AWS documentation for resource types and nested property names in YAML, JSON and JSON with comments, including conditional branches.
 4. **Flexible Template Support**: Seamlessly works with both YAML and JSON CloudFormation templates.
 5. **Efficient Autocomplete**: Simply type the resource name (e.g., `ec2-instance`) to instantly load the corresponding snippet for `AWS::EC2::Instance`.
 6. **Rich Feature Set**: Incorporates intrinsic functions, conditions, and diverse parameter types for robust template creation.
@@ -62,7 +63,39 @@ and an example of the hover information:
 
 > **Note:** Once you start typing a prefix (explained in step 5), the corresponding snippet will show up in the dropdown menu. If this doesn't happen automatically, press `ctrl + space` to invoke IntelliSense and search for the prefix of the resource type that you want to add (as listed in step 5).
 
+### Template file associations
+
+Files ending in `.template` use JSON by default. For YAML templates with that extension, set `"files.associations": { "*.template": "yaml" }` in VS Code settings. The Red Hat YAML extension is installed alongside this extension for YAML editing support; snippets and documentation hovers also work independently of it.
+
+## Development
+
+Use Node 26.11.1 (`fnm use`) and Python 3.12 or newer. CI uses Python 3.14.8; local Python installations can keep their current supported version. Install dependencies and run the checks:
+
+```sh
+npm ci
+uv venv --python "$(python --version 2>&1 | sed 's/Python //')"
+uv pip install --python .venv/bin/python -r src/requirements.txt
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python src/validate-snippets.py --spec specification/resource-specification.json.gz
+npm test
+VSCODE_VERSION=stable npm test
+npm run package
+.venv/bin/python tests/check-package.py .vscode-test/cloudformation-snippets.vsix
+.venv/bin/python tests/run-package-tests.py .vscode-test/cloudformation-snippets.vsix
+```
+
+`npm test` runs the Extension Host regressions on the minimum supported VS Code by default. Test results and logs are retained in `.vscode-test`; Linux needs a display or `xvfb-run -a`. CI tests the VSIX on Linux, macOS and Windows, with the minimum version also checked on Linux.
+
+Regenerate the checked-in snippets from the pinned specification:
+
+```sh
+.venv/bin/python src/generate-snippets.py --spec specification/resource-specification.json.gz
+```
+
+The weekly release workflow downloads one AWS snapshot, validates generated syntax, types, resource coverage and documentation, then tests the packaged extension. An unchanged specification skips the release. Manual runs support `force` for releasing code fixes. If publication fails, rerun the failed jobs to reuse the retained VSIX and version; already-published versions are skipped. The released specification hash advances only after both registries succeed.
+
 ---
+
 ## AWS CloudFormation Starterkit
 
 We've developed the [AWS CloudFormation Starterkit](https://github.com/towardsthecloud/aws-cloudformation-starterkit) to streamline your infrastructure setup using CloudFormation.
@@ -72,6 +105,7 @@ It comes with pre-configured templates, automated validation scripts, and seamle
 The starterkit empowers you to adopt best practices effortlessly. By leveraging tools like Checkov for security compliance and cfn-lint for template validation, you ensure that your infrastructure is both reliable and secure.
 
 ---
+
 ## Support
 
 If you have a feature request or an issue, please let me know on [Github](https://github.com/towardsthecloud/vscode-cloudformation-snippets/issues)

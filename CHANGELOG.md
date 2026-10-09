@@ -12,6 +12,11 @@ Unreleased
 - Upgrade development dependencies and Node to current releases; use Python 3.14.8 in CI without requiring a local Python upgrade.
 
 
+5.127.0 (2026-10-02)
+--------------------
+- Build: auto-update snippets to version: 5.127.0. [Github Actions]
+
+
 5.126.0 (2026-09-25)
 --------------------
 - Build: auto-update snippets to version: 5.126.0. [Github Actions]

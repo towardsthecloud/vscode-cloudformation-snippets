@@ -1,6 +1,6 @@
 # AWS CloudFormation Snippets for VS Code
 
-This CloudFormation Snippets extension provides JSON and YAML snippets for over 2,000 AWS CloudFormation resources, plus AWS SAM snippets. Requires VS Code 1.140.0 or newer.
+This CloudFormation Snippets extension provides JSON and YAML snippets for over 2,000 AWS CloudFormation resource types, plus AWS SAM resource types in YAML. Requires VS Code 1.140.0 or newer.
 
 <!-- TIP-LIST:START -->
 > [!TIP]
@@ -44,6 +44,19 @@ This CloudFormation Snippets extension provides JSON and YAML snippets for over 
 8. **Resource Documentation**: Each snippet is linked to its official AWS documentation, providing quick access to detailed information.
 9. **Up-to-Date**: Regularly refreshed on a weekly basis to reflect the latest [CloudFormation Resource Specification](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html).
 10. **Gitpod Ready**: Made available on the [Open VSX Registry](https://open-vsx.org/extension/dannysteenman/cloudformation-yaml-snippets) to ensure compatibility with [Gitpod](https://github.com/towardsthecloud/vscode-cloudformation-snippets/issues/14).
+
+## Snippet statistics
+
+Counts for release 5.129.0, generated from the bundled CloudFormation specification 267.0.0:
+
+| Coverage                                                                          | Count |
+| --------------------------------------------------------------------------------- | ----: |
+| CloudFormation resource types, available in both JSON and YAML                    | 2,052 |
+| AWS SAM resource types, available in YAML                                         |     9 |
+| JSON snippets, including template helpers                                         | 2,058 |
+| YAML snippets, including SAM, intrinsic functions, conditions and parameter types | 2,106 |
+
+Snippet totals count the entries contributed to each language. CloudFormation resource types are shared across both languages.
 
 ## Usage
 

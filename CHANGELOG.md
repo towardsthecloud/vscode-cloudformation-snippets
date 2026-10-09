@@ -1,16 +1,25 @@
 Changelog
 =========
 
-Unreleased
-----------
-- Restore documentation hovers inside Fn::ForEach property fragments, including literal iterator names and nested properties.
-- Fix JSON lists, numeric defaults, maps and recursive object placeholders; refresh to 2,052 CloudFormation resources.
-- Resolve resource and nested property documentation in YAML, JSON and JSON with comments, including conditional branches and nested Fn::ForEach resource fragments.
-- Cache hover indexes by document version, dispose resources and avoid logging template content.
-- Validate and test the VSIX before release; retain artifacts for retry and record the specification hash after both registries publish.
-- Bundle the runtime and exclude demonstration GIFs and development files from the extension package.
-- Require VS Code 1.140.0 or newer and add packaged extension tests across Linux, macOS and Windows.
-- Upgrade development dependencies and Node to current releases; use Python 3.14.8 in CI without requiring a local Python upgrade.
+
+(unreleased)
+------------
+
+Fix
+~~~
+- Resolve documentation inside ForEach property fragments (#22) [Danny
+  Steenman]
+- Validate CloudFormation snippets and stabilize extension releases
+  (#21) [Danny Steenman]
+
+  * fix: stabilize CloudFormation snippets and extension releases
+
+  * fix: update toolchain and resolve resource loop hovers
+
+
+5.128.0 (2026-10-09)
+--------------------
+- Build: auto-update snippets to version: 5.128.0. [Github Actions]
 
 
 5.127.0 (2026-10-02)

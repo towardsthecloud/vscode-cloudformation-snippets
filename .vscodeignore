@@ -8,3 +8,12 @@
 **/*.ts
 out/README.md
 src/**
+tests/**
+images/*.gif
+out/*.map
+tsconfig.json
+.nvmrc
+specification/**
+.ruff_cache/**
+node_modules/**
+scripts/**

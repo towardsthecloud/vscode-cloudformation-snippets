@@ -1,5 +1,10 @@
 /out/*
 node_modules
+.venv/
+__pycache__/
+.vscode-test/*
+!.vscode-test/complete-resource-specification.json
+!.vscode-test/short-resource-specification.json
 *.vsix
 .mypy_cache
 .python-version

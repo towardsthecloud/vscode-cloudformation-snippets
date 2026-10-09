@@ -1,36 +1,40 @@
+#!/usr/bin/env python3
+"""Download a specification snapshot without advancing the released hash."""
+
+import argparse
 import hashlib
-from datetime import datetime, timezone
+import json
+import os
+from pathlib import Path
 
-import requests
-
-
-def get_resource_spec():
-    # Add a cache buster using a timezone-aware datetime object
-    cfn_resource_spec_url = "https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json"
-    current_time = datetime.now(timezone.utc).timestamp()
-    response = requests.get(cfn_resource_spec_url, params={"nocache": current_time})
-    response.raise_for_status()
-    return response
+from cfn_spec import download_spec, validate_spec
 
 
-def calculate_hash(content):
-    return hashlib.sha256(content).hexdigest()
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--snapshot",
+        type=Path,
+        default=Path(".vscode-test/resource-specification.json"),
+    )
+    parser.add_argument(
+        "--hash-file", type=Path, default=Path("src/current-cfn-spec-hash")
+    )
+    parser.add_argument("--local", type=Path)
+    args = parser.parse_args()
+    content = args.local.read_bytes() if args.local else download_spec()
+    validate_spec(json.loads(content))
+    digest = hashlib.sha256(content).hexdigest()
+    updated = (
+        not args.hash_file.exists() or digest != args.hash_file.read_text().strip()
+    )
+    args.snapshot.parent.mkdir(parents=True, exist_ok=True)
+    args.snapshot.write_bytes(content)
+    if output := os.environ.get("GITHUB_OUTPUT"):
+        with Path(output).open("a") as file:
+            file.write(f"spec_updated={str(updated).lower()}\n")
+    print(f"Specification {'updated' if updated else 'unchanged'}: {digest}")
 
 
-# Load the current hash
-with open("src/current-cfn-spec-hash", "r+") as file:
-    current_hash = file.read().strip()
-    new_hash = calculate_hash(get_resource_spec().content)
-
-    if new_hash == current_hash:
-        print(f"The new hash: {new_hash} matches with our current hash: {current_hash}.")
-        print("The snippets are up-to-date, stopping the pipeline.")
-        exit(1)
-    else:
-        print(
-            f"Found an update in the cfn-resource-specification, let's update the hash to: {new_hash} "
-            "and continue with updating the cfn resource snippets!"
-        )
-        file.seek(0)
-        file.write(new_hash)
-        file.truncate()
+if __name__ == "__main__":
+    main()

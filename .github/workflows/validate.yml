@@ -1,0 +1,73 @@
+name: Validate extension
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            vscode: "1.91.1"
+          - os: ubuntu-latest
+            vscode: stable
+          - os: macos-latest
+            vscode: stable
+          - os: windows-latest
+            vscode: stable
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: src/requirements.txt
+      - run: npm ci
+      - run: python -m pip install -r src/requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python src/validate-snippets.py --spec specification/resource-specification.json.gz
+      - run: npm run package
+      - name: Check packaged runtime and size
+        run: python tests/check-package.py .vscode-test/cloudformation-snippets.vsix
+      - name: Test the packaged extension in the Extension Host
+        env:
+          VSCODE_VERSION: ${{ matrix.vscode }}
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            xvfb-run -a python tests/run-package-tests.py .vscode-test/cloudformation-snippets.vsix
+          else
+            python tests/run-package-tests.py .vscode-test/cloudformation-snippets.vsix
+          fi
+      - name: Retain test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-${{ matrix.os }}-${{ matrix.vscode }}
+          overwrite: true
+          include-hidden-files: true
+          path: |
+            .vscode-test/extension-test-results-*.json
+            .vscode-test/package-report.json
+            .vscode-test/cloudformation-snippets.vsix
+            .vscode-test/logs/**
+          if-no-files-found: ignore

@@ -1,5 +1,5 @@
-feedparser
-gitchangelog
-pystache
-requests
-wheel
+feedparser==6.0.12
+gitchangelog==3.0.4
+pystache==0.6.8
+requests==2.32.5
+PyYAML==6.0.3

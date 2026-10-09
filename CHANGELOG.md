@@ -3,6 +3,7 @@ Changelog
 
 Unreleased
 ----------
+- Restore documentation hovers inside Fn::ForEach property fragments, including literal iterator names and nested properties.
 - Fix JSON lists, numeric defaults, maps and recursive object placeholders; refresh to 2,052 CloudFormation resources.
 - Resolve resource and nested property documentation in YAML, JSON and JSON with comments, including conditional branches and nested Fn::ForEach resource fragments.
 - Cache hover indexes by document version, dispose resources and avoid logging template content.

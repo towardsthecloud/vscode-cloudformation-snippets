@@ -1,6 +1,6 @@
 # AWS CloudFormation Snippets for VS Code
 
-This CloudFormation Snippets extension provides JSON and YAML snippets for 2,052 AWS CloudFormation resource types, plus 9 AWS SAM resource types in YAML. Requires VS Code 1.140.0 or newer.
+This CloudFormation Snippets extension provides JSON and YAML snippets for over 2,000 AWS CloudFormation resource types, plus AWS SAM resource types in YAML. Requires VS Code 1.140.0 or newer.
 
 <!-- TIP-LIST:START -->
 > [!TIP]

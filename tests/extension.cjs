@@ -63,6 +63,23 @@ exports.run = async () => {
       },
     ],
     [
+      'ForEach resource fragments retain documentation through nested loops',
+      async () => {
+        const json =
+          // biome-ignore lint/suspicious/noTemplateCurlyInString: CloudFormation uses literal substitution placeholders.
+          '{"Transform":"AWS::LanguageExtensions","Resources":{"Fn::ForEach::Regions":["Region",["eu-west-1"],{"Fn::ForEach::Functions":["Name",["Worker"],{"Function${Region}${Name}":{"Type":"AWS::Lambda::Function","Properties":{"MemorySize":128,"Environment":{"Variables":{"NAME":"value"}}}}}]}]}}';
+        assert.match(await hover('json', json, 'AWS::Lambda'), /aws-resource-lambda-function\.html/);
+        assert.match(await hover('json', json, 'MemorySize'), /#cfn-lambda-function-memorysize/);
+        assert.match(await hover('json', json, 'Variables'), /#cfn-lambda-function-environment-variables/);
+        const yaml =
+          // biome-ignore lint/suspicious/noTemplateCurlyInString: CloudFormation uses literal substitution placeholders.
+          'Transform: AWS::LanguageExtensions\nResources:\n  Fn::ForEach::Functions:\n    - Name\n    - [Worker]\n    - Function${Name}:\n        Type: AWS::Lambda::Function\n        Properties:\n          MemorySize: 128\n          Environment:\n            Variables:\n              NAME: value\n';
+        assert.match(await hover('yaml', yaml, 'AWS::Lambda'), /aws-resource-lambda-function\.html/);
+        assert.match(await hover('yaml', yaml, 'MemorySize'), /#cfn-lambda-function-memorysize/);
+        assert.match(await hover('yaml', yaml, 'Variables'), /#cfn-lambda-function-environment-variables/);
+      },
+    ],
+    [
       'Hovers stay inside resource boundaries and property keys',
       async () => {
         const content =

@@ -72,6 +72,12 @@ function property(node: SyntaxNode | undefined, name: string) {
   return node?.properties?.find((entry) => entry.key.value === name);
 }
 
+function resourceEntries(node: SyntaxNode | undefined): NonNullable<SyntaxNode['properties']> {
+  return (node?.properties ?? []).flatMap((entry) =>
+    String(entry.key.value).startsWith('Fn::ForEach::') ? resourceEntries(entry.value?.items?.[2]) : [entry],
+  );
+}
+
 function indexLinks(content: string, language: string, data: Documentation): HoverLink[] {
   const root =
     language === 'yaml'
@@ -107,7 +113,7 @@ function indexLinks(content: string, language: string, data: Documentation): Hov
       walk(entry.value, nested, info.Container);
     }
   };
-  for (const resource of property(root, 'Resources')?.value?.properties ?? []) {
+  for (const resource of resourceEntries(property(root, 'Resources')?.value)) {
     const type = property(resource.value, 'Type');
     const metadata = data.Resources[String(type?.value?.value)];
     if (!metadata?.Docs) continue;

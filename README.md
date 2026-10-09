@@ -1,6 +1,6 @@
 # AWS CloudFormation Snippets for VS Code
 
-This CloudFormation Snippets extension provides JSON and YAML snippets for over 2,000 AWS CloudFormation resources, plus AWS SAM snippets. Requires VS Code 1.91.1 or newer.
+This CloudFormation Snippets extension provides JSON and YAML snippets for over 2,000 AWS CloudFormation resources, plus AWS SAM snippets. Requires VS Code 1.140.0 or newer.
 
 <!-- TIP-LIST:START -->
 > [!TIP]
@@ -69,7 +69,7 @@ Files ending in `.template` use JSON by default. For YAML templates with that ex
 
 ## Development
 
-Use Node 22 (`fnm use`) and Python 3.12 or newer. Install dependencies and run the checks:
+Use Node 26.11.1 (`fnm use`) and Python 3.12 or newer. CI uses Python 3.14.8; local Python installations can keep their current supported version. Install dependencies and run the checks:
 
 ```sh
 npm ci

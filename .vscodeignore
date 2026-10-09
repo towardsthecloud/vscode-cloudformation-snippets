@@ -15,5 +15,6 @@ tsconfig.json
 .nvmrc
 specification/**
 .ruff_cache/**
+.rumdl_cache/**
 node_modules/**
 scripts/**

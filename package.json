@@ -13,7 +13,7 @@
     "url": "https://github.com/towardsthecloud/vscode-cloudformation-snippets.git"
   },
   "engines": {
-    "vscode": "^1.91.1"
+    "vscode": "^1.140.0"
   },
   "galleryBanner": {
     "color": "#2B2C33",
@@ -43,13 +43,13 @@
     "package": "vsce package --out .vscode-test/cloudformation-snippets.vsix"
   },
   "devDependencies": {
-    "@types/node": "20.19.43",
-    "@types/vscode": "1.91.0",
+    "@types/node": "26.6.4",
+    "@types/vscode": "1.140.0",
     "@vscode/test-electron": "3.1.0",
     "@vscode/vsce": "4.0.0",
     "esbuild": "0.28.2",
     "jsonc-parser": "3.3.1",
-    "typescript": "5.5.3",
+    "typescript": "7.0.2",
     "yaml": "2.9.1"
   },
   "contributes": {

@@ -63,6 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: validation-${{ matrix.os }}-${{ matrix.vscode }}
+          retention-days: 7
           overwrite: true
           include-hidden-files: true
           path: |

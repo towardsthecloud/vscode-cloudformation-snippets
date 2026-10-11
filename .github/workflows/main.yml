@@ -108,6 +108,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-${{ steps.version.outputs.version }}
+          retention-days: 7
           overwrite: true
           include-hidden-files: true
           if-no-files-found: error

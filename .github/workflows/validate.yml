@@ -61,6 +61,7 @@ jobs:
       - name: Retain test evidence
         if: always()
         uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: validation-${{ matrix.os }}-${{ matrix.vscode }}
           retention-days: 7

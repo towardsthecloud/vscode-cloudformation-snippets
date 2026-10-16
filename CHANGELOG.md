@@ -4,6 +4,22 @@ Changelog
 
 (unreleased)
 ------------
+- Chore(ci): keep report uploads from failing on artifact quota (#25)
+  [Danny Steenman]
+- Docs: promote the open-source CloudBurn CLI in the readme tip. [Danny
+  Steenman]
+- Chore(ci): limit artifact retention (#24) [Axon Stone, Danny Steenman]
+- Docs: update README snippet coverage statistics (#23) [Danny Steenman]
+
+  * docs: update README snippet coverage statistics
+
+  * docs: scope exact snippet counts to the documented release
+- Build: record published CloudFormation specification for 5.129.0.
+  [Github Actions]
+
+
+5.129.0 (2026-10-09)
+--------------------
 
 Fix
 ~~~
@@ -15,6 +31,10 @@ Fix
   * fix: stabilize CloudFormation snippets and extension releases
 
   * fix: update toolchain and resolve resource loop hovers
+
+Other
+~~~~~
+- Build: update CloudFormation snippets to 5.129.0. [Github Actions]
 
 
 5.128.0 (2026-10-09)

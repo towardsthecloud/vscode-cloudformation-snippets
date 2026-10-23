@@ -4,6 +4,13 @@ Changelog
 
 (unreleased)
 ------------
+- Build: record published CloudFormation specification for 5.130.0.
+  [Github Actions]
+
+
+5.130.0 (2026-10-16)
+--------------------
+- Build: update CloudFormation snippets to 5.130.0. [Github Actions]
 - Chore(ci): keep report uploads from failing on artifact quota (#25)
   [Danny Steenman]
 - Docs: promote the open-source CloudBurn CLI in the readme tip. [Danny

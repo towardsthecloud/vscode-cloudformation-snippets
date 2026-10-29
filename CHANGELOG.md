@@ -4,6 +4,15 @@ Changelog
 
 (unreleased)
 ------------
+- Ci: publish VS Code extensions with trusted publishing (#26) [Danny
+  Steenman]
+- Build: record published CloudFormation specification for 5.131.0.
+  [Github Actions]
+
+
+5.131.0 (2026-10-23)
+--------------------
+- Build: update CloudFormation snippets to 5.131.0. [Github Actions]
 - Build: record published CloudFormation specification for 5.130.0.
   [Github Actions]
 

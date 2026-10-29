@@ -128,6 +128,9 @@ jobs:
           git push --atomic origin HEAD:main "refs/tags/$VERSION"
 
   publish:
+    permissions:
+      contents: read
+      id-token: write
     needs: prepare
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -136,13 +139,11 @@ jobs:
         with:
           name: release-${{ needs.prepare.outputs.version }}
           path: .vscode-test
-      - name: Publish the validated VSIX to Visual Studio Marketplace
-        uses: HaaLeo/publish-vscode-extension@v1
+      - uses: actions/setup-node@v4
         with:
-          pat: ${{ secrets.VSCE_TOKEN }}
-          registryUrl: https://marketplace.visualstudio.com
-          extensionFile: .vscode-test/cloudformation-snippets.vsix
-          skipDuplicate: true
+          node-version: "24"
+      - name: Publish the validated VSIX to Visual Studio Marketplace
+        run: npx --yes @vscode/vsce@4.1.0 publish --oidc --packagePath .vscode-test/cloudformation-snippets.vsix --skip-duplicate
       - name: Publish the same VSIX to Open VSX
         uses: HaaLeo/publish-vscode-extension@v1
         with:

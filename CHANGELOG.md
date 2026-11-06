@@ -4,6 +4,26 @@ Changelog
 
 (unreleased)
 ------------
+- Build(deps-dev): bump qs from 6.16.0 to 6.17.1 (#27) [dependabot[bot],
+  dependabot[bot]]
+
+  Bumps [qs](https://github.com/ljharb/qs) from 6.16.0 to 6.17.1.
+  - [Changelog](https://github.com/ljharb/qs/blob/main/CHANGELOG.md)
+  - [Commits](https://github.com/ljharb/qs/compare/v6.16.0...v6.17.1)
+
+  ---
+  updated-dependencies:
+  - dependency-name: qs
+    dependency-version: 6.17.1
+    dependency-type: indirect
+  ...
+- Build: record published CloudFormation specification for 5.132.0.
+  [Github Actions]
+
+
+5.132.0 (2026-10-29)
+--------------------
+- Build: update CloudFormation snippets to 5.132.0. [Github Actions]
 - Ci: publish VS Code extensions with trusted publishing (#26) [Danny
   Steenman]
 - Build: record published CloudFormation specification for 5.131.0.

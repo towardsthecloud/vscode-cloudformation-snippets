@@ -11831,6 +11831,19 @@
         }
       }
     },
+    "AWS::Backup::BackupAccessPoint.AccessPointMetadata": {
+      "Properties": {
+        "AccessPointInTime": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupaccesspoint-accesspointmetadata.html#cfn-backup-backupaccesspoint-accesspointmetadata-accesspointintime"
+        },
+        "S3AccessPointAlias": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupaccesspoint-accesspointmetadata.html#cfn-backup-backupaccesspoint-accesspointmetadata-s3accesspointalias"
+        },
+        "S3AccessPointArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-backup-backupaccesspoint-accesspointmetadata.html#cfn-backup-backupaccesspoint-accesspointmetadata-s3accesspointarn"
+        }
+      }
+    },
     "AWS::Backup::BackupPlan.AdvancedBackupSettingResourceType": {
       "Properties": {
         "BackupOptions": {
@@ -14138,6 +14151,13 @@
         },
         "EntityType": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-dataautomationlibrary-entitytypeinfo.html#cfn-bedrock-dataautomationlibrary-entitytypeinfo-entitytype"
+        }
+      }
+    },
+    "AWS::Bedrock::DataAutomationLibraryIngestionJob.OutputConfiguration": {
+      "Properties": {
+        "S3Uri": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrock-dataautomationlibraryingestionjob-outputconfiguration.html#cfn-bedrock-dataautomationlibraryingestionjob-outputconfiguration-s3uri"
         }
       }
     },
@@ -35206,6 +35226,55 @@
         }
       }
     },
+    "AWS::CustomerProfiles::EventTrigger.Intent": {
+      "Properties": {
+        "IntentDomain": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intent.html#cfn-customerprofiles-eventtrigger-intent-intentdomain"
+        },
+        "Type": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intent.html#cfn-customerprofiles-eventtrigger-intent-type"
+        }
+      }
+    },
+    "AWS::CustomerProfiles::EventTrigger.IntentFilterCondition": {
+      "Properties": {
+        "ComparisonOperator": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfiltercondition.html#cfn-customerprofiles-eventtrigger-intentfiltercondition-comparisonoperator"
+        },
+        "Intent": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfiltercondition.html#cfn-customerprofiles-eventtrigger-intentfiltercondition-intent",
+          "Type": "AWS::CustomerProfiles::EventTrigger.Intent"
+        },
+        "Values": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfiltercondition.html#cfn-customerprofiles-eventtrigger-intentfiltercondition-values"
+        }
+      }
+    },
+    "AWS::CustomerProfiles::EventTrigger.IntentFilterDefinition": {
+      "Properties": {
+        "Groups": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfilterdefinition.html#cfn-customerprofiles-eventtrigger-intentfilterdefinition-groups",
+          "Type": "AWS::CustomerProfiles::EventTrigger.IntentFilterGroup"
+        },
+        "LogicalOperator": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfilterdefinition.html#cfn-customerprofiles-eventtrigger-intentfilterdefinition-logicaloperator"
+        }
+      }
+    },
+    "AWS::CustomerProfiles::EventTrigger.IntentFilterGroup": {
+      "Properties": {
+        "Conditions": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfiltergroup.html#cfn-customerprofiles-eventtrigger-intentfiltergroup-conditions",
+          "Type": "AWS::CustomerProfiles::EventTrigger.IntentFilterCondition"
+        },
+        "LogicalOperator": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-eventtrigger-intentfiltergroup.html#cfn-customerprofiles-eventtrigger-intentfiltergroup-logicaloperator"
+        }
+      }
+    },
     "AWS::CustomerProfiles::EventTrigger.ObjectAttribute": {
       "Properties": {
         "ComparisonOperator": {
@@ -48075,6 +48144,9 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-instancelaunchtemplate.html#cfn-ecs-capacityprovider-instancelaunchtemplate-networkconfiguration",
           "Type": "AWS::ECS::CapacityProvider.ManagedInstancesNetworkConfiguration"
         },
+        "NitroEnclavesEnabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-instancelaunchtemplate.html#cfn-ecs-capacityprovider-instancelaunchtemplate-nitroenclavesenabled"
+        },
         "StorageConfiguration": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-capacityprovider-instancelaunchtemplate.html#cfn-ecs-capacityprovider-instancelaunchtemplate-storageconfiguration",
           "Type": "AWS::ECS::CapacityProvider.ManagedInstancesStorageConfiguration"
@@ -48811,6 +48883,13 @@
         }
       }
     },
+    "AWS::ECS::DaemonTaskDefinition.LogDriverVolumeConfiguration": {
+      "Properties": {
+        "Driver": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-daemontaskdefinition-logdrivervolumeconfiguration.html#cfn-ecs-daemontaskdefinition-logdrivervolumeconfiguration-driver"
+        }
+      }
+    },
     "AWS::ECS::DaemonTaskDefinition.MountPoint": {
       "Properties": {
         "ContainerPath": {
@@ -48897,6 +48976,10 @@
         "Host": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-daemontaskdefinition-volume.html#cfn-ecs-daemontaskdefinition-volume-host",
           "Type": "AWS::ECS::DaemonTaskDefinition.HostVolumeProperties"
+        },
+        "LogDriverVolumeConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-daemontaskdefinition-volume.html#cfn-ecs-daemontaskdefinition-volume-logdrivervolumeconfiguration",
+          "Type": "AWS::ECS::DaemonTaskDefinition.LogDriverVolumeConfiguration"
         },
         "Name": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-daemontaskdefinition-volume.html#cfn-ecs-daemontaskdefinition-volume-name"
@@ -52053,29 +52136,29 @@
       "Properties": {
         "AdditionalInfo": {
           "Container": "Map",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-application.html#cfn-elasticmapreduce-cluster-application-additionalinfo"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-application.html#cfn-emr-cluster-application-additionalinfo"
         },
         "Args": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-application.html#cfn-elasticmapreduce-cluster-application-args"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-application.html#cfn-emr-cluster-application-args"
         },
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-application.html#cfn-elasticmapreduce-cluster-application-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-application.html#cfn-emr-cluster-application-name"
         },
         "Version": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-application.html#cfn-elasticmapreduce-cluster-application-version"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-application.html#cfn-emr-cluster-application-version"
         }
       }
     },
     "AWS::EMR::Cluster.AutoScalingPolicy": {
       "Properties": {
         "Constraints": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-autoscalingpolicy.html#cfn-elasticmapreduce-cluster-autoscalingpolicy-constraints",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-autoscalingpolicy.html#cfn-emr-cluster-autoscalingpolicy-constraints",
           "Type": "AWS::EMR::Cluster.ScalingConstraints"
         },
         "Rules": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-autoscalingpolicy.html#cfn-elasticmapreduce-cluster-autoscalingpolicy-rules",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-autoscalingpolicy.html#cfn-emr-cluster-autoscalingpolicy-rules",
           "Type": "AWS::EMR::Cluster.ScalingRule"
         }
       }
@@ -52083,17 +52166,17 @@
     "AWS::EMR::Cluster.AutoTerminationPolicy": {
       "Properties": {
         "IdleTimeout": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-autoterminationpolicy.html#cfn-elasticmapreduce-cluster-autoterminationpolicy-idletimeout"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-autoterminationpolicy.html#cfn-emr-cluster-autoterminationpolicy-idletimeout"
         }
       }
     },
     "AWS::EMR::Cluster.BootstrapActionConfig": {
       "Properties": {
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-bootstrapactionconfig.html#cfn-elasticmapreduce-cluster-bootstrapactionconfig-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-bootstrapactionconfig.html#cfn-emr-cluster-bootstrapactionconfig-name"
         },
         "ScriptBootstrapAction": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-bootstrapactionconfig.html#cfn-elasticmapreduce-cluster-bootstrapactionconfig-scriptbootstrapaction",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-bootstrapactionconfig.html#cfn-emr-cluster-bootstrapactionconfig-scriptbootstrapaction",
           "Type": "AWS::EMR::Cluster.ScriptBootstrapActionConfig"
         }
       }
@@ -52101,79 +52184,98 @@
     "AWS::EMR::Cluster.CloudWatchAlarmDefinition": {
       "Properties": {
         "ComparisonOperator": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-comparisonoperator"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-comparisonoperator"
         },
         "Dimensions": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-dimensions",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-dimensions",
           "Type": "AWS::EMR::Cluster.MetricDimension"
         },
         "EvaluationPeriods": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-evaluationperiods"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-evaluationperiods"
         },
         "MetricName": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-metricname"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-metricname"
         },
         "Namespace": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-namespace"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-namespace"
         },
         "Period": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-period"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-period"
         },
         "Statistic": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-statistic"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-statistic"
         },
         "Threshold": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-threshold"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-threshold"
         },
         "Unit": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-cloudwatchalarmdefinition.html#cfn-elasticmapreduce-cluster-cloudwatchalarmdefinition-unit"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchalarmdefinition.html#cfn-emr-cluster-cloudwatchalarmdefinition-unit"
+        }
+      }
+    },
+    "AWS::EMR::Cluster.CloudWatchLogConfiguration": {
+      "Properties": {
+        "Enabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchlogconfiguration.html#cfn-emr-cluster-cloudwatchlogconfiguration-enabled"
+        },
+        "EncryptionKeyArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchlogconfiguration.html#cfn-emr-cluster-cloudwatchlogconfiguration-encryptionkeyarn"
+        },
+        "LogGroupName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchlogconfiguration.html#cfn-emr-cluster-cloudwatchlogconfiguration-loggroupname"
+        },
+        "LogStreamNamePrefix": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchlogconfiguration.html#cfn-emr-cluster-cloudwatchlogconfiguration-logstreamnameprefix"
+        },
+        "LogTypes": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-cloudwatchlogconfiguration.html#cfn-emr-cluster-cloudwatchlogconfiguration-logtypes"
         }
       }
     },
     "AWS::EMR::Cluster.ComputeLimits": {
       "Properties": {
         "MaximumCapacityUnits": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-computelimits.html#cfn-elasticmapreduce-cluster-computelimits-maximumcapacityunits"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-computelimits.html#cfn-emr-cluster-computelimits-maximumcapacityunits"
         },
         "MaximumCoreCapacityUnits": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-computelimits.html#cfn-elasticmapreduce-cluster-computelimits-maximumcorecapacityunits"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-computelimits.html#cfn-emr-cluster-computelimits-maximumcorecapacityunits"
         },
         "MaximumOnDemandCapacityUnits": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-computelimits.html#cfn-elasticmapreduce-cluster-computelimits-maximumondemandcapacityunits"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-computelimits.html#cfn-emr-cluster-computelimits-maximumondemandcapacityunits"
         },
         "MinimumCapacityUnits": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-computelimits.html#cfn-elasticmapreduce-cluster-computelimits-minimumcapacityunits"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-computelimits.html#cfn-emr-cluster-computelimits-minimumcapacityunits"
         },
         "UnitType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-computelimits.html#cfn-elasticmapreduce-cluster-computelimits-unittype"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-computelimits.html#cfn-emr-cluster-computelimits-unittype"
         }
       }
     },
-    "AWS::EMR::Cluster.Configuration": {
+    "AWS::EMR::Cluster.EMRConfiguration": {
       "Properties": {
         "Classification": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-configuration.html#cfn-elasticmapreduce-cluster-configuration-classification"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-emrconfiguration.html#cfn-emr-cluster-emrconfiguration-classification"
         },
         "ConfigurationProperties": {
           "Container": "Map",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-configuration.html#cfn-elasticmapreduce-cluster-configuration-configurationproperties"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-emrconfiguration.html#cfn-emr-cluster-emrconfiguration-configurationproperties"
         },
         "Configurations": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-configuration.html#cfn-elasticmapreduce-cluster-configuration-configurations",
-          "Type": "AWS::EMR::Cluster.Configuration"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-emrconfiguration.html#cfn-emr-cluster-emrconfiguration-configurations",
+          "Type": "AWS::EMR::Cluster.EMRConfiguration"
         }
       }
     },
     "AWS::EMR::Cluster.EbsBlockDeviceConfig": {
       "Properties": {
         "VolumeSpecification": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ebsblockdeviceconfig.html#cfn-elasticmapreduce-cluster-ebsblockdeviceconfig-volumespecification",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ebsblockdeviceconfig.html#cfn-emr-cluster-ebsblockdeviceconfig-volumespecification",
           "Type": "AWS::EMR::Cluster.VolumeSpecification"
         },
         "VolumesPerInstance": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ebsblockdeviceconfig.html#cfn-elasticmapreduce-cluster-ebsblockdeviceconfig-volumesperinstance"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ebsblockdeviceconfig.html#cfn-emr-cluster-ebsblockdeviceconfig-volumesperinstance"
         }
       }
     },
@@ -52181,11 +52283,11 @@
       "Properties": {
         "EbsBlockDeviceConfigs": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ebsconfiguration.html#cfn-elasticmapreduce-cluster-ebsconfiguration-ebsblockdeviceconfigs",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ebsconfiguration.html#cfn-emr-cluster-ebsconfiguration-ebsblockdeviceconfigs",
           "Type": "AWS::EMR::Cluster.EbsBlockDeviceConfig"
         },
         "EbsOptimized": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ebsconfiguration.html#cfn-elasticmapreduce-cluster-ebsconfiguration-ebsoptimized"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ebsconfiguration.html#cfn-emr-cluster-ebsconfiguration-ebsoptimized"
         }
       }
     },
@@ -52193,17 +52295,17 @@
       "Properties": {
         "Args": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-hadoopjarstepconfig.html#cfn-elasticmapreduce-cluster-hadoopjarstepconfig-args"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-hadoopjarstepconfig.html#cfn-emr-cluster-hadoopjarstepconfig-args"
         },
         "Jar": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-hadoopjarstepconfig.html#cfn-elasticmapreduce-cluster-hadoopjarstepconfig-jar"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-hadoopjarstepconfig.html#cfn-emr-cluster-hadoopjarstepconfig-jar"
         },
         "MainClass": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-hadoopjarstepconfig.html#cfn-elasticmapreduce-cluster-hadoopjarstepconfig-mainclass"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-hadoopjarstepconfig.html#cfn-emr-cluster-hadoopjarstepconfig-mainclass"
         },
         "StepProperties": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-hadoopjarstepconfig.html#cfn-elasticmapreduce-cluster-hadoopjarstepconfig-stepproperties",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-hadoopjarstepconfig.html#cfn-emr-cluster-hadoopjarstepconfig-stepproperties",
           "Type": "AWS::EMR::Cluster.KeyValue"
         }
       }
@@ -52212,36 +52314,36 @@
       "Properties": {
         "InstanceTypeConfigs": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetconfig.html#cfn-elasticmapreduce-cluster-instancefleetconfig-instancetypeconfigs",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetconfig.html#cfn-emr-cluster-instancefleetconfig-instancetypeconfigs",
           "Type": "AWS::EMR::Cluster.InstanceTypeConfig"
         },
         "LaunchSpecifications": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetconfig.html#cfn-elasticmapreduce-cluster-instancefleetconfig-launchspecifications",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetconfig.html#cfn-emr-cluster-instancefleetconfig-launchspecifications",
           "Type": "AWS::EMR::Cluster.InstanceFleetProvisioningSpecifications"
         },
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetconfig.html#cfn-elasticmapreduce-cluster-instancefleetconfig-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetconfig.html#cfn-emr-cluster-instancefleetconfig-name"
         },
         "ResizeSpecifications": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetconfig.html#cfn-elasticmapreduce-cluster-instancefleetconfig-resizespecifications",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetconfig.html#cfn-emr-cluster-instancefleetconfig-resizespecifications",
           "Type": "AWS::EMR::Cluster.InstanceFleetResizingSpecifications"
         },
         "TargetOnDemandCapacity": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetconfig.html#cfn-elasticmapreduce-cluster-instancefleetconfig-targetondemandcapacity"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetconfig.html#cfn-emr-cluster-instancefleetconfig-targetondemandcapacity"
         },
         "TargetSpotCapacity": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetconfig.html#cfn-elasticmapreduce-cluster-instancefleetconfig-targetspotcapacity"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetconfig.html#cfn-emr-cluster-instancefleetconfig-targetspotcapacity"
         }
       }
     },
     "AWS::EMR::Cluster.InstanceFleetProvisioningSpecifications": {
       "Properties": {
         "OnDemandSpecification": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetprovisioningspecifications.html#cfn-elasticmapreduce-cluster-instancefleetprovisioningspecifications-ondemandspecification",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetprovisioningspecifications.html#cfn-emr-cluster-instancefleetprovisioningspecifications-ondemandspecification",
           "Type": "AWS::EMR::Cluster.OnDemandProvisioningSpecification"
         },
         "SpotSpecification": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetprovisioningspecifications.html#cfn-elasticmapreduce-cluster-instancefleetprovisioningspecifications-spotspecification",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetprovisioningspecifications.html#cfn-emr-cluster-instancefleetprovisioningspecifications-spotspecification",
           "Type": "AWS::EMR::Cluster.SpotProvisioningSpecification"
         }
       }
@@ -52249,11 +52351,11 @@
     "AWS::EMR::Cluster.InstanceFleetResizingSpecifications": {
       "Properties": {
         "OnDemandResizeSpecification": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetresizingspecifications.html#cfn-elasticmapreduce-cluster-instancefleetresizingspecifications-ondemandresizespecification",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetresizingspecifications.html#cfn-emr-cluster-instancefleetresizingspecifications-ondemandresizespecification",
           "Type": "AWS::EMR::Cluster.OnDemandResizingSpecification"
         },
         "SpotResizeSpecification": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancefleetresizingspecifications.html#cfn-elasticmapreduce-cluster-instancefleetresizingspecifications-spotresizespecification",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancefleetresizingspecifications.html#cfn-emr-cluster-instancefleetresizingspecifications-spotresizespecification",
           "Type": "AWS::EMR::Cluster.SpotResizingSpecification"
         }
       }
@@ -52261,66 +52363,66 @@
     "AWS::EMR::Cluster.InstanceGroupConfig": {
       "Properties": {
         "AutoScalingPolicy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-autoscalingpolicy",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-autoscalingpolicy",
           "Type": "AWS::EMR::Cluster.AutoScalingPolicy"
         },
         "BidPrice": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-bidprice"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-bidprice"
         },
         "Configurations": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-configurations",
-          "Type": "AWS::EMR::Cluster.Configuration"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-configurations",
+          "Type": "AWS::EMR::Cluster.EMRConfiguration"
         },
         "CustomAmiId": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-customamiid"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-customamiid"
         },
         "EbsConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-ebsconfiguration",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-ebsconfiguration",
           "Type": "AWS::EMR::Cluster.EbsConfiguration"
         },
         "InstanceCount": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-instancecount"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-instancecount"
         },
         "InstanceType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-instancetype"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-instancetype"
         },
         "Market": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-market"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-market"
         },
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancegroupconfig.html#cfn-elasticmapreduce-cluster-instancegroupconfig-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancegroupconfig.html#cfn-emr-cluster-instancegroupconfig-name"
         }
       }
     },
     "AWS::EMR::Cluster.InstanceTypeConfig": {
       "Properties": {
         "BidPrice": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-bidprice"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-bidprice"
         },
         "BidPriceAsPercentageOfOnDemandPrice": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-bidpriceaspercentageofondemandprice"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-bidpriceaspercentageofondemandprice"
         },
         "Configurations": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-configurations",
-          "Type": "AWS::EMR::Cluster.Configuration"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-configurations",
+          "Type": "AWS::EMR::Cluster.EMRConfiguration"
         },
         "CustomAmiId": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-customamiid"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-customamiid"
         },
         "EbsConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-ebsconfiguration",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-ebsconfiguration",
           "Type": "AWS::EMR::Cluster.EbsConfiguration"
         },
         "InstanceType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-instancetype"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-instancetype"
         },
         "Priority": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-priority"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-priority"
         },
         "WeightedCapacity": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-instancetypeconfig.html#cfn-elasticmapreduce-cluster-instancetypeconfig-weightedcapacity"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-instancetypeconfig.html#cfn-emr-cluster-instancetypeconfig-weightedcapacity"
         }
       }
     },
@@ -52328,148 +52430,156 @@
       "Properties": {
         "AdditionalMasterSecurityGroups": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-additionalmastersecuritygroups"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-additionalmastersecuritygroups"
         },
         "AdditionalSlaveSecurityGroups": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-additionalslavesecuritygroups"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-additionalslavesecuritygroups"
         },
         "CoreInstanceFleet": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-coreinstancefleet",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-coreinstancefleet",
           "Type": "AWS::EMR::Cluster.InstanceFleetConfig"
         },
         "CoreInstanceGroup": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-coreinstancegroup",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-coreinstancegroup",
           "Type": "AWS::EMR::Cluster.InstanceGroupConfig"
         },
         "Ec2KeyName": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-ec2keyname"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-ec2keyname"
         },
         "Ec2SubnetId": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-ec2subnetid"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-ec2subnetid"
         },
         "Ec2SubnetIds": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-ec2subnetids"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-ec2subnetids"
         },
         "EmrManagedMasterSecurityGroup": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-emrmanagedmastersecuritygroup"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-emrmanagedmastersecuritygroup"
         },
         "EmrManagedSlaveSecurityGroup": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-emrmanagedslavesecuritygroup"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-emrmanagedslavesecuritygroup"
         },
         "HadoopVersion": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-hadoopversion"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-hadoopversion"
         },
         "KeepJobFlowAliveWhenNoSteps": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-keepjobflowalivewhennosteps"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-keepjobflowalivewhennosteps"
         },
         "MasterInstanceFleet": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-masterinstancefleet",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-masterinstancefleet",
           "Type": "AWS::EMR::Cluster.InstanceFleetConfig"
         },
         "MasterInstanceGroup": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-masterinstancegroup",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-masterinstancegroup",
           "Type": "AWS::EMR::Cluster.InstanceGroupConfig"
         },
         "Placement": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-placement",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-placement",
           "Type": "AWS::EMR::Cluster.PlacementType"
         },
         "ServiceAccessSecurityGroup": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-serviceaccesssecuritygroup"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-serviceaccesssecuritygroup"
         },
         "TaskInstanceFleets": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-taskinstancefleets",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-taskinstancefleets",
           "Type": "AWS::EMR::Cluster.InstanceFleetConfig"
         },
         "TaskInstanceGroups": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-taskinstancegroups",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-taskinstancegroups",
           "Type": "AWS::EMR::Cluster.InstanceGroupConfig"
         },
         "TerminationProtected": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-terminationprotected"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-terminationprotected"
         },
         "UnhealthyNodeReplacement": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-jobflowinstancesconfig.html#cfn-elasticmapreduce-cluster-jobflowinstancesconfig-unhealthynodereplacement"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-jobflowinstancesconfig.html#cfn-emr-cluster-jobflowinstancesconfig-unhealthynodereplacement"
         }
       }
     },
     "AWS::EMR::Cluster.KerberosAttributes": {
       "Properties": {
         "ADDomainJoinPassword": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-kerberosattributes.html#cfn-elasticmapreduce-cluster-kerberosattributes-addomainjoinpassword"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-kerberosattributes.html#cfn-emr-cluster-kerberosattributes-addomainjoinpassword"
         },
         "ADDomainJoinUser": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-kerberosattributes.html#cfn-elasticmapreduce-cluster-kerberosattributes-addomainjoinuser"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-kerberosattributes.html#cfn-emr-cluster-kerberosattributes-addomainjoinuser"
         },
         "CrossRealmTrustPrincipalPassword": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-kerberosattributes.html#cfn-elasticmapreduce-cluster-kerberosattributes-crossrealmtrustprincipalpassword"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-kerberosattributes.html#cfn-emr-cluster-kerberosattributes-crossrealmtrustprincipalpassword"
         },
         "KdcAdminPassword": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-kerberosattributes.html#cfn-elasticmapreduce-cluster-kerberosattributes-kdcadminpassword"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-kerberosattributes.html#cfn-emr-cluster-kerberosattributes-kdcadminpassword"
         },
         "Realm": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-kerberosattributes.html#cfn-elasticmapreduce-cluster-kerberosattributes-realm"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-kerberosattributes.html#cfn-emr-cluster-kerberosattributes-realm"
         }
       }
     },
     "AWS::EMR::Cluster.KeyValue": {
       "Properties": {
         "Key": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-keyvalue.html#cfn-elasticmapreduce-cluster-keyvalue-key"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-keyvalue.html#cfn-emr-cluster-keyvalue-key"
         },
         "Value": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-keyvalue.html#cfn-elasticmapreduce-cluster-keyvalue-value"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-keyvalue.html#cfn-emr-cluster-keyvalue-value"
         }
       }
     },
     "AWS::EMR::Cluster.ManagedScalingPolicy": {
       "Properties": {
         "ComputeLimits": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-managedscalingpolicy.html#cfn-elasticmapreduce-cluster-managedscalingpolicy-computelimits",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-managedscalingpolicy.html#cfn-emr-cluster-managedscalingpolicy-computelimits",
           "Type": "AWS::EMR::Cluster.ComputeLimits"
         },
         "ScalingStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-managedscalingpolicy.html#cfn-elasticmapreduce-cluster-managedscalingpolicy-scalingstrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-managedscalingpolicy.html#cfn-emr-cluster-managedscalingpolicy-scalingstrategy"
         },
         "UtilizationPerformanceIndex": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-managedscalingpolicy.html#cfn-elasticmapreduce-cluster-managedscalingpolicy-utilizationperformanceindex"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-managedscalingpolicy.html#cfn-emr-cluster-managedscalingpolicy-utilizationperformanceindex"
         }
       }
     },
     "AWS::EMR::Cluster.MetricDimension": {
       "Properties": {
         "Key": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-metricdimension.html#cfn-elasticmapreduce-cluster-metricdimension-key"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-metricdimension.html#cfn-emr-cluster-metricdimension-key"
         },
         "Value": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-metricdimension.html#cfn-elasticmapreduce-cluster-metricdimension-value"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-metricdimension.html#cfn-emr-cluster-metricdimension-value"
+        }
+      }
+    },
+    "AWS::EMR::Cluster.MonitoringConfiguration": {
+      "Properties": {
+        "CloudWatchLogConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-monitoringconfiguration.html#cfn-emr-cluster-monitoringconfiguration-cloudwatchlogconfiguration",
+          "Type": "AWS::EMR::Cluster.CloudWatchLogConfiguration"
         }
       }
     },
     "AWS::EMR::Cluster.OnDemandCapacityReservationOptions": {
       "Properties": {
         "CapacityReservationPreference": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandcapacityreservationoptions.html#cfn-elasticmapreduce-cluster-ondemandcapacityreservationoptions-capacityreservationpreference"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandcapacityreservationoptions.html#cfn-emr-cluster-ondemandcapacityreservationoptions-capacityreservationpreference"
         },
         "CapacityReservationResourceGroupArn": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandcapacityreservationoptions.html#cfn-elasticmapreduce-cluster-ondemandcapacityreservationoptions-capacityreservationresourcegrouparn"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandcapacityreservationoptions.html#cfn-emr-cluster-ondemandcapacityreservationoptions-capacityreservationresourcegrouparn"
         },
         "UsageStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandcapacityreservationoptions.html#cfn-elasticmapreduce-cluster-ondemandcapacityreservationoptions-usagestrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandcapacityreservationoptions.html#cfn-emr-cluster-ondemandcapacityreservationoptions-usagestrategy"
         }
       }
     },
     "AWS::EMR::Cluster.OnDemandProvisioningSpecification": {
       "Properties": {
         "AllocationStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandprovisioningspecification.html#cfn-elasticmapreduce-cluster-ondemandprovisioningspecification-allocationstrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandprovisioningspecification.html#cfn-emr-cluster-ondemandprovisioningspecification-allocationstrategy"
         },
         "CapacityReservationOptions": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandprovisioningspecification.html#cfn-elasticmapreduce-cluster-ondemandprovisioningspecification-capacityreservationoptions",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandprovisioningspecification.html#cfn-emr-cluster-ondemandprovisioningspecification-capacityreservationoptions",
           "Type": "AWS::EMR::Cluster.OnDemandCapacityReservationOptions"
         }
       }
@@ -52477,41 +52587,41 @@
     "AWS::EMR::Cluster.OnDemandResizingSpecification": {
       "Properties": {
         "AllocationStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandresizingspecification.html#cfn-elasticmapreduce-cluster-ondemandresizingspecification-allocationstrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandresizingspecification.html#cfn-emr-cluster-ondemandresizingspecification-allocationstrategy"
         },
         "CapacityReservationOptions": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandresizingspecification.html#cfn-elasticmapreduce-cluster-ondemandresizingspecification-capacityreservationoptions",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandresizingspecification.html#cfn-emr-cluster-ondemandresizingspecification-capacityreservationoptions",
           "Type": "AWS::EMR::Cluster.OnDemandCapacityReservationOptions"
         },
         "TimeoutDurationMinutes": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-ondemandresizingspecification.html#cfn-elasticmapreduce-cluster-ondemandresizingspecification-timeoutdurationminutes"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-ondemandresizingspecification.html#cfn-emr-cluster-ondemandresizingspecification-timeoutdurationminutes"
         }
       }
     },
     "AWS::EMR::Cluster.PlacementGroupConfig": {
       "Properties": {
         "InstanceRole": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-placementgroupconfig.html#cfn-elasticmapreduce-cluster-placementgroupconfig-instancerole"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-placementgroupconfig.html#cfn-emr-cluster-placementgroupconfig-instancerole"
         },
         "PlacementStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-placementgroupconfig.html#cfn-elasticmapreduce-cluster-placementgroupconfig-placementstrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-placementgroupconfig.html#cfn-emr-cluster-placementgroupconfig-placementstrategy"
         }
       }
     },
     "AWS::EMR::Cluster.PlacementType": {
       "Properties": {
         "AvailabilityZone": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-placementtype.html#cfn-elasticmapreduce-cluster-placementtype-availabilityzone"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-placementtype.html#cfn-emr-cluster-placementtype-availabilityzone"
         }
       }
     },
     "AWS::EMR::Cluster.ScalingAction": {
       "Properties": {
         "Market": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingaction.html#cfn-elasticmapreduce-cluster-scalingaction-market"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingaction.html#cfn-emr-cluster-scalingaction-market"
         },
         "SimpleScalingPolicyConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingaction.html#cfn-elasticmapreduce-cluster-scalingaction-simplescalingpolicyconfiguration",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingaction.html#cfn-emr-cluster-scalingaction-simplescalingpolicyconfiguration",
           "Type": "AWS::EMR::Cluster.SimpleScalingPolicyConfiguration"
         }
       }
@@ -52519,27 +52629,27 @@
     "AWS::EMR::Cluster.ScalingConstraints": {
       "Properties": {
         "MaxCapacity": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingconstraints.html#cfn-elasticmapreduce-cluster-scalingconstraints-maxcapacity"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingconstraints.html#cfn-emr-cluster-scalingconstraints-maxcapacity"
         },
         "MinCapacity": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingconstraints.html#cfn-elasticmapreduce-cluster-scalingconstraints-mincapacity"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingconstraints.html#cfn-emr-cluster-scalingconstraints-mincapacity"
         }
       }
     },
     "AWS::EMR::Cluster.ScalingRule": {
       "Properties": {
         "Action": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingrule.html#cfn-elasticmapreduce-cluster-scalingrule-action",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingrule.html#cfn-emr-cluster-scalingrule-action",
           "Type": "AWS::EMR::Cluster.ScalingAction"
         },
         "Description": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingrule.html#cfn-elasticmapreduce-cluster-scalingrule-description"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingrule.html#cfn-emr-cluster-scalingrule-description"
         },
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingrule.html#cfn-elasticmapreduce-cluster-scalingrule-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingrule.html#cfn-emr-cluster-scalingrule-name"
         },
         "Trigger": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingrule.html#cfn-elasticmapreduce-cluster-scalingrule-trigger",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingrule.html#cfn-emr-cluster-scalingrule-trigger",
           "Type": "AWS::EMR::Cluster.ScalingTrigger"
         }
       }
@@ -52547,7 +52657,7 @@
     "AWS::EMR::Cluster.ScalingTrigger": {
       "Properties": {
         "CloudWatchAlarmDefinition": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scalingtrigger.html#cfn-elasticmapreduce-cluster-scalingtrigger-cloudwatchalarmdefinition",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scalingtrigger.html#cfn-emr-cluster-scalingtrigger-cloudwatchalarmdefinition",
           "Type": "AWS::EMR::Cluster.CloudWatchAlarmDefinition"
         }
       }
@@ -52556,79 +52666,79 @@
       "Properties": {
         "Args": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scriptbootstrapactionconfig.html#cfn-elasticmapreduce-cluster-scriptbootstrapactionconfig-args"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scriptbootstrapactionconfig.html#cfn-emr-cluster-scriptbootstrapactionconfig-args"
         },
         "Path": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-scriptbootstrapactionconfig.html#cfn-elasticmapreduce-cluster-scriptbootstrapactionconfig-path"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-scriptbootstrapactionconfig.html#cfn-emr-cluster-scriptbootstrapactionconfig-path"
         }
       }
     },
     "AWS::EMR::Cluster.SimpleScalingPolicyConfiguration": {
       "Properties": {
         "AdjustmentType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-simplescalingpolicyconfiguration.html#cfn-elasticmapreduce-cluster-simplescalingpolicyconfiguration-adjustmenttype"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-simplescalingpolicyconfiguration.html#cfn-emr-cluster-simplescalingpolicyconfiguration-adjustmenttype"
         },
         "CoolDown": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-simplescalingpolicyconfiguration.html#cfn-elasticmapreduce-cluster-simplescalingpolicyconfiguration-cooldown"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-simplescalingpolicyconfiguration.html#cfn-emr-cluster-simplescalingpolicyconfiguration-cooldown"
         },
         "ScalingAdjustment": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-simplescalingpolicyconfiguration.html#cfn-elasticmapreduce-cluster-simplescalingpolicyconfiguration-scalingadjustment"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-simplescalingpolicyconfiguration.html#cfn-emr-cluster-simplescalingpolicyconfiguration-scalingadjustment"
         }
       }
     },
     "AWS::EMR::Cluster.SpotProvisioningSpecification": {
       "Properties": {
         "AllocationStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-spotprovisioningspecification.html#cfn-elasticmapreduce-cluster-spotprovisioningspecification-allocationstrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-spotprovisioningspecification.html#cfn-emr-cluster-spotprovisioningspecification-allocationstrategy"
         },
         "BlockDurationMinutes": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-spotprovisioningspecification.html#cfn-elasticmapreduce-cluster-spotprovisioningspecification-blockdurationminutes"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-spotprovisioningspecification.html#cfn-emr-cluster-spotprovisioningspecification-blockdurationminutes"
         },
         "TimeoutAction": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-spotprovisioningspecification.html#cfn-elasticmapreduce-cluster-spotprovisioningspecification-timeoutaction"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-spotprovisioningspecification.html#cfn-emr-cluster-spotprovisioningspecification-timeoutaction"
         },
         "TimeoutDurationMinutes": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-spotprovisioningspecification.html#cfn-elasticmapreduce-cluster-spotprovisioningspecification-timeoutdurationminutes"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-spotprovisioningspecification.html#cfn-emr-cluster-spotprovisioningspecification-timeoutdurationminutes"
         }
       }
     },
     "AWS::EMR::Cluster.SpotResizingSpecification": {
       "Properties": {
         "AllocationStrategy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-spotresizingspecification.html#cfn-elasticmapreduce-cluster-spotresizingspecification-allocationstrategy"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-spotresizingspecification.html#cfn-emr-cluster-spotresizingspecification-allocationstrategy"
         },
         "TimeoutDurationMinutes": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-spotresizingspecification.html#cfn-elasticmapreduce-cluster-spotresizingspecification-timeoutdurationminutes"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-spotresizingspecification.html#cfn-emr-cluster-spotresizingspecification-timeoutdurationminutes"
         }
       }
     },
     "AWS::EMR::Cluster.StepConfig": {
       "Properties": {
         "ActionOnFailure": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-stepconfig.html#cfn-elasticmapreduce-cluster-stepconfig-actiononfailure"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-stepconfig.html#cfn-emr-cluster-stepconfig-actiononfailure"
         },
         "HadoopJarStep": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-stepconfig.html#cfn-elasticmapreduce-cluster-stepconfig-hadoopjarstep",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-stepconfig.html#cfn-emr-cluster-stepconfig-hadoopjarstep",
           "Type": "AWS::EMR::Cluster.HadoopJarStepConfig"
         },
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-stepconfig.html#cfn-elasticmapreduce-cluster-stepconfig-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-stepconfig.html#cfn-emr-cluster-stepconfig-name"
         }
       }
     },
     "AWS::EMR::Cluster.VolumeSpecification": {
       "Properties": {
         "Iops": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-volumespecification.html#cfn-elasticmapreduce-cluster-volumespecification-iops"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-volumespecification.html#cfn-emr-cluster-volumespecification-iops"
         },
         "SizeInGB": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-volumespecification.html#cfn-elasticmapreduce-cluster-volumespecification-sizeingb"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-volumespecification.html#cfn-emr-cluster-volumespecification-sizeingb"
         },
         "Throughput": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-volumespecification.html#cfn-elasticmapreduce-cluster-volumespecification-throughput"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-volumespecification.html#cfn-emr-cluster-volumespecification-throughput"
         },
         "VolumeType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticmapreduce-cluster-volumespecification.html#cfn-elasticmapreduce-cluster-volumespecification-volumetype"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emr-cluster-volumespecification.html#cfn-emr-cluster-volumespecification-volumetype"
         }
       }
     },
@@ -64550,6 +64660,14 @@
         },
         "ImageScanningEnabled": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagescanningconfiguration.html#cfn-imagebuilder-image-imagescanningconfiguration-imagescanningenabled"
+        },
+        "ImageScanningTypes": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagescanningconfiguration.html#cfn-imagebuilder-image-imagescanningconfiguration-imagescanningtypes"
+        },
+        "ScanResultCondition": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagescanningconfiguration.html#cfn-imagebuilder-image-imagescanningconfiguration-scanresultcondition",
+          "Type": "AWS::ImageBuilder::Image.ScanResultCondition"
         }
       }
     },
@@ -64576,6 +64694,16 @@
         },
         "Patch": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-latestversion.html#cfn-imagebuilder-image-latestversion-patch"
+        }
+      }
+    },
+    "AWS::ImageBuilder::Image.ScanResultCondition": {
+      "Properties": {
+        "FixAvailable": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-scanresultcondition.html#cfn-imagebuilder-image-scanresultcondition-fixavailable"
+        },
+        "MaximumSeverityLabel": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-scanresultcondition.html#cfn-imagebuilder-image-scanresultcondition-maximumseveritylabel"
         }
       }
     },
@@ -64634,6 +64762,14 @@
         },
         "ImageScanningEnabled": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-imagescanningconfiguration.html#cfn-imagebuilder-imagepipeline-imagescanningconfiguration-imagescanningenabled"
+        },
+        "ImageScanningTypes": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-imagescanningconfiguration.html#cfn-imagebuilder-imagepipeline-imagescanningconfiguration-imagescanningtypes"
+        },
+        "ScanResultCondition": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-imagescanningconfiguration.html#cfn-imagebuilder-imagepipeline-imagescanningconfiguration-scanresultcondition",
+          "Type": "AWS::ImageBuilder::ImagePipeline.ScanResultCondition"
         }
       }
     },
@@ -64654,6 +64790,16 @@
         },
         "PipelineLogGroupName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-pipelineloggingconfiguration.html#cfn-imagebuilder-imagepipeline-pipelineloggingconfiguration-pipelineloggroupname"
+        }
+      }
+    },
+    "AWS::ImageBuilder::ImagePipeline.ScanResultCondition": {
+      "Properties": {
+        "FixAvailable": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-scanresultcondition.html#cfn-imagebuilder-imagepipeline-scanresultcondition-fixavailable"
+        },
+        "MaximumSeverityLabel": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-imagepipeline-scanresultcondition.html#cfn-imagebuilder-imagepipeline-scanresultcondition-maximumseveritylabel"
         }
       }
     },
@@ -81932,6 +82078,9 @@
         }
       }
     },
+    "AWS::MediaLive::Channel.AutoFilterSettings": {
+      "Properties": {}
+    },
     "AWS::MediaLive::Channel.AutomaticInputFailoverSettings": {
       "Properties": {
         "ErrorClearTimeMsec": {
@@ -81974,6 +82123,22 @@
         }
       }
     },
+    "AWS::MediaLive::Channel.Av1FilterSettings": {
+      "Properties": {
+        "AutoFilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-av1filtersettings.html#cfn-medialive-channel-av1filtersettings-autofiltersettings",
+          "Type": "AWS::MediaLive::Channel.AutoFilterSettings"
+        },
+        "NoneFilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-av1filtersettings.html#cfn-medialive-channel-av1filtersettings-nonefiltersettings",
+          "Type": "AWS::MediaLive::Channel.NoneFilterSettings"
+        },
+        "PerceptualFilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-av1filtersettings.html#cfn-medialive-channel-av1filtersettings-perceptualfiltersettings",
+          "Type": "AWS::MediaLive::Channel.PerceptualFilterSettings"
+        }
+      }
+    },
     "AWS::MediaLive::Channel.Av1Settings": {
       "Properties": {
         "AfdSignaling": {
@@ -81991,6 +82156,10 @@
         "ColorSpaceSettings": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-av1settings.html#cfn-medialive-channel-av1settings-colorspacesettings",
           "Type": "AWS::MediaLive::Channel.Av1ColorSpaceSettings"
+        },
+        "FilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-av1settings.html#cfn-medialive-channel-av1settings-filtersettings",
+          "Type": "AWS::MediaLive::Channel.Av1FilterSettings"
         },
         "FixedAfd": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-av1settings.html#cfn-medialive-channel-av1settings-fixedafd"
@@ -82938,9 +83107,21 @@
     },
     "AWS::MediaLive::Channel.H264H265FilterSettings": {
       "Properties": {
+        "AutoFilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264h265filtersettings.html#cfn-medialive-channel-h264h265filtersettings-autofiltersettings",
+          "Type": "AWS::MediaLive::Channel.AutoFilterSettings"
+        },
         "BandwidthReductionFilterSettings": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264h265filtersettings.html#cfn-medialive-channel-h264h265filtersettings-bandwidthreductionfiltersettings",
           "Type": "AWS::MediaLive::Channel.BandwidthReductionFilterSettings"
+        },
+        "NoneFilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264h265filtersettings.html#cfn-medialive-channel-h264h265filtersettings-nonefiltersettings",
+          "Type": "AWS::MediaLive::Channel.NoneFilterSettings"
+        },
+        "PerceptualFilterSettings": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264h265filtersettings.html#cfn-medialive-channel-h264h265filtersettings-perceptualfiltersettings",
+          "Type": "AWS::MediaLive::Channel.PerceptualFilterSettings"
         },
         "TemporalFilterSettings": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264h265filtersettings.html#cfn-medialive-channel-h264h265filtersettings-temporalfiltersettings",
@@ -82955,6 +83136,9 @@
         },
         "AfdSignaling": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264settings.html#cfn-medialive-channel-h264settings-afdsignaling"
+        },
+        "AllowExplicitWeightedPrediction": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264settings.html#cfn-medialive-channel-h264settings-allowexplicitweightedprediction"
         },
         "Bitrate": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-h264settings.html#cfn-medialive-channel-h264settings-bitrate"
@@ -84433,6 +84617,9 @@
         }
       }
     },
+    "AWS::MediaLive::Channel.NoneFilterSettings": {
+      "Properties": {}
+    },
     "AWS::MediaLive::Channel.Output": {
       "Properties": {
         "AudioDescriptionNames": {
@@ -84641,6 +84828,13 @@
         "UdpOutputSettings": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-outputsettings.html#cfn-medialive-channel-outputsettings-udpoutputsettings",
           "Type": "AWS::MediaLive::Channel.UdpOutputSettings"
+        }
+      }
+    },
+    "AWS::MediaLive::Channel.PerceptualFilterSettings": {
+      "Properties": {
+        "Strength": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-perceptualfiltersettings.html#cfn-medialive-channel-perceptualfiltersettings-strength"
         }
       }
     },
@@ -87211,6 +87405,10 @@
         "Body": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-awsservicerequestconfiguration.html#cfn-mediatailor-function-awsservicerequestconfiguration-body"
         },
+        "Cache": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-awsservicerequestconfiguration.html#cfn-mediatailor-function-awsservicerequestconfiguration-cache",
+          "Type": "AWS::MediaTailor::Function.HttpRequestCacheConfiguration"
+        },
         "Headers": {
           "Container": "Map",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-awsservicerequestconfiguration.html#cfn-mediatailor-function-awsservicerequestconfiguration-headers"
@@ -87285,10 +87483,27 @@
         }
       }
     },
+    "AWS::MediaTailor::Function.HttpRequestCacheConfiguration": {
+      "Properties": {
+        "Key": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-httprequestcacheconfiguration.html#cfn-mediatailor-function-httprequestcacheconfiguration-key"
+        },
+        "TtlMaximumSeconds": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-httprequestcacheconfiguration.html#cfn-mediatailor-function-httprequestcacheconfiguration-ttlmaximumseconds"
+        },
+        "TtlMinimumSeconds": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-httprequestcacheconfiguration.html#cfn-mediatailor-function-httprequestcacheconfiguration-ttlminimumseconds"
+        }
+      }
+    },
     "AWS::MediaTailor::Function.HttpRequestConfiguration": {
       "Properties": {
         "Body": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-httprequestconfiguration.html#cfn-mediatailor-function-httprequestconfiguration-body"
+        },
+        "Cache": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-httprequestconfiguration.html#cfn-mediatailor-function-httprequestconfiguration-cache",
+          "Type": "AWS::MediaTailor::Function.HttpRequestCacheConfiguration"
         },
         "Headers": {
           "Container": "Map",
@@ -87335,6 +87550,10 @@
       "Properties": {
         "Body": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-vastrequestconfiguration.html#cfn-mediatailor-function-vastrequestconfiguration-body"
+        },
+        "Cache": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-mediatailor-function-vastrequestconfiguration.html#cfn-mediatailor-function-vastrequestconfiguration-cache",
+          "Type": "AWS::MediaTailor::Function.HttpRequestCacheConfiguration"
         },
         "Headers": {
           "Container": "Map",
@@ -89670,6 +89889,18 @@
         },
         "VpcEndpointManagement": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipeline-vpcoptions.html#cfn-osis-pipeline-vpcoptions-vpcendpointmanagement"
+        }
+      }
+    },
+    "AWS::OSIS::PipelineEndpoint.VpcOptions": {
+      "Properties": {
+        "SecurityGroupIds": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipelineendpoint-vpcoptions.html#cfn-osis-pipelineendpoint-vpcoptions-securitygroupids"
+        },
+        "SubnetIds": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-osis-pipelineendpoint-vpcoptions.html#cfn-osis-pipelineendpoint-vpcoptions-subnetids"
         }
       }
     },
@@ -147715,6 +147946,16 @@
         }
       }
     },
+    "AWS::Timestream::InfluxDBCluster.MemberModeCount": {
+      "Properties": {
+        "Count": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-influxdbcluster-membermodecount.html#cfn-timestream-influxdbcluster-membermodecount-count"
+        },
+        "Mode": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-timestream-influxdbcluster-membermodecount.html#cfn-timestream-influxdbcluster-membermodecount-mode"
+        }
+      }
+    },
     "AWS::Timestream::InfluxDBCluster.S3Configuration": {
       "Properties": {
         "BucketName": {
@@ -148908,6 +149149,11 @@
         "SetStatOption": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-protocoldetails.html#cfn-transfer-server-protocoldetails-setstatoption"
         },
+        "SftpPorts": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-protocoldetails.html#cfn-transfer-server-protocoldetails-sftpports",
+          "Type": "AWS::Transfer::Server.SftpPortWithOptions"
+        },
         "TlsSessionResumptionMode": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-protocoldetails.html#cfn-transfer-server-protocoldetails-tlssessionresumptionmode"
         }
@@ -148924,6 +149170,16 @@
       "Properties": {
         "DirectoryListingOptimization": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-s3storageoptions.html#cfn-transfer-server-s3storageoptions-directorylistingoptimization"
+        }
+      }
+    },
+    "AWS::Transfer::Server.SftpPortWithOptions": {
+      "Properties": {
+        "CommunicationMode": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-sftpportwithoptions.html#cfn-transfer-server-sftpportwithoptions-communicationmode"
+        },
+        "SftpPort": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-sftpportwithoptions.html#cfn-transfer-server-sftpportwithoptions-sftpport"
         }
       }
     },
@@ -151234,6 +151490,10 @@
     },
     "AWS::WAFv2::WebACL.AssociationConfig": {
       "Properties": {
+        "ChallengeJavascriptSdkInjection": {
+          "Container": "Map",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-associationconfig.html#cfn-wafv2-webacl-associationconfig-challengejavascriptsdkinjection"
+        },
         "RequestBody": {
           "Container": "Map",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-associationconfig.html#cfn-wafv2-webacl-associationconfig-requestbody",
@@ -153904,6 +154164,23 @@
       "Properties": {
         "Capacity": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-workspaces-workspacebundle-userstorage.html#cfn-workspaces-workspacebundle-userstorage-capacity"
+        }
+      }
+    },
+    "AWS::WorkSpaces::WorkspaceImage.OperatingSystem": {
+      "Properties": {
+        "Type": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-workspaces-workspaceimage-operatingsystem.html#cfn-workspaces-workspaceimage-operatingsystem-type"
+        }
+      }
+    },
+    "AWS::WorkSpaces::WorkspaceImage.UpdateResult": {
+      "Properties": {
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-workspaces-workspaceimage-updateresult.html#cfn-workspaces-workspaceimage-updateresult-description"
+        },
+        "UpdateAvailable": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-workspaces-workspaceimage-updateresult.html#cfn-workspaces-workspaceimage-updateresult-updateavailable"
         }
       }
     },
@@ -158246,6 +158523,7 @@
           "Type": "AWS::AppSync::GraphQLApi.EnhancedMetricsConfig"
         },
         "EnvironmentVariables": {
+          "Container": "Map",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html#cfn-appsync-graphqlapi-environmentvariables"
         },
         "IntrospectionConfig": {
@@ -159375,6 +159653,28 @@
         }
       }
     },
+    "AWS::Backup::BackupAccessPoint": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupaccesspoint.html",
+      "Properties": {
+        "AccessPointInTime": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupaccesspoint.html#cfn-backup-backupaccesspoint-accesspointintime"
+        },
+        "AccessPointPolicy": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupaccesspoint.html#cfn-backup-backupaccesspoint-accesspointpolicy"
+        },
+        "Name": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupaccesspoint.html#cfn-backup-backupaccesspoint-name"
+        },
+        "RecoveryPointArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupaccesspoint.html#cfn-backup-backupaccesspoint-recoverypointarn"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupaccesspoint.html#cfn-backup-backupaccesspoint-tags",
+          "Type": "Tag"
+        }
+      }
+    },
     "AWS::Backup::BackupPlan": {
       "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-backup-backupplan.html",
       "Properties": {
@@ -160203,6 +160503,29 @@
         "Tags": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibrary.html#cfn-bedrock-dataautomationlibrary-tags",
+          "Type": "Tag"
+        }
+      }
+    },
+    "AWS::Bedrock::DataAutomationLibraryIngestionJob": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibraryingestionjob.html",
+      "Properties": {
+        "EntityType": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibraryingestionjob.html#cfn-bedrock-dataautomationlibraryingestionjob-entitytype"
+        },
+        "LibraryArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibraryingestionjob.html#cfn-bedrock-dataautomationlibraryingestionjob-libraryarn"
+        },
+        "OperationType": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibraryingestionjob.html#cfn-bedrock-dataautomationlibraryingestionjob-operationtype"
+        },
+        "OutputConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibraryingestionjob.html#cfn-bedrock-dataautomationlibraryingestionjob-outputconfiguration",
+          "Type": "AWS::Bedrock::DataAutomationLibraryIngestionJob.OutputConfiguration"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-bedrock-dataautomationlibraryingestionjob.html#cfn-bedrock-dataautomationlibraryingestionjob-tags",
           "Type": "Tag"
         }
       }
@@ -168371,6 +168694,10 @@
         "EventTriggerName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-eventtrigger.html#cfn-customerprofiles-eventtrigger-eventtriggername"
         },
+        "IntentFilterDefinition": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-eventtrigger.html#cfn-customerprofiles-eventtrigger-intentfilterdefinition",
+          "Type": "AWS::CustomerProfiles::EventTrigger.IntentFilterDefinition"
+        },
         "ObjectTypeName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-eventtrigger.html#cfn-customerprofiles-eventtrigger-objecttypename"
         },
@@ -171367,6 +171694,26 @@
         },
         "Vlan": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-publicvirtualinterface.html#cfn-directconnect-publicvirtualinterface-vlan"
+        }
+      }
+    },
+    "AWS::DirectConnect::ResiliencyGroup": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-resiliencygroup.html",
+      "Properties": {
+        "ConnectionArns": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-resiliencygroup.html#cfn-directconnect-resiliencygroup-connectionarns"
+        },
+        "IntendedResiliencyModel": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-resiliencygroup.html#cfn-directconnect-resiliencygroup-intendedresiliencymodel"
+        },
+        "ResiliencyGroupName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-resiliencygroup.html#cfn-directconnect-resiliencygroup-resiliencygroupname"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directconnect-resiliencygroup.html#cfn-directconnect-resiliencygroup-tags",
+          "Type": "Tag"
         }
       }
     },
@@ -176656,104 +177003,108 @@
       }
     },
     "AWS::EMR::Cluster": {
-      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html",
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html",
       "Properties": {
         "AdditionalInfo": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-additionalinfo"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-additionalinfo"
         },
         "Applications": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-applications",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-applications",
           "Type": "AWS::EMR::Cluster.Application"
         },
         "AutoScalingRole": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-autoscalingrole"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-autoscalingrole"
         },
         "AutoTerminationPolicy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-autoterminationpolicy",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-autoterminationpolicy",
           "Type": "AWS::EMR::Cluster.AutoTerminationPolicy"
         },
         "BootstrapActions": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-bootstrapactions",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-bootstrapactions",
           "Type": "AWS::EMR::Cluster.BootstrapActionConfig"
         },
         "Configurations": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-configurations",
-          "Type": "AWS::EMR::Cluster.Configuration"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-configurations",
+          "Type": "AWS::EMR::Cluster.EMRConfiguration"
         },
         "CustomAmiId": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-customamiid"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-customamiid"
         },
         "EbsRootVolumeIops": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-ebsrootvolumeiops"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-ebsrootvolumeiops"
         },
         "EbsRootVolumeSize": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-ebsrootvolumesize"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-ebsrootvolumesize"
         },
         "EbsRootVolumeThroughput": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-ebsrootvolumethroughput"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-ebsrootvolumethroughput"
         },
         "Instances": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-instances",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-instances",
           "Type": "AWS::EMR::Cluster.JobFlowInstancesConfig"
         },
         "JobFlowRole": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-jobflowrole"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-jobflowrole"
         },
         "KerberosAttributes": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-kerberosattributes",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-kerberosattributes",
           "Type": "AWS::EMR::Cluster.KerberosAttributes"
         },
         "LogEncryptionKmsKeyId": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-logencryptionkmskeyid"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-logencryptionkmskeyid"
         },
         "LogUri": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-loguri"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-loguri"
         },
         "ManagedScalingPolicy": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-managedscalingpolicy",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-managedscalingpolicy",
           "Type": "AWS::EMR::Cluster.ManagedScalingPolicy"
         },
+        "MonitoringConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-monitoringconfiguration",
+          "Type": "AWS::EMR::Cluster.MonitoringConfiguration"
+        },
         "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-name"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-name"
         },
         "OSReleaseLabel": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-osreleaselabel"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-osreleaselabel"
         },
         "PlacementGroupConfigs": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-placementgroupconfigs",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-placementgroupconfigs",
           "Type": "AWS::EMR::Cluster.PlacementGroupConfig"
         },
         "ReleaseLabel": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-releaselabel"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-releaselabel"
         },
         "ScaleDownBehavior": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-scaledownbehavior"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-scaledownbehavior"
         },
         "SecurityConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-securityconfiguration"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-securityconfiguration"
         },
         "ServiceRole": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-servicerole"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-servicerole"
+        },
+        "SessionEnabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-sessionenabled"
         },
         "StepConcurrencyLevel": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-stepconcurrencylevel"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-stepconcurrencylevel"
         },
         "Steps": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-steps",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-steps",
           "Type": "AWS::EMR::Cluster.StepConfig"
         },
         "Tags": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-tags",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-emr-cluster.html#cfn-emr-cluster-tags",
           "Type": "Tag"
-        },
-        "VisibleToAllUsers": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticmapreduce-cluster.html#cfn-elasticmapreduce-cluster-visibletoallusers"
         }
       }
     },
@@ -186999,6 +187350,9 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-microvmimage.html#cfn-lambda-microvmimage-hooks",
           "Type": "AWS::Lambda::MicrovmImage.Hooks"
         },
+        "KmsKeyIdentifier": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-microvmimage.html#cfn-lambda-microvmimage-kmskeyidentifier"
+        },
         "Logging": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-microvmimage.html#cfn-lambda-microvmimage-logging",
           "Type": "AWS::Lambda::MicrovmImage.Logging"
@@ -193306,6 +193660,18 @@
       "Properties": {
         "BlueprintName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipelineblueprint.html#cfn-osis-pipelineblueprint-blueprintname"
+        }
+      }
+    },
+    "AWS::OSIS::PipelineEndpoint": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipelineendpoint.html",
+      "Properties": {
+        "PipelineArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipelineendpoint.html#cfn-osis-pipelineendpoint-pipelinearn"
+        },
+        "VpcOptions": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-osis-pipelineendpoint.html#cfn-osis-pipelineendpoint-vpcoptions",
+          "Type": "AWS::OSIS::PipelineEndpoint.VpcOptions"
         }
       }
     },
@@ -200755,6 +201121,9 @@
         "Name": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53profiles-profileassociation.html#cfn-route53profiles-profileassociation-name"
         },
+        "Priority": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53profiles-profileassociation.html#cfn-route53profiles-profileassociation-priority"
+        },
         "ProfileId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53profiles-profileassociation.html#cfn-route53profiles-profileassociation-profileid"
         },
@@ -207933,6 +208302,9 @@
         "FailoverMode": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbcluster.html#cfn-timestream-influxdbcluster-failovermode"
         },
+        "KmsKeyId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbcluster.html#cfn-timestream-influxdbcluster-kmskeyid"
+        },
         "LogDeliveryConfiguration": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbcluster.html#cfn-timestream-influxdbcluster-logdeliveryconfiguration",
           "Type": "AWS::Timestream::InfluxDBCluster.LogDeliveryConfiguration"
@@ -207997,6 +208369,9 @@
         },
         "DeploymentType": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbinstance.html#cfn-timestream-influxdbinstance-deploymenttype"
+        },
+        "KmsKeyId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbinstance.html#cfn-timestream-influxdbinstance-kmskeyid"
         },
         "LogDeliveryConfiguration": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-timestream-influxdbinstance.html#cfn-timestream-influxdbinstance-logdeliveryconfiguration",
@@ -208692,6 +209067,10 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-workflow.html#cfn-transfer-workflow-steps",
           "Type": "AWS::Transfer::Workflow.WorkflowStep"
+        },
+        "StructuredLogDestinations": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-workflow.html#cfn-transfer-workflow-structuredlogdestinations"
         },
         "Tags": {
           "Container": "List",
@@ -210422,6 +210801,22 @@
         "UserStorage": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspacebundle.html#cfn-workspaces-workspacebundle-userstorage",
           "Type": "AWS::WorkSpaces::WorkspaceBundle.UserStorage"
+        }
+      }
+    },
+    "AWS::WorkSpaces::WorkspaceImage": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspaceimage.html",
+      "Properties": {
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspaceimage.html#cfn-workspaces-workspaceimage-description"
+        },
+        "Name": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspaceimage.html#cfn-workspaces-workspaceimage-name"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspaceimage.html#cfn-workspaces-workspaceimage-tags",
+          "Type": "Tag"
         }
       }
     },

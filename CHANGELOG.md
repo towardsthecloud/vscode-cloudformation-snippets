@@ -4,6 +4,13 @@ Changelog
 
 (unreleased)
 ------------
+- Build: record published CloudFormation specification for 5.133.0.
+  [Github Actions]
+
+
+5.133.0 (2026-11-06)
+--------------------
+- Build: update CloudFormation snippets to 5.133.0. [Github Actions]
 - Build(deps-dev): bump qs from 6.16.0 to 6.17.1 (#27) [dependabot[bot],
   dependabot[bot]]
 

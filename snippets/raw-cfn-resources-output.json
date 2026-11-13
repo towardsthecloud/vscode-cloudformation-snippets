@@ -12956,6 +12956,18 @@
         }
       }
     },
+    "AWS::Batch::JobDefinition.EksContainerLinuxCapabilities": {
+      "Properties": {
+        "Add": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainerlinuxcapabilities.html#cfn-batch-jobdefinition-ekscontainerlinuxcapabilities-add"
+        },
+        "Drop": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainerlinuxcapabilities.html#cfn-batch-jobdefinition-ekscontainerlinuxcapabilities-drop"
+        }
+      }
+    },
     "AWS::Batch::JobDefinition.EksContainerResourceRequirements": {
       "Properties": {
         "Limits": {
@@ -12973,6 +12985,10 @@
         "AllowPrivilegeEscalation": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainersecuritycontext.html#cfn-batch-jobdefinition-ekscontainersecuritycontext-allowprivilegeescalation"
         },
+        "Capabilities": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainersecuritycontext.html#cfn-batch-jobdefinition-ekscontainersecuritycontext-capabilities",
+          "Type": "AWS::Batch::JobDefinition.EksContainerLinuxCapabilities"
+        },
         "Privileged": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainersecuritycontext.html#cfn-batch-jobdefinition-ekscontainersecuritycontext-privileged"
         },
@@ -12987,6 +13003,10 @@
         },
         "RunAsUser": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainersecuritycontext.html#cfn-batch-jobdefinition-ekscontainersecuritycontext-runasuser"
+        },
+        "SeccompProfile": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekscontainersecuritycontext.html#cfn-batch-jobdefinition-ekscontainersecuritycontext-seccompprofile",
+          "Type": "AWS::Batch::JobDefinition.EksSeccompProfile"
         }
       }
     },
@@ -13075,6 +13095,10 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodproperties.html#cfn-batch-jobdefinition-ekspodproperties-metadata",
           "Type": "AWS::Batch::JobDefinition.EksMetadata"
         },
+        "SecurityContext": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodproperties.html#cfn-batch-jobdefinition-ekspodproperties-securitycontext",
+          "Type": "AWS::Batch::JobDefinition.EksPodSecurityContext"
+        },
         "ServiceAccountName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodproperties.html#cfn-batch-jobdefinition-ekspodproperties-serviceaccountname"
         },
@@ -13088,11 +13112,41 @@
         }
       }
     },
+    "AWS::Batch::JobDefinition.EksPodSecurityContext": {
+      "Properties": {
+        "FsGroup": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodsecuritycontext.html#cfn-batch-jobdefinition-ekspodsecuritycontext-fsgroup"
+        },
+        "RunAsGroup": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodsecuritycontext.html#cfn-batch-jobdefinition-ekspodsecuritycontext-runasgroup"
+        },
+        "RunAsNonRoot": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodsecuritycontext.html#cfn-batch-jobdefinition-ekspodsecuritycontext-runasnonroot"
+        },
+        "RunAsUser": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodsecuritycontext.html#cfn-batch-jobdefinition-ekspodsecuritycontext-runasuser"
+        },
+        "SeccompProfile": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-ekspodsecuritycontext.html#cfn-batch-jobdefinition-ekspodsecuritycontext-seccompprofile",
+          "Type": "AWS::Batch::JobDefinition.EksSeccompProfile"
+        }
+      }
+    },
     "AWS::Batch::JobDefinition.EksProperties": {
       "Properties": {
         "PodProperties": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-eksproperties.html#cfn-batch-jobdefinition-eksproperties-podproperties",
           "Type": "AWS::Batch::JobDefinition.EksPodProperties"
+        }
+      }
+    },
+    "AWS::Batch::JobDefinition.EksSeccompProfile": {
+      "Properties": {
+        "LocalhostProfile": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-eksseccompprofile.html#cfn-batch-jobdefinition-eksseccompprofile-localhostprofile"
+        },
+        "Type": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-eksseccompprofile.html#cfn-batch-jobdefinition-eksseccompprofile-type"
         }
       }
     },
@@ -22106,29 +22160,29 @@
       "Properties": {
         "CustomJWTAuthorizer": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-authorizerconfiguration.html#cfn-bedrockagentcore-paymentmanager-authorizerconfiguration-customjwtauthorizer",
-          "Type": "AWS::BedrockAgentCore::PaymentManager.CustomJWTAuthorizer"
+          "Type": "AWS::BedrockAgentCore::PaymentManager.CustomJWTAuthorizerConfiguration"
         }
       }
     },
-    "AWS::BedrockAgentCore::PaymentManager.AuthorizingClaimMatchValue": {
+    "AWS::BedrockAgentCore::PaymentManager.AuthorizingClaimMatchValueType": {
       "Properties": {
         "ClaimMatchOperator": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-authorizingclaimmatchvalue.html#cfn-bedrockagentcore-paymentmanager-authorizingclaimmatchvalue-claimmatchoperator"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-authorizingclaimmatchvaluetype.html#cfn-bedrockagentcore-paymentmanager-authorizingclaimmatchvaluetype-claimmatchoperator"
         },
         "ClaimMatchValue": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-authorizingclaimmatchvalue.html#cfn-bedrockagentcore-paymentmanager-authorizingclaimmatchvalue-claimmatchvalue",
-          "Type": "AWS::BedrockAgentCore::PaymentManager.ClaimMatchValue"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-authorizingclaimmatchvaluetype.html#cfn-bedrockagentcore-paymentmanager-authorizingclaimmatchvaluetype-claimmatchvalue",
+          "Type": "AWS::BedrockAgentCore::PaymentManager.ClaimMatchValueType"
         }
       }
     },
-    "AWS::BedrockAgentCore::PaymentManager.ClaimMatchValue": {
+    "AWS::BedrockAgentCore::PaymentManager.ClaimMatchValueType": {
       "Properties": {
         "MatchValueString": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-claimmatchvalue.html#cfn-bedrockagentcore-paymentmanager-claimmatchvalue-matchvaluestring"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-claimmatchvaluetype.html#cfn-bedrockagentcore-paymentmanager-claimmatchvaluetype-matchvaluestring"
         },
         "MatchValueStringList": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-claimmatchvalue.html#cfn-bedrockagentcore-paymentmanager-claimmatchvalue-matchvaluestringlist"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-claimmatchvaluetype.html#cfn-bedrockagentcore-paymentmanager-claimmatchvaluetype-matchvaluestringlist"
         }
       }
     },
@@ -22136,7 +22190,7 @@
       "Properties": {
         "AuthorizingClaimMatchValue": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customclaimvalidationtype.html#cfn-bedrockagentcore-paymentmanager-customclaimvalidationtype-authorizingclaimmatchvalue",
-          "Type": "AWS::BedrockAgentCore::PaymentManager.AuthorizingClaimMatchValue"
+          "Type": "AWS::BedrockAgentCore::PaymentManager.AuthorizingClaimMatchValueType"
         },
         "InboundTokenClaimName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customclaimvalidationtype.html#cfn-bedrockagentcore-paymentmanager-customclaimvalidationtype-inboundtokenclaimname"
@@ -22146,27 +22200,27 @@
         }
       }
     },
-    "AWS::BedrockAgentCore::PaymentManager.CustomJWTAuthorizer": {
+    "AWS::BedrockAgentCore::PaymentManager.CustomJWTAuthorizerConfiguration": {
       "Properties": {
         "AllowedAudience": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizer.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizer-allowedaudience"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration-allowedaudience"
         },
         "AllowedClients": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizer.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizer-allowedclients"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration-allowedclients"
         },
         "AllowedScopes": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizer.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizer-allowedscopes"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration-allowedscopes"
         },
         "CustomClaims": {
           "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizer.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizer-customclaims",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration-customclaims",
           "Type": "AWS::BedrockAgentCore::PaymentManager.CustomClaimValidationType"
         },
         "DiscoveryUrl": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizer.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizer-discoveryurl"
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration.html#cfn-bedrockagentcore-paymentmanager-customjwtauthorizerconfiguration-discoveryurl"
         }
       }
     },
@@ -25710,6 +25764,9 @@
         },
         "KeyPrefix": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-protectedjobs3outputconfigurationinput.html#cfn-cleanrooms-membership-protectedjobs3outputconfigurationinput-keyprefix"
+        },
+        "ResultFormat": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cleanrooms-membership-protectedjobs3outputconfigurationinput.html#cfn-cleanrooms-membership-protectedjobs3outputconfigurationinput-resultformat"
         }
       }
     },
@@ -28740,6 +28797,117 @@
         },
         "Timezone": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alarmmuterule-schedule.html#cfn-cloudwatch-alarmmuterule-schedule-timezone"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.Condition": {
+      "Properties": {
+        "Comparator": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-condition.html#cfn-cloudwatch-alert-condition-comparator"
+        },
+        "CriticalThreshold": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-condition.html#cfn-cloudwatch-alert-condition-criticalthreshold"
+        },
+        "ThresholdField": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-condition.html#cfn-cloudwatch-alert-condition-thresholdfield"
+        },
+        "ThresholdMode": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-condition.html#cfn-cloudwatch-alert-condition-thresholdmode"
+        },
+        "WarningThreshold": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-condition.html#cfn-cloudwatch-alert-condition-warningthreshold"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.Evaluation": {
+      "Properties": {
+        "IntervalSeconds": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-evaluation.html#cfn-cloudwatch-alert-evaluation-intervalseconds"
+        },
+        "PendingDurationSeconds": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-evaluation.html#cfn-cloudwatch-alert-evaluation-pendingdurationseconds"
+        },
+        "RecoveryDurationSeconds": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-evaluation.html#cfn-cloudwatch-alert-evaluation-recoverydurationseconds"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.NoData": {
+      "Properties": {
+        "TreatAs": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-nodata.html#cfn-cloudwatch-alert-nodata-treatas"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.NotificationRule": {
+      "Properties": {
+        "Target": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-notificationrule.html#cfn-cloudwatch-alert-notificationrule-target",
+          "Type": "AWS::CloudWatch::Alert.Target"
+        },
+        "Trigger": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-notificationrule.html#cfn-cloudwatch-alert-notificationrule-trigger",
+          "Type": "AWS::CloudWatch::Alert.Trigger"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.Query": {
+      "Properties": {
+        "Expression": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-query.html#cfn-cloudwatch-alert-query-expression"
+        },
+        "Language": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-query.html#cfn-cloudwatch-alert-query-language"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.Rule": {
+      "Properties": {
+        "TelemetryRule": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-rule.html#cfn-cloudwatch-alert-rule-telemetryrule",
+          "Type": "AWS::CloudWatch::Alert.TelemetryRule"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.Target": {
+      "Properties": {
+        "Arn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-target.html#cfn-cloudwatch-alert-target-arn"
+        },
+        "Metadata": {
+          "Container": "Map",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-target.html#cfn-cloudwatch-alert-target-metadata"
+        },
+        "Type": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-target.html#cfn-cloudwatch-alert-target-type"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.TelemetryRule": {
+      "Properties": {
+        "Condition": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-telemetryrule.html#cfn-cloudwatch-alert-telemetryrule-condition",
+          "Type": "AWS::CloudWatch::Alert.Condition"
+        },
+        "Evaluation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-telemetryrule.html#cfn-cloudwatch-alert-telemetryrule-evaluation",
+          "Type": "AWS::CloudWatch::Alert.Evaluation"
+        },
+        "NoData": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-telemetryrule.html#cfn-cloudwatch-alert-telemetryrule-nodata",
+          "Type": "AWS::CloudWatch::Alert.NoData"
+        },
+        "Query": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-telemetryrule.html#cfn-cloudwatch-alert-telemetryrule-query",
+          "Type": "AWS::CloudWatch::Alert.Query"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert.Trigger": {
+      "Properties": {
+        "StateValues": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alert-trigger.html#cfn-cloudwatch-alert-trigger-statevalues"
         }
       }
     },
@@ -34938,6 +35106,50 @@
         }
       }
     },
+    "AWS::CustomerProfiles::CalculatedAttributeDefinition.Filter": {
+      "Properties": {
+        "Groups": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filter.html#cfn-customerprofiles-calculatedattributedefinition-filter-groups",
+          "Type": "AWS::CustomerProfiles::CalculatedAttributeDefinition.FilterGroup"
+        },
+        "Include": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filter.html#cfn-customerprofiles-calculatedattributedefinition-filter-include"
+        }
+      }
+    },
+    "AWS::CustomerProfiles::CalculatedAttributeDefinition.FilterAttributeDimension": {
+      "Properties": {
+        "DimensionType": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filterattributedimension.html#cfn-customerprofiles-calculatedattributedefinition-filterattributedimension-dimensiontype"
+        },
+        "Values": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filterattributedimension.html#cfn-customerprofiles-calculatedattributedefinition-filterattributedimension-values"
+        }
+      }
+    },
+    "AWS::CustomerProfiles::CalculatedAttributeDefinition.FilterDimension": {
+      "Properties": {
+        "Attributes": {
+          "Container": "Map",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filterdimension.html#cfn-customerprofiles-calculatedattributedefinition-filterdimension-attributes",
+          "Type": "AWS::CustomerProfiles::CalculatedAttributeDefinition.FilterAttributeDimension"
+        }
+      }
+    },
+    "AWS::CustomerProfiles::CalculatedAttributeDefinition.FilterGroup": {
+      "Properties": {
+        "Dimensions": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filtergroup.html#cfn-customerprofiles-calculatedattributedefinition-filtergroup-dimensions",
+          "Type": "AWS::CustomerProfiles::CalculatedAttributeDefinition.FilterDimension"
+        },
+        "Type": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-customerprofiles-calculatedattributedefinition-filtergroup.html#cfn-customerprofiles-calculatedattributedefinition-filtergroup-type"
+        }
+      }
+    },
     "AWS::CustomerProfiles::CalculatedAttributeDefinition.Range": {
       "Properties": {
         "TimestampFormat": {
@@ -36567,6 +36779,12 @@
         },
         "Port": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-port"
+        },
+        "S3AccessRoleArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-s3accessrolearn"
+        },
+        "S3Path": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-s3path"
         },
         "SecretsManagerOracleAsmAccessRoleArn": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dms-dataprovider-oraclesettings.html#cfn-dms-dataprovider-oraclesettings-secretsmanageroracleasmaccessrolearn"
@@ -41299,10 +41517,41 @@
         }
       }
     },
+    "AWS::DevOpsAgent::Association.AutomatedTestingCapabilityConfiguration": {
+      "Properties": {
+        "Enabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-automatedtestingcapabilityconfiguration.html#cfn-devopsagent-association-automatedtestingcapabilityconfiguration-enabled"
+        }
+      }
+    },
     "AWS::DevOpsAgent::Association.AzureConfiguration": {
       "Properties": {
         "SubscriptionId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-azureconfiguration.html#cfn-devopsagent-association-azureconfiguration-subscriptionid"
+        }
+      }
+    },
+    "AWS::DevOpsAgent::Association.Capabilities": {
+      "Properties": {
+        "CodeChangeRiskAnalysis": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-capabilities.html#cfn-devopsagent-association-capabilities-codechangeriskanalysis",
+          "Type": "AWS::DevOpsAgent::Association.CapabilityConfiguration"
+        },
+        "CodeChangeRiskAnalysisAutomatedTesting": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-capabilities.html#cfn-devopsagent-association-capabilities-codechangeriskanalysisautomatedtesting",
+          "Type": "AWS::DevOpsAgent::Association.AutomatedTestingCapabilityConfiguration"
+        }
+      }
+    },
+    "AWS::DevOpsAgent::Association.CapabilityConfiguration": {
+      "Properties": {
+        "Enabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-capabilityconfiguration.html#cfn-devopsagent-association-capabilityconfiguration-enabled"
+        },
+        "TriggerFilterGroups": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-capabilityconfiguration.html#cfn-devopsagent-association-capabilityconfiguration-triggerfiltergroups",
+          "Type": "AWS::DevOpsAgent::Association.TriggerFilterGroup"
         }
       }
     },
@@ -41461,6 +41710,14 @@
         }
       }
     },
+    "AWS::DevOpsAgent::Association.NetworkAccessConfiguration": {
+      "Properties": {
+        "PrivateAccess": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-networkaccessconfiguration.html#cfn-devopsagent-association-networkaccessconfiguration-privateaccess",
+          "Type": "AWS::DevOpsAgent::Association.PrivateNetworkAccess"
+        }
+      }
+    },
     "AWS::DevOpsAgent::Association.PagerDutyConfiguration": {
       "Properties": {
         "CustomerEmail": {
@@ -41472,6 +41729,35 @@
         "Services": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-pagerdutyconfiguration.html#cfn-devopsagent-association-pagerdutyconfiguration-services"
+        }
+      }
+    },
+    "AWS::DevOpsAgent::Association.PatternFilter": {
+      "Properties": {
+        "Patterns": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-patternfilter.html#cfn-devopsagent-association-patternfilter-patterns"
+        }
+      }
+    },
+    "AWS::DevOpsAgent::Association.PrivateNetworkAccess": {
+      "Properties": {
+        "PrivateConnectionName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-privatenetworkaccess.html#cfn-devopsagent-association-privatenetworkaccess-privateconnectionname"
+        },
+        "RuntimeRoleArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-privatenetworkaccess.html#cfn-devopsagent-association-privatenetworkaccess-runtimerolearn"
+        }
+      }
+    },
+    "AWS::DevOpsAgent::Association.ReleaseManagementConfiguration": {
+      "Properties": {
+        "Name": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-releasemanagementconfiguration.html#cfn-devopsagent-association-releasemanagementconfiguration-name"
+        },
+        "NetworkAccess": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-releasemanagementconfiguration.html#cfn-devopsagent-association-releasemanagementconfiguration-networkaccess",
+          "Type": "AWS::DevOpsAgent::Association.NetworkAccessConfiguration"
         }
       }
     },
@@ -41528,6 +41814,10 @@
         "PagerDuty": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-serviceconfiguration.html#cfn-devopsagent-association-serviceconfiguration-pagerduty",
           "Type": "AWS::DevOpsAgent::Association.PagerDutyConfiguration"
+        },
+        "ReleaseManagement": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-serviceconfiguration.html#cfn-devopsagent-association-serviceconfiguration-releasemanagement",
+          "Type": "AWS::DevOpsAgent::Association.ReleaseManagementConfiguration"
         },
         "ServiceNow": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-serviceconfiguration.html#cfn-devopsagent-association-serviceconfiguration-servicenow",
@@ -41622,6 +41912,18 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-sourceawsconfiguration.html#cfn-devopsagent-association-sourceawsconfiguration-tags",
           "Type": "AWS::DevOpsAgent::Association.KeyValuePair"
+        }
+      }
+    },
+    "AWS::DevOpsAgent::Association.TriggerFilterGroup": {
+      "Properties": {
+        "Events": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-triggerfiltergroup.html#cfn-devopsagent-association-triggerfiltergroup-events"
+        },
+        "TargetBranches": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-devopsagent-association-triggerfiltergroup.html#cfn-devopsagent-association-triggerfiltergroup-targetbranches",
+          "Type": "AWS::DevOpsAgent::Association.PatternFilter"
         }
       }
     },
@@ -53845,6 +54147,9 @@
       "Properties": {
         "IdentityCenterInstanceArn": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emrserverless-application-identitycenterconfiguration.html#cfn-emrserverless-application-identitycenterconfiguration-identitycenterinstancearn"
+        },
+        "UserBackgroundSessionsEnabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-emrserverless-application-identitycenterconfiguration.html#cfn-emrserverless-application-identitycenterconfiguration-userbackgroundsessionsenabled"
         }
       }
     },
@@ -59500,6 +59805,16 @@
         }
       }
     },
+    "AWS::GameLift::GameSessionQueue.DeliveryDestination": {
+      "Properties": {
+        "DestinationArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-deliverydestination.html#cfn-gamelift-gamesessionqueue-deliverydestination-destinationarn"
+        },
+        "LogDestination": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-deliverydestination.html#cfn-gamelift-gamesessionqueue-deliverydestination-logdestination"
+        }
+      }
+    },
     "AWS::GameLift::GameSessionQueue.FilterConfiguration": {
       "Properties": {
         "AllowedLocations": {
@@ -59512,6 +59827,15 @@
       "Properties": {
         "DestinationArn": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-gamesessionqueuedestination.html#cfn-gamelift-gamesessionqueue-gamesessionqueuedestination-destinationarn"
+        }
+      }
+    },
+    "AWS::GameLift::GameSessionQueue.LogConfiguration": {
+      "Properties": {
+        "DeliveryDestinations": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-gamelift-gamesessionqueue-logconfiguration.html#cfn-gamelift-gamesessionqueue-logconfiguration-deliverydestinations",
+          "Type": "AWS::GameLift::GameSessionQueue.DeliveryDestination"
         }
       }
     },
@@ -71276,10 +71600,6 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationconfiguration.html#cfn-kinesisanalyticsv2-application-applicationconfiguration-flinkapplicationconfiguration",
           "Type": "AWS::KinesisAnalyticsV2::Application.FlinkApplicationConfiguration"
         },
-        "SqlApplicationConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationconfiguration.html#cfn-kinesisanalyticsv2-application-applicationconfiguration-sqlapplicationconfiguration",
-          "Type": "AWS::KinesisAnalyticsV2::Application.SqlApplicationConfiguration"
-        },
         "VpcConfigurations": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationconfiguration.html#cfn-kinesisanalyticsv2-application-applicationconfiguration-vpcconfigurations",
@@ -71313,6 +71633,9 @@
         "ApplicationRestoreType": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationrestoreconfiguration.html#cfn-kinesisanalyticsv2-application-applicationrestoreconfiguration-applicationrestoretype"
         },
+        "SnapshotArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationrestoreconfiguration.html#cfn-kinesisanalyticsv2-application-applicationrestoreconfiguration-snapshotarn"
+        },
         "SnapshotName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationrestoreconfiguration.html#cfn-kinesisanalyticsv2-application-applicationrestoreconfiguration-snapshotname"
         }
@@ -71320,6 +71643,9 @@
     },
     "AWS::KinesisAnalyticsV2::Application.ApplicationSnapshotConfiguration": {
       "Properties": {
+        "SnapshotMode": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationsnapshotconfiguration.html#cfn-kinesisanalyticsv2-application-applicationsnapshotconfiguration-snapshotmode"
+        },
         "SnapshotsEnabled": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationsnapshotconfiguration.html#cfn-kinesisanalyticsv2-application-applicationsnapshotconfiguration-snapshotsenabled"
         }
@@ -71329,16 +71655,6 @@
       "Properties": {
         "RollbackEnabled": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-applicationsystemrollbackconfiguration.html#cfn-kinesisanalyticsv2-application-applicationsystemrollbackconfiguration-rollbackenabled"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.CSVMappingParameters": {
-      "Properties": {
-        "RecordColumnDelimiter": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-csvmappingparameters.html#cfn-kinesisanalyticsv2-application-csvmappingparameters-recordcolumndelimiter"
-        },
-        "RecordRowDelimiter": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-csvmappingparameters.html#cfn-kinesisanalyticsv2-application-csvmappingparameters-recordrowdelimiter"
         }
       }
     },
@@ -71442,104 +71758,6 @@
         }
       }
     },
-    "AWS::KinesisAnalyticsV2::Application.Input": {
-      "Properties": {
-        "InputParallelism": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-input.html#cfn-kinesisanalyticsv2-application-input-inputparallelism",
-          "Type": "AWS::KinesisAnalyticsV2::Application.InputParallelism"
-        },
-        "InputProcessingConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-input.html#cfn-kinesisanalyticsv2-application-input-inputprocessingconfiguration",
-          "Type": "AWS::KinesisAnalyticsV2::Application.InputProcessingConfiguration"
-        },
-        "InputSchema": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-input.html#cfn-kinesisanalyticsv2-application-input-inputschema",
-          "Type": "AWS::KinesisAnalyticsV2::Application.InputSchema"
-        },
-        "KinesisFirehoseInput": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-input.html#cfn-kinesisanalyticsv2-application-input-kinesisfirehoseinput",
-          "Type": "AWS::KinesisAnalyticsV2::Application.KinesisFirehoseInput"
-        },
-        "KinesisStreamsInput": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-input.html#cfn-kinesisanalyticsv2-application-input-kinesisstreamsinput",
-          "Type": "AWS::KinesisAnalyticsV2::Application.KinesisStreamsInput"
-        },
-        "NamePrefix": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-input.html#cfn-kinesisanalyticsv2-application-input-nameprefix"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.InputLambdaProcessor": {
-      "Properties": {
-        "ResourceARN": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-inputlambdaprocessor.html#cfn-kinesisanalyticsv2-application-inputlambdaprocessor-resourcearn"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.InputParallelism": {
-      "Properties": {
-        "Count": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-inputparallelism.html#cfn-kinesisanalyticsv2-application-inputparallelism-count"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.InputProcessingConfiguration": {
-      "Properties": {
-        "InputLambdaProcessor": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-inputprocessingconfiguration.html#cfn-kinesisanalyticsv2-application-inputprocessingconfiguration-inputlambdaprocessor",
-          "Type": "AWS::KinesisAnalyticsV2::Application.InputLambdaProcessor"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.InputSchema": {
-      "Properties": {
-        "RecordColumns": {
-          "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-inputschema.html#cfn-kinesisanalyticsv2-application-inputschema-recordcolumns",
-          "Type": "AWS::KinesisAnalyticsV2::Application.RecordColumn"
-        },
-        "RecordEncoding": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-inputschema.html#cfn-kinesisanalyticsv2-application-inputschema-recordencoding"
-        },
-        "RecordFormat": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-inputschema.html#cfn-kinesisanalyticsv2-application-inputschema-recordformat",
-          "Type": "AWS::KinesisAnalyticsV2::Application.RecordFormat"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.JSONMappingParameters": {
-      "Properties": {
-        "RecordRowPath": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-jsonmappingparameters.html#cfn-kinesisanalyticsv2-application-jsonmappingparameters-recordrowpath"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.KinesisFirehoseInput": {
-      "Properties": {
-        "ResourceARN": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-kinesisfirehoseinput.html#cfn-kinesisanalyticsv2-application-kinesisfirehoseinput-resourcearn"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.KinesisStreamsInput": {
-      "Properties": {
-        "ResourceARN": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-kinesisstreamsinput.html#cfn-kinesisanalyticsv2-application-kinesisstreamsinput-resourcearn"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.MappingParameters": {
-      "Properties": {
-        "CSVMappingParameters": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-mappingparameters.html#cfn-kinesisanalyticsv2-application-mappingparameters-csvmappingparameters",
-          "Type": "AWS::KinesisAnalyticsV2::Application.CSVMappingParameters"
-        },
-        "JSONMappingParameters": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-mappingparameters.html#cfn-kinesisanalyticsv2-application-mappingparameters-jsonmappingparameters",
-          "Type": "AWS::KinesisAnalyticsV2::Application.JSONMappingParameters"
-        }
-      }
-    },
     "AWS::KinesisAnalyticsV2::Application.MavenReference": {
       "Properties": {
         "ArtifactId": {
@@ -71593,30 +71811,6 @@
         }
       }
     },
-    "AWS::KinesisAnalyticsV2::Application.RecordColumn": {
-      "Properties": {
-        "Mapping": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-recordcolumn.html#cfn-kinesisanalyticsv2-application-recordcolumn-mapping"
-        },
-        "Name": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-recordcolumn.html#cfn-kinesisanalyticsv2-application-recordcolumn-name"
-        },
-        "SqlType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-recordcolumn.html#cfn-kinesisanalyticsv2-application-recordcolumn-sqltype"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.RecordFormat": {
-      "Properties": {
-        "MappingParameters": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-recordformat.html#cfn-kinesisanalyticsv2-application-recordformat-mappingparameters",
-          "Type": "AWS::KinesisAnalyticsV2::Application.MappingParameters"
-        },
-        "RecordFormatType": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-recordformat.html#cfn-kinesisanalyticsv2-application-recordformat-recordformattype"
-        }
-      }
-    },
     "AWS::KinesisAnalyticsV2::Application.RunConfiguration": {
       "Properties": {
         "ApplicationRestoreConfiguration": {
@@ -71649,15 +71843,6 @@
         },
         "ObjectVersion": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-s3contentlocation.html#cfn-kinesisanalyticsv2-application-s3contentlocation-objectversion"
-        }
-      }
-    },
-    "AWS::KinesisAnalyticsV2::Application.SqlApplicationConfiguration": {
-      "Properties": {
-        "Inputs": {
-          "Container": "List",
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-application-sqlapplicationconfiguration.html#cfn-kinesisanalyticsv2-application-sqlapplicationconfiguration-inputs",
-          "Type": "AWS::KinesisAnalyticsV2::Application.Input"
         }
       }
     },
@@ -71850,6 +72035,69 @@
         },
         "FileKey": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-applicationreferencedatasource-s3referencedatasource.html#cfn-kinesisanalyticsv2-applicationreferencedatasource-s3referencedatasource-filekey"
+        }
+      }
+    },
+    "AWS::KinesisAnalyticsV2::Snapshot.ImportSourceConfiguration": {
+      "Properties": {
+        "ImportRoleArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-importsourceconfiguration.html#cfn-kinesisanalyticsv2-snapshot-importsourceconfiguration-importrolearn"
+        },
+        "SourceEncryptionConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-importsourceconfiguration.html#cfn-kinesisanalyticsv2-snapshot-importsourceconfiguration-sourceencryptionconfiguration",
+          "Type": "AWS::KinesisAnalyticsV2::Snapshot.SnapshotEncryptionConfigurationDescription"
+        },
+        "SourceS3PrefixLocation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-importsourceconfiguration.html#cfn-kinesisanalyticsv2-snapshot-importsourceconfiguration-sources3prefixlocation",
+          "Type": "AWS::KinesisAnalyticsV2::Snapshot.S3PrefixLocation"
+        },
+        "SourceType": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-importsourceconfiguration.html#cfn-kinesisanalyticsv2-snapshot-importsourceconfiguration-sourcetype"
+        }
+      }
+    },
+    "AWS::KinesisAnalyticsV2::Snapshot.S3PrefixLocation": {
+      "Properties": {
+        "BucketARN": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-s3prefixlocation.html#cfn-kinesisanalyticsv2-snapshot-s3prefixlocation-bucketarn"
+        },
+        "KeyPrefix": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-s3prefixlocation.html#cfn-kinesisanalyticsv2-snapshot-s3prefixlocation-keyprefix"
+        }
+      }
+    },
+    "AWS::KinesisAnalyticsV2::Snapshot.SnapshotEncryptionConfigurationDescription": {
+      "Properties": {
+        "KeyId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-snapshotencryptionconfigurationdescription.html#cfn-kinesisanalyticsv2-snapshot-snapshotencryptionconfigurationdescription-keyid"
+        },
+        "KeyType": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-snapshotencryptionconfigurationdescription.html#cfn-kinesisanalyticsv2-snapshot-snapshotencryptionconfigurationdescription-keytype"
+        }
+      }
+    },
+    "AWS::KinesisAnalyticsV2::Snapshot.SnapshotSourceDescription": {
+      "Properties": {
+        "S3PrefixLocation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-snapshotsourcedescription.html#cfn-kinesisanalyticsv2-snapshot-snapshotsourcedescription-s3prefixlocation",
+          "Type": "AWS::KinesisAnalyticsV2::Snapshot.S3PrefixLocation"
+        },
+        "SourceApplicationDescription": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-snapshotsourcedescription.html#cfn-kinesisanalyticsv2-snapshot-snapshotsourcedescription-sourceapplicationdescription",
+          "Type": "AWS::KinesisAnalyticsV2::Snapshot.SourceApplicationDescription"
+        }
+      }
+    },
+    "AWS::KinesisAnalyticsV2::Snapshot.SourceApplicationDescription": {
+      "Properties": {
+        "ApplicationCreationTimestamp": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-sourceapplicationdescription.html#cfn-kinesisanalyticsv2-snapshot-sourceapplicationdescription-applicationcreationtimestamp"
+        },
+        "ApplicationName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-sourceapplicationdescription.html#cfn-kinesisanalyticsv2-snapshot-sourceapplicationdescription-applicationname"
+        },
+        "ApplicationVersionId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisanalyticsv2-snapshot-sourceapplicationdescription.html#cfn-kinesisanalyticsv2-snapshot-sourceapplicationdescription-applicationversionid"
         }
       }
     },
@@ -74059,9 +74307,6 @@
         "AssociatedComputeResourceTypes": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-networkconnector-vpcegressconfiguration.html#cfn-lambda-networkconnector-vpcegressconfiguration-associatedcomputeresourcetypes"
-        },
-        "ElasticIpConfiguration": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-networkconnector-vpcegressconfiguration.html#cfn-lambda-networkconnector-vpcegressconfiguration-elasticipconfiguration"
         },
         "NetworkProtocol": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-networkconnector-vpcegressconfiguration.html#cfn-lambda-networkconnector-vpcegressconfiguration-networkprotocol"
@@ -88459,6 +88704,13 @@
         }
       }
     },
+    "AWS::NetworkFirewall::FirewallPolicy.Address": {
+      "Properties": {
+        "AddressDefinition": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-address.html#cfn-networkfirewall-firewallpolicy-address-addressdefinition"
+        }
+      }
+    },
     "AWS::NetworkFirewall::FirewallPolicy.CustomAction": {
       "Properties": {
         "ActionDefinition": {
@@ -88485,6 +88737,10 @@
         "PolicyVariables": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-firewallpolicy.html#cfn-networkfirewall-firewallpolicy-firewallpolicy-policyvariables",
           "Type": "AWS::NetworkFirewall::FirewallPolicy.PolicyVariables"
+        },
+        "Route53ResolvedIPValidation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-firewallpolicy.html#cfn-networkfirewall-firewallpolicy-firewallpolicy-route53resolvedipvalidation",
+          "Type": "AWS::NetworkFirewall::FirewallPolicy.Route53ResolvedIPValidation"
         },
         "StatefulDefaultActions": {
           "Container": "List",
@@ -88552,6 +88808,29 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-publishmetricaction.html#cfn-networkfirewall-firewallpolicy-publishmetricaction-dimensions",
           "Type": "AWS::NetworkFirewall::FirewallPolicy.Dimension"
+        }
+      }
+    },
+    "AWS::NetworkFirewall::FirewallPolicy.Route53ResolvedIPValidation": {
+      "Properties": {
+        "Action": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-route53resolvedipvalidation.html#cfn-networkfirewall-firewallpolicy-route53resolvedipvalidation-action"
+        },
+        "BypassDestinationValidationIPRanges": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-route53resolvedipvalidation.html#cfn-networkfirewall-firewallpolicy-route53resolvedipvalidation-bypassdestinationvalidationipranges",
+          "Type": "AWS::NetworkFirewall::FirewallPolicy.Address"
+        },
+        "DNSExpiryExceptionPolicy": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-route53resolvedipvalidation.html#cfn-networkfirewall-firewallpolicy-route53resolvedipvalidation-dnsexpiryexceptionpolicy"
+        },
+        "DNSFirewallRuleGroupId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-route53resolvedipvalidation.html#cfn-networkfirewall-firewallpolicy-route53resolvedipvalidation-dnsfirewallrulegroupid"
+        },
+        "SourceIPRanges": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkfirewall-firewallpolicy-route53resolvedipvalidation.html#cfn-networkfirewall-firewallpolicy-route53resolvedipvalidation-sourceipranges",
+          "Type": "AWS::NetworkFirewall::FirewallPolicy.Address"
         }
       }
     },
@@ -89083,6 +89362,19 @@
         }
       }
     },
+    "AWS::NetworkManager::ConnectAttachment.NatRule": {
+      "Properties": {
+        "MatchSourceCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-connectattachment-natrule.html#cfn-networkmanager-connectattachment-natrule-matchsourcecidr"
+        },
+        "NatCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-connectattachment-natrule.html#cfn-networkmanager-connectattachment-natrule-natcidr"
+        },
+        "RuleNumber": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-connectattachment-natrule.html#cfn-networkmanager-connectattachment-natrule-rulenumber"
+        }
+      }
+    },
     "AWS::NetworkManager::ConnectAttachment.ProposedNetworkFunctionGroupChange": {
       "Properties": {
         "AttachmentPolicyRuleNumber": {
@@ -89237,6 +89529,19 @@
         }
       }
     },
+    "AWS::NetworkManager::DirectConnectGatewayAttachment.NatRule": {
+      "Properties": {
+        "MatchSourceCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-directconnectgatewayattachment-natrule.html#cfn-networkmanager-directconnectgatewayattachment-natrule-matchsourcecidr"
+        },
+        "NatCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-directconnectgatewayattachment-natrule.html#cfn-networkmanager-directconnectgatewayattachment-natrule-natcidr"
+        },
+        "RuleNumber": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-directconnectgatewayattachment-natrule.html#cfn-networkmanager-directconnectgatewayattachment-natrule-rulenumber"
+        }
+      }
+    },
     "AWS::NetworkManager::DirectConnectGatewayAttachment.ProposedNetworkFunctionGroupChange": {
       "Properties": {
         "AttachmentPolicyRuleNumber": {
@@ -89287,6 +89592,19 @@
         },
         "Longitude": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-site-location.html#cfn-networkmanager-site-location-longitude"
+        }
+      }
+    },
+    "AWS::NetworkManager::SiteToSiteVpnAttachment.NatRule": {
+      "Properties": {
+        "MatchSourceCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-sitetositevpnattachment-natrule.html#cfn-networkmanager-sitetositevpnattachment-natrule-matchsourcecidr"
+        },
+        "NatCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-sitetositevpnattachment-natrule.html#cfn-networkmanager-sitetositevpnattachment-natrule-natcidr"
+        },
+        "RuleNumber": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-sitetositevpnattachment-natrule.html#cfn-networkmanager-sitetositevpnattachment-natrule-rulenumber"
         }
       }
     },
@@ -89347,6 +89665,19 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-transitgatewayroutetableattachment-proposedsegmentchange.html#cfn-networkmanager-transitgatewayroutetableattachment-proposedsegmentchange-tags",
           "Type": "Tag"
+        }
+      }
+    },
+    "AWS::NetworkManager::VpcAttachment.NatRule": {
+      "Properties": {
+        "MatchSourceCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-vpcattachment-natrule.html#cfn-networkmanager-vpcattachment-natrule-matchsourcecidr"
+        },
+        "NatCidr": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-vpcattachment-natrule.html#cfn-networkmanager-vpcattachment-natrule-natcidr"
+        },
+        "RuleNumber": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-networkmanager-vpcattachment-natrule.html#cfn-networkmanager-vpcattachment-natrule-rulenumber"
         }
       }
     },
@@ -93249,11 +93580,11 @@
     },
     "AWS::PaymentCryptography::Key.ReplicationStatusType": {
       "Properties": {
-        "KmsKeyArn": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-kmskeyarn"
+        "KmsEncryptionKeyArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-kmsencryptionkeyarn"
         },
-        "KmsKeyId": {
-          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-kmskeyid"
+        "KmsEncryptionKeyId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-kmsencryptionkeyid"
         },
         "Status": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-paymentcryptography-key-replicationstatustype.html#cfn-paymentcryptography-key-replicationstatustype-status"
@@ -96432,8 +96763,16 @@
     },
     "AWS::QuickSight::Analysis.AssetOptions": {
       "Properties": {
+        "CustomActionDefaults": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html#cfn-quicksight-analysis-assetoptions-customactiondefaults",
+          "Type": "AWS::QuickSight::Analysis.VisualCustomActionDefaults"
+        },
         "Timezone": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html#cfn-quicksight-analysis-assetoptions-timezone"
+        },
+        "VisualMessages": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html#cfn-quicksight-analysis-assetoptions-visualmessages",
+          "Type": "AWS::QuickSight::Analysis.VisualMessages"
         },
         "WeekStart": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-assetoptions.html#cfn-quicksight-analysis-assetoptions-weekstart"
@@ -103674,6 +104013,10 @@
         "ContentType": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-sheetdefinition.html#cfn-quicksight-analysis-sheetdefinition-contenttype"
         },
+        "CustomActionDefaults": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-sheetdefinition.html#cfn-quicksight-analysis-sheetdefinition-customactiondefaults",
+          "Type": "AWS::QuickSight::Analysis.VisualCustomActionDefaults"
+        },
         "Description": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-sheetdefinition.html#cfn-quicksight-analysis-sheetdefinition-description"
         },
@@ -105213,6 +105556,14 @@
         }
       }
     },
+    "AWS::QuickSight::Analysis.VisualCustomActionDefaults": {
+      "Properties": {
+        "HighlightOperation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualcustomactiondefaults.html#cfn-quicksight-analysis-visualcustomactiondefaults-highlightoperation",
+          "Type": "AWS::QuickSight::Analysis.VisualHighlightOperation"
+        }
+      }
+    },
     "AWS::QuickSight::Analysis.VisualCustomActionOperation": {
       "Properties": {
         "FilterOperation": {
@@ -105233,6 +105584,13 @@
         }
       }
     },
+    "AWS::QuickSight::Analysis.VisualHighlightOperation": {
+      "Properties": {
+        "Trigger": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualhighlightoperation.html#cfn-quicksight-analysis-visualhighlightoperation-trigger"
+        }
+      }
+    },
     "AWS::QuickSight::Analysis.VisualInteractionOptions": {
       "Properties": {
         "ContextMenuOption": {
@@ -105249,6 +105607,42 @@
       "Properties": {
         "AvailabilityStatus": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmenuoption.html#cfn-quicksight-analysis-visualmenuoption-availabilitystatus"
+        }
+      }
+    },
+    "AWS::QuickSight::Analysis.VisualMessageConfiguration": {
+      "Properties": {
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-description"
+        },
+        "DescriptionVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-descriptionvisibility"
+        },
+        "Enabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-enabled"
+        },
+        "LinkText": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-linktext"
+        },
+        "LinkUrl": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-linkurl"
+        },
+        "LinkVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-linkvisibility"
+        },
+        "Title": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-title"
+        },
+        "TitleVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessageconfiguration.html#cfn-quicksight-analysis-visualmessageconfiguration-titlevisibility"
+        }
+      }
+    },
+    "AWS::QuickSight::Analysis.VisualMessages": {
+      "Properties": {
+        "NoDataMessage": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-analysis-visualmessages.html#cfn-quicksight-analysis-visualmessages-nodatamessage",
+          "Type": "AWS::QuickSight::Analysis.VisualMessageConfiguration"
         }
       }
     },
@@ -107213,6 +107607,10 @@
     },
     "AWS::QuickSight::Dashboard.AssetOptions": {
       "Properties": {
+        "CustomActionDefaults": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-customactiondefaults",
+          "Type": "AWS::QuickSight::Dashboard.VisualCustomActionDefaults"
+        },
         "ExcludedDataSetArns": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-excludeddatasetarns"
@@ -107222,6 +107620,10 @@
         },
         "Timezone": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-timezone"
+        },
+        "VisualMessages": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-visualmessages",
+          "Type": "AWS::QuickSight::Dashboard.VisualMessages"
         },
         "WeekStart": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-assetoptions.html#cfn-quicksight-dashboard-assetoptions-weekstart"
@@ -114744,6 +115146,10 @@
         "ContentType": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-sheetdefinition.html#cfn-quicksight-dashboard-sheetdefinition-contenttype"
         },
+        "CustomActionDefaults": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-sheetdefinition.html#cfn-quicksight-dashboard-sheetdefinition-customactiondefaults",
+          "Type": "AWS::QuickSight::Dashboard.VisualCustomActionDefaults"
+        },
         "Description": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-sheetdefinition.html#cfn-quicksight-dashboard-sheetdefinition-description"
         },
@@ -116297,6 +116703,14 @@
         }
       }
     },
+    "AWS::QuickSight::Dashboard.VisualCustomActionDefaults": {
+      "Properties": {
+        "HighlightOperation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualcustomactiondefaults.html#cfn-quicksight-dashboard-visualcustomactiondefaults-highlightoperation",
+          "Type": "AWS::QuickSight::Dashboard.VisualHighlightOperation"
+        }
+      }
+    },
     "AWS::QuickSight::Dashboard.VisualCustomActionOperation": {
       "Properties": {
         "FilterOperation": {
@@ -116317,6 +116731,13 @@
         }
       }
     },
+    "AWS::QuickSight::Dashboard.VisualHighlightOperation": {
+      "Properties": {
+        "Trigger": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualhighlightoperation.html#cfn-quicksight-dashboard-visualhighlightoperation-trigger"
+        }
+      }
+    },
     "AWS::QuickSight::Dashboard.VisualInteractionOptions": {
       "Properties": {
         "ContextMenuOption": {
@@ -116333,6 +116754,42 @@
       "Properties": {
         "AvailabilityStatus": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmenuoption.html#cfn-quicksight-dashboard-visualmenuoption-availabilitystatus"
+        }
+      }
+    },
+    "AWS::QuickSight::Dashboard.VisualMessageConfiguration": {
+      "Properties": {
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-description"
+        },
+        "DescriptionVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-descriptionvisibility"
+        },
+        "Enabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-enabled"
+        },
+        "LinkText": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-linktext"
+        },
+        "LinkUrl": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-linkurl"
+        },
+        "LinkVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-linkvisibility"
+        },
+        "Title": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-title"
+        },
+        "TitleVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessageconfiguration.html#cfn-quicksight-dashboard-visualmessageconfiguration-titlevisibility"
+        }
+      }
+    },
+    "AWS::QuickSight::Dashboard.VisualMessages": {
+      "Properties": {
+        "NoDataMessage": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-dashboard-visualmessages.html#cfn-quicksight-dashboard-visualmessages-nodatamessage",
+          "Type": "AWS::QuickSight::Dashboard.VisualMessageConfiguration"
         }
       }
     },
@@ -118807,8 +119264,16 @@
     },
     "AWS::QuickSight::Template.AssetOptions": {
       "Properties": {
+        "CustomActionDefaults": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html#cfn-quicksight-template-assetoptions-customactiondefaults",
+          "Type": "AWS::QuickSight::Template.VisualCustomActionDefaults"
+        },
         "Timezone": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html#cfn-quicksight-template-assetoptions-timezone"
+        },
+        "VisualMessages": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html#cfn-quicksight-template-assetoptions-visualmessages",
+          "Type": "AWS::QuickSight::Template.VisualMessages"
         },
         "WeekStart": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-assetoptions.html#cfn-quicksight-template-assetoptions-weekstart"
@@ -126030,6 +126495,10 @@
         "ContentType": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-sheetdefinition.html#cfn-quicksight-template-sheetdefinition-contenttype"
         },
+        "CustomActionDefaults": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-sheetdefinition.html#cfn-quicksight-template-sheetdefinition-customactiondefaults",
+          "Type": "AWS::QuickSight::Template.VisualCustomActionDefaults"
+        },
         "Description": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-sheetdefinition.html#cfn-quicksight-template-sheetdefinition-description"
         },
@@ -127708,6 +128177,14 @@
         }
       }
     },
+    "AWS::QuickSight::Template.VisualCustomActionDefaults": {
+      "Properties": {
+        "HighlightOperation": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualcustomactiondefaults.html#cfn-quicksight-template-visualcustomactiondefaults-highlightoperation",
+          "Type": "AWS::QuickSight::Template.VisualHighlightOperation"
+        }
+      }
+    },
     "AWS::QuickSight::Template.VisualCustomActionOperation": {
       "Properties": {
         "FilterOperation": {
@@ -127728,6 +128205,13 @@
         }
       }
     },
+    "AWS::QuickSight::Template.VisualHighlightOperation": {
+      "Properties": {
+        "Trigger": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualhighlightoperation.html#cfn-quicksight-template-visualhighlightoperation-trigger"
+        }
+      }
+    },
     "AWS::QuickSight::Template.VisualInteractionOptions": {
       "Properties": {
         "ContextMenuOption": {
@@ -127744,6 +128228,42 @@
       "Properties": {
         "AvailabilityStatus": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmenuoption.html#cfn-quicksight-template-visualmenuoption-availabilitystatus"
+        }
+      }
+    },
+    "AWS::QuickSight::Template.VisualMessageConfiguration": {
+      "Properties": {
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-description"
+        },
+        "DescriptionVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-descriptionvisibility"
+        },
+        "Enabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-enabled"
+        },
+        "LinkText": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-linktext"
+        },
+        "LinkUrl": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-linkurl"
+        },
+        "LinkVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-linkvisibility"
+        },
+        "Title": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-title"
+        },
+        "TitleVisibility": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessageconfiguration.html#cfn-quicksight-template-visualmessageconfiguration-titlevisibility"
+        }
+      }
+    },
+    "AWS::QuickSight::Template.VisualMessages": {
+      "Properties": {
+        "NoDataMessage": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-quicksight-template-visualmessages.html#cfn-quicksight-template-visualmessages-nodatamessage",
+          "Type": "AWS::QuickSight::Template.VisualMessageConfiguration"
         }
       }
     },
@@ -134304,10 +134824,31 @@
         }
       }
     },
+    "AWS::S3Tables::TableBucket.LoggingConfiguration": {
+      "Properties": {
+        "TargetBucket": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-loggingconfiguration.html#cfn-s3tables-tablebucket-loggingconfiguration-targetbucket"
+        },
+        "TargetObjectKeyFormat": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-loggingconfiguration.html#cfn-s3tables-tablebucket-loggingconfiguration-targetobjectkeyformat",
+          "Type": "AWS::S3Tables::TableBucket.TargetObjectKeyFormat"
+        },
+        "TargetPrefix": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-loggingconfiguration.html#cfn-s3tables-tablebucket-loggingconfiguration-targetprefix"
+        }
+      }
+    },
     "AWS::S3Tables::TableBucket.MetricsConfiguration": {
       "Properties": {
         "Status": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-metricsconfiguration.html#cfn-s3tables-tablebucket-metricsconfiguration-status"
+        }
+      }
+    },
+    "AWS::S3Tables::TableBucket.PartitionedPrefix": {
+      "Properties": {
+        "PartitionDateSource": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-partitionedprefix.html#cfn-s3tables-tablebucket-partitionedprefix-partitiondatesource"
         }
       }
     },
@@ -134343,6 +134884,14 @@
       "Properties": {
         "StorageClass": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-storageclassconfiguration.html#cfn-s3tables-tablebucket-storageclassconfiguration-storageclass"
+        }
+      }
+    },
+    "AWS::S3Tables::TableBucket.TargetObjectKeyFormat": {
+      "Properties": {
+        "PartitionedPrefix": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3tables-tablebucket-targetobjectkeyformat.html#cfn-s3tables-tablebucket-targetobjectkeyformat-partitionedprefix",
+          "Type": "AWS::S3Tables::TableBucket.PartitionedPrefix"
         }
       }
     },
@@ -145023,6 +145572,11 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-assets.html#cfn-securityagent-pentest-assets-actors",
           "Type": "AWS::SecurityAgent::Pentest.Actor"
         },
+        "ClientCertificates": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-assets.html#cfn-securityagent-pentest-assets-clientcertificates",
+          "Type": "AWS::SecurityAgent::Pentest.ClientCertificate"
+        },
         "Documents": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-assets.html#cfn-securityagent-pentest-assets-documents",
@@ -145077,6 +145631,20 @@
       "Properties": {
         "Enabled": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-cicdconfiguration.html#cfn-securityagent-pentest-cicdconfiguration-enabled"
+        }
+      }
+    },
+    "AWS::SecurityAgent::Pentest.ClientCertificate": {
+      "Properties": {
+        "Name": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-clientcertificate.html#cfn-securityagent-pentest-clientcertificate-name"
+        },
+        "Origins": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-clientcertificate.html#cfn-securityagent-pentest-clientcertificate-origins"
+        },
+        "SecretArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-securityagent-pentest-clientcertificate.html#cfn-securityagent-pentest-clientcertificate-secretarn"
         }
       }
     },
@@ -150587,6 +151155,40 @@
         }
       }
     },
+    "AWS::WAFv2::RuleGroup.ConnectedAccountChainConfig": {
+      "Properties": {
+        "Chain": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-connectedaccountchainconfig.html#cfn-wafv2-rulegroup-connectedaccountchainconfig-chain"
+        },
+        "Prices": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-connectedaccountchainconfig.html#cfn-wafv2-rulegroup-connectedaccountchainconfig-prices",
+          "Type": "AWS::WAFv2::RuleGroup.ConnectedAccountPrice"
+        }
+      }
+    },
+    "AWS::WAFv2::RuleGroup.ConnectedAccountConfig": {
+      "Properties": {
+        "ConnectedAccountArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-connectedaccountconfig.html#cfn-wafv2-rulegroup-connectedaccountconfig-connectedaccountarn"
+        },
+        "PaymentNetworks": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-connectedaccountconfig.html#cfn-wafv2-rulegroup-connectedaccountconfig-paymentnetworks",
+          "Type": "AWS::WAFv2::RuleGroup.ConnectedAccountChainConfig"
+        }
+      }
+    },
+    "AWS::WAFv2::RuleGroup.ConnectedAccountPrice": {
+      "Properties": {
+        "Amount": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-connectedaccountprice.html#cfn-wafv2-rulegroup-connectedaccountprice-amount"
+        },
+        "Currency": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-connectedaccountprice.html#cfn-wafv2-rulegroup-connectedaccountprice-currency"
+        }
+      }
+    },
     "AWS::WAFv2::RuleGroup.CookieMatchPattern": {
       "Properties": {
         "All": {
@@ -150890,6 +151492,11 @@
     },
     "AWS::WAFv2::RuleGroup.MonetizationConfig": {
       "Properties": {
+        "ConnectedAccountConfigs": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizationconfig.html#cfn-wafv2-rulegroup-monetizationconfig-connectedaccountconfigs",
+          "Type": "AWS::WAFv2::RuleGroup.ConnectedAccountConfig"
+        },
         "CryptoConfig": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-rulegroup-monetizationconfig.html#cfn-wafv2-rulegroup-monetizationconfig-cryptoconfig",
           "Type": "AWS::WAFv2::RuleGroup.CryptoConfig"
@@ -152807,6 +153414,16 @@
         }
       }
     },
+    "AWS::Wisdom::AIAgent.AgentTarget": {
+      "Properties": {
+        "AIAgentId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-agenttarget.html#cfn-wisdom-aiagent-agenttarget-aiagentid"
+        },
+        "ApplicationId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-agenttarget.html#cfn-wisdom-aiagent-agenttarget-applicationid"
+        }
+      }
+    },
     "AWS::Wisdom::AIAgent.AnswerRecommendationAIAgentConfiguration": {
       "Properties": {
         "AnswerGenerationAIGuardrailId": {
@@ -152866,6 +153483,18 @@
         }
       }
     },
+    "AWS::Wisdom::AIAgent.DelegateAgentConfiguration": {
+      "Properties": {
+        "AgentTarget": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-delegateagentconfiguration.html#cfn-wisdom-aiagent-delegateagentconfiguration-agenttarget",
+          "Type": "AWS::Wisdom::AIAgent.AgentTarget"
+        },
+        "Instruction": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-delegateagentconfiguration.html#cfn-wisdom-aiagent-delegateagentconfiguration-instruction",
+          "Type": "AWS::Wisdom::AIAgent.MultiAgentInstruction"
+        }
+      }
+    },
     "AWS::Wisdom::AIAgent.EmailGenerativeAnswerAIAgentConfiguration": {
       "Properties": {
         "AssociationConfigurations": {
@@ -152912,6 +153541,24 @@
         }
       }
     },
+    "AWS::Wisdom::AIAgent.HandoffAgentConfiguration": {
+      "Properties": {
+        "AgentTarget": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-handoffagentconfiguration.html#cfn-wisdom-aiagent-handoffagentconfiguration-agenttarget",
+          "Type": "AWS::Wisdom::AIAgent.AgentTarget"
+        },
+        "AudioStreamingEnabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-handoffagentconfiguration.html#cfn-wisdom-aiagent-handoffagentconfiguration-audiostreamingenabled"
+        },
+        "ImmediateHandoff": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-handoffagentconfiguration.html#cfn-wisdom-aiagent-handoffagentconfiguration-immediatehandoff"
+        },
+        "Instruction": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-handoffagentconfiguration.html#cfn-wisdom-aiagent-handoffagentconfiguration-instruction",
+          "Type": "AWS::Wisdom::AIAgent.MultiAgentInstruction"
+        }
+      }
+    },
     "AWS::Wisdom::AIAgent.KnowledgeBaseAssociationConfigurationData": {
       "Properties": {
         "ContentTagFilter": {
@@ -152941,6 +153588,29 @@
         },
         "Locale": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-manualsearchaiagentconfiguration.html#cfn-wisdom-aiagent-manualsearchaiagentconfiguration-locale"
+        }
+      }
+    },
+    "AWS::Wisdom::AIAgent.MultiAgentConfiguration": {
+      "Properties": {
+        "DelegateAgentConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-multiagentconfiguration.html#cfn-wisdom-aiagent-multiagentconfiguration-delegateagentconfiguration",
+          "Type": "AWS::Wisdom::AIAgent.DelegateAgentConfiguration"
+        },
+        "HandoffAgentConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-multiagentconfiguration.html#cfn-wisdom-aiagent-multiagentconfiguration-handoffagentconfiguration",
+          "Type": "AWS::Wisdom::AIAgent.HandoffAgentConfiguration"
+        }
+      }
+    },
+    "AWS::Wisdom::AIAgent.MultiAgentInstruction": {
+      "Properties": {
+        "Examples": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-multiagentinstruction.html#cfn-wisdom-aiagent-multiagentinstruction-examples"
+        },
+        "Instruction": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-multiagentinstruction.html#cfn-wisdom-aiagent-multiagentinstruction-instruction"
         }
       }
     },
@@ -152975,14 +153645,27 @@
         "ConnectInstanceArn": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-connectinstancearn"
         },
+        "InputSchemas": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-inputschemas"
+        },
         "Locale": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-locale"
+        },
+        "MultiAgentConfigurations": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-multiagentconfigurations",
+          "Type": "AWS::Wisdom::AIAgent.MultiAgentConfiguration"
         },
         "OrchestrationAIGuardrailId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-orchestrationaiguardrailid"
         },
         "OrchestrationAIPromptId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-orchestrationaipromptid"
+        },
+        "OutputSchemas": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wisdom-aiagent-orchestrationaiagentconfiguration.html#cfn-wisdom-aiagent-orchestrationaiagentconfiguration-outputschemas"
         },
         "ToolConfigurations": {
           "Container": "List",
@@ -164644,6 +165327,9 @@
         "KMSKeyId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-kmskeyid"
         },
+        "RecursiveLogging": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-recursivelogging"
+        },
         "S3BucketName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-s3bucketname"
         },
@@ -164838,6 +165524,40 @@
         "Tags": {
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alarmmuterule.html#cfn-cloudwatch-alarmmuterule-tags",
+          "Type": "Tag"
+        }
+      }
+    },
+    "AWS::CloudWatch::Alert": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html",
+      "Properties": {
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-description"
+        },
+        "Name": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-name"
+        },
+        "NotificationRules": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-notificationrules",
+          "Type": "AWS::CloudWatch::Alert.NotificationRule"
+        },
+        "NotificationsEnabled": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-notificationsenabled"
+        },
+        "ProfileId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-profileid"
+        },
+        "Rule": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-rule",
+          "Type": "AWS::CloudWatch::Alert.Rule"
+        },
+        "SpaceId": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-spaceid"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-alert.html#cfn-cloudwatch-alert-tags",
           "Type": "Tag"
         }
       }
@@ -168580,6 +169300,10 @@
         "DomainName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-domainname"
         },
+        "Filter": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-filter",
+          "Type": "AWS::CustomerProfiles::CalculatedAttributeDefinition.Filter"
+        },
         "Statistic": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html#cfn-customerprofiles-calculatedattributedefinition-statistic"
         },
@@ -171422,6 +172146,10 @@
       "Properties": {
         "AgentSpaceId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-association.html#cfn-devopsagent-association-agentspaceid"
+        },
+        "Capabilities": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-association.html#cfn-devopsagent-association-capabilities",
+          "Type": "AWS::DevOpsAgent::Association.Capabilities"
         },
         "Configuration": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsagent-association.html#cfn-devopsagent-association-configuration",
@@ -180472,6 +181200,10 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-filterconfiguration",
           "Type": "AWS::GameLift::GameSessionQueue.FilterConfiguration"
         },
+        "LogConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-logconfiguration",
+          "Type": "AWS::GameLift::GameSessionQueue.LogConfiguration"
+        },
         "Name": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html#cfn-gamelift-gamesessionqueue-name"
         },
@@ -186635,6 +187367,36 @@
         }
       }
     },
+    "AWS::KinesisAnalyticsV2::Snapshot": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html",
+      "Properties": {
+        "ApplicationName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-applicationname"
+        },
+        "ImportSourceConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-importsourceconfiguration",
+          "Type": "AWS::KinesisAnalyticsV2::Snapshot.ImportSourceConfiguration"
+        },
+        "SnapshotDescription": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-snapshotdescription"
+        },
+        "SnapshotEncryptionConfigurationDescription": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-snapshotencryptionconfigurationdescription",
+          "Type": "AWS::KinesisAnalyticsV2::Snapshot.SnapshotEncryptionConfigurationDescription"
+        },
+        "SnapshotFormat": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-snapshotformat"
+        },
+        "SnapshotName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-snapshotname"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisanalyticsv2-snapshot.html#cfn-kinesisanalyticsv2-snapshot-tags",
+          "Type": "Tag"
+        }
+      }
+    },
     "AWS::KinesisFirehose::DeliveryStream": {
       "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kinesisfirehose-deliverystream.html",
       "Properties": {
@@ -192681,6 +193443,14 @@
         "EdgeLocation": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-connectattachment.html#cfn-networkmanager-connectattachment-edgelocation"
         },
+        "NatGatewayRules": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-connectattachment.html#cfn-networkmanager-connectattachment-natgatewayrules",
+          "Type": "AWS::NetworkManager::ConnectAttachment.NatRule"
+        },
+        "NatGatewaySupport": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-connectattachment.html#cfn-networkmanager-connectattachment-natgatewaysupport"
+        },
         "NetworkFunctionGroupName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-connectattachment.html#cfn-networkmanager-connectattachment-networkfunctiongroupname"
         },
@@ -192833,6 +193603,17 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-directconnectgatewayattachment.html#cfn-networkmanager-directconnectgatewayattachment-edgelocations"
         },
+        "NatGatewayRules": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-directconnectgatewayattachment.html#cfn-networkmanager-directconnectgatewayattachment-natgatewayrules",
+          "Type": "AWS::NetworkManager::DirectConnectGatewayAttachment.NatRule"
+        },
+        "NatGatewaySupport": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-directconnectgatewayattachment.html#cfn-networkmanager-directconnectgatewayattachment-natgatewaysupport"
+        },
+        "NatSystemRouteSupport": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-directconnectgatewayattachment.html#cfn-networkmanager-directconnectgatewayattachment-natsystemroutesupport"
+        },
         "RoutingPolicyLabel": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-directconnectgatewayattachment.html#cfn-networkmanager-directconnectgatewayattachment-routingpolicylabel"
         },
@@ -192931,6 +193712,17 @@
         "CoreNetworkId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-sitetositevpnattachment.html#cfn-networkmanager-sitetositevpnattachment-corenetworkid"
         },
+        "NatGatewayRules": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-sitetositevpnattachment.html#cfn-networkmanager-sitetositevpnattachment-natgatewayrules",
+          "Type": "AWS::NetworkManager::SiteToSiteVpnAttachment.NatRule"
+        },
+        "NatGatewaySupport": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-sitetositevpnattachment.html#cfn-networkmanager-sitetositevpnattachment-natgatewaysupport"
+        },
+        "NatSystemRouteSupport": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-sitetositevpnattachment.html#cfn-networkmanager-sitetositevpnattachment-natsystemroutesupport"
+        },
         "NetworkFunctionGroupName": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-sitetositevpnattachment.html#cfn-networkmanager-sitetositevpnattachment-networkfunctiongroupname"
         },
@@ -193001,6 +193793,14 @@
       "Properties": {
         "CoreNetworkId": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-vpcattachment.html#cfn-networkmanager-vpcattachment-corenetworkid"
+        },
+        "NatGatewayRules": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-vpcattachment.html#cfn-networkmanager-vpcattachment-natgatewayrules",
+          "Type": "AWS::NetworkManager::VpcAttachment.NatRule"
+        },
+        "NatGatewaySupport": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-vpcattachment.html#cfn-networkmanager-vpcattachment-natgatewaysupport"
         },
         "Options": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-vpcattachment.html#cfn-networkmanager-vpcattachment-options",
@@ -195261,6 +196061,9 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-instanceconfigs",
           "Type": "AWS::PCS::ComputeNodeGroup.InstanceConfig"
         },
+        "LaunchTemplateMode": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-launchtemplatemode"
+        },
         "Name": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-name"
         },
@@ -195275,6 +196078,10 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-scalingconfiguration",
           "Type": "AWS::PCS::ComputeNodeGroup.ScalingConfiguration"
         },
+        "SecurityGroupIds": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-securitygroupids"
+        },
         "SlurmConfiguration": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-slurmconfiguration",
           "Type": "AWS::PCS::ComputeNodeGroup.SlurmConfiguration"
@@ -195282,6 +196089,9 @@
         "SpotOptions": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-spotoptions",
           "Type": "AWS::PCS::ComputeNodeGroup.SpotOptions"
+        },
+        "SshKeyName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-pcs-computenodegroup.html#cfn-pcs-computenodegroup-sshkeyname"
         },
         "SubnetIds": {
           "Container": "List",
@@ -202164,6 +202974,10 @@
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-tablebucket.html#cfn-s3tables-tablebucket-encryptionconfiguration",
           "Type": "AWS::S3Tables::TableBucket.EncryptionConfiguration"
         },
+        "LoggingConfiguration": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-tablebucket.html#cfn-s3tables-tablebucket-loggingconfiguration",
+          "Type": "AWS::S3Tables::TableBucket.LoggingConfiguration"
+        },
         "MetricsConfiguration": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3tables-tablebucket.html#cfn-s3tables-tablebucket-metricsconfiguration",
           "Type": "AWS::S3Tables::TableBucket.MetricsConfiguration"
@@ -203391,6 +204205,17 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-cloudconnector.html#cfn-ssm-cloudconnector-tags",
           "Type": "Tag"
+        }
+      }
+    },
+    "AWS::SSM::DefaultHostManagementConfiguration": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-defaulthostmanagementconfiguration.html",
+      "Properties": {
+        "CustomerManagedRoleArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-defaulthostmanagementconfiguration.html#cfn-ssm-defaulthostmanagementconfiguration-customermanagedrolearn"
+        },
+        "PermissionModel": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-defaulthostmanagementconfiguration.html#cfn-ssm-defaulthostmanagementconfiguration-permissionmodel"
         }
       }
     },
@@ -206375,6 +207200,9 @@
         "LogConfig": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-pentest.html#cfn-securityagent-pentest-logconfig",
           "Type": "AWS::SecurityAgent::Pentest.CloudWatchLog"
+        },
+        "MaxTaskHours": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-pentest.html#cfn-securityagent-pentest-maxtaskhours"
         },
         "NetworkTrafficConfig": {
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-securityagent-pentest.html#cfn-securityagent-pentest-networktrafficconfig",
@@ -210098,6 +210926,35 @@
         }
       }
     },
+    "AWS::WellArchitected::AgentOrganizationalProfile": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html",
+      "Properties": {
+        "BusinessOverview": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-businessoverview"
+        },
+        "DeletionProtection": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-deletionprotection"
+        },
+        "Description": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-description"
+        },
+        "DisplayName": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-displayname"
+        },
+        "Name": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-name"
+        },
+        "Pillars": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-pillars"
+        },
+        "Tags": {
+          "Container": "List",
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentorganizationalprofile.html#cfn-wellarchitected-agentorganizationalprofile-tags",
+          "Type": "Tag"
+        }
+      }
+    },
     "AWS::WellArchitected::AgentProfile": {
       "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentprofile.html",
       "Properties": {
@@ -210132,6 +210989,17 @@
           "Container": "List",
           "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentprofile.html#cfn-wellarchitected-agentprofile-tags",
           "Type": "Tag"
+        }
+      }
+    },
+    "AWS::WellArchitected::AgentProfilePolicy": {
+      "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentprofilepolicy.html",
+      "Properties": {
+        "Policy": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentprofilepolicy.html#cfn-wellarchitected-agentprofilepolicy-policy"
+        },
+        "ProfileArn": {
+          "Docs": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wellarchitected-agentprofilepolicy.html#cfn-wellarchitected-agentprofilepolicy-profilearn"
         }
       }
     },

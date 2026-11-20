@@ -4,6 +4,13 @@ Changelog
 
 (unreleased)
 ------------
+- Build: record published CloudFormation specification for 5.134.0.
+  [Github Actions]
+
+
+5.134.0 (2026-11-13)
+--------------------
+- Build: update CloudFormation snippets to 5.134.0. [Github Actions]
 - Build: record published CloudFormation specification for 5.133.0.
   [Github Actions]
 
